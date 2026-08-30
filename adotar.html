@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campanha de Adoção - Adote Amigo</title>
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="imagens/logo.png" alt="Adote Amigo">
+        </a>
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="quem.html">Quem somos nós?</a>
+        <div class="dropdown">
+            <a href="faq.html">FAQ ▾</a>
+            <div class="dropdown-content">
+                <a href="faq.html#como-adotar">Como adotar?</a>
+                <a href="faq.html#precisa-pagar">Precisa pagar?</a>
+                <a href="faq.html#animais-vacinados">Animais vacinados?</a>
+                <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
+                <a href="faq.html#posso-ajudar">Posso ajudar?</a>
+            </div>
+        </div>
+        <a href="contato.html">Contato</a>
+
+    </nav>
+
+    <div class="actions">
+        <a href="adotar.html" class="btn btn-primary">
+    Quero adotar
+</a>
+        <button class="btn btn-outline">Entrar</button>
+    </div>
+</header>
+
+<main class="campanha-container">
+    
+    <aside class="sidebar-filtros">
+    <h3>Filtros</h3>
+    <button class="btn-limpar-filtros">Limpar todos</button>
+
+    <div class="grupo-filtro">
+        <label>Estado*</label>
+        <select id="filtro-estado">
+            <option value="">Selecione</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+        </select>
+    </div>
+
+    <div class="grupo-filtro">
+        <label>Cidade*</label>
+        <select id="filtro-cidade">
+            <option value="">Selecione</option>
+        </select>
+    </div>
+
+    <div class="grupo-filtro">
+        <label>Bairro</label>
+        <select id="filtro-bairro">
+            <option value="">Selecione</option>
+        </select>
+    </div>
+</aside>
+
+    <section class="conteudo-pets">
+        <div class="banner-campanha-texto">
+            <h1>Campanha de Adoção</h1>
+            <p>Uma seleção especial de peludinhos que buscam um lar para chamar de seu. Não encontrou seu pet aqui ainda? Preencha o formulário de intenção.</p>
+        </div>
+
+        <h2>Pets disponíveis</h2>
+
+        <div class="pets-grid">
+
+    <div class="pet-card" data-id="1" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Mooca">
+        <div class="card-image">
+            <img src="Imagens/pet1.jpg" alt="Helke" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Helke</h3>
+                <span class="gender-badge">♂</span>
+            </div>
+
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Border Collie</span>
+                <span class="pet-tag tag-idade">3 anos</span>
+            </div>
+            <p class="pet-details">Mooca, Sao Paulo, SP</p>
+            <p class="pet-ponto-ref">📍 Estação Juventus-Mooca</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+
+    <div class="pet-card" data-id="2" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Bandeirantes">
+        <div class="card-image">
+            <img src="Imagens/pet2.jpg" alt="Mel" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Mel</h3>
+                <span class="gender-badge fêmea">♀</span>
+            </div>
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Basset Hound</span>
+                <span class="pet-tag tag-idade">5 anos</span>
+            </div>
+            <p class="pet-details">Bandeirantes, Sao Paulo, SP</p>
+            <p class="pet-ponto-ref">📍 Museu do Ipiranga</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+
+   <div class="pet-card" data-id="3" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Tatuape">
+        <div class="card-image">
+            <img src="Imagens/pet3.jpg" alt="Pipoca" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Pipoca</h3>
+                <span class="gender-badge fêmea">♀</span>
+            </div>
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Vira-lata (SRD)</span>
+                <span class="pet-tag tag-idade">2 anos</span>
+            </div>
+            <p class="pet-details">Tatuapé, Sao Paulo, SP</p>
+            <p class="pet-ponto-ref">📍 Parque do Piqueri</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+
+    <div class="pet-card" data-id="4" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Mooca">
+        <div class="card-image">
+            <img src="Imagens/pet4.jpg" alt="Fredd" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Fredd</h3>
+                <span class="gender-badge">♂</span>
+            </div>
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Pastor Alemão</span>
+                <span class="pet-tag tag-idade">6 anos</span>
+            </div>
+            <p class="pet-details">Mooca, Sao Paulo, SP</p>
+            <p class="pet-ponto-ref">📍 UNIP Mooca</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+
+    <div class="pet-card" data-id="5" data-estado="RJ" data-cidade="Angra dos Reis" data-bairro="Enseada">
+        <div class="card-image">
+            <img src="Imagens/pet5.jpg" alt="Bidu" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Bidu</h3>
+                <span class="gender-badge">♂</span>
+            </div>
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Shih Tzu</span>
+                <span class="pet-tag tag-idade">4 anos</span>
+            </div>
+            <p class="pet-details">Enseada, Angra dos Reis, RJ</p>
+            <p class="pet-ponto-ref">📍 Parque da Cidade</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+
+    <div class="pet-card" data-id="6" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Pinheiros">
+        <div class="card-image">
+            <img src="imagens/pet6.jpg" alt="Luna" draggable="false">
+        </div>
+        <div class="pet-info">
+            <div class="pet-header">
+                <h3>Luna</h3>
+                <span class="gender-badge fêmea">♀</span>
+            </div>
+            <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Chihuahua</span>
+                <span class="pet-tag tag-idade">8 anos</span>
+            </div>
+            <p class="pet-details">Pinheiros, Sao Paulo, SP</p>
+            <p class="pet-ponto-ref">📍 Largo da Batata</p>
+            <button class="btn-adotar-card">Quero Adotar</button>
+        </div>
+    </div>
+            <div class="pet-card" data-id="7" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Vila Mariana">
+                <div class="card-image">
+                    <img src="Imagens/pet7.jpg" alt="Thor" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Thor</h3>
+                        <span class="gender-icon">♂</span>
+                    </div>
+                    <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Vira-Lata (SRD)</span>
+                <span class="pet-tag tag-idade">10 anos</span>
+            </div>
+                    <p class="pet-details">Vila Mariana, Sao Paulo, SP</p>
+                    <p class="pet-ponto-ref">📍 Estação Ana Rosa</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+            <div class="pet-card" data-id="8" data-estado="RJ" data-cidade="Angra dos Reis" data-bairro="Centro">
+                <div class="card-image">
+                    <img src="Imagens/pet8.jpg" alt="Amora" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Amora</h3>
+                        <span class="gender-icon fêmea">♀</span>
+                    </div>
+                    <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Pitbull</span>
+                <span class="pet-tag tag-idade">3 anos</span>
+            </div>
+                    <p class="pet-details">Centro, Angra dos Reis, RJ</p>
+                    <p class="pet-ponto-ref">📍 Parque das Palmeiras</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+            <div class="pet-card" data-id="9" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Belenzinho">
+                <div class="card-image">
+                    <img src="Imagens/pet9.jpg" alt="Lua" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Lua</h3>
+                        <span class="gender-icon fêmea">♀</span>
+                    </div>
+                    <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Shih Tzu</span>
+                <span class="pet-tag tag-idade">7 anos</span>
+            </div>
+                    <p class="pet-details">Belenzinho, Sao Paulo, SP</p>
+                    <p class="pet-ponto-ref">📍 Parque Belém</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+            <div class="pet-card" data-id="10" data-estado="SP" data-cidade="Sao Paulo" data-bairro="Butantã">
+                <div class="card-image">
+                    <img src="Imagens/pet10.jpg" alt="Toby" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Toby</h3>
+                        <span class="gender-icon">♂</span>
+                    </div>
+                <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Pincher</span>
+                <span class="pet-tag tag-idade">5 anos</span>
+            </div>
+                    <p class="pet-details">Butantã, Sao Paulo, SP</p>
+                    <p class="pet-ponto-ref">📍 Portaria 1 da USP</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+            <div class="pet-card" data-id="11" data-estado="RJ" data-cidade="Rio de Janeiro" data-bairro="Copacabana">
+                <div class="card-image">
+                    <img src="Imagens/pet11.jpg" alt="Chico" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Chico</h3>
+                        <span class="gender-icon">♂</span>
+                    </div>
+                    <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Vira-Lata (SRD)</span>
+                <span class="pet-tag tag-idade">12 anos</span>
+            </div>
+                    <p class="pet-details">Copacabana, Rio de Janeiro, RJ</p>
+                    <p class="pet-ponto-ref">📍 Hotel Copacabana Pallace</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+                <div class="pet-card" data-id="12" data-estado="SP" data-cidade="Campinas" data-bairro="Cambuí">
+                <div class="card-image">
+                    <img src="Imagens/pet12.jpg" alt="Chico" draggable="false">
+                </div>
+                <div class="pet-info">
+                    <div class="pet-header">
+                        <h3>Chico</h3>
+                        <span class="gender-icon">♂</span>
+                    </div>
+                    <div class="pet-tags-container">
+                <span class="pet-tag tag-raca">Labrador Retriver</span>
+                <span class="pet-tag tag-idade">12 anos</span>
+            </div>
+                    <p class="pet-details">Cambuí, Campinas, SP</p>
+                    <p class="pet-ponto-ref">📍 Centro de Convivência Cultural</p>
+                    <button class="btn-adotar-card">Quero Adotar</button>
+                </div>
+            </div>
+
+<div id="modal-adocao" class="modal-container">
+    <div class="modal-conteudo">
+        <!-- Botão de Fechar o Pop-up (X) -->
+        <span class="close-modal">&times;</span>
+        
+        <!-- Topo do Modal: Carregado dinamicamente via JS -->
+        <div class="modal-pet-topo">
+            <img id="modal-pet-img" src="" alt="Foto do Pet">
+            <div class="modal-pet-titulos">
+                <h2 id="modal-pet-nome">Nome do Pet</h2>
+                <p id="modal-pet-detalhes">Idade e Porte</p>
+            </div>
+        </div>
+
+        <!-- Conteúdo Principal: O Formulário solicitado -->
+        <div id="modal-corpo-fluxo">
+            <form id="form-adocao">
+                <h3>Formulário de Intenção de Adoção</h3>
+                <p class="form-subtitulo">Preencha os dados abaixo para iniciar o processo teórico.</p>
+
+                <!-- Dados de Contato -->
+                <div class="campo-formulario">
+                    <label for="form-nome">Seu Nome Completo*</label>
+                    <input type="text" id="form-nome" required placeholder="Digite seu nome">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="form-email">Seu E-mail*</label>
+                    <input type="email" id="form-email" required placeholder="exemplo@email.com">
+                </div>
+
+                <!-- Perguntas de Conscientização -->
+                <div class="campo-formulario">
+                    <label>1. Todos na sua residência estão de acordo com a adoção?*</label>
+                    <div class="opcoes-radio">
+                        <label><input type="radio" name="pergunta_acordo" value="sim" required> Sim</label>
+                        <label><input type="radio" name="pergunta_acordo" value="nao"> Não</label>
+                    </div>
+                </div>
+
+                <div class="campo-formulario">
+                    <label>2. O pet terá espaço seguro e livre de rotas de fuga?*</label>
+                    <div class="opcoes-radio">
+                        <label><input type="radio" name="pergunta_espaco" value="sim" required> Sim</label>
+                        <label><input type="radio" name="pergunta_espaco" value="nao"> Não</label>
+                    </div>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="form-motivo">Por que você quer adotar este pet especificamente?*</label>
+                    <textarea id="form-motivo" required rows="3" placeholder="Conte um pouco sobre sua rotina..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar-adocao">Enviar Solicitação de Adoção</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
