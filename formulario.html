@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intenção de Adoção - Adote Amigo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-formulario-pagina">
+
+    <!-- NAV BAR CLEAN E EXCLUSIVA (IDÊNTICA AO PRINT DA PETZ) -->
+    <nav class="navbar navbar-clean">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Imagens/logo.png" alt="Logo Adote Amigo">
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-formulario" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 40px 20px;">
+        <div class="container-fluxo-adocao" style="width: 100%; max-width: 700px; background: #ffffff; padding: 40px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center;">
+            
+            <!-- BARRA DE PROGRESSO -->
+            <div class="progresso-container">
+                <div class="linha-progresso"></div>
+                <div class="circulo-passo ativo" data-passo="1">📍</div>
+                <div class="circulo-passo" data-passo="2">👤</div>
+                <div class="circulo-passo" data-passo="3">🐾</div>
+                <div class="circulo-passo" data-passo="4">🏠</div>
+                <div class="circulo-passo" data-passo="5">✓</div>
+                <div class="contador-passos"><span id="numero-passo">1</span> de 5</div>
+            </div>
+
+            <!-- CARD PREMIUM DO PET SELECIONADO -->
+            <div class="card-pet-selecionado">
+                <div class="pet-avatar-wrapper">
+                    <img id="layout-pet-img" src="" alt="Pet Escolhido">
+                </div>
+                <div class="pet-avatar-info">
+                    <h3>Você está adotando o(a) <span id="layout-pet-nome">...</span> ❤️</h3>
+                    <p>Preencha as etapas teóricas com atenção.</p>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO DE ETAPAS (FORÇADO PARA MOSTRAR OS FILHOS) -->
+            <form id="form-multi-passos" style="display: block !important; width: 100%;">
+                
+                <!-- PASSO 1: LOCALIZAÇÃO -->
+                <div class="passo-form ativo" id="passo-1" style="width: 100%;">
+                    <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Para iniciarmos precisamos saber sua localização, ok?</h2>
+                    <p class="aviso-form">Lembre-se que não é possível adotar pets que se encontram em outra cidade que não seja a sua.</p>
+                    
+                    <div class="grupo-campo">
+                        <select id="modal-estado" required>
+                            <option value="">Escolha o estado</option>
+                            <option value="SP">São Paulo (SP)</option>
+                            <option value="RJ">Rio de Janeiro (RJ)</option>
+                        </select>
+                    </div>
+                    <div class="grupo-campo">
+                        <select id="modal-cidade" required disabled>
+                            <option value="">Escolha a cidade</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-proximo" id="btn-passo-1" disabled>CONTINUAR</button>
+                </div>
+
+                <!-- PASSO 2: PERFIL -->
+                <div class="passo-form" id="passo-2" style="width: 100%;">
+                    <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Conte um pouco sobre você</h2>
+                    <div class="grupo-campo">
+                        <label style="display:block; margin-bottom: 10px; color:#4a5568; font-weight: 600;">Sua residência possui espaço seguro contra fugas?*</label>
+                        <select required id="modal-seguranca">
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, totalmente protegida</option>
+                            <option value="nao">Não possui telas/muros altos</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-proximo" id="btn-passo-2">CONTINUAR</button>
+                </div>
+
+                <!-- PASSO 3: HISTÓRICO -->
+                <div class="passo-form" id="passo-3" style="width: 100%;">
+                    <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Experiência com Pets</h2>
+                    <div class="grupo-campo">
+                        <label style="display:block; margin-bottom: 10px; color:#4a5568; font-weight: 600;">Você já possui outros animais de estimação?*</label>
+                        <select required id="modal-outros-pets">
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, já tenho outros</option>
+                            <option value="nao">Não, este será o primeiro</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-proximo" id="btn-passo-3">CONTINUAR</button>
+                </div>
+
+                <!-- PASSO 4: DADOS E EMAIL -->
+                <div class="passo-form" id="passo-4" style="width: 100%;">
+                    <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Finalizar Solicitação</h2>
+                    
+                    <div class="grupo-campo">
+                        <input type="text" id="modal-adotante-nome" placeholder="Seu Nome Completo" required>
+                    </div>
+                    
+                    <div class="grupo-campo">
+                        <input type="email" id="modal-adotante-email" placeholder="Seu E-mail (ex: nome@gmail.com)" required>
+                    </div>
+                
+                    <div class="grupo-campo-checkbox" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto; width: 85%; text-align: left;">
+                        <input type="checkbox" id="modal-aceitar-termos" required style="width: 18px; height: 18px; cursor: pointer;">
+                        <label for="modal-aceitar-termos" style="font-size: 0.9rem; color: #4a5568; cursor: pointer; user-select: none;">
+                            Aceito receber a confirmação teórica e os próximos passos no meu e-mail.*
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-finalizar">CONCLUIR ADOÇÃO</button>
+                </div>
+
+                <!-- PASSO 5: SUCESSO -->
+                <div class="passo-form" id="passo-5" style="width: 100%;">
+                    <div style="font-size: 60px; margin-bottom: 20px;">✉️</div>
+                    <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Solicitação Enviada com Sucesso!</h2>
+                    <p>O processo teórico foi concluído.</p>
+                    <p class="detalhe-email">Uma notificação simulada foi disparada. O professor verá o fluxo completo!</p>
+                    <a href="index.html" class="btn-finalizar" style="display:inline-block; text-decoration:none; margin-top:20px; line-height: 20px; text-align: center;">Voltar para o Início</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const nomeSalvo = localStorage.getItem("petSelecionadoNome");
+            const imgSalva = localStorage.getItem("petSelecionadoImg");
+
+            if (nomeSalvo) document.getElementById("layout-pet-nome").textContent = nomeSalvo;
+            if (imgSalva) document.getElementById("layout-pet-img").src = imgSalva;
+
+            const modalEstado = document.getElementById("modal-estado");
+            const modalCidade = document.getElementById("modal-cidade");
+            const btnPasso1 = document.getElementById("btn-passo-1");
+            const formMulti = document.getElementById("form-multi-passos");
+
+            if(modalEstado && modalCidade) {
+                modalEstado.addEventListener("change", function() {
+                    if (modalEstado.value === "SP") {
+                        modalCidade.innerHTML = `<option value="">Escolha a cidade</option><option value="Sao Paulo">São Paulo</option><option value="Campinas">Campinas</option>`;
+                        modalCidade.disabled = false;
+                    } else if (modalEstado.value === "RJ") {
+                        modalCidade.innerHTML = `<option value="">Escolha a cidade</option><option value="Rio de Janeiro">Rio de Janeiro</option><option value="Angra dos Reis">Angra dos Reis</option>`;
+                        modalCidade.disabled = false;
+                    } else {
+                        modalCidade.innerHTML = `<option value="">Escolha a cidade</option>`; modalCidade.disabled = true; btnPasso1.disabled = true;
+                    }
+                });
+                modalCidade.addEventListener("change", function() { btnPasso1.disabled = modalCidade.value === ""; });
+            }
+
+            window.irParaPasso = function(numero) {
+                document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
+                document.getElementById(`passo-${numero}`).classList.add("ativo");
+                document.getElementById("numero-passo").textContent = numero;
+                document.querySelectorAll(".circulo-passo").forEach(c => {
+                    if (parseInt(c.getAttribute("data-passo")) <= numero) c.classList.add("ativo");
+                    else c.classList.remove("ativo");
+                });
+            }
+
+            document.getElementById("btn-passo-1").addEventListener("click", () => irParaPasso(2));
+            document.getElementById("btn-passo-2").addEventListener("click", () => irParaPasso(3));
+            document.getElementById("btn-passo-3").addEventListener("click", () => irParaPasso(4));
+
+            formMulti.addEventListener("submit", function(e) {
+                e.preventDefault();
+                irParaPasso(5);
+            });
+        });
+    </script>
+</body>
+</html>

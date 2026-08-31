@@ -234,14 +234,14 @@ if (carousel && slide.length > 0) {
     let autoSlide = setInterval(() => {
         index = (index + 1) % slide.length;
         mostrarSlide();
-    }, 60000);
+    }, 6000);
 
     function resetAutoSlide() {
         clearInterval(autoSlide);
         autoSlide = setInterval(() => {
             index = (index + 1) % slide.length;
             mostrarSlide();
-        }, 60000);
+        }, 6000);
     }
     
     carousel.addEventListener("mousedown", dragStart);
@@ -288,5 +288,79 @@ if (carousel && slide.length > 0) {
 
 window.addEventListener('resize', mostrarSlide);
 window.addEventListener('load', mostrarSlide);
+
+const modalEstado = document.getElementById("modal-estado");
+    const modalCidade = document.getElementById("modal-cidade");
+    const btnPasso1 = document.getElementById("btn-passo-1");
+    const formMulti = document.getElementById("form-multi-passos");
+
+    if (modalEstado && modalCidade) {
+        modalEstado.addEventListener("change", function() {
+            if (modalEstado.value === "SP") {
+                modalCidade.innerHTML = `
+                    <option value="">Escolha a cidade</option>
+                    <option value="Sao Paulo">São Paulo</option>
+                    <option value="Campinas">Campinas</option>
+                `;
+                modalCidade.disabled = false;
+            } else if (modalEstado.value === "RJ") {
+                modalCidade.innerHTML = `
+                    <option value="">Escolha a cidade</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Angra dos Reis">Angra dos Reis</option>
+                `;
+                modalCidade.disabled = false;
+            } else {
+                modalCidade.innerHTML = `<option value="">Escolha a cidade</option>`;
+                modalCidade.disabled = true;
+                btnPasso1.disabled = true;
+            }
+        });
+
+        modalCidade.addEventListener("change", function() {
+            btnPasso1.disabled = modalCidade.value === "";
+        });
+    }
+
+    function irParaPasso(numero) {
+        document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
+        document.getElementById(`passo-${numero}`).classList.add("ativo");
+        
+        document.getElementById("numero-passo").textContent = numero;
+
+        document.querySelectorAll(".circulo-passo").forEach(c => {
+            const passoCirculo = parseInt(c.getAttribute("data-passo"));
+            if (passoCirculo <= numero) c.classList.add("ativo");
+            else c.classList.remove("ativo");
+        });
+    }
+
+    document.getElementById("btn-passo-1")?.addEventListener("click", () => irParaPasso(2));
+    document.getElementById("btn-passo-2")?.addEventListener("click", () => irParaPasso(3));
+    document.getElementById("btn-passo-3")?.addEventListener("click", () => irParaPasso(4));
+
+    formMulti?.addEventListener("submit", function(e) {
+        e.preventDefault();
+        irParaPasso(5);
+    });
+
+    const modal = document.getElementById("modal-adocao");
+    const botoesAdotarCard = document.querySelectorAll(".btn-adotar-card");
+
+botoesAdotarCard.forEach(botao => {
+    botao.addEventListener("click", function() {
+        // Encontra o card do pet que recebeu o clique
+        const card = botao.closest(".pet-card");
+        const nomePet = card.querySelector("h3").textContent;
+        const imgPet = card.querySelector(".card-image img").src;
+
+        // Salva os dados na memória do navegador para usar na outra página
+        localStorage.setItem("petSelecionadoNome", nomePet);
+        localStorage.setItem("petSelecionadoImg", imgPet);
+
+        // Pula para a nova página do formulário
+        window.location.href = "formulario.html";
+    });
+});
 
 });

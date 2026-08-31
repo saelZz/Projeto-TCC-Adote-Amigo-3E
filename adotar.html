@@ -311,66 +311,99 @@
                 </div>
             </div>
 
+</main>
+
 <div id="modal-adocao" class="modal-container">
     <div class="modal-conteudo">
-        <!-- Botão de Fechar o Pop-up (X) -->
         <span class="close-modal">&times;</span>
         
-        <!-- Topo do Modal: Carregado dinamicamente via JS -->
-        <div class="modal-pet-topo">
-            <img id="modal-pet-img" src="" alt="Foto do Pet">
-            <div class="modal-pet-titulos">
-                <h2 id="modal-pet-nome">Nome do Pet</h2>
-                <p id="modal-pet-detalhes">Idade e Porte</p>
+        <!-- Barra de Progresso com Círculos (Idêntica à foto) -->
+        <div class="progresso-container">
+            <div class="linha-progresso"></div>
+            <div class="circulo-passo ativo" data-passo="1">📍</div>
+            <div class="circulo-passo" data-passo="2">👤</div>
+            <div class="circulo-passo" data-passo="3">🐾</div>
+            <div class="circulo-passo" data-passo="4">🏠</div>
+            <div class="circulo-passo" data-passo="5">✓</div>
+            <div class="contador-passos"><span id="numero-passo">1</span> de 5</div>
+        </div>
+
+        <form id="form-multi-passos">
+            
+            <!-- PASSO 1: LOCALIZAÇÃO (O da foto!) -->
+            <div class="passo-form ativo" id="passo-1">
+                <h2>Para iniciarmos precisamos saber sua localização, ok?</h2>
+                <p class="aviso-form">Lembre-se que não é possível adotar pets que se encontram em outra cidade que não seja a sua.</p>
+                
+                <div class="grupo-campo">
+                    <select id="modal-estado" required>
+                        <option value="">Escolha o estado</option>
+                        <option value="SP">São Paulo (SP)</option>
+                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                    </select>
+                </div>
+                <div class="grupo-campo">
+                    <select id="modal-cidade" required disabled>
+                        <option value="">Escolha a cidade</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-proximo" id="btn-passo-1" disabled>CONTINUAR</button>
             </div>
-        </div>
 
-        <!-- Conteúdo Principal: O Formulário solicitado -->
-        <div id="modal-corpo-fluxo">
-            <form id="form-adocao">
-                <h3>Formulário de Intenção de Adoção</h3>
-                <p class="form-subtitulo">Preencha os dados abaixo para iniciar o processo teórico.</p>
-
-                <!-- Dados de Contato -->
-                <div class="campo-formulario">
-                    <label for="form-nome">Seu Nome Completo*</label>
-                    <input type="text" id="form-nome" required placeholder="Digite seu nome">
+            <!-- PASSO 2: PERFIL -->
+            <div class="passo-form" id="passo-2">
+                <h2>Conte um pouco sobre você</h2>
+                <div class="grupo-campo">
+                    <label>Sua residência possui espaço seguro contra fugas?*</label>
+                    <select required id="modal-seguranca">
+                        <option value="">Selecione</option>
+                        <option value="sim">Sim, totalmente protegida</option>
+                        <option value="nao">Não possui telas/muros altos</option>
+                    </select>
                 </div>
+                <button type="button" class="btn-proximo" id="btn-passo-2">CONTINUAR</button>
+            </div>
 
-                <div class="campo-formulario">
-                    <label for="form-email">Seu E-mail*</label>
-                    <input type="email" id="form-email" required placeholder="exemplo@email.com">
+            <!-- PASSO 3: HISTÓRICO -->
+            <div class="passo-form" id="passo-3">
+                <h2>Experiência com Pets</h2>
+                <div class="grupo-campo">
+                    <label>Você já possui outros animais de estimação?*</label>
+                    <select required id="modal-outros-pets">
+                        <option value="">Selecione</option>
+                        <option value="sim">Sim, já tenho outros</option>
+                        <option value="nao">Não, este será o primeiro</option>
+                    </select>
                 </div>
+                <button type="button" class="btn-proximo" id="btn-passo-3">CONTINUAR</button>
+            </div>
 
-                <!-- Perguntas de Conscientização -->
-                <div class="campo-formulario">
-                    <label>1. Todos na sua residência estão de acordo com a adoção?*</label>
-                    <div class="opcoes-radio">
-                        <label><input type="radio" name="pergunta_acordo" value="sim" required> Sim</label>
-                        <label><input type="radio" name="pergunta_acordo" value="nao"> Não</label>
-                    </div>
+            <!-- PASSO 4: TERMOS E CONTATO -->
+            <div class="passo-form" id="passo-4">
+                <h2>Finalizar Solicitação</h2>
+                <div class="grupo-campo">
+                    <input type="text" id="modal-adotante-nome" placeholder="Seu Nome Completo" required>
                 </div>
-
-                <div class="campo-formulario">
-                    <label>2. O pet terá espaço seguro e livre de rotas de fuga?*</label>
-                    <div class="opcoes-radio">
-                        <label><input type="radio" name="pergunta_espaco" value="sim" required> Sim</label>
-                        <label><input type="radio" name="pergunta_espaco" value="nao"> Não</label>
-                    </div>
+                <div class="grupo-campo">
+                    <input type="email" id="modal-adotante-email" placeholder="Seu E-mail para confirmação" required>
                 </div>
-
-                <div class="campo-formulario">
-                    <label for="form-motivo">Por que você quer adotar este pet especificamente?*</label>
-                    <textarea id="form-motivo" required rows="3" placeholder="Conte um pouco sobre sua rotina..."></textarea>
+                <div class="grupo-campo checkbox-termo">
+                    <label><input type="checkbox" required> Confirmo que li os termos de adoção responsável.*</label>
                 </div>
+                <button type="submit" class="btn-finalizar">CONCLUIR ADOÇÃO</button>
+            </div>
 
-                <button type="submit" class="btn-enviar-adocao">Enviar Solicitação de Adoção</button>
-            </form>
-        </div>
+            <!-- PASSO 5: SUCESSO (SIMULAÇÃO EMAIL) -->
+            <div class="passo-form" id="passo-5">
+                <div class="sucesso-animacao">🎉</div>
+                <h2>Solicitação Teórica Enviada!</h2>
+                <p>Parabéns! O processo de intenção de adoção foi iniciado com sucesso.</p>
+                <p class="detalhe-email">Enviamos um e-mail de confirmação para o endereço digitado com a cópia dos dados e as instruções para a entrevista teórica!</p>
+            </div>
+
+        </form>
     </div>
 </div>
-
-</main>
 
 <script src="script.js"></script>
 
