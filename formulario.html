@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script type="text/javascript" src="https://jsdelivr.net"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intenção de Adoção - Adote Amigo</title>
@@ -8,7 +9,6 @@
 </head>
 <body class="body-formulario-pagina">
 
-    <!-- NAV BAR CLEAN E EXCLUSIVA (IDÊNTICA AO PRINT DA PETZ) -->
     <nav class="navbar navbar-clean">
         <div class="logo">
             <a href="index.html">
@@ -20,7 +20,6 @@
     <main class="main-formulario" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 40px 20px;">
         <div class="container-fluxo-adocao" style="width: 100%; max-width: 700px; background: #ffffff; padding: 40px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center;">
             
-            <!-- BARRA DE PROGRESSO -->
             <div class="progresso-container">
                 <div class="linha-progresso"></div>
                 <div class="circulo-passo ativo" data-passo="1">📍</div>
@@ -31,7 +30,6 @@
                 <div class="contador-passos"><span id="numero-passo">1</span> de 5</div>
             </div>
 
-            <!-- CARD PREMIUM DO PET SELECIONADO -->
             <div class="card-pet-selecionado">
                 <div class="pet-avatar-wrapper">
                     <img id="layout-pet-img" src="" alt="Pet Escolhido">
@@ -42,10 +40,8 @@
                 </div>
             </div>
 
-            <!-- FORMULÁRIO DE ETAPAS (FORÇADO PARA MOSTRAR OS FILHOS) -->
             <form id="form-multi-passos" style="display: block !important; width: 100%;">
                 
-                <!-- PASSO 1: LOCALIZAÇÃO -->
                 <div class="passo-form ativo" id="passo-1" style="width: 100%;">
                     <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Para iniciarmos precisamos saber sua localização, ok?</h2>
                     <p class="aviso-form">Lembre-se que não é possível adotar pets que se encontram em outra cidade que não seja a sua.</p>
@@ -65,7 +61,6 @@
                     <button type="button" class="btn-proximo" id="btn-passo-1" disabled>CONTINUAR</button>
                 </div>
 
-                <!-- PASSO 2: PERFIL -->
                 <div class="passo-form" id="passo-2" style="width: 100%;">
                     <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Conte um pouco sobre você</h2>
                     <div class="grupo-campo">
@@ -79,7 +74,6 @@
                     <button type="button" class="btn-proximo" id="btn-passo-2">CONTINUAR</button>
                 </div>
 
-                <!-- PASSO 3: HISTÓRICO -->
                 <div class="passo-form" id="passo-3" style="width: 100%;">
                     <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Experiência com Pets</h2>
                     <div class="grupo-campo">
@@ -93,7 +87,6 @@
                     <button type="button" class="btn-proximo" id="btn-passo-3">CONTINUAR</button>
                 </div>
 
-                <!-- PASSO 4: DADOS E EMAIL -->
                 <div class="passo-form" id="passo-4" style="width: 100%;">
                     <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Finalizar Solicitação</h2>
                     
@@ -115,7 +108,6 @@
                     <button type="submit" class="btn-finalizar">CONCLUIR ADOÇÃO</button>
                 </div>
 
-                <!-- PASSO 5: SUCESSO -->
                 <div class="passo-form" id="passo-5" style="width: 100%;">
                     <div style="font-size: 60px; margin-bottom: 20px;">✉️</div>
                     <h2 style="font-size: 1.4rem; color: #4a5568; margin-bottom: 15px;">Solicitação Enviada com Sucesso!</h2>
@@ -155,25 +147,33 @@
                 modalCidade.addEventListener("change", function() { btnPasso1.disabled = modalCidade.value === ""; });
             }
 
-            window.irParaPasso = function(numero) {
-                document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
-                document.getElementById(`passo-${numero}`).classList.add("ativo");
-                document.getElementById("numero-passo").textContent = numero;
-                document.querySelectorAll(".circulo-passo").forEach(c => {
-                    if (parseInt(c.getAttribute("data-passo")) <= numero) c.classList.add("ativo");
-                    else c.classList.remove("ativo");
-                });
-            }
+function irParaPasso(numero) {
+    document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
+    
+    setTimeout(() => {
+        const proximo = document.getElementById(`passo-${numero}`);
+        if (proximo) proximo.classList.add("ativo");
+    }, 10);
 
-            document.getElementById("btn-passo-1").addEventListener("click", () => irParaPasso(2));
-            document.getElementById("btn-passo-2").addEventListener("click", () => irParaPasso(3));
-            document.getElementById("btn-passo-3").addEventListener("click", () => irParaPasso(4));
+    const numeroPassoTexto = document.getElementById("numero-passo");
+    if (numeroPassoTexto) numeroPassoTexto.textContent = numero;
 
-            formMulti.addEventListener("submit", function(e) {
-                e.preventDefault();
-                irParaPasso(5);
-            });
-        });
-    </script>
+    document.querySelectorAll(".circulo-passo").forEach(c => {
+        const passoCirculo = parseInt(c.getAttribute("data-passo"));
+        if (passoCirculo <= numero) c.classList.add("ativo");
+        else c.classList.remove("ativo");
+    });
+}
+
+window.irParaPasso = irParaPasso;
+
+document.getElementById("btn-passo-1")?.addEventListener("click", () => irParaPasso(2));
+document.getElementById("btn-passo-2")?.addEventListener("click", () => irParaPasso(3));
+document.getElementById("btn-passo-3")?.addEventListener("click", () => irParaPasso(4));
+
+});
+        
+</script>
+
 </body>
 </html>

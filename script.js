@@ -213,7 +213,7 @@ window.addEventListener("click", (e) => {
 if (formAdocao) {
     formAdocao.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Parabéns! Sua intenção de adoção foi registrada com sucesso de forma ilustrativa! 🎉");
+        alert("Parabéns! Sua intenção de adoção foi registrada com sucesso! 🎉");
         if (modal) modal.style.display = "none";
     });
 }
@@ -323,42 +323,49 @@ const modalEstado = document.getElementById("modal-estado");
     }
 
     function irParaPasso(numero) {
-        document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
-        document.getElementById(`passo-${numero}`).classList.add("ativo");
-        
-        document.getElementById("numero-passo").textContent = numero;
+    document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
+    
+    setTimeout(() => {
+        const proximo = document.getElementById(`passo-${numero}`);
+        if (proximo) proximo.classList.add("ativo");
+    }, 
+    
+    );
 
-        document.querySelectorAll(".circulo-passo").forEach(c => {
-            const passoCirculo = parseInt(c.getAttribute("data-passo"));
-            if (passoCirculo <= numero) c.classList.add("ativo");
-            else c.classList.remove("ativo");
-        });
-    }
 
-    document.getElementById("btn-passo-1")?.addEventListener("click", () => irParaPasso(2));
-    document.getElementById("btn-passo-2")?.addEventListener("click", () => irParaPasso(3));
-    document.getElementById("btn-passo-3")?.addEventListener("click", () => irParaPasso(4));
+    document.getElementById("numero-passo").textContent = numero;
+
+    document.querySelectorAll(".circulo-passo").forEach(c => {
+        const passoCirculo = parseInt(c.getAttribute("data-passo"));
+        if (passoCirculo <= numero) c.classList.add("ativo");
+        else c.classList.remove("ativo");
+    });
+}
+
+    document.getElementById("btn-passo-1")?.addEventListener("click", () => irParaPasso());
+    document.getElementById("btn-passo-2")?.addEventListener("click", () => irParaPasso());
+    document.getElementById("btn-passo-3")?.addEventListener("click", () => irParaPasso());
 
     formMulti?.addEventListener("submit", function(e) {
         e.preventDefault();
-        irParaPasso(5);
+        irParaPasso();
     });
 
-    const modal = document.getElementById("modal-adocao");
-    const botoesAdotarCard = document.querySelectorAll(".btn-adotar-card");
+const modal = document.getElementById("modal-adocao"); // Pode apagar se não usar mais
+const botoesAdotarCard = document.querySelectorAll(".btn-adotar-card");
 
 botoesAdotarCard.forEach(botao => {
-    botao.addEventListener("click", function() {
-        // Encontra o card do pet que recebeu o clique
+    botao.addEventListener("click", function(e) {
+        e.preventDefault();
         const card = botao.closest(".pet-card");
-        const nomePet = card.querySelector("h3").textContent;
-        const imgPet = card.querySelector(".card-image img").src;
+        if (!card) return;
 
-        // Salva os dados na memória do navegador para usar na outra página
+        const nomePet = card.querySelector("h3")?.textContent || "Pet";
+        const imgPetPath = card.querySelector(".card-image img")?.getAttribute("src") || "";
+
         localStorage.setItem("petSelecionadoNome", nomePet);
-        localStorage.setItem("petSelecionadoImg", imgPet);
+        localStorage.setItem("petSelecionadoImg", imgPetPath);
 
-        // Pula para a nova página do formulário
         window.location.href = "formulario.html";
     });
 });
