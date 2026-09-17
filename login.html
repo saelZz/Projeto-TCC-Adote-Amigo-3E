@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas-vindas ao Adote Amigo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-login-pagina">
+
+    <!-- NAVBAR PADRÃO AMARELA DO SEU SITE -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Imagens/logo.png" alt="Logo Adote Amigo">
+            </a>
+        </div>
+        
+        <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="quem.html">Quem somos nós?</a>
+        <div class="dropdown">
+            <a href="faq.html">FAQ ▾</a>
+            <div class="dropdown-content">
+                <a href="faq.html#como-adotar">Como adotar?</a>
+                <a href="faq.html#precisa-pagar">Precisa pagar?</a>
+                <a href="faq.html#animais-vacinados">Animais vacinados?</a>
+                <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
+                <a href="faq.html#posso-ajudar">Posso ajudar?</a>
+            </div>
+        </div>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+        <!-- AS AÇÕES DA DIREITA: Os botões arredondados premium que estavam sumidos -->
+        <div class="actions">
+            <a href="login.html" class="btn btn-outline">Entrar</a>
+            <a href="login.html" class="btn btn-primary">Cadastrar</a>
+        </div>
+    </nav>
+
+    <!-- BANNER DE BOAS-VINDAS COM A SUA LOGO BRANCA EM DESTAQUE -->
+    <div class="banner-boas-vindas">
+        <div class="banner-conteudo-centralizado">
+            <img src="Imagens/logo.png" alt="Logo Adote Amigo" class="logo-banner-branca">
+            <h1>Boas-vindas ao Adote Amigo</h1>
+        </div>
+    </div>
+
+    <!-- CARDS PERFEITAMENTE CENTRALIZADOS NO MEIO DA TELA -->
+    <main class="main-login-layout">
+        <div class="wrapper-login-cadastro">
+            
+            <!-- CARD 1: ACESSE SUA CONTA -->
+            <div class="card-login-box">
+                <h2>Acesse sua conta</h2>
+                <form id="form-login-exec">
+                    <div class="grupo-campo-login">
+                        <input type="text" id="login-identificador" placeholder="E-mail, CPF ou CNPJ" required>
+                    </div>
+                    <div class="grupo-campo-login">
+                        <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+                    </div>
+                    
+                    <div class="opcoes-extras-login">
+                        <label class="checkbox-container">
+                            <input type="checkbox"> Mantenha-me conectado
+                        </label>
+                        <a href="#" class="link-esqueceu">Esqueci minha senha</a>
+                    </div>
+
+                    <button type="submit" class="btn-entrar-sistema">Entrar</button>
+                </form>
+            </div>
+
+            <!-- CARD 2: CRIE SUA CONTA -->
+            <div class="card-login-box">
+                <h2>Crie sua conta!</h2>
+                <div class="grupo-campo-login">
+                    <input type="text" id="cadastro-doc-verificar" placeholder="Digite o CPF ou CNPJ">
+                </div>
+
+                <div class="botoes-cadastro-fluxo">
+                    <button type="button" class="btn-cadastro-opcao" onclick="simularCadastro('ONG')">Criar conta ONG</button>
+                    <button type="button" class="btn-cadastro-opcao" onclick="simularCadastro('Tutor')">Criar conta Tutor</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
+
+    <!-- 2. LÓGICA DE PROGRAMAÇÃO DOS BOTÕES -->
+    <script>
+        
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY_AQUI",
+            authDomain: "SEU_AUTH_DOMAIN_AQUI",
+            projectId: "SEU_PROJECT_ID_AQUI",
+            storageBucket: "SEU_STORAGE_BUCKET_AQUI",
+            messagingSenderId: "SEU_MESSAGING_SENDER_ID_AQUI",
+            appId: "SEU_APP_ID_AQUI"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const provedorGoogle = new firebase.auth.GoogleAuthProvider();
+
+        // ===============================
+        // FUNÇÃO DE CADASTRO COM O GOOGLE
+        // ===============================
+        function simularCadastro(tipoDeConta) {
+            const documento = document.getElementById("cadastro-doc-verificar").value.trim();
+            
+            if (!documento) {
+                alert("Por favor, digite seu CPF ou CNPJ antes de escolher o tipo de conta!");
+                return;
+            }
+
+            // Abre o pop-up oficial do Google para o usuário fazer login
+            auth.signInWithPopup(provedorGoogle)
+                .then((result) => {
+                    const usuarioGoogle = result.user;
+                    
+                    // Montamos o pacote completo misturando os dados do Google com a sua escolha do site
+                    const dadosDoNovoUsuario = {
+                        nome: usuarioGoogle.displayName,
+                        email: usuarioGoogle.email,
+                        foto: usuarioGoogle.photoURL,
+                        documento: documento,
+                        tipo: tipoDeConta
+                    };
+
+                    // Grava permanentemente na memória para a Home Page conseguir ler depois
+                    localStorage.setItem("usuarioLogadoNome", dadosDoNovoUsuario.nome);
+                    localStorage.setItem("usuarioLogadoTipo", dadosDoNovoUsuario.tipo);
+                    localStorage.setItem("usuarioLogadoFoto", dadosDoNovoUsuario.foto);
+
+                    alert(`Conta criada com sucesso!\nSeja bem-vindo(a) à rede de ${tipoDeConta}s, ${dadosDoNovoUsuario.nome}!`);
+                    
+                    // Joga o usuário de volta para a Home com o login feito!
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    console.error("Erro na autenticação do Google:", error);
+                    alert("Ocorreu um erro ou o login com o Google foi cancelado.");
+                });
+        }
+
+        // ===================================
+        // FUNÇÃO DE LOGIN DO CARD DA ESQUERDA
+        // ===================================
+        document.addEventListener("DOMContentLoaded", function() {
+            const formLogin = document.getElementById("form-login-exec");
+            
+            formLogin?.addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                auth.signInWithPopup(provedorGoogle)
+                    .then((result) => {
+                        localStorage.setItem("usuarioLogadoNome", result.user.displayName);
+                        localStorage.setItem("usuarioLogadoFoto", result.user.photoURL);
+                        
+                        alert(`Bem-vindo de volta, ${result.user.displayName}!`);
+                        window.location.href = "index.html";
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

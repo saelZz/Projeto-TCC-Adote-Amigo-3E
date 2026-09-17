@@ -1,5 +1,5 @@
 // ==========================================================================
-// PARTE BANCO DE DADOS ATUALIZADO (REDE ADOTE AMIGO)
+// PARTE BANCO DE DADOS (REDE ADOTE AMIGO)
 // ==========================================================================
 const bancoDeDadosPets = {
     "1": { 

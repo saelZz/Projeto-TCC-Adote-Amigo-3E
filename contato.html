@@ -55,42 +55,46 @@
     </nav>
 
     <div class="actions">
-        <a href="adotar.html" class="btn btn-primary">
-    Quero adotar
-</a>
-        <button class="btn btn-outline">Entrar</button>
+        <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
+        <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
 
 </header>
 
 <section class="hero">
     <div class="carousel">
-        <div class="slides">
-            <div class="slide">
-                <img src="imagens/banner1.jpg" alt="Banner 1">
-                <div class="overlay">
-                    <h1>Encontre um novo melhor amigo</h1>
-                    <p>Centenas de animais aguardam uma família cheia de amor.</p>
-                    <a href="#" class="btn-banner">Quero Adotar</a>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="imagens/banner2.jpg" alt="Banner 2">
-                <div class="overlay">
-                    <h1>Cada adoção muda duas vidas</h1>
-                    <p>A do animal e a sua.</p>
-                    <a href="#" class="btn-banner">Conhecer Pets</a>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="imagens/banner3.png" alt="Banner 3">
-                <div class="overlay">
-                    <h1>Conheça nossas ONGs parceiras</h1>
-                    <p>Trabalhando juntas para encontrar um lar para cada pet.</p>
-                    <a href="#" class="btn-banner">Ver ONGs</a>
-                </div>
-            </div>
-        </div>
+
+    <div class="slides">
+
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.png">
+            <img src="imagens/banner1.jpg" alt="Banner 1" draggable="false">
+        </picture>
+
+        <a href="adotar.html" class="link-invisivel-botao botao-slide1"></a>
+    </div>
+
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.png">
+            <img src="imagens/banner2.jpg" alt="Banner 2" draggable="false">
+        </picture>
+
+        <a href="quem.html" class="link-invisivel-botao botao-slide2"></a>
+    </div>
+
+    <div class="slide">
+        <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.png">
+            <img src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
+        </picture>
+        
+        <a href="adotar.html" class="link-invisivel-botao botao-slide3"></a>
+    </div>
+</div>
+    
+        <div>
     
         <button class="prev">❮</button>
         <button class="next">❯</button>
@@ -103,13 +107,6 @@
     </div>
 </section>
 
-
-<section class="filtros">
-
-    <h2>Encontre seu novo amigo ❤️</h2>
-
-
-</section>
 
 <section class="pets">
 
