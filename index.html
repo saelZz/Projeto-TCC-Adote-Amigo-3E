@@ -1,95 +1,295 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adote Amigo</title>
-    <link rel="icon" type="image/png" href="imagens/logo.png">
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adote Amigo — O maior portal de adoção do Brasil</title>
+  <meta name="description" content="Encontre seu novo melhor amigo entre pets de ONGs de todo o Brasil. Adoção segura, gratuita e responsável." />
+  <meta name="author" content="Adote Amigo" />
+  <meta property="og:title" content="Adote Amigo — Encontre seu melhor amigo" />
+  <meta property="og:description" content="Um portal que reúne pets de ONGs de todo o Brasil para tornar a adoção mais simples e segura." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
 
-<header class="navbar">
+  <!-- NAVBAR -->
+  <header class="navbar">
     <div class="logo">
-        <a href="index.html">
-            <img src="imagens/logo.png" alt="Adote Amigo">
-        </a>
+      <a href="index.html">
+        <img src="imagens/logo.png" alt="Adote Amigo">
+      </a>
     </div>
 
     <nav class="menu">
-        <a href="index.html">Início</a>
-        <a href="quem.html">Quem somos nós?</a>
-        <div class="dropdown">
-            <a href="faq.html">FAQ ▾</a>
-            <div class="dropdown-content">
-                <a href="faq.html#como-adotar">Como adotar?</a>
-                <a href="faq.html#precisa-pagar">Precisa pagar?</a>
-                <a href="faq.html#animais-vacinados">Animais vacinados?</a>
-                <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
-                <a href="faq.html#posso-ajudar">Posso ajudar?</a>
-            </div>
+      <a href="index.html">Início</a>
+      <a href="quem.html">Quem somos nós?</a>
+      <div class="dropdown">
+        <a href="faq.html">FAQ ▾</a>
+        <div class="dropdown-content">
+          <a href="faq.html#como-adotar">Como adotar?</a>
+          <a href="faq.html#precisa-pagar">Precisa pagar?</a>
+          <a href="faq.html#animais-vacinados">Animais vacinados?</a>
+          <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
+          <a href="faq.html#posso-ajudar">Posso ajudar?</a>
         </div>
-        <a href="contato.html">Contato</a>
+      </div>
+      <a href="contato.html">Contato</a>
     </nav>
 
     <div class="actions">
-        <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
-        <a href="login.html" class="btn btn-outline">Entrar</a>
+      <a href="doar.html" class="btn-doar-nav">Apoiar instituições</a>
+      <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
+      <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
-</header>
+  </header>
 
-<section class="hero">
-    <div class="carousel">
+  <main>
 
-    <div class="slides">
+    <section id="inicio" class="carousel">
+  <div class="slides"> 
 
+    <!-- ==========================================
+         SLIDE 1 
+         ========================================== -->
     <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.png">
-            <img src="imagens/banner1.jpg" alt="Banner 1" draggable="false">
-        </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="Imagens/banner1-mobile.jpg">
+        <img class="hero-img" src="Imagens/banner1.jpg" alt="Adotante abraçando um cachorro resgatado" draggable="false" />
+      </picture>
+      
+      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
 
-        <a href="adotar.html" class="link-invisivel-botao botao-slide1"></a>
+      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+        <div class="hero-text" style="pointer-events: auto;">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            ONGs de todo o Brasil, em um só lugar
+          </div>
+          <h1 class="hero-title">O maior portal de adoção do Brasil</h1>
+          <p class="hero-subtitle">Encontre seu melhor amigo através de diversas ONGS e comece uma nova história.</p>
+          <a href="adotar.html" class="btn btn-primary btn-hero">
+            Encontrar meu novo amigo
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- ==========================================
+         SLIDE 2 
+         ========================================== -->
     <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.png">
-            <img src="imagens/banner2.jpg" alt="Banner 2" draggable="false">
-        </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.jpg">
+        <img class="hero-img" src="Imagens/banner2.jpg" alt="Banner 2" draggable="false">
+      </picture>
+      
+      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
 
-        <a href="quem.html" class="link-invisivel-botao botao-slide2"></a>
+      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+        <div class="hero-text" style="pointer-events: auto;">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Conheça nossa história
+          </div>
+          <h1 class="hero-title">Mais que um portal, uma rede de proteção animal</h1>
+          <p class="hero-subtitle">Descubra como nascemos e o nosso propósito para simplificar a adoção e dar uma segunda chance a milhares de pets.</p>
+          <a href="Quem.html" class="btn btn-primary btn-hero">
+            Nossa trajetória
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- ==========================================
+         SLIDE 3 
+         ========================================== -->
     <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.png">
-            <img src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
-        </picture>
-        
-        <a href="adotar.html" class="link-invisivel-botao botao-slide3"></a>
-    </div>
-</div>
-    
-        <div>
-    
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
+      <picture>
+        <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.jpg">
+        <img class="hero-img" src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
+      </picture>
+      
+      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
 
-        <div class="carousel-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
+      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+        <div class="hero-text" style="pointer-events: auto;">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+            Variedade exclusiva
+          </div>
+          <h1 class="hero-title">Centenas de pets de todo o Brasil em um só lugar</h1>
+          <p class="hero-subtitle">Esqueça a maratona de abrigos. Navegue por dezenas de ONGs parceiras e encontre o seu match perfeito em poucos cliques.</p>
+          <a href="adotar.html" class="btn btn-primary btn-hero">
+            Ver pets disponíveis
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 4
+         ========================================== -->
+    <div class="slide">
+      <picture>
+        <source media="(max-width: 768px)" srcset="imagens/banner4-mobile.jpg">
+        <img class="hero-img" src="imagens/banner4.jpg" alt="Banner 3" draggable="false">
+      </picture>
+      
+      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
+
+      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+        <div class="hero-text" style="pointer-events: auto;">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23"></line>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+    Faça a Diferença
+          </div>
+          <h1 class="hero-title">Fortaleça quem cuida de quem mais precisa</h1>
+          <p class="hero-subtitle">Conheça as instituições parceiras do nosso portal e descubra como você pode ajudar abrigos de todo o Brasil e o nosso Projeto.</p>
+          <a href="doe.html" class="btn-acao-unificado btn-verde">
+            Quero ajudar
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> 
+
+  <!-- Controles do Carrossel -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
+
+  <div class="carousel-indicators">
+    <span class="indicator active"></span>
+    <span class="indicator"></span>
+    <span class="indicator"></span>
+    <span class="indicator"></span>
+  </div>
+</section>
+
+    <!-- QUEM SOMOS -->
+    <section id="quem-somos" class="section quem-somos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Uma ponte para novas histórias</span>
+          <h2 class="section-title">Conheça o Adote Amigo</h2>
+          <p class="section-text">
+            Não somos uma ONG própria. Somos uma ponte tecnológica entre quem deseja adotar e abrigos parceiros de todo o país. Nosso principal objetivo é facilitar a vida de nossos usuários. Por isso, reunimos em um único portal uma grande variedade de pets, informações confiáveis e contato direto com as ONGs mais famosas do mercado, tornando cada etapa mais simples, segura e responsável.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NÚMEROS -->
+    <!-- NÚMEROS -->
+<section class="impact" aria-label="Nosso impacto">
+<div class="container">
+    <div class="impact-grid animar-ciclo">
+        <div class="impact-item">
+            <strong class="impact-number contador-numero" data-valor="5000">0</strong>
+            <span class="impact-label">Animais ajudados</span>
+        </div>
+        <div class="impact-item">
+            <strong class="impact-number contador-numero" data-valor="120">0</strong>
+            <span class="impact-label">ONGs parceiras</span>
+        </div>
+        <div class="impact-item">
+            <strong class="impact-number contador-numero" data-valor="100">0</strong>
+            <span class="impact-label">Gratuito</span>
+        </div>
+        <div class="impact-item">
+            <strong class="impact-number contador-numero" data-valor="300">0</strong>
+            <span class="impact-label">Cidades alcançadas</span>
         </div>
     </div>
+</div>
 </section>
 
-<section class="pets">
-</section>
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona" class="section section-soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Simples, seguro e humano</span>
+          <h2 class="section-title">O caminho até seu novo amigo</h2>
+          <p class="section-text">Da primeira busca ao primeiro abraço, conectamos você à ONG certa.</p>
+        </div>
 
-<script src="script.js"></script>
+        <div class="steps-grid steps-cascade animar-ciclo reveal">
+  <article class="step-card">
+    <span class="step-number">01</span>
+    <div class="step-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    </div>
+    <h3 class="step-title">Ache seu pet</h3>
+    <p class="step-text">Busque por espécie, perfil e localização.</p>
+  </article>
+
+  <article class="step-card">
+    <span class="step-number">02</span>
+    <div class="step-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+    </div>
+    <h3 class="step-title">Dê o Match</h3>
+    <p class="step-text">Responda ao teste e descubra sua compatibilidade.</p>
+  </article>
+
+  <article class="step-card">
+    <span class="step-number">03</span>
+    <div class="step-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+    </div>
+    <h3 class="step-title">Fale com a ONG</h3>
+    <p class="step-text">Converse diretamente, com clareza e segurança.</p>
+  </article>
+
+  <article class="step-card">
+    <span class="step-number">04</span>
+    <div class="step-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    </div>
+    <h3 class="step-title">Adoção completa</h3>
+    <p class="step-text">Conheça o abrigo e leve seu novo amigo para casa.</p>
+    </article>
+     </div>
+     
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+      <p>Conectando pessoas, ONGs e novos começos.</p>
+    </div>
+
+    <div class="footer-support">
+      <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+      <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support">
+        📧 Fale com o Suporte
+      </a>
+    </div>
+  </div>
+</footer>
+
+  <script type="module" src="script.js"></script>
 
 </body>
 </html>

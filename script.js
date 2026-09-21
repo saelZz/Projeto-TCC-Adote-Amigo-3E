@@ -1,145 +1,329 @@
 // ==========================================================================
-// PARTE BANCO DE DADOS (REDE ADOTE AMIGO)
+// 1. CONFIGURAÇÃO E CONEXÃO COM O FIREBASE
 // ==========================================================================
-const bancoDeDadosPets = {
-    "1": { 
-        nome: "Helke", 
-        idade: "3 anos", 
-        porte: "Border Collie", 
-        bairro: "Mooca", 
-        localRetirada: "Adote Amigo - Unidade Mooca", 
-        enderecoSimulado: "Rua Borges de Figueiredo, 500", 
-        referencia: "Unidade Mooca — Próximo à Estação Juventus-Mooca", 
-        historia: "Helke é uma fêmea de Border Collie super inteligente. É ativa, carinhosa, se dá muito bem com crianças e adora aprender novos truques.", 
-        imagem: "imagens/pet1.jpg",
-        imagem2: "imagens/pet1.jpg"
-    },
-    "2": { 
-        nome: "Mel", 
-        idade: "5 anos", 
-        porte: "Basset Hound", 
-        bairro: "Bandeirantes", 
-        localRetirada: "Adote Amigo - Unidade Bandeirantes", 
-        enderecoSimulado: "Avenida Nazaré, 1200", 
-        referencia: "Unidade Bandeirantes — Próximo ao Museu do Ipiranga", 
-        historia: "Mel é uma companheira fantástica da raça Basset Hound. É muito dócil, calma, adora tirar sonecas e convive muito bem com outros cães.", 
-        imagem: "imagens/pet2.jpg",
-        imagem2: "imagens/pet2.jpg"
-    },
-    "3": { 
-        nome: "Pipoca", 
-        idade: "2 anos", 
-        porte: "Vira-lata (SRD)", 
-        bairro: "Tatuape", 
-        localRetirada: "Adote Amigo - Unidade Tatuapé", 
-        enderecoSimulado: "Rua Tuiuti, 1800", 
-        referencia: "Unidade Tatuapé — Em frente ao Parque do Piqueri", 
-        historia: "Pipoca é uma fêmea vira-lata cheia de carisma. Super dócil, companheira e brincalhona, procura um lar amoroso para compartilhar alegria.", 
-        imagem: "imagens/pet3.jpg",
-        imagem2: "imagens/pet3.jpg"
-    },
-    "4": { 
-        nome: "Fredd", 
-        idade: "6 anos", 
-        porte: "Pastor Alemão", 
-        bairro: "Mooca", 
-        localRetirada: "Adote Amigo - Unidade Mooca", 
-        enderecoSimulado: "Rua dos Trilhos, 900", 
-        referencia: "Unidade Mooca — Esquina com a UNIP Campus Mooca", 
-        historia: "Fredd é um Pastor Alemão macho imponente e extremamente leal. Muito inteligente, obediente e excelente protetor para a família.", 
-        imagem: "imagens/pet4.jpg",
-        imagem2: "imagens/pet4.jpg"
-    },
-    "5": { 
-        nome: "Bidu", 
-        idade: "4 anos", 
-        porte: "Shih Tzu", 
-        bairro: "Santana", 
-        localRetirada: "Adote Amigo - Unidade Santana", 
-        enderecoSimulado: "Avenida Cruzeiro do Sul, 2500", 
-        referencia: "Unidade Santana — Ao lado do Parque da Juventude", 
-        historia: "Bidu é um Shih Tzu macho dócil e companheiro. Perfeito para quem mora em apartamento, adora um colinho e passeios tranquilos.", 
-        imagem: "imagens/pet5.jpg",
-        imagem2: "imagens/pet5.jpg"
-    }
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAHrvVJPyqPIJHZxFfHZC8ZpfPpyQQYq5U",
+    authDomain: "projeto-tcc-adote-amigo-65d99.firebaseapp.com",
+    projectId: "projeto-tcc-adote-amigo-65d99",
+    storageBucket: "projeto-tcc-adote-amigo-65d99.firebasestorage.app",
+    messagingSenderId: "1055512647057",
+    appId: "1:1055512647057:web:298f17670dad0643637630"
 };
 
-// ==========================================================================
-// VARIÁVEIS E FUNÇÕES DO CARROSSEL DE IMAGENS
-// ==========================================================================
-const carousel = document.querySelector(".carousel");
-const slides = document.querySelector(".slides");
-const slide = document.querySelectorAll(".slide");
-const indicators = document.querySelectorAll(".indicator");
-const modal = document.getElementById("modal-adocao");
-const btnFechar = document.querySelector(".close-modal");
-const formAdocao = document.getElementById("form-adocao");
+let app = null;
+let db = null;
 
-let index = 0;
+try {
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+} catch (error) {
+    console.warn("Aviso: Erro ao conectar ao Firebase. O layout continuará funcional.", error);
+}
+
+let bancoDeDadosPets = {};
+
+// ==========================================================================
+// 2. UTILITÁRIOS
+// ==========================================================================
+function normalizarTexto(texto) {
+    if (!texto) return "";
+    return texto
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+
+function fecharModal(modal) {
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// ==========================================================================
+// 3. BUSCA E RENDERIZAÇÃO DINÂMICA DE PETS (FIRESTORE)
+// ==========================================================================
+async function carregarPetsDoFirestore() {
+    const petsGrid = document.getElementById("pets-grid");
+    if (!petsGrid) return;
+
+    if (!db) {
+        petsGrid.innerHTML = "<p>Nenhum pet carregado no momento (modo offline).</p>";
+        return;
+    }
+
+    try {
+        const querySnapshot = await getDocs(collection(db, "pets"));
+        petsGrid.innerHTML = ""; 
+        bancoDeDadosPets = {};   
+
+        if (querySnapshot.empty) {
+            petsGrid.innerHTML = "<p>Nenhum pet cadastrado no momento.</p>";
+            return;
+        }
+
+        const cardsHTML = [];
+
+        querySnapshot.forEach((docSnapshot) => {
+            const pet = docSnapshot.data();
+            const petId = docSnapshot.id;
+
+            bancoDeDadosPets[petId] = { id: petId, ...pet };
+
+            const sexoPet = (pet.sexo || "").toLowerCase();
+            const isFemea = sexoPet === "femea" || sexoPet === "fêmea";
+            const mensagemWhatsapp = encodeURIComponent(
+                `Olá! Vi o(a) ${pet.nome} no portal Adote Amigo e gostaria de saber mais sobre a adoção.`
+            );
+            const linkWhatsapp = pet.ong_whatsapp ? `https://wa.me/${pet.ong_whatsapp}?text=${mensagemWhatsapp}` : "#";
+
+            cardsHTML.push(`
+                <div class="pet-card" data-id="${petId}" data-estado="${pet.estado || ''}" data-cidade="${pet.cidade || ''}" data-bairro="${pet.bairro || ''}">
+                    <div class="card-image" style="border-radius: 16px 16px 0 0; overflow: hidden;">
+                        <img src="${pet.foto_url || pet.imagem || 'imagens/logo.png'}" alt="${pet.nome}" draggable="false" style="border-radius: 16px 16px 0 0; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="pet-info">
+                        <div class="pet-header">
+                            <h3>${pet.nome}</h3>
+                            <span class="gender-badge ${isFemea ? 'fêmea' : ''}">${isFemea ? '♀' : '♂'}</span>
+                        </div>
+                        <div class="pet-tags-container">
+                            <span class="pet-tag tag-raca">${pet.raca || pet.porte || 'SRD'}</span>
+                            <span class="pet-tag tag-idade">${pet.idade || 'Idade N/I'}</span>
+                        </div>
+                        <p class="pet-details">${pet.bairro || ''}, ${pet.cidade || ''}, ${pet.estado || ''}</p>
+                        <p class="pet-ponto-ref">📍 ${pet.ong_nome || pet.localRetirada || 'Unidade de Adoção'}</p>
+                        <a href="${linkWhatsapp}" target="_blank" rel="noopener noreferrer" class="btn-adotar-card">
+                            Quero Adotar (WhatsApp)
+                        </a>
+                    </div>
+                </div>
+            `);
+        });
+
+        petsGrid.innerHTML = cardsHTML.join("");
+
+    } catch (error) {
+        console.error("Erro ao carregar os pets do Firestore:", error);
+        petsGrid.innerHTML = "<p>Erro ao carregar a lista de pets. Tente novamente mais tarde.</p>";
+    }
+}
+
+// ==========================================================================
+// 4. CARROSSEL DE IMAGENS
+// ==========================================================================
+let carouselIndex = 0;
 let isDragging = false;
 let startX = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
+let autoSlideInterval = null;
 
-function mostrarSlide() {
+function mostrarSlide(carousel, slides, slide, indicators) {
     if (!carousel || !slides) return;
+
     const larguraReal = carousel.clientWidth;
-    currentTranslate = -index * larguraReal;
+    currentTranslate = -carouselIndex * larguraReal;
     prevTranslate = currentTranslate;
     
     slides.style.transition = 'transform 0.5s ease-in-out';
     slides.style.transform = `translateX(${currentTranslate}px)`;
     
-    if (indicators.length > 0) {
-        indicators.forEach((indicator, idx) => {
-            if (idx === index) indicator.classList.add("active");
-            else indicator.classList.remove("active");
-        });
-    }
+    indicators.forEach((indicator, idx) => {
+        indicator.classList.toggle("active", idx === carouselIndex);
+    });
 }
 
-// ==========================================================================
-// FAQ, HASH E LÓGICA EM CADEIA DOS FILTROS
-// ==========================================================================
-document.addEventListener("DOMContentLoaded", function () {
-    
-    const perguntas = document.querySelectorAll(".faq-question");
-    perguntas.forEach(function (pergunta) {
-        pergunta.addEventListener("click", function () {
-            const item = this.parentElement;
-            document.querySelectorAll(".faq-item").forEach(function (faq) {
-                if (faq !== item) faq.classList.remove("active");
-            });
-            item.classList.toggle("active");
+function inicializarCarrossel() {
+    const carousel = document.querySelector(".carousel");
+    const slides = document.querySelector(".slides");
+    const slide = document.querySelectorAll(".slide");
+    const indicators = document.querySelectorAll(".indicator");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    if (!carousel || !slides || slide.length === 0) return;
+
+    const proximoSlide = () => {
+        carouselIndex = (carouselIndex + 1) % slide.length;
+        mostrarSlide(carousel, slides, slide, indicators);
+    };
+
+    const slideAnterior = () => {
+        carouselIndex = (carouselIndex - 1 + slide.length) % slide.length;
+        mostrarSlide(carousel, slides, slide, indicators);
+    };
+
+    const iniciarAutoSlide = () => {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(proximoSlide, 6000);
+    };
+
+    nextBtn?.addEventListener("click", () => { proximoSlide(); iniciarAutoSlide(); });
+    prevBtn?.addEventListener("click", () => { slideAnterior(); iniciarAutoSlide(); });
+
+    indicators.forEach((indicator, idx) => {
+        indicator.addEventListener("click", () => {
+            carouselIndex = idx;
+            mostrarSlide(carousel, slides, slide, indicators);
+            iniciarAutoSlide();
         });
     });
 
-    const hash = window.location.hash;
+    function dragStart(e) {
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.pageX;
+        iniciarAutoSlide();
+        slides.style.transition = 'none';
+    }
+
+    function dragMove(e) {
+        if (!isDragging) return;
+        const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.pageX;
+        const diffX = currentX - startX;
+        slides.style.transform = `translateX(${prevTranslate + diffX}px)`;
+    }
+
+    function dragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        const endX = e.type.includes('touch') ? (e.changedTouches ? e.changedTouches[0].clientX : startX) : e.pageX;
+        const diffX = endX - startX;
+
+        if (diffX < -80 && carouselIndex < slide.length - 1) {
+            carouselIndex++;
+        } else if (diffX > 80 && carouselIndex > 0) {
+            carouselIndex--;
+        }
+        mostrarSlide(carousel, slides, slide, indicators);
+    }
+
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("mousemove", dragMove);
+    carousel.addEventListener("mouseup", dragEnd);
+    carousel.addEventListener("mouseleave", dragEnd);
+
+    carousel.addEventListener("touchstart", dragStart, { passive: true });
+    carousel.addEventListener("touchmove", dragMove, { passive: true });
+    carousel.addEventListener("touchend", dragEnd);
+
+    window.addEventListener('resize', () => mostrarSlide(carousel, slides, slide, indicators));
+    window.addEventListener('load', () => mostrarSlide(carousel, slides, slide, indicators));
+
+    iniciarAutoSlide();
+}
+
+// ==========================================================================
+// 5. INICIALIZAÇÃO E EVENTOS DOM
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", async function () {
+
+    // ----------------------------------------------------------------------
+    // A. ANIMAÇÃO DE REVELAÇÃO (.reveal) - IntersectionObserver Otimizado
+    // ----------------------------------------------------------------------
+    const elements = document.querySelectorAll(".reveal");
+
+    if (!("IntersectionObserver" in window)) {
+        elements.forEach(function (el) { el.classList.add("is-visible", "active"); });
+    } else {
+        var observer = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible", "active");
+                        observer.unobserve(entry.target); // anima apenas uma vez
+                    }
+                });
+            },
+            { threshold: 0.14 } // dispara quando ~14% do elemento aparece
+        );
+
+        elements.forEach(function (el) { observer.observe(el); });
+    }
+
+    // Fallback de segurança para garantir exibição
+    setTimeout(() => {
+        elements.forEach((el) => el.classList.add("is-visible", "active"));
+    }, 600);
+
+    // ----------------------------------------------------------------------
+    // B. CARREGAMENTO DOS PETS DO FIRESTORE
+    // ----------------------------------------------------------------------
+    await carregarPetsDoFirestore();
+
+    // ----------------------------------------------------------------------
+    // C. FAQ ACCORDION
+    // ----------------------------------------------------------------------
+    const perguntas = document.querySelectorAll(".faq-question");
+    perguntas.forEach((pergunta) => {
+        pergunta.addEventListener("click", function () {
+            const itemAtual = this.parentElement;
+            document.querySelectorAll(".faq-item").forEach((faq) => {
+                if (faq !== itemAtual) faq.classList.remove("active");
+            });
+            itemAtual.classList.toggle("active");
+        });
+    });
+
+    // ----------------------------------------------------------------------
+    // D. ROLAGEM POR HASH VIA URL
+    // ----------------------------------------------------------------------
+    const { hash } = window.location;
     if (hash) {
         const alvo = document.querySelector(hash);
         if (alvo) {
-            alvo.classList.add("active");
-            setTimeout(() => { alvo.scrollIntoView({ behavior: "smooth", block: "center" }); }, 300);
+            alvo.classList.add("active", "is-visible");
+            setTimeout(() => {
+                alvo.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 300);
         }
     }
 
+    // ----------------------------------------------------------------------
+    // E. LÓGICA DE FILTROS ENCADEADOS
+    // ----------------------------------------------------------------------
     const selectEstado = document.getElementById("filtro-estado");
     const selectCidade = document.getElementById("filtro-cidade");
     const selectBairro = document.getElementById("filtro-bairro");
     const btnLimpar = document.querySelector(".btn-limpar-filtros");
-    const todosOsCards = document.querySelectorAll(".pet-card");
+
+    function aplicarFiltros() {
+        const todosOsCards = document.querySelectorAll(".pet-card");
+        const estadoSelecionado = normalizarTexto(selectEstado?.value);
+        const cidadeSelecionada = normalizarTexto(selectCidade?.value);
+        const bairroSelecionado = normalizarTexto(selectBairro?.value);
+
+        todosOsCards.forEach((card) => {
+            const petEstado = normalizarTexto(card.getAttribute("data-estado"));
+            const petCidade = normalizarTexto(card.getAttribute("data-cidade"));
+            const petBairro = normalizarTexto(card.getAttribute("data-bairro"));
+
+            const bateEstado = !estadoSelecionado || petEstado === estadoSelecionado;
+            const bateCidade = !cidadeSelecionada || petCidade === cidadeSelecionada;
+            const bateBairro = !bairroSelecionado || petBairro === bairroSelecionado;
+
+            if (bateEstado && bateCidade && bateBairro) {
+                card.style.setProperty('display', 'flex', 'important'); 
+            } else {
+                card.style.setProperty('display', 'none', 'important'); 
+            }
+        });
+    }
 
     if (selectEstado && selectCidade && selectBairro) {
-        
-        selectEstado.addEventListener("change", function() {
-            const estadoSelecionado = selectEstado.value;
+        selectEstado.addEventListener("change", function () {
+            const estado = selectEstado.value;
 
-            if (estadoSelecionado === "SP") {
+            if (estado === "SP") {
                 selectCidade.innerHTML = `
                     <option value="">Selecione</option>
                     <option value="Sao Paulo">São Paulo</option>
                 `;
-            } else if (estadoSelecionado === "RJ") {
+            } else if (estado === "RJ") {
                 selectCidade.innerHTML = `
                     <option value="">Selecione</option>
                     <option value="Rio de Janeiro">Rio de Janeiro</option>
@@ -152,10 +336,10 @@ document.addEventListener("DOMContentLoaded", function () {
             aplicarFiltros();
         });
 
-        selectCidade.addEventListener("change", function() {
-            const cidadeSelecionada = selectCidade.value;
+        selectCidade.addEventListener("change", function () {
+            const cidade = selectCidade.value;
 
-            if (cidadeSelecionada === "Sao Paulo") {
+            if (cidade === "Sao Paulo") {
                 selectBairro.innerHTML = `
                     <option value="">Selecione</option>
                     <option value="Mooca">Unidade Mooca</option>
@@ -163,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <option value="Tatuape">Unidade Tatuapé</option>
                     <option value="Santana">Unidade Santana</option>
                 `;
-            } else if (cidadeSelecionada === "Rio de Janeiro") {
+            } else if (cidade === "Rio de Janeiro") {
                 selectBairro.innerHTML = `
                     <option value="">Selecione</option>
                     <option value="Copacabana">Unidade Copacabana</option>
@@ -178,212 +362,52 @@ document.addEventListener("DOMContentLoaded", function () {
         selectBairro.addEventListener("change", aplicarFiltros);
     }
 
-    function normalizarTexto(texto) {
-        if (!texto) return "";
-        return texto.toString()
-                    .normalize("NFD")
-                    .replace(/[\u0300-\u036f]/g, "")
-                    .toLowerCase()
-                    .trim();
-    }
-
-    function aplicarFiltros() {
-        const estadoSelecionado = normalizarTexto(selectEstado.value);
-        const cidadeSelecionada = normalizarTexto(selectCidade.value);
-        const bairroSelecionado = normalizarTexto(selectBairro.value);
-
-        todosOsCards.forEach(function (card) {
-            const petEstado = normalizarTexto(card.getAttribute("data-estado"));
-            const petCidade = normalizarTexto(card.getAttribute("data-cidade"));
-            const petBairro = normalizarTexto(card.getAttribute("data-bairro"));
-
-            const bateEstado = estadoSelecionado === "" || petEstado === estadoSelecionado;
-            const bateCidade = cidadeSelecionada === "" || petCidade === cidadeSelecionada;
-            const bateBairro = bairroSelecionado === "" || petBairro === bairroSelecionado;
-
-            if (bateEstado && bateCidade && bateBairro) {
-                card.style.setProperty('display', 'flex', 'important'); 
-            } else {
-                card.style.setProperty('display', 'none', 'important'); 
-            }
-        });
-    }
-
     if (btnLimpar) {
-        btnLimpar.addEventListener("click", function () {
-            selectEstado.value = "";
-            selectCidade.innerHTML = `<option value="">Selecione</option>`;
-            selectBairro.innerHTML = `<option value="">Selecione</option>`;
+        btnLimpar.addEventListener("click", () => {
+            if (selectEstado) selectEstado.value = "";
+            if (selectCidade) selectCidade.innerHTML = `<option value="">Selecione</option>`;
+            if (selectBairro) selectBairro.innerHTML = `<option value="">Selecione</option>`;
             
-            todosOsCards.forEach(function (card) {
+            document.querySelectorAll(".pet-card").forEach((card) => {
                 card.style.setProperty('display', 'flex', 'important');
             });
         });
     }
 
-    // ==========================================================================
-// INJEÇÃO DO MODAL DE DUAS COLUNAS, DRAG E MULTI-PASSO
-// ==========================================================================
-    document.querySelectorAll(".btn-adotar-card").forEach(botao => {
-        botao.addEventListener("click", function(e) {
-            e.preventDefault();
-            const card = botao.closest(".pet-card");
-            if (!card) return;
+    // ----------------------------------------------------------------------
+    // F. MODAL E EVENTOS GLOBAIS
+    // ----------------------------------------------------------------------
+    const modal = document.getElementById("modal-adocao");
+    const btnFechar = document.querySelector(".close-modal");
+    const formAdocao = document.getElementById("form-adocao");
 
-            const petId = card.getAttribute("data-id");
-            const petInfo = bancoDeDadosPets[petId];
-
-            if (petInfo) {
-                const modalConteudo = document.querySelector(".modal-conteudo");
-                if (modalConteudo) {
-                    modalConteudo.className = "modal-conteudo modal-conteudo-pet";
-                    modalConteudo.innerHTML = `
-                        <span class="close-modal">&times;</span>
-                        <div class="modal-col-esquerda">
-                            <div class="modal-wrapper-fotos">
-                                <img id="modal-pet-img-grande" class="modal-foto-grande" src="${petInfo.imagem}" alt="${petInfo.nome}">
-                            </div>
-                            <div class="modal-galeria-miniaturas">
-                                <img class="modal-foto-miniatura ativa" src="${petInfo.imagem}" alt="Ângulo 1" onclick="document.getElementById('modal-pet-img-grande').src='${petInfo.imagem}'; document.querySelectorAll('.modal-foto-miniatura').forEach(i=>i.classList.remove('ativa')); this.classList.add('ativa');">
-                                <img class="modal-foto-miniatura" src="${petInfo.imagem2 || petInfo.imagem}" alt="Ângulo 2" onclick="document.getElementById('modal-pet-img-grande').src='${petInfo.imagem2 || petInfo.imagem}'; document.querySelectorAll('.modal-foto-miniatura').forEach(i=>i.classList.remove('ativa')); this.classList.add('ativa');">
-                            </div>
-                            <div class="modal-grid-badges">
-                                <span class="badge-pet">💉 Vacinado</span>
-                                <span class="badge-pet">✂️ Castrado</span>
-                                <span class="badge-pet">🏠 Vermifugado</span>
-                            </div>
-                        </div>
-                        <div class="modal-col-direita">
-                            <div class="modal-pet-info-topo">
-                                <h2 class="pet-nome-titulo">
-                                    ${petInfo.nome} 
-                                    <span class="gender-icon ${card.querySelector('.gender-badge')?.classList.contains('fêmea') || card.querySelector('.gender-icon')?.classList.contains('fêmea') ? 'fêmea' : ''}">${card.querySelector('.gender-badge')?.textContent || card.querySelector('.gender-icon')?.textContent || '♂'}</span>
-                                </h2>
-                                <div class="modal-pet-tags">
-                                    <span class="pet-tag tag-raca">${petInfo.porte}</span>
-                                    <span class="pet-tag tag-idade">${petInfo.idade}</span>
-                                </div>
-                            </div>
-                            <div class="modal-texto-historia">
-                                <p>${petInfo.historia}</p>
-                            </div>
-                            <div class="box-localizacao-unidade">
-                                <h4>📍 Onde encontrar o pet:</h4>
-                                <p><strong>Unidade:</strong> ${petInfo.localRetirada}</p>
-                                <p><strong>Endereço:</strong> ${petInfo.enderecoSimulado}</p>
-                                <em>Ponto de referência: ${petInfo.referencia}</em>
-                            </div>
-                            <button class="btn-avancar-adocao">Iniciar Processo de Adoção ❤️</button>
-                        </div>
-                    `;
-
-                    modalConteudo.querySelector(".close-modal").addEventListener("click", () => {
-                        if (modal) modal.style.display = "none";
-                    });
-
-                    modalConteudo.querySelector(".btn-avancar-adocao").addEventListener("click", (evt) => {
-                        evt.preventDefault();
-                        localStorage.setItem("petSelecionadoNome", petInfo.nome);
-                        localStorage.setItem("petSelecionadoImg", petInfo.imagem);
-                        window.location.href = "formulario.html";
-                    });
-                }
-                if (modal) modal.style.display = "flex";
-            }
-        });
-    });
-
-    if (btnFechar) {
-        btnFechar.addEventListener("click", () => {
-            if (modal) modal.style.display = "none";
-        });
-    }
+    btnFechar?.addEventListener("click", () => fecharModal(modal));
 
     window.addEventListener("click", (e) => {
-        if (modal && e.target === modal) modal.style.display = "none";
+        if (modal && e.target === modal) fecharModal(modal);
     });
 
-    if (formAdocao) {
-        formAdocao.addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert("Parabéns! Sua intenção de adoção foi registrada com sucesso! 🎉");
-            if (modal) modal.style.display = "none";
-        });
-    }
+    formAdocao?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Parabéns! Sua intenção de adoção foi registrada com sucesso! 🎉");
+        fecharModal(modal);
+    });
 
-    const nextBtn = document.querySelector(".next");
-    const prevBtn = document.querySelector(".prev");
+    // ----------------------------------------------------------------------
+    // G. INICIALIZAÇÃO DO CARROSSEL
+    // ----------------------------------------------------------------------
+    inicializarCarrossel();
 
-    if (nextBtn) nextBtn.addEventListener("click", () => { index = (index + 1) % slide.length; mostrarSlide(); });
-    if (prevBtn) prevBtn.addEventListener("click", () => { index = (index - 1 + slide.length) % slide.length; mostrarSlide(); });
-
-    if (indicators.length > 0) {
-        indicators.forEach((indicator, idx) => {
-            indicator.addEventListener("click", () => { index = idx; mostrarSlide(); });
-        });
-    }
-
-    if (carousel && slide.length > 0) {
-        let autoSlide = setInterval(() => {
-            index = (index + 1) % slide.length;
-            mostrarSlide();
-        }, 6000);
-
-        function resetAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = setInterval(() => {
-                index = (index + 1) % slide.length;
-                mostrarSlide();
-            }, 6000);
-        }
-        
-        carousel.addEventListener("mousedown", dragStart);
-        carousel.addEventListener("mousemove", dragMove);
-        carousel.addEventListener("mouseup", dragEnd);
-        carousel.addEventListener("mouseleave", dragEnd);
-        carousel.addEventListener("touchstart", dragStart, { passive: true });
-        carousel.addEventListener("touchmove", dragMove, { passive: true });
-        carousel.addEventListener("touchend", dragEnd);
-
-        function dragStart(e) {
-            isDragging = true;
-            startX = e.type.includes('touch') ? e.touches[0].clientX : e.pageX;
-            resetAutoSlide();
-            slides.style.transition = 'none';
-        }
-
-        function dragMove(e) {
-            if (!isDragging) return;
-            const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.pageX;
-            const diffX = currentX - startX;
-            slides.style.transform = `translateX(${prevTranslate + diffX}px)`;
-        }
-
-        function dragEnd(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            const endX = e.type.includes('touch') ? (e.changedTouches ? e.changedTouches[0].clientX : startX) : e.pageX;
-            const diffX = endX - startX;
-
-            if (diffX < -80 && index < slide.length - 1) {
-                index++;
-            } else if (diffX > 80 && index > 0) {
-                index--;
-            }
-            mostrarSlide();
-        }
-    }
-
-    window.addEventListener('resize', mostrarSlide);
-    window.addEventListener('load', mostrarSlide);
-
+    // ----------------------------------------------------------------------
+    // H. FORMULÁRIO MULTI-PASSOS
+    // ----------------------------------------------------------------------
     const modalEstado = document.getElementById("modal-estado");
     const modalCidade = document.getElementById("modal-cidade");
     const btnPasso1 = document.getElementById("btn-passo-1");
     const formMulti = document.getElementById("form-multi-passos");
 
     if (modalEstado && modalCidade) {
-        modalEstado.addEventListener("change", function() {
+        modalEstado.addEventListener("change", function () {
             if (modalEstado.value === "SP") {
                 modalCidade.innerHTML = `
                     <option value="">Escolha a cidade</option>
@@ -399,27 +423,29 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 modalCidade.innerHTML = `<option value="">Escolha a cidade</option>`;
                 modalCidade.disabled = true;
-                btnPasso1.disabled = true;
+                if (btnPasso1) btnPasso1.disabled = true;
             }
         });
 
-        modalCidade.addEventListener("change", function() {
-            btnPasso1.disabled = modalCidade.value === "";
+        modalCidade.addEventListener("change", function () {
+            if (btnPasso1) btnPasso1.disabled = !modalCidade.value;
         });
     }
 
     function irParaPasso(numero) {
-        document.querySelectorAll(".passo-form").forEach(p => p.classList.remove("ativo"));
+        document.querySelectorAll(".passo-form").forEach((p) => p.classList.remove("ativo"));
+        
         setTimeout(() => {
             const proximo = document.getElementById(`passo-${numero}`);
-            if (proximo) proximo.classList.add("ativo");
+            proximo?.classList.add("ativo");
         }, 10);
 
-        document.getElementById("numero-passo").textContent = numero;
-        document.querySelectorAll(".circulo-passo").forEach(c => {
-            const passoCirculo = parseInt(c.getAttribute("data-passo"));
-            if (passoCirculo <= numero) c.classList.add("ativo");
-            else c.classList.remove("ativo");
+        const numPassoElem = document.getElementById("numero-passo");
+        if (numPassoElem) numPassoElem.textContent = numero;
+
+        document.querySelectorAll(".circulo-passo").forEach((c) => {
+            const passoCirculo = parseInt(c.getAttribute("data-passo"), 10);
+            c.classList.toggle("ativo", passoCirculo <= numero);
         });
     }
 
@@ -427,8 +453,55 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btn-passo-2")?.addEventListener("click", () => irParaPasso(3));
     document.getElementById("btn-passo-3")?.addEventListener("click", () => irParaPasso(4));
 
-    formMulti?.addEventListener("submit", function(e) {
+    formMulti?.addEventListener("submit", function (e) {
         e.preventDefault();
         irParaPasso(5);
     });
+
+    // ----------------------------------------------------------------------
+    // ANIMAÇÃO EM CICLO AO ROLAR A TELA (REPETE AO SUBIR E DESCER)
+    // ----------------------------------------------------------------------
+    const elementosCiclo = document.querySelectorAll(".animar-ciclo");
+
+    const observerCiclo = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Quando aparece na tela
+            entry.target.classList.add("visivel");
+            
+            // Se essa seção contiver contadores, dispara a animação deles!
+            if (entry.target.querySelector(".contador-numero") || entry.target.classList.contains("contador-numero")) {
+                animarContadores();
+            }
+        } else {
+            // Quando sai da tela, remove para reiniciar o ciclo se quiser
+            entry.target.classList.remove("visivel");
+        }
+    });
+}, {
+    threshold: 0.15 
 });
+
+elementosCiclo.forEach((el) => observerCiclo.observe(el));
+});
+
+function animarContadores() {
+    const numeros = document.querySelectorAll(".contador-numero"); // coloque essa classe nos números (+5000, etc)
+    
+    numeros.forEach((num) => {
+        const valorFinal = parseInt(num.getAttribute("data-valor"), 10);
+        let valorAtual = 0;
+        const incremento = valorFinal / 200;
+
+        const atualizar = () => {
+            valorAtual += incremento;
+            if (valorAtual < valorFinal) {
+                num.textContent = Math.floor(valorAtual);
+                requestAnimationFrame(atualizar);
+            } else {
+                num.textContent = valorFinal + "+";
+            }
+        };
+        atualizar();
+    });
+}
