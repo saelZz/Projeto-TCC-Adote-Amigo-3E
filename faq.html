@@ -2,108 +2,163 @@
 <html lang="pt-br">
 
 <head>
-    
     <meta charset="UTF-8">
-    <title>Adote Amigo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes - Adote Amigo</title>
 
     <link rel="icon" type="image/png" href="imagens/logo.png">
+    
+    <!-- Google Fonts idênticas ao projeto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- CSS Unificado do Projeto -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="navbar">
-
     <div class="logo">
         <a href="index.html">
             <img src="imagens/logo.png" alt="Adote Amigo">
         </a>
-
-</div>
-<div class="dropdown-content">
-    <a href="#como-adotar">Como adotar?</a>
-    <a href="#precisa-pagar">Precisa pagar?</a>
-    <a href="#animais-vacinados">Animais vacinados?</a>
-    <a href="#adotar-apartamento">Adotar em apartamento?</a>
-    <a href="#posso-ajudar">Posso ajudar?</a>
-  </div>
+    </div>
   
     <nav class="menu">
         <a href="index.html">Início</a>
         <a href="quem.html">Quem somos nós?</a>
         <div class="dropdown">
-
             <a href="faq.html">FAQ ▾</a>
-
             <div class="dropdown-content">
-
-                <a href="faq.html#como-adotar">Como adotar?</a>
-
-                <a href="faq.html#precisa-pagar">Precisa pagar?</a>
-
-                <a href="faq.html#animais-vacinados">Animais vacinados?</a>
-
-                <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
-
-                <a href="faq.html#posso-ajudar">Posso ajudar?</a>
-
+                <a href="#como-adotar">Como adotar?</a>
+                <a href="#precisa-pagar">Precisa pagar?</a>
+                <a href="#animais-vacinados">Animais vacinados?</a>
+                <a href="#adotar-apartamento">Adotar em apartamento?</a>
+                <a href="#posso-ajudar">Posso ajudar?</a>
             </div>
-
         </div>
-        
         <a href="contato.html">Contato</a>
     </nav>
 
     <div class="actions">
-        <a href="doar.html" class="btn-doar-nav">Doe Agora</a>
+        <a href="doar.html" class="btn-doar-nav">Apoiar instituições</a>
         <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
         <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
-
 </header>
 
-<section class="faq-container">
+<main>
+    <section class="faq-section">
+        <div class="faq-container">
+            
+            <div class="faq-header">
+                <span class="faq-eyebrow">Tire suas dúvidas</span>
+                <h1>Perguntas Frequentes 🐾</h1>
+                <p>Tudo o que você precisa saber sobre o processo de adoção, o funcionamento do nosso portal e como transformamos a realidade dos animais resgatados no Brasil.</p>
+            </div>
 
-    <h1>Perguntas Frequentes 🐾</h1>
+            <div class="faq-list">
+                
+                <!-- Pergunta 1 -->
+                <div class="faq-card" id="como-adotar" data-open="false">
+                    <h2>
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span>Como funciona o processo de adoção?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h2>
+                    <div class="faq-panel">
+                        <div>
+                            <p>O processo é simples e totalmente focado no bem-estar do pet. Você navega pelo portal, escolhe o animal que conquistou seu coração, preenche um formulário detalhado com informações sobre seu lar e estilo de vida, e a ONG ou protetor responsável entrará em contato para alinhar os próximos passos e a aprovação final.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="faq-item" id="como-adotar">
-        <button class="faq-question">Como funciona o processo de adoção?</button>
-        <div class="faq-answer">
-            <p>Você escolhe o pet, preenche um formulário e passa por uma avaliação simples antes da aprovação.</p>
+                <!-- Pergunta 2 -->
+                <div class="faq-card" id="precisa-pagar" data-open="false">
+                    <h2>
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span>Preciso pagar alguma taxa para adotar?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h2>
+                    <div class="faq-panel">
+                        <div>
+                            <p>A adoção em si é gratuita, mas grande parte das ONGs cadastradas solicita uma taxa simbólica de adoção ou o reembolso parcial de custos veterinários (como vacinas, castração e exames prévios). Esse valor ajuda a instituição a resgatar e cuidar de outros animais que ainda esperam por um lar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="faq-card" id="animais-vacinados" data-open="false">
+                    <h2>
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span>Os animais são entregues vacinados e castrados?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h2>
+                    <div class="faq-panel">
+                        <div>
+                            <p>Sim! Todos os animais disponíveis através das ONGs parceiras no portal passam por rigorosa avaliação veterinária. Eles são entregues vermifugados, com as vacinas em dia e castrados (ou com compromisso/termo de castração garantido caso o filhote ainda não tenha a idade mínima recomendada).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta 4 -->
+                <div class="faq-card" id="adotar-apartamento" data-open="false">
+                    <h2>
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span>Posso adotar se moro em apartamento?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h2>
+                    <div class="faq-panel">
+                        <div>
+                            <p>Com certeza! Temos muitos pets que se adaptam perfeitamente à vida em apartamento. O mais importante é garantir a segurança do seu lar (como telas de proteção em janelas e varandas) e escolher um pet cujo nível de energia e porte combinem com o seu espaço disponível e rotina diária.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta 5 -->
+                <div class="faq-card" id="posso-ajudar" data-open="false">
+                    <h2>
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span>Como posso ajudar a causa animal além da adoção?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h2>
+                    <div class="faq-panel">
+                        <div>
+                            <p>Existem várias formas lindas de apoiar! Você pode fazer doações financeiras pontuais ou recorrentes para as instituições parceiras através do nosso menu <strong> Apoiar instituições</strong>, contribuir com ração e insumos, tornar-se um voluntário ativo nos abrigos, ou simplesmente compartilhar os perfis dos pets nas suas redes sociais para ampliar o alcance das adoções.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </section>
+</main>
 
-    <div class="faq-item" id="precisa-pagar">
-        <button class="faq-question">Preciso pagar para adotar?</button>
-        <div class="faq-answer">
-            <p>Algumas ONGs cobram uma taxa simbólica para ajudar nos custos com vacinas e cuidados.</p>
+<footer class="site-footer">
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+            <p>Conectando pessoas, ONGs e novos começos.</p>
         </div>
+        
+        <div class="footer-support">
+  <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+  <a href="mailto:contato.adoteamigo@://gmail.com" class="btn-footer-support" target="_blank">
+   📧 Fale com o Suporte
+  </a>
+</div>
     </div>
+</footer>
 
-    <div class="faq-item" id="animais-vacinados">
-        <button class="faq-question">Os animais são vacinados?</button>
-        <div class="faq-answer">
-            <p>Sim, todos os pets passam por avaliação veterinária e recebem vacinas básicas.</p>
-        </div>
-    </div>
+<!-- Script interativo para o acordeão da FAQ -->
+  <script type="module" src="script.js"></script>
 
-    <div class="faq-item" id="adotar-apartamento">
-        <button class="faq-question">Posso adotar morando em apartamento?</button>
-        <div class="faq-answer">
-            <p>Sim! Apenas recomendamos escolher um pet compatível com o espaço disponível.</p>
-        </div>
-    </div>
-
-    <div class="faq-item" id="posso-ajudar">
-        <button class="faq-question">Como posso ajudar a ONG?</button>
-        <div class="faq-answer">
-            <p>Você pode doar, divulgar ou até se tornar voluntário.</p>
-        </div>
-    </div>
-
-</section>
-
-<script type="module" src="script.js"></script>
 </body>
 </html>

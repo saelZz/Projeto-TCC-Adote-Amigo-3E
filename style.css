@@ -19,6 +19,25 @@
   --font-display: "Manrope", Arial, sans-serif;
   --soft-shadow: 0 18px 50px rgba(7, 43, 84, 0.1);
   --header-shadow: 0 4px 24px rgba(7, 43, 84, 0.08);
+
+  /* Variáveis específicas do FAQ integradas ao tema */
+  --faq-primary: #0C3C75;
+  --faq-brand-deep: #072B54;
+  --faq-highlight: #ff8a00;
+  --faq-highlight-hover: #e07a00;
+  --faq-highlight-foreground: #0D1B2D;
+  --faq-surface: #F2F7FC;
+  --faq-card: #ffffff;
+  --faq-text: #152131;
+  --faq-muted: #5F6A77;
+  --faq-border: #DAE2EB;
+  --faq-brand-soft: #D8EAFF;
+  --faq-focus: #ff8a00;
+  --faq-radius: 16px;
+  --faq-shadow: 0 4px 20px -10px rgb(7 43 84 / 16%);
+  --faq-shadow-active: 0 14px 34px -14px rgb(7 43 84 / 30%);
+  --faq-font-body: "Plus Jakarta Sans", Arial, sans-serif;
+  --faq-font-title: "Manrope", Arial, sans-serif;
 }
 
 *, *::before, *::after {
@@ -101,11 +120,11 @@ a {
 }
 
 .logo, .navbar img, .nav-brand img {
-    transition: transform 0.3s ease-in-out; /* Controla a suavidade do movimento */
+    transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover, .navbar img:hover, .nav-brand img:hover {
-    transform: scale(1.08); /* Aumenta 8% do tamanho original. Pode ajustar para 1.05 ou 1.1 se preferir */
+    transform: scale(1.08);
 }
 
 .menu {
@@ -287,7 +306,6 @@ a {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Slide Individual e Background */
 .slide {
   position: relative;
   width: 100%;
@@ -339,7 +357,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   4. CONTEÚDO E TEXTOS DO HERO (Alinhamento Ajustado)
+   4. CONTEÚDO E TEXTOS DO HERO
    ========================================================================== */
 .hero-content {
   position: absolute;
@@ -388,7 +406,6 @@ a:focus {
 }
 
 .hero-title {
-    /* O texto vai crescer/diminuir fluidamente entre 1.8rem e 3.5rem dependendo da largura da tela */
     font-size: clamp(1.8rem, 4vw, 3.5rem);
     font-weight: 800;
     line-height: 1.1;
@@ -401,7 +418,6 @@ a:focus {
 }
 
 .hero-subtitle {
-    /* Escala suavemente entre 0.95rem e 1.25rem */
     font-size: clamp(0.95rem, 1.5vw, 1.25rem);
     color: #e2e8f0;
     line-height: 1.5;
@@ -454,7 +470,6 @@ a:focus {
   transform: translateX(6px);
 }
 
-/* Indicadores e Setas do Carrossel */
 .carousel-indicators {
   position: absolute;
   bottom: 25px;
@@ -549,8 +564,7 @@ a:focus {
     transform: translateY(0);
 }
 
-/* Container dos cards com a animação em ciclo */
-.steps-grid, .caminho-grid { /* Ajuste para a classe que agrupa os 4 cards no seu HTML */
+.steps-grid, .caminho-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
@@ -562,13 +576,11 @@ a:focus {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
-/* Quando o container ganha a classe 'visivel' pelo observador JS, os cards aparecem em cascata */
 .animar-ciclo.visivel .step-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
 .animar-ciclo.visivel .step-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
 .animar-ciclo.visivel .step-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
 .animar-ciclo.visivel .step-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
 
-/* Efeito de flutuação ao passar o mouse */
 .step-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 35px rgba(47, 79, 159, 0.12);
@@ -725,30 +737,59 @@ a:focus {
   color: var(--muted-foreground);
 }
 
+.secao-cta-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+/* Botão Secundário Animado */
+.btn-secundario-animado {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #2f4f9f 0%, #3b63c9 100%);
+    color: #ffffff;
+    border: #ec8004;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(216, 130, 2, 0.2);
+}
+
+/* Ícone da seta com transição suave */
+.btn-secundario-animado svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-secundario-animado:hover {
+    background: linear-gradient(135deg, #243e80 0%, #2f4f9f 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(47, 79, 159, 0.35);
+    color: #ffffff;
+}
+
+.btn-secundario-animado:hover svg {
+    transform: translateX(5px);
+}
+
+/* Efeito Active (Clique) */
+.btn-secundario-animado:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(47, 79, 159, 0.2);
+}
+
 /* ==========================================================================
    8. RODAPÉ
    ========================================================================== */
 .site-footer {
-  border-top: 1px solid var(--border);
-  background: var(--background);
-  padding-block: 2rem;
-}
-
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  text-align: center;
-}
-
-/* Estilização Geral do Rodapé */
-.site-footer {
-    background-color: #ffffff;
-    border-top: 1px solid #edf2f7;
-    padding: 30px 0;
-    margin-top: 60px;
+  background-color: #ffffff;
+  border-top: 1px solid #edf2f7;
+  padding: 30px 0;
+  margin-top: 60px;
 }
 
 .footer-content {
@@ -775,7 +816,6 @@ a:focus {
     margin-top: 4px;
 }
 
-/* Bloco de Suporte com Botão */
 .footer-support {
     display: flex;
     flex-direction: column;
@@ -805,15 +845,13 @@ a:focus {
     transform: translateY(-2px);
 }
 
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-support {
-        align-items: center;
-    }
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: center;
 }
 
 @media (min-width: 640px) {
@@ -841,8 +879,18 @@ a:focus {
   color: var(--muted-foreground);
 }
 
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-support {
+        align-items: center;
+    }
+}
+
 /* ==========================================================================
-   9. ANIMAÇÃO SCROLL REVEAL E ACESSIBILIDADE
+   9. ANIMAÇÕES, SCROLL REVEAL E ACESSIBILIDADE
    ========================================================================== */
 .reveal {
   opacity: 0;
@@ -851,7 +899,8 @@ a:focus {
 }
 
 .reveal.is-visible,
-.reveal.active {
+.reveal.active,
+.reveal[data-visible="true"] {
   opacity: 1;
   transform: translateY(0);
 }
@@ -863,7 +912,186 @@ a:focus {
 }
 
 /* ==========================================================================
-   10. RESPONSIVIDADE / MEDIA QUERIES (Mobile)
+   10. ESTILOS ESPECÍFICOS DA FAQ (Integrados do Lovable)
+   ========================================================================== */
+.faq-section {
+  padding: 80px 20px;
+  background: var(--faq-surface);
+}
+
+.faq-container {
+  width: min(100%, 768px);
+  margin-inline: auto;
+}
+
+.faq-header {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.faq-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 16px;
+  border: 1px solid rgb(255 175 0 / 35%);
+  border-radius: 999px;
+  background: rgb(255 175 0 / 12%);
+  color: var(--faq-highlight-hover);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.faq-header h1 {
+  margin: 16px 0 0;
+  color: var(--faq-primary);
+  font-family: var(--faq-font-title);
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.faq-header p {
+  max-width: 576px;
+  margin: 16px auto 0;
+  color: var(--faq-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.faq-list {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-card {
+  scroll-margin-top: 112px;
+  overflow: hidden;
+  border: 1px solid var(--faq-border);
+  border-radius: var(--faq-radius);
+  background: var(--faq-card);
+  box-shadow: var(--faq-shadow);
+  transition: border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease;
+}
+
+.faq-card:hover {
+  box-shadow: var(--faq-shadow-active);
+  transform: translateY(-2px);
+}
+
+.faq-card[data-open="true"] {
+  border-color: var(--faq-highlight);
+  box-shadow: var(--faq-shadow-active);
+}
+
+.faq-card h2 {
+  margin: 0;
+  font-family: var(--faq-font-title);
+  letter-spacing: 0;
+}
+
+.faq-trigger {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 80px;
+  padding: 20px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--faq-primary);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.faq-trigger > span:first-child {
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.faq-trigger:focus-visible {
+  outline: 3px solid var(--faq-focus);
+  outline-offset: -3px;
+}
+
+.faq-icon {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--faq-brand-soft);
+  color: var(--faq-primary);
+  transition: background-color 300ms ease, color 300ms ease, transform 360ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  position: absolute;
+  width: 17px;
+  height: 2.5px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.faq-icon::after {
+  transform: rotate(90deg);
+}
+
+.faq-card[data-open="true"] .faq-icon {
+  background: var(--faq-highlight);
+  color: var(--faq-highlight-foreground);
+  transform: rotate(135deg);
+}
+
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 420ms cubic-bezier(.22, 1, .36, 1), opacity 240ms ease;
+}
+
+.faq-panel > div {
+  overflow: hidden;
+}
+
+.faq-panel p {
+  margin: 0;
+  padding: 0 20px 24px;
+  color: var(--faq-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.faq-card[data-open="true"] .faq-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-card[data-highlighted="true"] {
+  animation: faq-highlight 900ms ease-in-out 2;
+}
+
+@keyframes faq-highlight {
+  0%, 100% {
+    box-shadow: var(--faq-shadow-active);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgb(255 175 0 / 28%), var(--faq-shadow-active);
+  }
+}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE / MEDIA QUERIES (Mobile Geral)
    ========================================================================== */
 @media (max-width: 768px) {
   .navbar {
@@ -917,4 +1145,43 @@ a:focus {
 
   .prev, 
   .next { display: none; }
+
+  .faq-section {
+    padding: 48px 16px;
+  }
+
+  .faq-trigger {
+    padding-inline: 16px;
+  }
+
+  .faq-trigger > span:first-child {
+    font-size: 16px;
+  }
+
+  .faq-panel p {
+    padding-inline: 16px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 640px) {
+  .faq-section {
+    padding-inline: 32px;
+  }
+  .faq-trigger {
+    padding-inline: 24px;
+  }
+  .faq-trigger > span:first-child {
+    font-size: 18px;
+  }
+  .faq-panel p {
+    padding-inline: 24px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .faq-section {
+    padding-block: 112px;
+  }
 }
