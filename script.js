@@ -1,27 +1,8 @@
 // ==========================================================================
-// 1. CONFIGURAÇÃO E CONEXÃO COM O FIREBASE
+// 1. CONFIGURAÇÃO E CONEXÃO COM O FIREBASE (Importado do arquivo central)
 // ==========================================================================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAHrvVJPyqPIJHZxFfHZC8ZpfPpyQQYq5U",
-    authDomain: "projeto-tcc-adote-amigo-65d99.firebaseapp.com",
-    projectId: "projeto-tcc-adote-amigo-65d99",
-    storageBucket: "projeto-tcc-adote-amigo-65d99.firebasestorage.app",
-    messagingSenderId: "1055512647057",
-    appId: "1:1055512647057:web:298f17670dad0643637630"
-};
-
-let app = null;
-let db = null;
-
-try {
-    app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
-} catch (error) {
-    console.warn("Aviso: Erro ao conectar ao Firebase. O layout continuará funcional.", error);
-}
+import { db, isDemoMode } from "./firebase-config.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 let bancoDeDadosPets = {};
 
@@ -235,17 +216,16 @@ document.addEventListener("DOMContentLoaded", async function () {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("is-visible", "active");
-                        observer.unobserve(entry.target); // anima apenas uma vez
+                        observer.unobserve(entry.target); 
                     }
                 });
             },
-            { threshold: 0.14 } // dispara quando ~14% do elemento aparece
+            { threshold: 0.14 } 
         );
 
         elements.forEach(function (el) { observer.observe(el); });
     }
 
-    // Fallback de segurança para garantir exibição
     setTimeout(() => {
         elements.forEach((el) => el.classList.add("is-visible", "active"));
     }, 600);
@@ -459,34 +439,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // ----------------------------------------------------------------------
-    // ANIMAÇÃO EM CICLO AO ROLAR A TELA (REPETE AO SUBIR E DESCER)
+    // ANIMAÇÃO EM CICLO AO ROLAR A TELA
     // ----------------------------------------------------------------------
     const elementosCiclo = document.querySelectorAll(".animar-ciclo");
 
     const observerCiclo = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            // Quando aparece na tela
-            entry.target.classList.add("visivel");
-            
-            // Se essa seção contiver contadores, dispara a animação deles!
-            if (entry.target.querySelector(".contador-numero") || entry.target.classList.contains("contador-numero")) {
-                animarContadores();
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visivel");
+                if (entry.target.querySelector(".contador-numero") || entry.target.classList.contains("contador-numero")) {
+                    animarContadores();
+                }
+            } else {
+                entry.target.classList.remove("visivel");
             }
-        } else {
-            // Quando sai da tela, remove para reiniciar o ciclo se quiser
-            entry.target.classList.remove("visivel");
-        }
+        });
+    }, {
+        threshold: 0.15 
     });
-}, {
-    threshold: 0.15 
-});
 
-elementosCiclo.forEach((el) => observerCiclo.observe(el));
+    elementosCiclo.forEach((el) => observerCiclo.observe(el));
 });
 
 function animarContadores() {
-    const numeros = document.querySelectorAll(".contador-numero"); // coloque essa classe nos números (+5000, etc)
+    const numeros = document.querySelectorAll(".contador-numero");
     
     numeros.forEach((num) => {
         const valorFinal = parseInt(num.getAttribute("data-valor"), 10);
@@ -507,10 +483,8 @@ function animarContadores() {
 }
 
 /* =========================================================
-   FAQ — Adote Amigo (Versão Unificada Lovable)
-   Acordeão acessível, animação ao rolar e abertura por hash.
+   FAQ — Adote Amigo
    ========================================================= */
-
 (() => {
   "use strict";
 
@@ -518,7 +492,6 @@ function animarContadores() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let highlightTimer;
 
-  // Mantém somente uma pergunta aberta por vez e gerencia atributos de acessibilidade.
   function setCardState(card, shouldOpen) {
     const trigger = card.querySelector(".faq-trigger");
     const panel = card.querySelector(".faq-panel");
@@ -548,13 +521,11 @@ function animarContadores() {
     updateUrl(card, willOpen);
   }
 
-  // Vincula o evento de clique nos triggers das perguntas da FAQ
   cards.forEach((card) => {
     const trigger = card.querySelector(".faq-trigger");
     trigger?.addEventListener("click", () => toggleCard(card));
   });
 
-  // Abre e destaca o item indicado em links de âncora via URL (ex: faq.html#como-adotar).
   function openFromHash() {
     const id = decodeURIComponent(window.location.hash.slice(1));
     const target = cards.find((card) => card.id === id);
@@ -582,7 +553,6 @@ function animarContadores() {
   window.addEventListener("hashchange", openFromHash);
   openFromHash();
 
-  // Revela os elementos com a classe .reveal conforme entram na tela.
   const revealItems = document.querySelectorAll(".reveal");
 
   if (reduceMotion.matches || !("IntersectionObserver" in window)) {

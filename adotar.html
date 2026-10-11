@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campanha de Adoção - Adote Amigo</title>
-    <link rel="icon" type="image/png" href="imagens/logo.png">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adotar — Adote Amigo</title>
+  <meta name="description" content="Vitrine de pets de ONGs de todo o Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="adocao.css" />
 </head>
 <body>
-
-<header class="navbar">
+  <header class="navbar">
     <div class="logo">
       <a href="index.html">
         <img src="imagens/logo.png" alt="Adote Amigo">
@@ -31,57 +33,70 @@
         <a href="contato.html">Contato</a>
     </nav>
     <div class="actions">
-        <a href="doar.html" class="btn-doar-nav">Doe Agora</a>
+        <a href="doar.html" class="btn-doar-nav">Apoiar instituições</a>
         <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
         <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
 </header>
 
-<main class="campanha-container">
-    <aside class="sidebar-filtros">
-        <h3>Filtros</h3>
-        <button class="btn-limpar-filtros">Limpar todos</button>
-
-        <div class="grupo-filtro">
-            <label>Estado*</label>
-            <select id="filtro-estado">
-                <option value="">Selecione</option>
-                <option value="SP">São Paulo (SP)</option>
-                <option value="RJ">Rio de Janeiro (RJ)</option>
-            </select>
-        </div>
-
-        <div class="grupo-filtro">
-            <label>Cidade*</label>
-            <select id="filtro-cidade">
-                <option value="">Selecione</option>
-            </select>
-        </div>
-
-        <div class="grupo-filtro">
-            <label>Unidade de Adoção</label>
-            <select id="filtro-bairro">
-                <option value="">Selecione</option>
-            </select>
-        </div>
-    </aside>
-
-    <section class="conteudo-pets">
-        <div class="banner-campanha-texto">
-            <h1>Campanha de Adoção</h1>
-            <p>Uma seleção especial de peludinhos que buscam um lar para chamar de seu. Não encontrou seu pet aqui ainda? Preencha o formulário de intenção.</p>
-        </div>
-        <h2>Pets disponíveis</h2>
-        
-        <!-- O JS preencherá esta div com os dados do Firestore -->
-        <div class="pets-grid" id="pets-grid">
-            <p class="loading-pets">Carregando peludinhos...</p>
-        </div>
+  <main class="container">
+    <section class="intro">
+      <h1>Encontre seu novo amigo</h1>
+      <p>Pets de ONGs parceiras de todo o Brasil, em um só lugar.</p>
     </section>
-</main>
 
-<!-- Conexão com o Firebase e Script Dinâmico -->
-<script type="module" src="app.js"></script>
+    <!-- Filtros (AdoptionFilters) -->
+    <form id="filters" class="filters" aria-label="Filtros de adoção">
+      <label>Espécie
+        <select name="species">
+          <option value="">Todas</option>
+          <option value="cachorro">Cachorro</option>
+          <option value="gato">Gato</option>
+        </select>
+      </label>
+      <label>Porte
+        <select name="size">
+          <option value="">Todos</option>
+          <option value="pequeno">Pequeno</option>
+          <option value="medio">Médio</option>
+          <option value="grande">Grande</option>
+        </select>
+      </label>
+      <label>Estado
+        <select name="state">
+          <option value="">Todos</option>
+          <option>BA</option><option>MG</option><option>PR</option>
+          <option>RJ</option><option>RS</option><option>SP</option>
+        </select>
+      </label>
+      <label>Cidade
+        <select name="city" disabled><option value="">Escolha o estado</option></select>
+      </label>
+      <button type="reset" class="btn-ghost">Limpar</button>
+    </form>
 
+    <!-- Listagem (PetList) -->
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <ul id="pet-list" class="pet-grid"></ul>
+    <div id="sentinel" aria-hidden="true"></div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+      <p>Conectando pessoas, ONGs e novos começos.</p>
+    </div>
+
+    <div class="footer-support">
+  <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+  <a href="mailto:contato.adoteamigo@://gmail.com" class="btn-footer-support" target="_blank">
+   📧 Fale com o Suporte
+  </a>
+</div>
+  </div>
+</footer>
+
+<script type="module" src="adocao.js"></script>
 </body>
 </html>

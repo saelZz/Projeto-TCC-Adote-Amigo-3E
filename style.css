@@ -20,21 +20,21 @@
   --soft-shadow: 0 18px 50px rgba(7, 43, 84, 0.1);
   --header-shadow: 0 4px 24px rgba(7, 43, 84, 0.08);
 
-  /* Variáveis específicas do FAQ integradas ao tema */
+  /* Variáveis específicas da Adoção e do FAQ integradas ao tema */
   --faq-primary: #0C3C75;
   --faq-brand-deep: #072B54;
   --faq-highlight: #ff8a00;
-  --faq-highlight-hover: #e07a00;
+  --faq-highlight-hover: #f89200;
   --faq-highlight-foreground: #0D1B2D;
   --faq-surface: #F2F7FC;
   --faq-card: #ffffff;
   --faq-text: #152131;
-  --faq-muted: #5F6A77;
-  --faq-border: #DAE2EB;
+  --faq-muted: #5d6b7c;
+  --faq-border: #dde6f0;
   --faq-brand-soft: #D8EAFF;
   --faq-focus: #ff8a00;
   --faq-radius: 16px;
-  --faq-shadow: 0 4px 20px -10px rgb(7 43 84 / 16%);
+  --faq-shadow: 0 8px 24px rgba(12, 60, 117, .08);
   --faq-shadow-active: 0 14px 34px -14px rgb(7 43 84 / 30%);
   --faq-font-body: "Plus Jakarta Sans", Arial, sans-serif;
   --faq-font-title: "Manrope", Arial, sans-serif;
@@ -98,11 +98,12 @@ a {
    2. NAVBAR & NAVEGAÇÃO
    ========================================================================== */
 .navbar,
-.navbar-amarela-oficial {
+.navbar-amarela-oficial,
+.topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 60px;
+  padding: 18px 20px;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   box-shadow: var(--header-shadow);
@@ -114,9 +115,22 @@ a {
 
 .logo img {
   height: 65px;
+  left: 15px;
   display: block;
   position: relative;
   z-index: 2;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--highlight-hover);
 }
 
 .logo, .navbar img, .nav-brand img {
@@ -760,7 +774,6 @@ a:focus {
     box-shadow: 0 4px 15px rgba(216, 130, 2, 0.2);
 }
 
-/* Ícone da seta com transição suave */
 .btn-secundario-animado svg {
     transition: transform 0.3s ease;
 }
@@ -776,7 +789,6 @@ a:focus {
     transform: translateX(5px);
 }
 
-/* Efeito Active (Clique) */
 .btn-secundario-animado:active {
     transform: translateY(1px);
     box-shadow: 0 3px 10px rgba(47, 79, 159, 0.2);
@@ -912,7 +924,7 @@ a:focus {
 }
 
 /* ==========================================================================
-   10. ESTILOS ESPECÍFICOS DA FAQ (Integrados do Lovable)
+   10. ESTILOS ESPECÍFICOS DA FAQ
    ========================================================================== */
 .faq-section {
   padding: 80px 20px;
@@ -1091,10 +1103,144 @@ a:focus {
 }
 
 /* ==========================================================================
-   11. RESPONSIVIDADE / MEDIA QUERIES (Mobile Geral)
+   11. VITRINE DE ADOÇÃO, FILTROS & CARDS (Integrado)
+   ========================================================================== */
+.intro h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.intro p { color: var(--faq-muted); }
+.demo-badge { display: inline-block; background: #fff4d6; color: #7a4d00; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+
+.filters { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; background: var(--faq-card); padding: 18px; border-radius: var(--faq-radius); box-shadow: var(--faq-shadow); margin: 24px 0; }
+.filters label { display: flex; flex-direction: column; gap: 6px; font-size: .8rem; font-weight: 700; color: var(--primary); }
+.filters select { padding: 10px 12px; border: 1px solid var(--faq-border); border-radius: 10px; font: inherit; background: #fff; }
+.filters select:focus { outline: 2px solid var(--highlight); }
+.btn-ghost { grid-column: span 2; align-self: end; padding: 11px; border: 2px solid var(--primary); background: transparent; color: var(--primary); font-weight: 700; border-radius: 10px; cursor: pointer; transition: .2s; }
+.btn-ghost:hover { background: var(--primary); color: #fff; }
+@media (min-width: 768px) {
+  .filters { grid-template-columns: repeat(4, 1fr) auto; align-items: end; }
+  .btn-ghost { grid-column: auto; }
+}
+
+.pets-grid, .pet-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Aumentou de 240/250px para 280px */
+  gap: 24px; /* Mais espaçamento elegante entre os cards */
+  max-width: 1200px; /* Garante que a grelha respira melhor na tela */
+  margin: 0 auto;
+}
+.pet-card { background: var(--faq-card); border: 1px solid var(--faq-border); border-radius: var(--faq-radius); overflow: hidden; box-shadow: var(--faq-shadow); transition: transform .25s, box-shadow .25s; animation: fadeUp .4s ease both; }
+.pet-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(12, 60, 117, .14); }
+.pet-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: var(--faq-border); }
+.pet-body { padding: 16px; }
+.pet-body h2 { margin: 0; font-family: var(--font-display); font-size: 1.15rem; color: var(--primary); }
+.pet-meta { color: var(--faq-muted); font-size: .9rem; margin: 6px 0 14px; }
+.pet-tag { display: inline-block; background: #e8f0fa; color: var(--primary); font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-right: 6px; }
+.pet-btn { display: block; margin-top: 14px; text-align: center; background: var(--highlight); color: var(--brand-deep); font-weight: 800; padding: 10px; border-radius: 10px; text-decoration: none; transition: .2s; }
+.pet-btn:hover { background: var(--highlight-hover); color: #ffffff; }
+
+.status { text-align: center; color: var(--faq-muted); min-height: 1.5em; }
+#sentinel { height: 1px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .pet-card { animation: none; transition: none; } }
+
+/* =========================================================
+   12. BLOCO HISTÓRIA & PAINEL COMPLEMENTAR
+   ========================================================= */
+.bloco-historia-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+}
+
+.meu-botao-historia {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #0c3c75;
+  color: #ffffff;
+  padding: 16px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(12, 60, 117, 0.25), 0 0 0 0px #ff8a00;
+  transition: all 0.3s ease;
+  z-index: 2;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.painel-pets-complementar {
+  width: 90%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  background-color: #072B54;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 10px 20px rgba(12, 60, 117, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.painel-pets-complementar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: transform 0.4s ease;
+}
+
+@media (min-width: 769px) {
+  .bloco-historia-container:hover .painel-pets-complementar {
+    height: 110px;
+    opacity: 1;
+    margin-top: -5px;
+    padding: 10px;
+  }
+
+  .bloco-historia-container:hover .meu-botao-historia {
+    transform: translateY(-2px);
+    background-color: #072B54;
+    box-shadow: 0 8px 20px rgba(12, 60, 117, 0.35), 0 0 0 4px #ff8a00;
+  }
+
+  .bloco-historia-container:hover .painel-pets-complementar img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 768px) {
+  .painel-pets-complementar {
+    height: 110px;
+    opacity: 1;
+    margin-top: -5px;
+    padding: 10px;
+  }
+
+  .meu-botao-historia {
+    box-shadow: 0 4px 12px rgba(12, 60, 117, 0.25), 0 0 0 4px #ff8a00, 0 0 15px rgba(255, 138, 0, 0.5);
+  }
+}
+
+/* ==========================================================================
+   13. RESPONSIVIDADE / MEDIA QUERIES (Mobile Geral)
    ========================================================================== */
 @media (max-width: 768px) {
-  .navbar {
+  .navbar,
+  .navbar-amarela-oficial,
+  .topbar {
     padding: 10px 15px;
     flex-wrap: nowrap;
     justify-content: space-between;

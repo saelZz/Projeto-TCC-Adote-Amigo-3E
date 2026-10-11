@@ -1,0 +1,437 @@
+/* ============ Adote Amigo — Vitrine de Adoção ============ */
+:root {
+  --primary: #0c3c75;
+  --deep: #072b54;
+  --highlight: #ffaf00;
+  --highlight-hover: #f89200;
+  --bg: #f2f7fc;
+  --card: #ffffff;
+  --text: #1c2a3a;
+  --muted: #5d6b7c;
+  --border: #dde6f0;
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(12, 60, 117, .08);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Manrope, sans-serif; background: var(--bg); color: var(--text); }
+h1 { font-family: Sora, sans-serif; color: var(--primary); }
+
+.topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 18px 20px; position: sticky; top: 0; z-index: 10; }
+.logo { font-family: Sora, sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--primary); text-decoration: none; }
+.logo span { color: var(--highlight-hover); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 64px; }
+.intro h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.intro p { color: var(--muted); }
+.demo-badge { display: inline-block; background: #fff4d6; color: #7a4d00; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+
+/* Filtros */
+.filters { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; background: var(--card); padding: 18px; border-radius: var(--radius); box-shadow: var(--shadow); margin: 24px 0; }
+.filters label { display: flex; flex-direction: column; gap: 6px; font-size: .8rem; font-weight: 700; color: var(--primary); }
+.filters select { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; font: inherit; background: #fff; }
+.filters select:focus { outline: 2px solid var(--highlight); }
+.btn-ghost { grid-column: span 2; align-self: end; padding: 11px; border: 2px solid var(--primary); background: transparent; color: var(--primary); font-weight: 700; border-radius: 10px; cursor: pointer; transition: .2s; }
+.btn-ghost:hover { background: var(--primary); color: #fff; }
+@media (min-width: 768px) {
+  .filters { grid-template-columns: repeat(4, 1fr) auto; align-items: end; }
+  .btn-ghost { grid-column: auto; }
+}
+
+/* Grade de cards responsiva */
+.pet-grid { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: grid; 
+  gap: 24px; 
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+}
+
+.pet-card-wrapper {
+  position: relative;
+}
+
+/* CARD PRINCIPAL */
+.pet-card { 
+  position: relative;
+  background: var(--card); 
+  border: 1px solid var(--border); 
+  border-radius: var(--radius); 
+  overflow: hidden; 
+  box-shadow: var(--shadow); 
+  transition: transform .3s ease, box-shadow .3s ease; 
+  animation: fadeUp .4s ease both; 
+}
+
+.pet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(12, 60, 117, .14); 
+}
+
+/* Container da Imagem com efeito de zoom */
+.pet-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+.pet-card-img { 
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
+  display: block; 
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pet-card-image-wrapper:hover .pet-card-img {
+  transform: scale(1.12);
+}
+
+/* Badge Discreta para Espiar Pet */
+.hover-hint-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  opacity: 0.85;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+}
+
+.pet-card-image-wrapper:hover .hover-hint-badge {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Corpo do Card */
+.pet-body { 
+  padding: 16px; 
+}
+
+.pet-body h2 { 
+  margin: 0; 
+  font-family: Sora, sans-serif; 
+  font-size: 1.15rem; 
+  color: var(--primary); 
+}
+
+.pet-meta { 
+  color: var(--muted); 
+  font-size: .88rem; 
+  margin: 4px 0 12px; 
+}
+
+/* Container flexível das tags */
+.pet-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 14px;
+}
+
+.pet-tag { 
+  display: inline-block; 
+  background: #e8f0fa; 
+  color: var(--primary); 
+  font-size: .75rem; 
+  font-weight: 700; 
+  padding: 4px 10px; 
+  border-radius: 999px; 
+}
+
+/* Tag de Gênero — Macho e Fêmea */
+.pet-tag-male {
+  background-color: #e0f2fe !important;
+  color: #0284c7 !important;
+  font-weight: 600;
+}
+
+.pet-tag-female {
+  background-color: #ffe4e6 !important;
+  color: #e11d48 !important;
+  font-weight: 600;
+}
+
+/* Bloco do Abrigo — Frase em cima e Logo Centralizada */
+.pet-shelter-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  text-align: center;
+}
+
+.shelter-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.shelter-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;     /* Largura fixa padrão para qualquer logo */
+  height: 40px;     /* Altura fixa padrão */
+  margin: 0 auto;
+}
+
+/* Imagem da Logo 100% Responsiva à Caixa Padronizada */
+.shelter-logo-centered {
+  max-width: 50%;
+  max-height: 60%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: transparent !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease;
+
+  /* Sua posição ajustada (substitua pelo valor de pixels que você escolheu) */
+  transform: translateX(-15px); 
+}
+
+/* Efeito ao passar o mouse: Mantém a posição E aplica o zoom */
+.shelter-logo-centered:hover {
+  /* Mantém o mesmo translateX e adiciona o scale */
+  transform: translateX(-15px) scale(1.08); 
+}
+
+.pet-btn { 
+  display: block; 
+  width: 100%;
+  text-align: center; 
+  background: var(--highlight); 
+  color: var(--deep); 
+  font-weight: 800; 
+  padding: 10px; 
+  border: none;
+  border-radius: 10px; 
+  text-decoration: none; 
+  cursor: pointer;
+  transition: .2s; 
+}
+
+.pet-btn:hover { 
+  background: var(--highlight-hover); 
+}
+
+/* ============================================================
+ * MODAL CENTRALIZADO CONTROLADO POR JS
+ * ============================================================ */
+
+.pet-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  pointer-events: none;
+}
+
+.pet-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.pet-modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  overflow: hidden;
+  transform: scale(0.92);
+  transition: transform 0.25s ease;
+}
+
+.pet-modal-overlay.active .pet-modal-container {
+  transform: scale(1);
+}
+
+/* Botão Fechar (X) — Resposta instantânea e prioritária */
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1000;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background: #f1f5f9;
+  transform: scale(1.1);
+  color: #ef4444;
+}
+
+.modal-left-media {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  background: #f3f4f6;
+}
+
+.modal-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-right-info {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-ong-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--highlight-hover);
+  letter-spacing: 0.5px;
+}
+
+.modal-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-row h3 {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.modal-gender-icon {
+  font-size: 1.4rem;
+}
+
+.modal-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.spec-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.spec-value {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.modal-actions-row {
+  margin-top: 16px;
+}
+
+.pet-btn-adopt {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--highlight);
+  color: var(--deep);
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.pet-btn-adopt:hover {
+  background: var(--highlight-hover);
+}
+
+/* RESPONSIVO MOBILE */
+@media (max-width: 640px) {
+  .pet-modal-container {
+    grid-template-columns: 1fr;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .modal-left-media {
+    height: 220px;
+    min-height: 220px;
+  }
+  .hover-hint-badge {
+    display: none;
+  }
+}
+
+/* Utilitários */
+.status { text-align: center; color: var(--muted); min-height: 1.5em; }
+#sentinel { height: 1px; }
+
+@keyframes fadeUp { 
+  from { opacity: 0; transform: translateY(12px); } 
+  to { opacity: 1; transform: none; } 
+}
+
+@media (prefers-reduced-motion: reduce) { 
+  .pet-card { animation: none; transition: none; } 
+}
+
+/* Alternância dos botões Desktop vs Mobile */
+.desktop-btn {
+  display: block !important;
+}
+
+.mobile-more-btn {
+  display: none !important;
+}
+
+/* No celular: oculta o botão normal e exibe o "Mais informações" */
+@media (max-width: 768px) {
+  .desktop-btn {
+    display: none !important;
+  }
+  .mobile-more-btn {
+    display: block !important;
+  }
+}
