@@ -45,7 +45,7 @@
     </nav>
 
     <div class="actions">
-      <a href="doar.html" class="btn-doar-nav">Apoiar instituições</a>
+      <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
       <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
@@ -205,7 +205,8 @@
     <img src="imagens/patinha.png" alt="Cachorrinho e Gatinho" />
   </div>
 
-    </div> <!-- Fim do container -->
+        </div> <!-- Fim do bloco-historia-container -->
+    </div> <!-- Fim do container (CORREÇÃO: este </div> estava faltando) -->
 </section>
 
     <!-- NÚMEROS -->
@@ -296,12 +297,16 @@
 
     <div class="footer-support">
   <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-  <a href="mailto:contato.adoteamigo@://gmail.com" class="btn-footer-support" target="_blank">
+  <!-- CORREÇÃO: o e-mail estava com "://" no meio (contato.adoteamigo@://gmail.com), o que quebrava o link -->
+  <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
    📧 Fale com o Suporte
   </a>
 </div>
   </div>
 </footer>
+
+  <!-- NOVO: menu hambúrguer para telas pequenas (arquivo menu-mobile.js) -->
+  <script src="menu-mobile.js"></script>
 
   <script type="module" src="script.js"></script>
 
