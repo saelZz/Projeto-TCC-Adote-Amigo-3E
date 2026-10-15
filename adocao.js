@@ -1,10 +1,3 @@
-/**
- * ============================================================
- *  Adote Amigo — Vitrine de adoção
- *  Junta os 3 "componentes": PetCard, AdoptionFilters e PetList
- *  com scroll infinito (IntersectionObserver).
- * ============================================================
- */
 import { isDemoMode } from "./firebase-config.js";
 import { fetchPets, fetchCitiesByState, formatAge } from "./pets-service.js";
 
@@ -64,7 +57,9 @@ function PetCard(pet) {
           </div>
         </div>
 
-        <a class="pet-btn desktop-btn" href="pet.html?id=${encodeURIComponent(pet.id)}">Quero conhecer</a>
+        <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
+  Quero conhecer
+</a>
         <button class="pet-btn mobile-more-btn">Mais informações</button>
       </div>
     </div>
@@ -115,7 +110,9 @@ function PetCard(pet) {
           </div>
 
           <div class="modal-actions-row">
-            <a class="pet-btn-adopt" href="pet.html?id=${encodeURIComponent(pet.id)}">Quero Conhecer</a>
+            <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
+  Quero conhecer
+</a>
           </div>
         </div>
       </div>
