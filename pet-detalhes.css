@@ -19,3 +19,40 @@ dialog{border:0;max-width:calc(100% - 32px);color:var(--foreground)}dialog::back
 @media(max-width:760px){.navbar{padding:12px 20px}.mobile-toggle{display:grid}.menu{display:none;grid-column:1/-1;flex-direction:column;align-items:flex-start;padding:8px 0 14px;gap:20px}.menu.open{display:flex}.dropdown-content{position:static;width:auto;box-shadow:none;margin-top:10px}.page-intro{margin:0;padding:16px 20px}.editorial-label{font-size:9px;gap:6px}.demo-label{font-size:9px}.pet-stage{height:auto;aspect-ratio:4/3}.pet-photo{object-position:center}.photo-shade{background:linear-gradient(0deg,color-mix(in oklab,var(--background) 96%,transparent),color-mix(in oklab,var(--background) 45%,transparent) 21%,transparent 50%)}.pet-heading{left:20px;top:auto;bottom:15px;translate:0 0;max-width:65%}.hello{display:none}h1{font-size:18px;line-height:1.15}h1 br{display:none}h1>span{font-size:44px;display:block}.location{margin-top:7px;font-size:11px;gap:4px}.location svg{width:14px;height:14px}.gallery-top{right:14px;top:14px}.glass-button{width:36px;height:36px}.glass-button svg{width:18px;height:18px}.gallery-controls{right:14px;bottom:18px;gap:5px;flex-wrap:wrap;max-width:140px}.photo-counter{min-width:50px;padding:5px 7px;font-size:10px}.play-control{position:absolute;bottom:45px;right:0;margin:0}.meet-strip{grid-template-columns:1fr;margin:0;padding:28px 20px 24px;gap:26px}.pet-summary h2{font-size:24px;margin-top:14px}.pet-summary h2 br{display:none}.traits{margin-top:14px}.shelter-action{border-left:0;border-top:1px solid var(--border);padding:24px 0 0}.shelter-heading{margin-bottom:14px}.shelter-action .cta{display:none}.shelter-action .cta-note{text-align:left;font-size:11px;margin:0}.small-label{font-size:8px}.closing-line{margin:0 20px;padding:20px 0;gap:8px;font-size:10px}.closing-line p{max-width:260px}.footer{padding:24px 20px calc(110px + env(safe-area-inset-bottom))}.footer>div{flex-direction:column;align-items:flex-start;gap:8px}.mobile-adopt{display:block;position:fixed;bottom:0;left:0;right:0;z-index:15;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:color-mix(in oklab,var(--background) 96%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--border)}.mobile-adopt .cta{min-height:52px;font-size:13px;padding:14px 18px}.link-dialog{padding:26px}.photo-dialog img{max-width:92vw}}
 @media(max-width:360px){.editorial-label{font-size:8px}.page-intro{padding-left:16px;padding-right:16px}.pet-heading{left:16px}h1>span{font-size:38px}.gallery-controls{right:10px}.meet-strip{padding-left:16px;padding-right:16px}.pet-summary h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.pet-photo{transform:none}.motion-ready .reveal{opacity:1;transform:none}}
+
+/* Refinamento da edição: fotos selecionáveis, assinatura e controles unificados. */
+:root{--gallery-shadow:0 4px 18px color-mix(in oklab,var(--primary) 18%,transparent)}
+.skip-link{color:var(--primary)}
+.editorial-label,.demo-label,.small-label{font-size:11px}
+.cta-note{font-size:12px}
+h1>span{position:relative;width:fit-content;padding-bottom:8px}
+h1>span:after{content:'';position:absolute;bottom:0;left:0;width:68%;height:4px;background:var(--highlight);border-radius:4px;transform-origin:left;animation:signature-in 1.2s var(--ease) .3s both}
+.gallery-controls{padding:7px;border:1px solid var(--border);border-radius:40px;background:color-mix(in oklab,var(--background) 92%,transparent);backdrop-filter:blur(12px);box-shadow:var(--gallery-shadow);gap:4px}
+.gallery-controls .glass-button{background:transparent;border-color:transparent}
+.gallery-controls .glass-button:hover,.gallery-controls .glass-button:focus-visible{background:var(--highlight)}
+.gallery-controls .photo-counter{background:transparent}
+.gallery-controls .play-control{margin-left:2px;border-left:1px solid var(--border);border-radius:50%}
+.gallery-controls .play-control[aria-pressed=true]{background:var(--highlight)}
+.photo-thumbnails{position:absolute;left:50%;bottom:26px;translate:-50% 0;display:flex;gap:10px}
+.photo-thumbnail{width:64px;height:48px;flex-shrink:0;padding:0;overflow:hidden;border:2px solid var(--background);border-radius:8px;box-shadow:var(--gallery-shadow);background:var(--surface-soft);opacity:.7;transition:opacity .25s,transform .3s var(--ease),border-color .25s}
+.photo-thumbnail img{width:100%;height:100%;object-fit:cover}
+.photo-thumbnail.is-selected{border-color:var(--highlight);opacity:1;transform:translateY(-4px)}
+.photo-thumbnail:hover{opacity:1;transform:translateY(-4px)}
+.shelter-action{border-left:3px solid var(--highlight);transition:border-color .3s}
+.shelter-symbol{background:var(--surface-soft);border-color:var(--highlight)}
+.shelter-action:hover .shelter-symbol{color:var(--primary-hover)}
+.traits span{transition:transform .3s var(--ease)}
+.traits span:hover{transform:translateY(-2px)}
+@keyframes signature-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(max-width:760px){
+ .page-intro{align-items:flex-start}.editorial-label{font-size:10px;max-width:195px}.demo-label{font-size:10px;text-align:right;max-width:95px}
+ .pet-stage{aspect-ratio:auto;height:440px}.pet-photo{object-position:center 30%}
+ .photo-thumbnails{left:14px;top:14px;bottom:auto;translate:0;gap:8px}.photo-thumbnail{width:48px;height:40px}.photo-thumbnail.is-selected{transform:none}
+ .pet-heading{bottom:87px;max-width:calc(100% - 40px)}
+ .gallery-controls{right:auto;left:50%;bottom:16px;translate:-50% 0;max-width:none;flex-wrap:nowrap;gap:7px;padding:6px}
+ .gallery-controls .glass-button{width:40px;height:40px}.gallery-controls .play-control{position:static;margin-left:2px}.photo-counter{min-width:56px;font-size:12px}
+ .small-label{font-size:10px;line-height:1.6}.shelter-action{border-left:0;border-top:2px solid var(--highlight)}
+ .closing-line{font-size:12px}.closing-line p{max-width:290px}
+}
+@media(max-width:360px){.pet-stage{height:390px}.editorial-label{font-size:9px}.demo-label{font-size:10px}h1>span{font-size:42px}.pet-heading{bottom:84px}}
+@media(prefers-reduced-motion:reduce){.photo-thumbnail,.photo-thumbnail.is-selected,.photo-thumbnail:hover{transform:none}h1>span:after{animation:none}}

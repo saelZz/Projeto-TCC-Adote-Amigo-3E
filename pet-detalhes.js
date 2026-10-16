@@ -16,7 +16,7 @@ function initOfficialLinks() {
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.setAttribute('aria-label', 'Conhecer Abelard no site oficial do abrigo (abre em nova aba)');
+      link.setAttribute('aria-label', 'Conhecer Safira no site oficial do abrigo (abre em nova aba)');
     } else {
       link.addEventListener('click', (event) => {
         event.preventDefault();
@@ -36,6 +36,11 @@ function initGallery() {
     photos.forEach((photo, n) => {
       photo.classList.toggle('is-active', n === index);
       photo.setAttribute('aria-hidden', String(n !== index));
+    });
+    document.querySelectorAll('.photo-thumbnail').forEach((button) => {
+      const selected = Number(button.dataset.photo) === index;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
     });
     $('#photo-number').textContent = String(index + 1).padStart(2, '0');
     $('#photo-dialog img').src = photos[index].src;
@@ -57,6 +62,9 @@ function initGallery() {
   // Troca automática opcional: nenhum movimento automático imposto.
   $('#previous').addEventListener('click', () => { go(index - 1); schedule(); });
   $('#next').addEventListener('click', () => { go(index + 1); schedule(); });
+  document.querySelectorAll('.photo-thumbnail').forEach((button) => {
+    button.addEventListener('click', () => { go(Number(button.dataset.photo)); schedule(); });
+  });
   play.addEventListener('click', () => setPlaying(!playing));
   gallery.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); go(index + (event.key === 'ArrowRight' ? 1 : -1)); schedule(); }

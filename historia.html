@@ -13,10 +13,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="historia.css">
-  <script src="historia.js" defer></script>
-  <script src="menu-mobile.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
+
+  <div id="preloader" class="preloader-overlay">
+  <div class="preloader-content">
+
+    <video autoplay loop muted playsinline class="preloader-video">
+      <source src="assets/logo-animada.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos.
+    </video>
+    <p class="preloader-text">Conheça nossa História! 🐶</p>
+  </div>
+</div>
+
   <!-- NAVBAR (igual ao das outras páginas do site) -->
   <header class="navbar">
     <div class="logo">
@@ -25,7 +37,7 @@
       </a>
     </div>
 
-    <nav class="menu" aria-label="Navegação principal">
+    <nav class="menu">
       <a href="index.html">Início</a>
       <a href="historia.html">Quem somos nós?</a>
       <div class="dropdown">
@@ -152,5 +164,10 @@
       </div>
     </div>
   </footer>
+
+  <script type="module" src="historia.js"></script>
+  <script src="menu-mobile.js" defer></script>
+  <script src="firebase-config.js" defer></script>
+
 </body>
 </html>

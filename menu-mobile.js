@@ -1,11 +1,10 @@
 /* ==========================================================================
-   MENU MOBILE (hambúrguer)
-   Cria o botão e o painel automaticamente, copiando os links do .menu
-   que já existe no HTML. Assim você não precisa mexer no HTML do menu.
+   MENU MOBILE (hambúrguer) - Atualizado para incluir os botões de ação
    ========================================================================== */
 (function () {
   var header = document.querySelector('.navbar-amarela-oficial, .navbar, .topbar');
   var menu = document.querySelector('.menu');
+  var actions = document.querySelector('.actions'); // Pega a área dos botões do topo
 
   // Se a página não tiver cabeçalho ou menu, não faz nada
   if (!header || !menu) return;
@@ -22,7 +21,16 @@
   var painel = document.createElement('nav');
   painel.className = 'menu-mobile';
   painel.setAttribute('aria-label', 'Menu principal');
-  painel.innerHTML = menu.innerHTML;
+  
+  // Insere os links de navegação principais
+  var conteudoHtml = menu.innerHTML;
+
+  // Se houver botões na barra de cima, copia e injeta eles também no final do menu mobile
+  if (actions) {
+    conteudoHtml += '<div class="menu-mobile-actions" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border); padding-top: 15px;">' + actions.innerHTML + '</div>';
+  }
+
+  painel.innerHTML = conteudoHtml;
 
   header.appendChild(botao);
   header.appendChild(painel);
