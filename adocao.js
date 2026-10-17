@@ -4,7 +4,7 @@ import { fetchPets, fetchCitiesByState, formatAge } from "./pets-service.js";
 const listEl = document.getElementById("pet-list");
 const statusEl = document.getElementById("status");
 const form = document.getElementById("filters");
-const citySelect = form.elements.city;
+const citySelect = form ? form.elements.city : null;
 
 if (isDemoMode) {
   document.getElementById("demo-badge")?.removeAttribute("hidden");
@@ -14,6 +14,9 @@ if (isDemoMode) {
 function PetCard(pet) {
   const li = document.createElement("li");
   li.className = "pet-card-wrapper";
+
+  // Imagem e Foto do Pet
+  const imageUrl = pet.photoURL || pet.photoUrl || "imagens/placeholder.jpg";
 
   // Identificação precisa do gênero (Macho vs Fêmea)
   const rawGender = (pet.gender || pet.genero || "").toString().toLowerCase().trim();
@@ -25,11 +28,19 @@ function PetCard(pet) {
   const genderColor = isMale ? "#0284c7" : "#e11d48";
 
   // Formatação do porte
-  const rawSize = (pet.size || pet.porte || "medio").toLowerCase();
+  const rawSize = (pet.size || pet.porte || "médio").toString().toLowerCase();
   let sizeText = "Porte Médio";
   if (rawSize.includes("pequeno") || rawSize === "p") sizeText = "Porte Pequeno";
   if (rawSize.includes("grande") || rawSize === "g") sizeText = "Porte Grande";
 
+  // Formatação de Espécie
+  const rawSpecie = (pet.specie || pet.species || "Cachorro").toString().toLowerCase();
+  const specieText = rawSpecie.includes("gato") ? "Gato" : "Cachorro";
+
+  // Formatação da Idade (Aceita tanto string "Filhote" quanto número de meses)
+  const ageDisplay = pet.age ? pet.age : (pet.ageMonths ? formatAge(pet.ageMonths) : "Idade não inf.");
+
+  // Informações da ONG/Abrigo
   const ongName = pet.ongName || "Abrigo Parceiro";
   const ongLogo = pet.ongLogo || pet.logoUrl || "imagens/logo.png";
 
@@ -37,29 +48,30 @@ function PetCard(pet) {
     <!-- CARD PRINCIPAL -->
     <div class="pet-card">
       <div class="pet-card-image-wrapper">
-        <img class="pet-card-img" src="${pet.photoUrl}" alt="Foto de ${pet.name}" loading="lazy" />
+        <img class="pet-card-img" src="${imageUrl}" alt="Foto de ${pet.name || 'Pet'}" loading="lazy" />
       </div>
 
       <div class="pet-body">
-        <h2>${pet.name}</h2>
-        <p class="pet-meta">${pet.breed} · ${pet.city}/${pet.state}</p>
+        <h2>${pet.name || 'Sem nome'}</h2>
+        <p class="pet-meta">${pet.breed || 'SRD'} · ${pet.city || ''}/${pet.state || ''}</p>
         
         <div class="pet-tags-container">
-          <span class="pet-tag">${pet.species === "gato" ? "Gato" : "Cachorro"}</span>
-          <span class="pet-tag">${formatAge(pet.ageMonths)}</span>
+          <span class="pet-tag">${specieText}</span>
+          <span class="pet-tag">${ageDisplay}</span>
+          ${pet.coatColor ? `<span class="pet-tag">${pet.coatColor}</span>` : ''}
           <span class="pet-tag ${genderClass}">${genderText}</span>
         </div>
 
         <div class="pet-shelter-block">
-          <span class="shelter-label">Este pet pertence a Instituição:</span>
+          <span class="shelter-label">Este pet pertence à Instituição:</span>
           <div class="shelter-logo-container" title="${ongName}">
             <img class="shelter-logo-centered" src="${ongLogo}" alt="${ongName}" />
           </div>
         </div>
 
         <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
-  Quero conhecer
-</a>
+          Quero conhecer
+        </a>
         <button class="pet-btn mobile-more-btn">Mais informações</button>
       </div>
     </div>
@@ -70,13 +82,13 @@ function PetCard(pet) {
         <button type="button" class="modal-close-btn" aria-label="Fechar">&times;</button>
         
         <div class="modal-left-media">
-          <img class="modal-full-img" src="${pet.photoUrl}" alt="Foto de ${pet.name}" />
+          <img class="modal-full-img" src="${imageUrl}" alt="Foto de ${pet.name || 'Pet'}" />
         </div>
 
         <div class="modal-right-info">
           <span class="modal-ong-tag">${ongName.toUpperCase()}</span>
           <div class="modal-title-row">
-            <h3>${pet.name}</h3>
+            <h3>${pet.name || 'Sem nome'}</h3>
             <span class="modal-gender-icon" style="color: ${genderColor}">${genderIcon}</span>
           </div>
 
@@ -87,11 +99,11 @@ function PetCard(pet) {
             </div>
             <div>
               <span class="spec-label">Idade aprox.</span>
-              <strong class="spec-value">${formatAge(pet.ageMonths)}</strong>
+              <strong class="spec-value">${ageDisplay}</strong>
             </div>
             <div>
               <span class="spec-label">Espécie</span>
-              <strong class="spec-value">${pet.species === "gato" ? "Gato" : "Cachorro"}</strong>
+              <strong class="spec-value">${specieText}</strong>
             </div>
             <div>
               <span class="spec-label">Porte</span>
@@ -101,18 +113,18 @@ function PetCard(pet) {
 
           <div class="modal-detail-block">
             <span class="spec-label">Raça</span>
-            <strong class="spec-value">${pet.breed}</strong>
+            <strong class="spec-value">${pet.breed || 'SRD'}</strong>
           </div>
 
           <div class="modal-detail-block">
             <span class="spec-label">Local</span>
-            <strong class="spec-value">${pet.city}, ${pet.state}</strong>
+            <strong class="spec-value">${pet.city || ''}, ${pet.state || ''}</strong>
           </div>
 
           <div class="modal-actions-row">
             <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
-  Quero conhecer
-</a>
+              Quero conhecer
+            </a>
           </div>
         </div>
       </div>
@@ -128,21 +140,23 @@ function PetCard(pet) {
   let hoverTimer = null;
 
   // --- CONTROLE DE TEMPO NO HOVER (EXATOS 3 SEGUNDOS) ---
-  imageWrapper.addEventListener("mouseenter", () => {
-    if (window.innerWidth > 768) {
-      if (hoverTimer) clearTimeout(hoverTimer);
-      hoverTimer = setTimeout(() => {
-        overlay.classList.add("active");
-      }, 3000); // 3000ms = 3 segundos
-    }
-  });
+  if (imageWrapper) {
+    imageWrapper.addEventListener("mouseenter", () => {
+      if (window.innerWidth > 768) {
+        if (hoverTimer) clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(() => {
+          overlay.classList.add("active");
+        }, 3000); // 3000ms = 3 segundos
+      }
+    });
 
-  imageWrapper.addEventListener("mouseleave", () => {
-    if (hoverTimer) {
-      clearTimeout(hoverTimer);
-      hoverTimer = null;
-    }
-  });
+    imageWrapper.addEventListener("mouseleave", () => {
+      if (hoverTimer) {
+        clearTimeout(hoverTimer);
+        hoverTimer = null;
+      }
+    });
+  }
 
   // --- FECHAMENTO INSTANTÂNEO NO CLIQUE DO X OU FORA ---
   const closeModal = (e) => {
@@ -157,25 +171,29 @@ function PetCard(pet) {
     overlay.classList.remove("active");
   };
 
-  closeBtn.addEventListener("click", closeModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      closeModal(e);
-    }
-  });
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        closeModal(e);
+      }
+    });
+  }
 
   // --- SUPORTE TECLA ESC PARA FECHAR ---
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && overlay.classList.contains("active")) {
+    if (e.key === "Escape" && overlay && overlay.classList.contains("active")) {
       closeModal();
     }
   });
 
   // --- MOBILE ---
-  mobileBtn.addEventListener("click", () => {
-    overlay.classList.add("active");
-  });
+  if (mobileBtn) {
+    mobileBtn.addEventListener("click", () => {
+      overlay.classList.add("active");
+    });
+  }
 
   return li;
 }
@@ -186,51 +204,73 @@ const state = { filters: {}, cursor: null, hasMore: true, loading: false };
 async function loadMore() {
   if (state.loading || !state.hasMore) return;
   state.loading = true;
-  statusEl.textContent = "Carregando pets...";
+  if (statusEl) statusEl.textContent = "Buscando amiguinhos...";
+  
   try {
     const { pets, cursor, hasMore } = await fetchPets(state.filters, state.cursor);
+    
     pets.forEach((pet) => listEl.appendChild(PetCard(pet)));
     state.cursor = cursor;
     state.hasMore = hasMore;
-    statusEl.textContent = listEl.children.length === 0
-      ? "Nenhum pet encontrado com esses filtros."
-      : hasMore ? "" : "Você viu todos os pets disponíveis.";
+
+    // Remove preloader se existir
+    const preloader = document.getElementById("preloader");
+    if (preloader) preloader.classList.add("hidden");
+
+    if (statusEl) {
+      statusEl.textContent = listEl.children.length === 0
+        ? "Nenhum amiguinho encontrado com esses filtros."
+        : hasMore ? "" : "Você viu todos os pets disponíveis.";
+    }
   } catch (err) {
     console.error(err);
-    statusEl.textContent = "Não foi possível carregar os pets. Tente novamente.";
+    if (statusEl) statusEl.textContent = "Não foi possível carregar os pets. Tente novamente.";
+    const preloader = document.getElementById("preloader");
+    if (preloader) preloader.classList.add("hidden");
   } finally {
     state.loading = false;
   }
 }
 
 function resetList() {
-  listEl.innerHTML = "";
+  if (listEl) listEl.innerHTML = "";
   Object.assign(state, { cursor: null, hasMore: true });
   loadMore();
 }
 
 // Scroll infinito: carrega a próxima página quando o fim aparece
-new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) loadMore();
-}, { rootMargin: "300px" }).observe(document.getElementById("sentinel"));
+const sentinel = document.getElementById("sentinel");
+if (sentinel) {
+  new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) loadMore();
+  }, { rootMargin: "300px" }).observe(sentinel);
+}
 
 /* ---------- AdoptionFilters: reage às mudanças ---------- */
 async function updateCities(uf) {
+  if (!citySelect) return;
   citySelect.innerHTML = `<option value="">${uf ? "Todas" : "Escolha o estado"}</option>`;
   citySelect.disabled = !uf;
-  (await fetchCitiesByState(uf)).forEach((c) => citySelect.add(new Option(c, c)));
+  const cities = await fetchCitiesByState(uf);
+  cities.forEach((c) => citySelect.add(new Option(c, c)));
 }
 
-form.addEventListener("change", async (e) => {
-  if (e.target.name === "state") await updateCities(e.target.value);
-  state.filters = Object.fromEntries(new FormData(form));
-  resetList();
-});
-
-form.addEventListener("reset", () => {
-  setTimeout(async () => {
-    await updateCities("");
-    state.filters = {};
+if (form) {
+  form.addEventListener("change", async (e) => {
+    if (e.target.name === "state") await updateCities(e.target.value);
+    
+    // Obtém todos os campos preenchidos no formulário de filtros
+    const formData = new FormData(form);
+    state.filters = Object.fromEntries(formData);
+    
     resetList();
   });
-});
+
+  form.addEventListener("reset", () => {
+    setTimeout(async () => {
+      await updateCities("");
+      state.filters = {};
+      resetList();
+    });
+  });
+}

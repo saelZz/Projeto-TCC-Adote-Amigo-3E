@@ -10,20 +10,18 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="adocao.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  
 </head>
 <body>
   <!-- Tela de Carregamento (Preloader) -->
-<div id="preloader" class="preloader-overlay">
-  <div class="preloader-content">
-
-    <video autoplay loop muted playsinline class="preloader-video">
-      <source src="assets/logo-animada.mp4" type="video/mp4">
-      Seu navegador não suporta vídeos.
-    </video>
-    <p class="preloader-text">Buscando amiguinhos...</p>
+  <div id="preloader" class="preloader-overlay">
+    <div class="preloader-content">
+      <video autoplay loop muted playsinline class="preloader-video">
+        <source src="assets/logo-animada.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+      </video>
+      <p class="preloader-text">Buscando amiguinhos...</p>
+    </div>
   </div>
-</div>
 
   <header class="navbar">
     <div class="logo">
@@ -52,7 +50,7 @@
         <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
         <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
-</header>
+  </header>
 
   <main class="container">
     <section class="intro">
@@ -62,32 +60,81 @@
 
     <!-- Filtros (AdoptionFilters) -->
     <form id="filters" class="filters" aria-label="Filtros de adoção">
+      <!-- Espécie -->
       <label>Espécie
-        <select name="species">
+        <select name="specie" id="filter-specie">
           <option value="">Todas</option>
-          <option value="cachorro">Cachorro</option>
-          <option value="gato">Gato</option>
+          <option value="Cachorro">Cachorro</option>
+          <option value="Gato">Gato</option>
         </select>
       </label>
+
+      <!-- Porte -->
       <label>Porte
-        <select name="size">
+        <select name="size" id="filter-size">
           <option value="">Todos</option>
-          <option value="pequeno">Pequeno</option>
-          <option value="medio">Médio</option>
-          <option value="grande">Grande</option>
+          <option value="Pequeno">Pequeno</option>
+          <option value="Médio">Médio</option>
+          <option value="Grande">Grande</option>
         </select>
       </label>
+
+      <!-- Idade -->
+      <label>Idade
+        <select name="age" id="filter-age">
+          <option value="">Todas</option>
+          <option value="Filhote">Filhote</option>
+          <option value="Jovem">Jovem</option>
+          <option value="Adulto">Adulto</option>
+          <option value="Idoso">Idoso</option>
+        </select>
+      </label>
+
+      <!-- ONG / Abrigo -->
+      <label>Instituição Parceira
+        <select name="ongId" id="filter-shelter">
+          <option value="">Todas</option>
+          <option value="2IU5QhuEZfipHqWLjBpI">Adote Petz</option>
+          <option value="UxU8Bv2TGW5YpCh7axZG">Adotar</option>
+          <option value="PiBzD3hoONYPvuyLaCrB">Viu Meu Pet</option>
+          <option value="DIVS0g0qh2bmsVnfXwYw">Amigo Não se Compra</option>
+          <option value="rh8Nzbhe7Md1uBuQPgiE">Instituto Caramelo</option>
+        </select>
+      </label>
+
+      <!-- Pelagem / Cor -->
+      <label>Pelagem / Cor
+        <select name="coatColor" id="filter-coat">
+          <option value="">Todas</option>
+          <option value="Preto">Preto</option>
+          <option value="Branco">Branco</option>
+          <option value="Caramelo">Caramelo / Pardo</option>
+          <option value="Mesclado">Mesclado / Tricolor</option>
+          <option value="Cinza">Cinza</option>
+        </select>
+      </label>
+
+      <!-- Estado -->
       <label>Estado
-        <select name="state">
+        <select name="state" id="filter-state">
           <option value="">Todos</option>
-          <option>BA</option><option>MG</option><option>PR</option>
-          <option>RJ</option><option>RS</option><option>SP</option>
+          <option value="BA">BA</option>
+          <option value="MG">MG</option>
+          <option value="PR">PR</option>
+          <option value="RJ">RJ</option>
+          <option value="RS">RS</option>
+          <option value="SP">SP</option>
         </select>
       </label>
+
+      <!-- Cidade -->
       <label>Cidade
-        <select name="city" disabled><option value="">Escolha o estado</option></select>
+        <select name="city" id="filter-city" disabled>
+          <option value="">Escolha o estado</option>
+        </select>
       </label>
-      <button type="reset" class="btn-ghost">Limpar</button>
+
+      <button type="reset" id="btn-reset-filters" class="btn-ghost">Limpar</button>
     </form>
 
     <!-- Listagem (PetList) -->
@@ -97,25 +144,22 @@
   </main>
 
   <footer class="site-footer">
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
-      <p>Conectando pessoas, ONGs e novos começos.</p>
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+        <p>Conectando pessoas, ONGs e novos começos.</p>
+      </div>
+
+      <div class="footer-support">
+        <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+         📧 Fale com o Suporte
+        </a>
+      </div>
     </div>
+  </footer>
 
-    <div class="footer-support">
-  <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-  <a href="mailto:contato.adoteamigo@://gmail.com" class="btn-footer-support" target="_blank">
-   📧 Fale com o Suporte
-  </a>
-</div>
-  </div>
-</footer>
-
-<script type="module" src="adocao.js"></script>
-<script src="menu-mobile.js"></script>
-
-</body>
-</html>
+  <script type="module" src="adocao.js"></script>
+  <script src="menu-mobile.js"></script>
 </body>
 </html>

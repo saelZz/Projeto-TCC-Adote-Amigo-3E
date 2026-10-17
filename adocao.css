@@ -185,14 +185,14 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 260px;     /* Largura fixa padrão para qualquer logo */
-  height: 40px;     /* Altura fixa padrão */
+  width: 240px;     /* Largura fixa padrão para qualquer logo */
+  height: 50px;     /* Altura fixa padrão */
   margin: 0 auto;
 }
 
 /* Imagem da Logo 100% Responsiva à Caixa Padronizada */
 .shelter-logo-centered {
-  max-width: 50%;
+  max-width: 60%;
   max-height: 60%;
   width: auto;
   height: auto;
@@ -200,6 +200,10 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   background: transparent !important;
   border-radius: 0 !important;
   transition: transform 0.3s ease;
+  position: relative;
+  left: 13px;
+  right: -30px; 
+
 
   /* Sua posição ajustada (substitua pelo valor de pixels que você escolheu) */
   transform: translateX(-15px); 
