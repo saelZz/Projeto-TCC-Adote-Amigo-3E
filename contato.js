@@ -1,7 +1,14 @@
 (() => {
   'use strict';
 
-  const EMAIL_DESTINO = 'contato.adoteamigo@gmail.com';
+  const EMAIL_DESTINO = 'adoteamigo.tcc2026@gmail.com';
+
+  /* ENVIO DIRETO DA MENSAGEM
+     Cole aqui o endereço do formulário criado no Formspree (formspree.io), no formato
+     'https://formspree.io/f/xxxxxxxx'. Com ele preenchido, a mensagem chega no e-mail da conta
+     do Formspree sem abrir nenhum aplicativo. Se ficar vazio, o formulário abre o aplicativo
+     de e-mail da pessoa com a mensagem pronta (modo antigo). */
+  const FORM_ENDPOINT = 'https://formspree.io/f/xoejrgyw';
 
   /* ------------------------------------------------------------------
      1) Animação de entrada ao rolar a página (igual à página Quem Somos)
@@ -109,6 +116,12 @@
   }
 
   if (form) {
+    // O aviso abaixo do botão precisa descrever o que realmente acontece
+    const avisoForm = form.querySelector('.form-note');
+    if (FORM_ENDPOINT && avisoForm) {
+      avisoForm.textContent = 'Ao enviar, a sua mensagem é entregue diretamente à equipe do Adote Amigo por meio de um serviço de formulários.';
+    }
+
     // Depois que o campo foi marcado com erro, corrige a mensagem enquanto a pessoa digita
     Object.values(campos).forEach((campo) => {
       campo.el.addEventListener('input', () => {
@@ -119,7 +132,7 @@
       });
     });
 
-    form.addEventListener('submit', (evento) => {
+    form.addEventListener('submit', async (evento) => {
       evento.preventDefault();
 
       const resultados = Object.values(campos).map(validarCampo);
@@ -138,6 +151,44 @@
       const titulo = 'Adote Amigo — ' + assuntoTexto;
       const corpo = 'Nome: ' + nome + '\nE-mail para resposta: ' + email + '\n\nMensagem:\n' + mensagem;
 
+      // Modo 1: envio direto pelo Formspree (quando FORM_ENDPOINT está preenchido)
+      if (FORM_ENDPOINT) {
+        const botaoEnviar = form.querySelector('button[type="submit"]');
+        botaoEnviar.disabled = true;
+        mostrarStatus('Enviando a sua mensagem...', null);
+
+        try {
+          const dados = new FormData(form);
+          dados.set('assunto', assuntoTexto);
+          dados.set('_subject', titulo);
+
+          const resposta = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            body: dados,
+            headers: { Accept: 'application/json' }
+          });
+
+          if (resposta.ok) {
+            form.reset();
+            mostrarStatus('Mensagem enviada com sucesso. Obrigado por entrar em contato!', 'ok');
+          } else {
+            mostrarStatus(
+              'Não foi possível enviar agora. Tente novamente ou escreva para ' + EMAIL_DESTINO + '.',
+              'erro'
+            );
+          }
+        } catch (erro) {
+          mostrarStatus(
+            'Não foi possível enviar: verifique a sua conexão. Você também pode escrever para ' + EMAIL_DESTINO + '.',
+            'erro'
+          );
+        } finally {
+          botaoEnviar.disabled = false;
+        }
+        return;
+      }
+
+      // Modo 2: sem endpoint, abre o aplicativo de e-mail com a mensagem pronta
       mostrarStatus(
         'Abrimos o seu aplicativo de e-mail com a mensagem pronta. Confirme o envio por lá. ' +
         'Se nada abrir, escreva para ' + EMAIL_DESTINO + '.',
