@@ -1,121 +1,257 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Adote Amigo</title>
-
-    <link rel="icon" type="image/png" href="imagens/logo.png">
-
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fale com o Adote Amigo: tire dúvidas sobre adoção, participe como ONG parceira ou saiba como apoiar o projeto.">
+  <meta property="og:title" content="Contato — Adote Amigo">
+  <meta property="og:description" content="Dúvidas, parcerias com ONGs e formas de apoiar o projeto. Escreva para a equipe do Adote Amigo.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Contato — Adote Amigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- historia.css = base visual compartilhada (cores, cabeçalho, rodapé, topo azul, cartões). contato.css = só o que é da página de contato. -->
+  <link rel="stylesheet" href="historia.css">
+  <link rel="stylesheet" href="contato.css">
+  <script src="contato.js" defer></script>
+  <script src="menu-mobile.js" defer></script>
 </head>
-
 <body>
-
-<header class="navbar">
-
+  <!-- NAVBAR (igual ao das outras páginas do site) -->
+  <header class="navbar">
     <div class="logo">
-        <a href="index.html">
-            <img src="imagens/logo.png" alt="Adote Amigo">
-        </a>
+      <a href="index.html">
+        <img src="imagens/logo.png" alt="Adote Amigo">
+      </a>
     </div>
 
-    <nav class="menu">
-
-        <a href="index.html">Início</a>
-
-        <a href="Quem.html">Quem somos nós?</a>
-
-        <div class="dropdown">
-
-            <a href="faq.html">FAQ ▾</a>
-
-            <div class="dropdown-content">
-
-                <a href="faq.html#como-adotar">Como adotar?</a>
-
-                <a href="faq.html#precisa-pagar">Precisa pagar?</a>
-
-                <a href="faq.html#animais-vacinados">Animais vacinados?</a>
-
-                <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
-
-                <a href="faq.html#posso-ajudar">Posso ajudar?</a>
-
-            </div>
-
+    <nav class="menu" aria-label="Navegação principal">
+      <a href="index.html">Início</a>
+      <a href="historia.html">Quem somos nós?</a>
+      <div class="dropdown">
+        <a href="faq.html">FAQ ▾</a>
+        <div class="dropdown-content">
+          <a href="faq.html#como-adotar">Como adotar?</a>
+          <a href="faq.html#precisa-pagar">Precisa pagar?</a>
+          <a href="faq.html#animais-vacinados">Animais vacinados?</a>
+          <a href="faq.html#adotar-apartamento">Adotar em apartamento?</a>
+          <a href="faq.html#posso-ajudar">Posso ajudar?</a>
         </div>
-
-        <a href="contato.html">Contato</a>
-
+      </div>
+      <a href="contato.html">Contato</a>
     </nav>
 
     <div class="actions">
-        <a href="doar.html" class="btn-doar-nav">Doe Agora</a>
-        <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
-        <a href="login.html" class="btn btn-outline">Entrar</a>
+      <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
+      <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
+      <a href="login.html" class="btn btn-outline">Entrar</a>
     </div>
+  </header>
 
-</header>
+  <main>
+    <section class="hero" id="inicio">
+      <span class="paw paw-1" aria-hidden="true">🐾</span><span class="paw paw-2" aria-hidden="true">🐾</span><span class="paw paw-3" aria-hidden="true">🐾</span><span class="paw paw-4" aria-hidden="true">🐾</span>
+      <div class="container hero-copy">
+        <span class="eyebrow eyebrow-light">● Contato</span>
+        <h1>Conheça onde adotar e <mark>fale com quem cuida</mark></h1>
+        <p>O Adote Amigo reúne referências de adoção do Brasil. Aqui você encontra o contato de cada uma delas e também o da nossa equipe.</p>
+      </div>
+    </section>
 
-<section class="hero">
-    <div class="carousel">
+    <section class="section" id="instituicoes">
+      <div class="container narrow">
+        <header class="section-heading reveal">
+          <span class="eyebrow">Nossas referências</span>
+          <h2>Onde adotar e como falar com cada instituição</h2>
+          <p class="section-intro">O Adote Amigo não possui abrigos. Reunimos plataformas e ONGs de adoção conhecidas para você conhecer os animais disponíveis e entrar em contato diretamente com cada uma.</p>
+        </header>
 
-    <div class="slides">
+        <div class="ong-list">
 
-    <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.png">
-            <img src="imagens/banner1.jpg" alt="Banner 1" draggable="false">
-        </picture>
+          <!-- 1) ADOTE PETZ -->
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-adotepetz">
+                <span class="ong-logo" data-inicial="P"><img src="imagens/ong-adotepetz.png" alt=""></span>
+                <span class="ong-title"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-adotepetz"><div class="ong-panel-inner">
+              <p>Iniciativa da Petz que atua em parceria com ONGs e protetores independentes para incentivar a adoção responsável de cães e gatos. Os animais podem ser conhecidos pelo site, em lojas Petz com espaço de adoção e em feiras de adoção.</p>
+              <p><strong>Como adotar:</strong> escolha o animal no site, usando os filtros disponíveis, preencha o formulário e aguarde o contato da ONG ou do protetor responsável.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="https://adotepetz.com.br/" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+              </div>
+            </div></div>
+          </article>
 
-        <a href="adotar.html" class="link-invisivel-botao botao-slide1"></a>
-    </div>
+          <!-- 2) VIU MEU PET -->
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-viumeupet">
+                <span class="ong-logo" data-inicial="V"><img src="imagens/ong-viumeupet.png" alt=""></span>
+                <span class="ong-title"><strong>Viu Meu Pet</strong><small>Plataforma de adoção e de busca de pets perdidos</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-viumeupet"><div class="ong-panel-inner">
+              <p>Plataforma digital fundada em 2020 que une a adoção responsável à busca de animais perdidos. ONGs, protetores e pessoas divulgam animais para adoção, e quem deseja adotar encontra os pets por localização. A plataforma informa que não compactua com a comercialização de animais.</p>
+              <p><strong>Como adotar:</strong> encontre o animal na lista de adoção e use as informações de contato do anúncio.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="https://www.viumeupet.com.br/" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+                <a class="ong-link" href="https://www.instagram.com/viumeupetoficial/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
+              </div>
+            </div></div>
+          </article>
 
-    <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.png">
-            <img src="imagens/banner2.jpg" alt="Banner 2" draggable="false">
-        </picture>
+          <!-- 3) AMIGO NÃO SE COMPRA -->
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-amigonaosecompra">
+                <span class="ong-logo" data-inicial="A"><img src="imagens/ong-amigonaosecompra.png" alt=""></span>
+                <span class="ong-title"><strong>Amigo Não Se Compra</strong><small>Plataforma online de adoção</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-amigonaosecompra"><div class="ong-panel-inner">
+              <p>Plataforma online de adoção de cães e gatos. O projeto não possui abrigos nem realiza resgates: ONGs, protetores independentes e pessoas que desejam doar um animal fazem o cadastro gratuito e publicam as informações dos pets.</p>
+              <p><strong>Como adotar:</strong> procure o animal no site, clique em “quero adotar” e combine a visita com quem está cuidando dele.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="https://amigonaosecompra.com.br/" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+              </div>
+            </div></div>
+          </article>
 
-        <a href="quem.html" class="link-invisivel-botao botao-slide2"></a>
-    </div>
+          <!-- 4) INSTITUTO CARAMELO -->
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-institutocaramelo">
+                <span class="ong-logo" data-inicial="C"><img src="imagens/ong-institutocaramelo.png" alt=""></span>
+                <span class="ong-title"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-institutocaramelo"><div class="ong-panel-inner">
+              <p>ONG fundada em 2015 que atua no resgate, na reabilitação e na adoção responsável de animais em situação de abandono e maus-tratos. Mantém hospital veterinário e realiza feiras de adoção.</p>
+              <p><strong>Como adotar:</strong> nas feiras de adoção divulgadas pela imprensa, os critérios incluíam ter mais de 21 anos, apresentar documento com foto e comprovante de residência e passar por uma entrevista. Confirme as regras atuais diretamente com a instituição.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="https://www.instagram.com/instituto.caramelo/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
+                <!-- Para incluir o site oficial, copie a linha abaixo, tire os sinais de comentário e troque o endereço:
+                <a class="ong-link" href="COLOQUE-AQUI-O-ENDERECO-DO-SITE" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+                -->
+              </div>
+            </div></div>
+          </article>
 
-    <div class="slide">
-        <picture>
-            <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.png">
-            <img src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
-        </picture>
-        
-        <a href="adotar.html" class="link-invisivel-botao botao-slide3"></a>
-    </div>
-</div>
-    
-        <div>
-    
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
+          <!-- 5) MODELO PARA A QUINTA INSTITUIÇÃO ("Adotar")
+               Copie este bloco inteiro, tire os sinais de comentário e preencha com dados confirmados no site oficial.
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-adotar">
+                <span class="ong-logo" data-inicial="A"><img src="imagens/ong-adotar.png" alt=""></span>
+                <span class="ong-title"><strong>NOME DA INSTITUIÇÃO</strong><small>TIPO (ex.: Plataforma de adoção, ONG)</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-adotar"><div class="ong-panel-inner">
+              <p>DESCRIÇÃO CURTA, baseada no site oficial.</p>
+              <p><strong>Como adotar:</strong> PASSO A PASSO CURTO.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="ENDERECO-DO-SITE" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+              </div>
+            </div></div>
+          </article>
+          -->
 
-        <div class="carousel-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
         </div>
+
+        <p class="ong-nota">As informações acima foram reunidas a partir dos sites e canais divulgados por cada instituição e de reportagens da imprensa. Os critérios de adoção podem mudar, por isso confirme sempre diretamente com a instituição. Logotipos e marcas pertencem aos respectivos titulares e são usados apenas para identificação.</p>
+      </div>
+    </section>
+
+    <section class="section surface" id="formulario">
+      <div class="container">
+        <header class="section-heading reveal"><span class="eyebrow">Fale com a gente</span><h2>Contato do Adote Amigo</h2><p class="section-intro">Dúvidas sobre o portal, sugestões ou parcerias? Escreva para a nossa equipe.</p></header>
+        <div class="contact-layout">
+          <aside class="contact-info reveal">
+            <h3>Prefere escrever direto?</h3>
+            <p>Você também pode enviar a sua mensagem diretamente para o nosso e-mail:</p>
+            <a class="contact-email" href="mailto:contato.adoteamigo@gmail.com">contato.adoteamigo@gmail.com</a>
+            <button class="btn-copy" id="copiar-email" type="button">Copiar e-mail</button>
+            <p class="copy-msg" id="copiar-msg" role="status" aria-live="polite"></p>
+            <h4>Atendemos mensagens sobre</h4>
+            <ul class="info-list">
+              <li>Dúvidas sobre o processo de adoção</li>
+              <li>Participação de ONGs e protetores no portal</li>
+              <li>Formas de apoiar o projeto</li>
+              <li>Sugestões e problemas encontrados no site</li>
+            </ul>
+          </aside>
+
+          <div class="card contact-form reveal">
+            <form id="form-contato" novalidate>
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" required aria-describedby="erro-nome">
+                <small class="field-error" id="erro-nome"></small>
+              </div>
+              <div class="field">
+                <label for="email">E-mail para resposta</label>
+                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="erro-email">
+                <small class="field-error" id="erro-email"></small>
+              </div>
+              <div class="field">
+                <label for="assunto">Assunto</label>
+                <select id="assunto" name="assunto" required aria-describedby="erro-assunto">
+                  <option value="" selected disabled>Selecione um assunto</option>
+                  <option value="duvida">Dúvida sobre adoção</option>
+                  <option value="ong">Sou uma ONG</option>
+                  <option value="apoio">Quero apoiar o projeto</option>
+                  <option value="sugestao">Sugestão ou problema no site</option>
+                  <option value="outro">Outro assunto</option>
+                </select>
+                <small class="field-error" id="erro-assunto"></small>
+              </div>
+              <div class="field">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="6" required aria-describedby="erro-mensagem"></textarea>
+                <small class="field-error" id="erro-mensagem"></small>
+              </div>
+              <button class="button button-highlight" type="submit">Enviar mensagem <span aria-hidden="true">→</span></button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+              <p class="form-note">Ao enviar, o seu aplicativo de e-mail será aberto com a mensagem já preenchida, e você só precisa confirmar o envio. Este formulário não guarda nenhum dado no site.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cta"><div class="container"><div class="final-cta reveal"><span class="cta-paw" aria-hidden="true">🐾</span><h2>Seu novo melhor amigo está esperando</h2><p>Explore pets de ONGs de todo o Brasil e dê o primeiro passo hoje.</p><a class="button button-highlight" href="adotar.html">Encontrar meu novo amigo <span aria-hidden="true">→</span></a></div></div></section>
+  </main>
+
+  <!-- RODAPÉ (igual ao das outras páginas do site) -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+        <p>Conectando pessoas, ONGs e novos começos.</p>
+      </div>
+
+      <div class="footer-support">
+        <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank" rel="noopener noreferrer">
+          📧 Fale com o Suporte
+        </a>
+      </div>
     </div>
-</section>
-
-
-<section class="pets">
-
-</section>
-
-<script type="module" src="script.js"></script>
-<script src="menu-mobile.js"></script>
-
+  </footer>
 </body>
-
 </html>
