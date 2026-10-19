@@ -69,6 +69,187 @@
 .form-status.is-error{color:var(--danger)}
 .form-note{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
 
+/* ==========================================
+   HERO CONTATO — VISUAL MODERNO & ANIMADO
+   ========================================== */
+/* --- CONFIGURAÇÃO PARA COMPUTADOR (DESKTOP) --- */
+.contact-hero-section,
+.history-hero-section {
+  position: relative;
+  width: 100%;
+  padding: 110px 20px 125px;
+  background-color: #0b1f3a;
+  
+  /* Imagem padrão para telas grandes (Horizontal / Widescreen) */
+  background-image: linear-gradient(
+      180deg, 
+      rgba(11, 31, 58, 0.88) 0%, 
+      rgba(11, 31, 58, 0.96) 100%
+    ), 
+    url('imagens/caofeliz.png');
+  
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* --- CONFIGURAÇÃO AUTOMÁTICA PARA CELULAR (MOBILE) --- */
+@media (max-width: 768px) {
+  .contact-hero-section,
+  .history-hero-section {
+    padding: 75px 16px 85px;
+    
+
+    background-image: linear-gradient(
+        180deg, 
+        rgba(11, 31, 58, 0.88) 0%, 
+        rgba(11, 31, 58, 0.96) 100%
+      ), 
+      url('imagens/caofeliz-mobile.png');
+
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge • CONTATO estilizada com brilho suave */
+.contact-badge {
+  display: inline-block;
+  background: rgba(255, 152, 0, 0.15);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.35);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(4px);
+  animation: badgeBounce 3s ease-in-out infinite, fadeInDown 0.8s ease-out both;
+}
+
+/* Título Principal Centralizado */
+.contact-hero-title {
+  font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.18;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* Texto em destaque com gradiente dourado/laranja e efeito de movimento */
+.contact-hero-title .highlight-animated {
+  background: linear-gradient(
+    120deg, 
+    #ff9800 0%, 
+    #ffc107 35%, 
+    #ff9800 70%, 
+    #e65100 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shineGradient 5s linear infinite;
+}
+
+/* Subtítulo centralizado */
+.contact-hero-subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* Patinhas flutuantes decorativas */
+.contact-hero-section .paw {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.15;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  pointer-events: none;
+  animation: floatPaw 6s ease-in-out infinite alternate;
+}
+
+.contact-hero-section .paw-1 { top: 15%; left: 8%; animation-delay: 0s; }
+.contact-hero-section .paw-2 { top: 70%; left: 12%; animation-delay: 1.5s; }
+.contact-hero-section .paw-3 { top: 20%; right: 10%; animation-delay: 3s; }
+.contact-hero-section .paw-4 { top: 65%; right: 14%; animation-delay: 4.5s; }
+
+/* --- ANIMAÇÕES --- */
+@keyframes shineGradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes badgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes floatPaw {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-15px) rotate(10deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade para Telas Menores (Mobile) */
+@media (max-width: 768px) {
+  .contact-hero-section {
+    padding: 75px 16px 85px;
+  }
+  .contact-hero-title {
+    font-size: 32px;
+  }
+  .contact-hero-subtitle {
+    font-size: 15px;
+  }
+}
+
 @media (max-width:900px){
   .contact-layout{grid-template-columns:1fr}
 }

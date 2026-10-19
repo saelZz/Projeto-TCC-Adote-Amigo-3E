@@ -6,6 +6,13 @@ const statusEl = document.getElementById("status");
 const form = document.getElementById("filters");
 const citySelect = form ? form.elements.city : null;
 
+// Elementos do Filtro Dinâmico de Raça por Espécie
+const especieSelect = document.getElementById('filter-specie');
+const racaSelect = document.getElementById('filter-breed');
+
+// Armazena todos os pets carregados do Firestore para popular os filtros dinamicamente
+let cachedPets = [];
+
 if (isDemoMode) {
   document.getElementById("demo-badge")?.removeAttribute("hidden");
 }
@@ -15,8 +22,8 @@ function PetCard(pet) {
   const li = document.createElement("li");
   li.className = "pet-card-wrapper";
 
-  // Imagem e Foto do Pet
-  const imageUrl = pet.photoURL || pet.photoUrl || "imagens/placeholder.jpg";
+  // Imagem e Foto do Pet (usando logo.png caso não haja foto)
+  const imageUrl = pet.photoURL || pet.photoUrl || "imagens/logo.png";
 
   // Identificação precisa do gênero (Macho vs Fêmea)
   const rawGender = (pet.gender || pet.genero || "").toString().toLowerCase().trim();
@@ -37,7 +44,7 @@ function PetCard(pet) {
   const rawSpecie = (pet.specie || pet.species || "Cachorro").toString().toLowerCase();
   const specieText = rawSpecie.includes("gato") ? "Gato" : "Cachorro";
 
-  // Formatação da Idade (Aceita tanto string "Filhote" quanto número de meses)
+  // Formatação da Idade
   const ageDisplay = pet.age ? pet.age : (pet.ageMonths ? formatAge(pet.ageMonths) : "Idade não inf.");
 
   // Informações da ONG/Abrigo
@@ -65,14 +72,14 @@ function PetCard(pet) {
         <div class="pet-shelter-block">
           <span class="shelter-label">Este pet pertence à Instituição:</span>
           <div class="shelter-logo-container" title="${ongName}">
-            <img class="shelter-logo-centered" src="${ongLogo}" alt="${ongName}" />
+            <img class="shelter-logo-centered ong-${pet.ongId || 'default'}" src="${ongLogo}" alt="${ongName}" />
           </div>
         </div>
 
         <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
           Quero conhecer
         </a>
-        <button class="pet-btn mobile-more-btn">Mais informações</button>
+        <button type="button" class="pet-btn mobile-more-btn">Mais informações</button>
       </div>
     </div>
 
@@ -121,8 +128,16 @@ function PetCard(pet) {
             <strong class="spec-value">${pet.city || ''}, ${pet.state || ''}</strong>
           </div>
 
+          <!-- BLOCO DA DESCRIÇÃO CURTA PUXADA DO FIRESTORE -->
+          ${pet.description ? `
+          <div class="modal-description-block" style="margin-top: 10px; background: #f8fafc; padding: 10px 12px; border-radius: 8px; border-left: 3px solid #0284c7;">
+            <span class="spec-label" style="display: block; margin-bottom: 4px; color: #0284c7; font-weight: 600;">Sobre o amiguinho</span>
+            <p style="font-size: 0.9rem; color: #334155; line-height: 1.4; margin: 0;">${pet.description}</p>
+          </div>
+          ` : ''}
+
           <div class="modal-actions-row">
-            <a class="pet-btn desktop-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
+            <a class="pet-btn" href="pet-detalhes.html?id=${encodeURIComponent(pet.id)}">
               Quero conhecer
             </a>
           </div>
@@ -146,7 +161,7 @@ function PetCard(pet) {
         if (hoverTimer) clearTimeout(hoverTimer);
         hoverTimer = setTimeout(() => {
           overlay.classList.add("active");
-        }, 3000); // 3000ms = 3 segundos
+        }, 3000);
       }
     });
 
@@ -207,13 +222,33 @@ async function loadMore() {
   if (statusEl) statusEl.textContent = "Buscando amiguinhos...";
   
   try {
-    const { pets, cursor, hasMore } = await fetchPets(state.filters, state.cursor);
+    const response = await fetchPets(state.filters, state.cursor);
+    let pets = response.pets;
+    const cursor = response.cursor;
+    const hasMore = response.hasMore;
     
+    // --- BARREIRA DE SEGURANÇA LOCAL PARA O FILTRO DE RAÇA ---
+    const racaFiltro = state.filters.breed ? state.filters.breed.trim().toLowerCase() : "";
+    if (racaFiltro) {
+      pets = pets.filter(pet => {
+        const racaPet = (pet.breed || "").trim().toLowerCase();
+        return racaPet === racaFiltro;
+      });
+    }
+    // ---------------------------------------------------------
+
+    // Armazena os pets no cache para extração de raças reais do Firestore
+    cachedPets = cachedPets.concat(pets);
+    
+    // SÓ ATUALIZA AS OPÇÕES SE O SELECT AINDA ESTIVER APENAS COM A OPÇÃO PADRÃO
+    if (racaSelect && racaSelect.options.length <= 1) {
+      atualizarOpcoesDeRaca(especieSelect ? especieSelect.value : "", cachedPets);
+    }
+
     pets.forEach((pet) => listEl.appendChild(PetCard(pet)));
     state.cursor = cursor;
     state.hasMore = hasMore;
 
-    // Remove preloader se existir
     const preloader = document.getElementById("preloader");
     if (preloader) preloader.classList.add("hidden");
 
@@ -234,11 +269,12 @@ async function loadMore() {
 
 function resetList() {
   if (listEl) listEl.innerHTML = "";
+  cachedPets = []; // Limpa o cache ao resetar filtros
   Object.assign(state, { cursor: null, hasMore: true });
   loadMore();
 }
 
-// Scroll infinito: carrega a próxima página quando o fim aparece
+// Scroll infinito
 const sentinel = document.getElementById("sentinel");
 if (sentinel) {
   new IntersectionObserver((entries) => {
@@ -259,7 +295,6 @@ if (form) {
   form.addEventListener("change", async (e) => {
     if (e.target.name === "state") await updateCities(e.target.value);
     
-    // Obtém todos os campos preenchidos no formulário de filtros
     const formData = new FormData(form);
     state.filters = Object.fromEntries(formData);
     
@@ -269,8 +304,59 @@ if (form) {
   form.addEventListener("reset", () => {
     setTimeout(async () => {
       await updateCities("");
+      if (racaSelect) {
+        racaSelect.innerHTML = '<option value="">Todas as Raças</option>';
+        racaSelect.disabled = true;
+      }
       state.filters = {};
       resetList();
     });
+  });
+}
+
+function atualizarOpcoesDeRaca(especieSelecionada, listaDePets) {
+  if (!racaSelect) return;
+
+  const valorAtual = racaSelect.value;
+  racaSelect.innerHTML = '<option value="">Todas as Raças</option>';
+
+  // Filtra os pets em cache pela espécie selecionada (se houver espécie escolhida)
+  const petsFiltrados = especieSelecionada
+    ? listaDePets.filter(p => {
+        const spec = (p.specie || p.species || "").toString().toLowerCase();
+        return spec.includes(especieSelecionada.toLowerCase());
+      })
+    : listaDePets;
+
+  // Extrai raças únicas do banco sem repetir
+  const racasUnicas = [...new Set(petsFiltrados.map(p => p.breed).filter(Boolean))];
+
+  if (racasUnicas.length > 0) {
+    racasUnicas.forEach(raca => {
+      const option = document.createElement('option');
+      option.value = raca;
+      option.textContent = raca;
+      racaSelect.appendChild(option);
+    });
+    racaSelect.disabled = false;
+    
+    if (valorAtual && Array.from(racaSelect.options).some(opt => opt.value === valorAtual)) {
+      racaSelect.value = valorAtual;
+    } else {
+      racaSelect.value = "";
+    }
+  } else {
+    racaSelect.disabled = true;
+    racaSelect.value = "";
+  }
+}
+
+// Evento em cascata disparado ao alterar a espécie no filtro
+if (especieSelect) {
+  especieSelect.addEventListener('change', (e) => {
+    const especieSelecionada = e.target.value;
+    // Força a atualização completa das raças ao mudar a espécie
+    racaSelect.innerHTML = '<option value="">Todas as Raças</option>';
+    atualizarOpcoesDeRaca(especieSelecionada, cachedPets);
   });
 }

@@ -22,8 +22,132 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
 .logo span { color: var(--highlight-hover); }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 64px; }
-.intro h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-.intro p { color: var(--muted); }
+
+/* --- HERO SECTION CENTRALIZADA & ANIMADA --- */
+.intro {
+  text-align: center;
+  margin: 20px auto 40px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: introFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Badge estilizada em cima do título */
+.intro::before {
+  content: '✨ Portal Oficial de Adoção';
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.intro h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  
+  /* EFEITO DE GRADIENTE EM MOVIMENTO */
+  background: linear-gradient(
+    120deg, 
+    #ff9900  0%, 
+    #2563eb 25%, 
+    #ff9900 50%, 
+    #2563eb 75%, 
+    #ff9900 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineGradient 6s linear infinite;
+}
+
+.intro p {
+  font-size: 17px;
+  color: #64748b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Patinha animada no subtítulo */
+.intro p::before {
+  content: '🐾';
+  font-size: 20px;
+  display: inline-block;
+  animation: pawWiggle 2.5s infinite ease-in-out;
+}
+
+/* --- CORREÇÃO DEFINITIVA DO TEXTO DE STATUS (IR PARA BAIXO) --- */
+#status, .status-message {
+  grid-column: 1 / -1; /* Força ocupar a largura toda na grelha */
+  text-align: center !important;
+  clear: both;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 48px auto 24px auto !important; /* Espaçamento largo acima dos cards */
+  padding: 12px 28px;
+  background: #f8fafc;
+  border-radius: 30px;
+  width: fit-content;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+/* --- KEYFRAMES DAS ANIMAÇÕES --- */
+@keyframes shineGradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes introFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pawWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-12deg) scale(1.15); }
+  75% { transform: rotate(12deg) scale(1.15); }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 32px;
+  }
+  .intro p {
+    font-size: 15px;
+  }
+}
+
 .demo-badge { display: inline-block; background: #fff4d6; color: #7a4d00; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
 
 /* Filtros */
@@ -182,37 +306,75 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
 }
 
 .shelter-logo-container {
+  width: 100%;
+  height: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 240px;     /* Largura fixa padrão para qualquer logo */
-  height: 50px;     /* Altura fixa padrão */
-  margin: 0 auto;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0px;
 }
 
-/* Imagem da Logo 100% Responsiva à Caixa Padronizada */
+/* Imagem da Logo com transição suave */
 .shelter-logo-centered {
-  max-width: 60%;
-  max-height: 60%;
-  width: auto;
-  height: auto;
   object-fit: contain;
-  background: transparent !important;
-  border-radius: 0 !important;
-  transition: transform 0.3s ease;
-  position: relative;
-  left: 13px;
-  right: -30px; 
-
-
-  /* Sua posição ajustada (substitua pelo valor de pixels que você escolheu) */
-  transform: translateX(-15px); 
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Deixa o movimento suave */
 }
 
-/* Efeito ao passar o mouse: Mantém a posição E aplica o zoom */
-.shelter-logo-centered:hover {
-  /* Mantém o mesmo translateX e adiciona o scale */
-  transform: translateX(-15px) scale(1.08); 
+/* Efeito de mini zoom (hover) quando o mouse passa por cima da logo ou do card */
+.shelter-logo-container:hover .shelter-logo-centered {
+  transform: scale(0.8); /* Dá um zoom de 10% de forma elegante */
+}
+
+/* ONG/ABRIGO - ADOTE PETZ */
+.shelter-logo-centered.ong-2IU5QhuEZfipHqWLjBpI {
+  height: 42px;
+  width: 200px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.7);
+  transform-origin: center;
+}
+
+/* ONG/ABRIGO - ADOTAR */
+.shelter-logo-centered.ong-UxU8Bv2TGW5YpCh7axZG {
+  height: 42px;
+  width: 205px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.7);
+  transform-origin: center;
+}
+
+/* ONG/ABRIGO - VIU MEU PET */
+.shelter-logo-centered.ong-PiBzD3hoONYPvuyLaCrB {
+  height: 40px;
+  width: 220px;
+  margin-left: 0px;
+  background: transparent;
+  transform: scale(0.7);
+  transform-origin: center;
+}
+
+/* ONG/ABRIGO - AMIGO NAO SE COMPRA */
+.shelter-logo-centered.ong-DIVS0g0qh2bmsVnfXwYw {
+  height: 60px;
+  width: 205px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.7);
+  transform-origin: center;
+}
+
+/* ONG/ABRIGO - INSTITUTO CARAMELO */
+.shelter-logo-centered.ong-rh8Nzbhe7Md1uBuQPgiE {
+  height: 60px;
+  width: 205px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.7);
+  transform-origin: center;
 }
 
 .pet-btn { 

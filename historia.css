@@ -73,3 +73,161 @@
 .story-list{display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none}
 .story-list li{position:relative;padding:14px 16px 14px 46px;border:1px solid var(--border);border-radius:12px;background:var(--ice);color:var(--text)}
 .story-list li::before{content:'✓';position:absolute;left:18px;top:14px;color:var(--highlight-hover);font-weight:800}
+
+.history-hero-section {
+  position: relative;
+  width: 100%;
+  padding: 110px 20px 125px;
+  background-color: #0b1f3a;
+  
+  /* Imagem translúcida de fundo com overlay escuro */
+  background-image: linear-gradient(
+      180deg, 
+      rgba(11, 31, 58, 0.88) 0%, 
+      rgba(11, 31, 58, 0.96) 100%
+    ), 
+    url('imagens/petspordosol.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.history-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge • NOSSA HISTÓRIA estilizada */
+.history-badge {
+  display: inline-block;
+  background: rgba(255, 152, 0, 0.15);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.35);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(4px);
+  animation: badgeFloat 3.5s ease-in-out infinite, fadeInDown 0.8s ease-out both;
+}
+
+/* Título Principal Centralizado */
+.history-hero-title {
+  font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.18;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* Texto em Destaque em Laranja Animado */
+.history-hero-title .highlight-animated {
+  background: linear-gradient(
+    120deg, 
+    #ff9800 0%, 
+    #ffc107 35%, 
+    #ff9800 70%, 
+    #e65100 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-shadow: 0 0 25px rgba(255, 152, 0, 0.25);
+  animation: shineGradient 5s linear infinite;
+}
+
+/* Subtítulo centralizado */
+.history-hero-subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0 auto;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+/* Patinhas Flutuantes */
+.history-hero-section .paw {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.15;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  pointer-events: none;
+  animation: floatPaw 6s ease-in-out infinite alternate;
+}
+
+.history-hero-section .paw-1 { top: 15%; left: 8%; animation-delay: 0s; }
+.history-hero-section .paw-2 { top: 70%; left: 12%; animation-delay: 1.5s; }
+.history-hero-section .paw-3 { top: 20%; right: 10%; animation-delay: 3s; }
+.history-hero-section .paw-4 { top: 65%; right: 14%; animation-delay: 4.5s; }
+
+/* --- ANIMAÇÕES --- */
+@keyframes shineGradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes floatPaw {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-15px) rotate(10deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .history-hero-section {
+    padding: 75px 16px 85px;
+  }
+  .history-hero-title {
+    font-size: 30px;
+  }
+  .history-hero-subtitle {
+    font-size: 15px;
+  }
+}

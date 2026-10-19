@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="historia.css">
   <script src="historia.js" defer></script>
   <script src="menu-mobile.js" defer></script>
@@ -49,12 +50,28 @@
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <span class="paw paw-1" aria-hidden="true">🐾</span><span class="paw paw-2" aria-hidden="true">🐾</span><span class="paw paw-3" aria-hidden="true">🐾</span><span class="paw paw-4" aria-hidden="true">🐾</span>
-      <div class="container hero-copy">
-        <span class="eyebrow eyebrow-light">● Nossa história</span>
-        <h1>Conectando corações, unindo lares e <mark>fortalecendo a causa animal</mark></h1>
-        <p>Não somos um abrigo físico, mas sim a ponte inteligente que une você à ONG certa, centralizando abrigos de todo o Brasil em um só lugar.</p>
+    <!-- HERO SECTION DA PÁGINA HISTÓRIA (NOVO VISUAL ANIMADO) -->
+    <section class="hero history-hero-section" id="inicio">
+      <!-- Imagem translúcida com overlay escuro -->
+      <div class="history-hero-overlay"></div>
+
+      <!-- Patinhas flutuantes decorativas -->
+      <span class="paw paw-1" aria-hidden="true">🐾</span>
+      <span class="paw paw-2" aria-hidden="true">🐾</span>
+      <span class="paw paw-3" aria-hidden="true">🐾</span>
+      <span class="paw paw-4" aria-hidden="true">🐾</span>
+
+      <div class="container hero-copy history-hero-content">
+        <span class="eyebrow eyebrow-light history-badge">• NOSSA HISTÓRIA</span>
+        
+        <h1 class="history-hero-title">
+          Conectando corações, unindo lares e<br>
+          <span class="highlight-animated">fortalecendo a causa animal</span>
+        </h1>
+
+        <p class="history-hero-subtitle">
+          Não somos um abrigo físico, mas sim a ponte inteligente que une você à ONG certa, centralizando abrigos de todo o Brasil em um só lugar.
+        </p>
       </div>
     </section>
 

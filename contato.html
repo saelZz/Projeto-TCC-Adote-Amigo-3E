@@ -13,10 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- historia.css = base visual compartilhada (cores, cabeçalho, rodapé, topo azul, cartões). contato.css = só o que é da página de contato. -->
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="historia.css">
   <link rel="stylesheet" href="contato.css">
-  <script src="contato.js" defer></script>
-  <script src="menu-mobile.js" defer></script>
+
 </head>
 <body>
   <!-- NAVBAR (igual ao das outras páginas do site) -->
@@ -51,12 +51,27 @@
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <span class="paw paw-1" aria-hidden="true">🐾</span><span class="paw paw-2" aria-hidden="true">🐾</span><span class="paw paw-3" aria-hidden="true">🐾</span><span class="paw paw-4" aria-hidden="true">🐾</span>
-      <div class="container hero-copy">
-        <span class="eyebrow eyebrow-light">● Contato</span>
-        <h1>Conheça onde adotar e <mark>fale com quem cuida</mark></h1>
-        <p>O Adote Amigo reúne referências de adoção do Brasil. Aqui você encontra o contato de cada uma delas e também o da nossa equipe.</p>
+    <section class="hero contact-hero-section" id="inicio">
+      <!-- Imagem translúcida com gradiente de overlay -->
+      <div class="contact-hero-overlay"></div>
+
+      <!-- Elementos decorativos (patinhas sutis em órbita/flutuação) -->
+      <span class="paw paw-1" aria-hidden="true">🐾</span>
+      <span class="paw paw-2" aria-hidden="true">🐾</span>
+      <span class="paw paw-3" aria-hidden="true">🐾</span>
+      <span class="paw paw-4" aria-hidden="true">🐾</span>
+
+      <div class="container hero-copy contact-hero-content">
+        <span class="eyebrow eyebrow-light contact-badge">• CONTATO</span>
+        
+        <h1 class="contact-hero-title">
+          Conheça onde adotar e<br>
+          <span class="highlight-animated">fale com quem cuida</span>
+        </h1>
+
+        <p class="contact-hero-subtitle">
+          O Adote Amigo reúne referências de adoção do Brasil. Aqui você encontra o contato de cada uma delas e também o da nossa equipe.
+        </p>
       </div>
     </section>
 
@@ -74,7 +89,7 @@
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-adotepetz">
-                <span class="ong-logo" data-inicial="P"><img src="imagens/ong-adotepetz.png" alt=""></span>
+                <span class="ong-logo" data-inicial="P"><img src="https://www.adotepetz.com.br/images/logo.svg" alt=""></span>
                 <span class="ong-title"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
                 <span class="ong-icon" aria-hidden="true"></span>
               </button>
@@ -93,7 +108,7 @@
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-viumeupet">
-                <span class="ong-logo" data-inicial="V"><img src="imagens/ong-viumeupet.png" alt=""></span>
+                <span class="ong-logo" data-inicial="V"><img src="https://www.viumeupet.com.br/images/logos/words-logo.svg" alt=""></span>
                 <span class="ong-title"><strong>Viu Meu Pet</strong><small>Plataforma de adoção e de busca de pets perdidos</small></span>
                 <span class="ong-icon" aria-hidden="true"></span>
               </button>
@@ -113,7 +128,7 @@
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-amigonaosecompra">
-                <span class="ong-logo" data-inicial="A"><img src="imagens/ong-amigonaosecompra.png" alt=""></span>
+                <span class="ong-logo" data-inicial="A"><img src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" alt=""></span>
                 <span class="ong-title"><strong>Amigo Não Se Compra</strong><small>Plataforma online de adoção</small></span>
                 <span class="ong-icon" aria-hidden="true"></span>
               </button>
@@ -132,7 +147,7 @@
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-institutocaramelo">
-                <span class="ong-logo" data-inicial="C"><img src="imagens/ong-institutocaramelo.png" alt=""></span>
+                <span class="ong-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
                 <span class="ong-title"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
                 <span class="ong-icon" aria-hidden="true"></span>
               </button>
@@ -184,7 +199,7 @@
           <aside class="contact-info reveal">
             <h3>Prefere escrever direto?</h3>
             <p>Você também pode enviar a sua mensagem diretamente para o nosso e-mail:</p>
-            <a class="contact-email" href="mailto:adoteamigo.tcc2026@gmail.com">adoteamigo.tcc2026@gmail.com</a>
+            <a class="contact-email" href="mailto:contato.adoteamigo@gmail.com">contato.adoteamigo@gmail.com</a>
             <button class="btn-copy" id="copiar-email" type="button">Copiar e-mail</button>
             <p class="copy-msg" id="copiar-msg" role="status" aria-live="polite"></p>
             <h4>Atendemos mensagens sobre</h4>
@@ -248,11 +263,14 @@
 
       <div class="footer-support">
         <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-        <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank" rel="noopener noreferrer">
           📧 Fale com o Suporte
         </a>
       </div>
     </div>
   </footer>
+
+  <script type="module" src="contato.js"></script>
+  <script src="menu-mobile.js"></script>
 </body>
 </html>
