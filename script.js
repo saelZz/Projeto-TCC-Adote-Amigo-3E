@@ -107,13 +107,12 @@ let autoSlideInterval = null;
 function mostrarSlide(carousel, slides, slide, indicators) {
     if (!carousel || !slides) return;
 
-    // MUDANÇA CHAVE: Em vez de pegar os pixels (clientWidth), usamos a porcentagem pura (100%)
-    currentTranslate = -carouselIndex * 100; 
+    const larguraReal = carousel.clientWidth;
+    currentTranslate = -carouselIndex * larguraReal;
     prevTranslate = currentTranslate;
     
     slides.style.transition = 'transform 0.5s ease-in-out';
-    // Mudamos de 'px' para '%' para o CSS controlar a proporção perfeitamente
-    slides.style.transform = `translateX(${currentTranslate}%)`; 
+    slides.style.transform = `translateX(${currentTranslate}px)`;
     
     indicators.forEach((indicator, idx) => {
         indicator.classList.toggle("active", idx === carouselIndex);
