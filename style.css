@@ -434,7 +434,7 @@ a {
   position: relative;
   width: 100%;
   max-width: 95%;
-  height: 570px;
+  height: 100%;
   margin: 30px auto;
   border-radius: 12px;
   z-index: 1;
