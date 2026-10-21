@@ -410,95 +410,191 @@ a {
 }
 
 /* ==========================================================================
-   3. CARROSSEL DE BANNERS & HERO GERAL
+   3. CARROSSEL DE BANNERS & HERO GERAL (AJUSTADO AO SEU INDEX)
    ========================================================================== */
-.carrossel-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 41.25rem;
-}
-
-@media (min-width: 768px) {
-  .hero { min-height: 45rem; }
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 95%;
-  height: 570px;
-  margin: 30px auto;
-  border-radius: 12px;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.slides {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.slide img, 
-.slide picture img {
+   .carrossel-container {
     width: 100%;
-    height: 100%;    
-    object-fit: cover;
-    object-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 95%;
+    height: auto; /* Altura agora é automática e baseada na imagem */
+    margin: 30px auto;
+    border-radius: 12px;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  /* Força a imagem a ditar o tamanho do slide sem cortar as laterais */
+  .slide img, 
+  .slide picture img,
+  .hero-img {
+    width: 100%;
+    height: auto;    
     display: block;
     user-select: none;
     outline: none;
     border: none;
-}
-
-button:focus, 
-a:focus {
+    pointer-events: none;
+  }
+  
+  button:focus, 
+  a:focus {
     outline: none;
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  user-select: none;
-  -webkit-user-drag: none;
-  cursor: grab;
-}
-
-.hero-img:active {
-  cursor: grabbing;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(90deg, #072B54 15%, rgba(7, 43, 84, 0.75) 55%, transparent 100%);
-  z-index: 2;
-}
+  }
+  
+  /* Mantém o degradê escuro atrás do texto para dar leitura */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #072B54 25%, rgba(7, 43, 84, 0.6) 60%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  /* ==========================================================================
+     ESTILIZAÇÃO DOS TEXTOS REAIS DO SEU INDEX (RESPONSIVOS)
+     ========================================================================== */
+  
+  /* Caixa que segura os textos sobre a imagem */
+  .slide-content {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+    width: 50%; /* Ocupa até a metade da tela para não cobrir o rosto das pessoas/pets */
+    z-index: 3;
+    color: #ffffff;
+    font-family: sans-serif; /* Use a fonte principal do seu projeto aqui */
+  }
+  
+  /* Mini tag (ex: "Variedade exclusiva") */
+  .slide-content .badge {
+    display: inline-block;
+    font-size: 0.9vw;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    padding: 0.4em 1.2em;
+    border-radius: 50px;
+    margin-bottom: 1.5vw;
+    font-weight: 600;
+  }
+  
+  /* Títulos Principais (ex: "Centenas de pets...") */
+  .slide-content h1 {
+    font-size: 3.8vw; /* Diminui milimetricamente com a tela */
+    line-height: 1.2;
+    margin-bottom: 1.5vw;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  /* Descrições (ex: "Esqueça a maratona...") */
+  .slide-content p {
+    font-size: 1.3vw;
+    line-height: 1.4;
+    margin-bottom: 2.5vw;
+    opacity: 0.9;
+  }
+  
+  /* Botões de Ação (ex: "Ver pets disponíveis") */
+  .slide-content .btn-adotar {
+    display: inline-block;
+    font-size: 1.1vw;
+    padding: 0.8em 2em;
+    background-color: #ff8c00; /* Laranja correspondente ao print */
+    color: #ffffff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+  }
+  
+  .slide-content .btn-adotar:hover {
+    background-color: #e07b00;
+    transform: scale(1.02);
+  }
+  
+  /* ==========================================================================
+     MEDIA QUERY PARA SMARTPHONES (Quebra de Layout Segura)
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .carousel {
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0; /* Remove bordas arredondadas em telas de celular */
+    }
+  
+    /* Desativamos o posicionamento absoluto para que o texto não fique esmagado na foto */
+    .hero-overlay {
+      display: none; /* Remove o gradiente horizontal */
+    }
+  
+    .slide-content {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+      width: 100%;
+      padding: 24px 16px;
+      background-color: #072B54; /* Aplica a cor azul sólida abaixo da foto */
+    }
+  
+    /* Voltamos para medidas fixas confortáveis para leitura no celular */
+    .slide-content .badge {
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+  
+    .slide-content h1 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+  
+    .slide-content p {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+  
+    .slide-content .btn-adotar {
+      font-size: 15px;
+      display: block;
+      text-align: center;
+      padding: 14px;
+    }
+  }
 
 /* ==========================================================================
    4. CONTEÚDO E TEXTOS DO HERO
