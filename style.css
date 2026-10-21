@@ -470,14 +470,19 @@ a {
     outline: none;
   }
   
-  /* Mantém o degradê escuro atrás do texto para dar leitura */
   .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #072B54 25%, rgba(7, 43, 84, 0.6) 60%, transparent 100%);
+    /* Mudamos as porcentagens para o azul sumir suavemente antes do meio da imagem */
+    background: linear-gradient(90deg, 
+      #072B54 0%, 
+      rgba(7, 43, 84, 0.85) 30%, 
+      rgba(7, 43, 84, 0.4) 50%, 
+      transparent 75%
+    );
     z-index: 2;
     pointer-events: none;
   }
