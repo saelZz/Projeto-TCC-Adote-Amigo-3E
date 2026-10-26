@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MENU MOBILE (hambúrguer) - Atualizado para incluir os botões de ação
+   MENU MOBILE (hambúrguer)
    ========================================================================== */
 (function () {
   var header = document.querySelector('.navbar-amarela-oficial, .navbar, .topbar');
@@ -25,9 +25,24 @@
   // Insere os links de navegação principais
   var conteudoHtml = menu.innerHTML;
 
-  // Se houver botões na barra de cima, copia e injeta eles também no final do menu mobile
+  // Se houver botões na barra de cima, seleciona e injeta de forma limpa no menu mobile
   if (actions) {
-    conteudoHtml += '<div class="menu-mobile-actions" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border); padding-top: 15px;">' + actions.innerHTML + '</div>';
+    var btnDoar = actions.querySelector('.btn-doar-nav');
+    var btnAdotar = actions.querySelector('.btn-primary');
+    var btnTutorial = actions.querySelector('.btn-como-funciona');
+
+    var acoesMobileHtml = '<div class="menu-mobile-actions" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border); padding-top: 15px;">';
+    
+    // Se o botão de tutorial existir no desktop, adiciona o equivalente funcional no mobile
+    if (btnTutorial) {
+      acoesMobileHtml += '<button type="button" onclick="const dt = document.getElementById(\'btn-tutorial\'); if(dt) dt.click();" class="btn-como-funciona-mobile" style="width: 100%; text-align: center; padding: 10px; background: rgba(26,54,93,0.05); border: 1px solid var(--primary); border-radius: 8px; font-weight: 600; color: var(--primary); cursor: pointer;">🐾 Como funciona o site?</button>';
+    }
+    if (btnDoar) acoesMobileHtml += btnDoar.outerHTML;
+    if (btnAdotar) acoesMobileHtml += btnAdotar.outerHTML;
+
+    acoesMobileHtml += '</div>';
+
+    conteudoHtml += acoesMobileHtml;
   }
 
   painel.innerHTML = conteudoHtml;
@@ -56,9 +71,9 @@
     }
   });
 
-  // Clique em qualquer link do painel fecha o menu
+  // Clique em qualquer link ou botão do painel fecha o menu
   painel.addEventListener('click', function (e) {
-    if (e.target.closest('a')) fechar();
+    if (e.target.closest('a') || e.target.closest('button')) fechar();
   });
 
   // Tecla ESC fecha o menu

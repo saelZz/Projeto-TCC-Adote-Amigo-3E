@@ -23,16 +23,23 @@ const toObject = (snap) => {
     specie: data.specie || data.species || data.especie || "Cachorro",
     breed: data.breed || data.raca || "SRD",
     age: data.age || "Idade não inf.",
-    ageMonths: data.ageMonths !== undefined ? data.ageMonths : (data.idade_meses || 0),
     size: data.size || data.porte || "Médio",
     coatColor: data.coatColor || data.pelagem || "",
     city: data.city || data.cidade || "",
     state: data.state || data.estado || "",
     photoUrl: data.photoURL || data.photoUrl || data.imagem || "imagens/logo.png",
+    
+    // Pega o array de galeria do Firestore (ou deixa vazio se não tiver)
+    gallery: data.gallery || [],
+    
+    // Pega a história detalhada (fallback para a descrição curta se não houver history)
+    history: data.history || data.description || "Este amiguinho está pronto para encontrar uma nova família.",
+    
+    // Descrição curta (para usar nos cards)
+    description: data.description || "Curioso, carinhoso e pronto para um novo começo.",
+    
     status: data.status || "Disponivel",
-    createdAt: data.createdAt || new Date(),
     gender: data.gender || data.genero || "Macho",
-    weight: data.weight || null,
     ongId: data.ongId || ""
   };
 };

@@ -465,7 +465,15 @@ function animarContadores() {
     const numeros = document.querySelectorAll(".contador-numero");
     
     numeros.forEach((num) => {
+        // Evita que a animação rode de novo se já tiver sido concluída
+        if (num.dataset.animado === "true") return;
+        
         const valorFinal = parseInt(num.getAttribute("data-valor"), 10);
+        
+        // PEGA O SÍMBOLO DO ATRIBUTO DATA OU DETECTA O QUE ESTÁ ESCRITO NO HTML (Ex: %, +, etc.)
+        // Se não encontrar nada, define "+" como o padrão anterior
+        const simbolo = num.getAttribute("data-simbolo") || "+";
+        
         let valorAtual = 0;
         const incremento = valorFinal / 200;
 
@@ -475,7 +483,8 @@ function animarContadores() {
                 num.textContent = Math.floor(valorAtual);
                 requestAnimationFrame(atualizar);
             } else {
-                num.textContent = valorFinal + "+";
+                num.textContent = valorFinal + simbolo;
+                num.dataset.animado = "true"; // Marca como finalizado
             }
         };
         atualizar();

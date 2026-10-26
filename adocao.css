@@ -1,16 +1,40 @@
 /* ============ Adote Amigo — Vitrine de Adoção ============ */
 :root {
-  --primary: #0c3c75;
-  --deep: #072b54;
-  --highlight: #ffaf00;
-  --highlight-hover: #f89200;
-  --bg: #f2f7fc;
-  --card: #ffffff;
-  --text: #1c2a3a;
-  --muted: #5d6b7c;
-  --border: #dde6f0;
-  --radius: 16px;
-  --shadow: 0 8px 24px rgba(12, 60, 117, .08);
+  --background: #FCFEFF;
+  --foreground: #152131;
+  --primary: #0C3C75;
+  --primary-foreground: #FBFCFD;
+  --brand-deep: #072B54;
+  --brand-soft: #D8EAFF;
+  --highlight: #ff8a00;
+  --highlight-hover: #e07a00;
+  --highlight-foreground: #0D1B2D;
+  --surface-soft: #F2F7FC;
+  --muted-foreground: #5F6A77;
+  --border: #DAE2EB;
+  --radius: 0.875rem;
+  --font-body: "Plus Jakarta Sans", Arial, sans-serif;
+  --font-display: "Manrope", Arial, sans-serif;
+  --soft-shadow: 0 18px 50px rgba(7, 43, 84, 0.1);
+  --header-shadow: 0 4px 24px rgba(7, 43, 84, 0.08);
+
+  --faq-primary: #0C3C75;
+  --faq-brand-deep: #072B54;
+  --faq-highlight: #ff8a00;
+  --faq-highlight-hover: #f89200;
+  --faq-highlight-foreground: #0D1B2D;
+  --faq-surface: #F2F7FC;
+  --faq-card: #ffffff;
+  --faq-text: #152131;
+  --faq-muted: #5d6b7c;
+  --faq-border: #dde6f0;
+  --faq-brand-soft: #D8EAFF;
+  --faq-focus: #ff8a00;
+  --faq-radius: 16px;
+  --faq-shadow: 0 8px 24px rgba(12, 60, 117, .08);
+  --faq-shadow-active: 0 14px 34px -14px rgb(7 43 84 / 30%);
+  --faq-font-body: "Plus Jakarta Sans", Arial, sans-serif;
+  --faq-font-title: "Manrope", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }

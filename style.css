@@ -153,8 +153,8 @@ a {
   align-items: center;
   justify-content: center;
   flex: 1;
-  gap: 40px;
-  font-size: 16px;
+  gap: 35px;
+  font-size: 15px;
   margin: 0 20px;
   position: relative;
   z-index: 1;
@@ -1387,6 +1387,99 @@ a:focus {
   animation: pulseText 1.5s infinite ease-in-out;
 }
 
+.btn-mascote-tutorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  /* Gradiente moderno unindo o azul profundo da marca com branco/suave */
+  background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
+  border: 2px solid var(--primary, #0c3c75); /* Borda sólida no Azul Principal */
+  padding: 6px 18px 6px 6px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(12, 60, 117, 0.12);
+}
+
+.btn-mascote-tutorial:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, #e2edff 0%, #ffffff 100%);
+  border-color: var(--highlight, #ff8a00); /* No hover, a borda acende no Laranja da marca */
+  box-shadow: 0 8px 25px rgba(255, 138, 0, 0.22);
+}
+
+/* Avatar do Mascote com destaque em Azul e Anel Laranja */
+.mascote-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--primary, #0c3c75);
+  border: 2px solid #ff8a00; /* Borda laranja viva */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(12, 60, 117, 0.25);
+  flex-shrink: 0;
+}
+
+.mascote-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Anel de pulso em Laranja vibrante */
+.pulse-ring {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid #ff8a00;
+  border-radius: 50%;
+  animation: pulseRing 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Textos com a identidade do projeto */
+.btn-texto-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btn-titulo {
+  font-family: var(--font-display, "Manrope", sans-serif);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--primary, #0c3c75); /* Azul Profundo */
+  line-height: 1.2;
+}
+
+.btn-sub {
+  font-size: 0.72rem;
+  color: var(--highlight, #ff8a00); /* Subtítulo em Laranja para destacar */
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 760px) {
+  .actions .btn-mascote-tutorial {
+    display: none;
+  }
+}
+
 @keyframes floatLogo {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -1450,12 +1543,23 @@ a:focus {
 
 @media (max-width: 768px) {
   .navbar,
-  .navbar-amarela-oficial,
-  .topbar {
-    padding: 10px 15px;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
+.navbar-amarela-oficial,
+.topbar {
+  display: flex;
+  align-items: center; /* Alinha perfeitamente todos os itens na vertical (centro exato) */
+  justify-content: space-between;
+  padding: 12px 24px; /* Altura equilibrada e elegante */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--header-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--background, #ffffff);
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  width: 100%;
+  will-change: transform;
+}
 
   .logo img {
     height: 45px;
