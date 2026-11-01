@@ -38,10 +38,10 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: Manrope, sans-serif; background: var(--bg); color: var(--text); }
+
 h1 { font-family: Sora, sans-serif; color: var(--primary); }
 
-.topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 18px 20px; position: sticky; top: 0; z-index: 10; }
+
 .logo { font-family: Sora, sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--primary); text-decoration: none; }
 .logo span { color: var(--highlight-hover); }
 

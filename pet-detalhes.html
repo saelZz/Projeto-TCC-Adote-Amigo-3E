@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="pet-detalhes.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pet-detalhes.css">
 </head>
 <body>
 
@@ -28,6 +28,7 @@
 
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
       <a href="index.html">
@@ -35,7 +36,7 @@
       </a>
     </div>
 
-    <nav class="menu" id="menu-principal">
+    <nav class="menu">
       <a href="index.html">Início</a>
       <a href="historia.html">Quem somos nós?</a>
       <div class="dropdown">
@@ -67,10 +68,6 @@
       <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
     </div>
-
-    <button class="mobile-toggle" aria-expanded="false" aria-label="Abrir navegação">
-      <span class="menu-lines"></span>
-    </button>
   </header>
 
   <main id="conteudo">
@@ -133,7 +130,6 @@
       <div class="shelter-action reveal">
         <div class="shelter-heading">
           <div class="shelter-symbol" aria-hidden="true">
-            <!-- A logo da ONG aparece dinamicamente via JS -->
             <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z"/><path d="M9 20v-7h6v7"/></svg>
           </div>
           <div>
@@ -147,7 +143,6 @@
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
         </a>
 
-        <!-- Mensagem explicativa padronizada sobre a condução da adoção -->
         <p class="cta-note" style="margin-top: 12px; font-size: 0.88rem; line-height: 1.5; color: var(--foreground-muted);">
           ℹ️ <strong>Processo de adoção:</strong> Entrevistas, questionários, taxas e critérios de segurança (como telas de proteção) são tratados diretamente com a ONG responsável através do seu canal oficial.
         </p>
@@ -177,10 +172,13 @@
     </a>
   </div>
   
+  <!-- MODAL DE FOTO AMPLIADA CORRIGIDO -->
   <dialog id="photo-dialog" class="photo-dialog" aria-label="Foto ampliada">
+  <div class="dialog-content-wrapper">
     <button class="glass-button dialog-close" aria-label="Fechar foto ampliada">×</button>
     <img src="" alt="Foto ampliada do pet">
-  </dialog>
+  </div>
+</dialog>
 
   <dialog id="link-dialog" class="link-dialog" aria-labelledby="link-title">
     <span class="dialog-mark" aria-hidden="true">↗</span>
@@ -191,24 +189,24 @@
 
   <!-- RODAPÉ -->
   <footer class="site-footer">
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
-      <p>Conectando pessoas, ONGs e novos começos.</p>
-    </div>
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+        <p>Conectando pessoas, ONGs e novos começos.</p>
+      </div>
 
-    <div class="footer-support">
-  <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-  <!-- CORREÇÃO: o e-mail estava com "://" no meio (contato.adoteamigo@://gmail.com), o que quebrava o link -->
-  <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
-   📧 Fale com o Suporte
-  </a>
-</div>
-  </div>
-</footer>
+      <div class="footer-support">
+        <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+          📧 Fale com o Suporte
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Carregamento do script de inicialização dinâmica -->
   <script type="module" src="pet-detalhes.js"></script>
+  <script src="menu-mobile.js"></script>
 
 </body>
 </html>

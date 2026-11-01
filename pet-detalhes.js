@@ -5,6 +5,9 @@ import { getPetById } from "./pets-service.js";
 const $ = (selector) => document.querySelector(selector);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
+// Inicializa as animações de revelação imediatamente para evitar que os elementos sumam
+initReveal();
+
 async function loadPetDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const petId = urlParams.get('id');
@@ -34,7 +37,6 @@ async function loadPetDetails() {
     // 2. Resumo Rápido (Fatos)
     const factsContainer = document.querySelector('.pet-summary .facts');
     if (factsContainer) {
-      // Verifica se o peso existe no Firebase
       const weightBadge = (pet.weight || pet.peso) ? `<span>${pet.weight || pet.peso}</span>` : '';
 
       factsContainer.innerHTML = `
@@ -90,6 +92,8 @@ async function loadPetDetails() {
 
     initGallery();
     initDialogs();
+    
+    // Força o re-observar dos elementos caso algum conteúdo dinâmico precise
     initReveal();
 
     if (preloader) preloader.classList.add("hidden");
@@ -143,7 +147,6 @@ function initGallery() {
       button.setAttribute('aria-pressed', String(selected));
     });
 
-    // Atualização dinâmica e correta do contador (ex: 01 / 01 ou 01 / 04)
     const counterEl = $('.photo-counter');
     if (counterEl) {
       const currentStr = String(index + 1).padStart(2, '0');
@@ -251,11 +254,19 @@ function initDialogs() {
 }
 
 function initReveal() {
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    // Fallback se o usuário preferir menos movimento
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
   document.documentElement.classList.add('motion-ready');
   const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-    if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
-  }), { threshold: .1 });
+    if (entry.isIntersecting) { 
+      entry.target.classList.add('is-visible'); 
+      observer.unobserve(entry.target); 
+    }
+  }), { threshold: .05 }); // Threshold menor para disparar mais fácil ao rolar
+  
   document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 }
 

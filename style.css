@@ -1391,8 +1391,8 @@ a:focus {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  /* Gradiente moderno unindo o azul profundo da marca com branco/suave */
   background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
+  font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
   border: 2px solid var(--primary, #0c3c75); /* Borda sólida no Azul Principal */
   padding: 6px 18px 6px 6px;
   border-radius: 50px;
@@ -1452,7 +1452,6 @@ a:focus {
   100% { transform: scale(1.4); opacity: 0; }
 }
 
-/* Textos com a identidade do projeto */
 .btn-texto-wrapper {
   display: flex;
   flex-direction: column;
@@ -1460,18 +1459,21 @@ a:focus {
 }
 
 .btn-titulo {
-  font-family: var(--font-display, "Manrope", sans-serif);
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: var(--primary, #0c3c75); /* Azul Profundo */
-  line-height: 1.2;
+  font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
+  font-weight: 700 !important; /* Mantém encorpado mas limpo, evitando o 800 pesado da FAQ */
+  font-size: 0.88rem !important;
+  color: var(--primary, #0c3c75) !important;
+  line-height: 1.2 !important;
+  letter-spacing: normal !important;
 }
 
 .btn-sub {
-  font-size: 0.72rem;
-  color: var(--highlight, #ff8a00); /* Subtítulo em Laranja para destacar */
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
+  font-size: 0.72rem !important;
+  color: var(--highlight, #ff8a00) !important;
+  font-weight: 600 !important; /* Peso moderado para o subtítulo não concorrer com o título */
+  letter-spacing: 0.2px !important;
+  line-height: 1.2 !important;
 }
 
 @media (max-width: 760px) {
