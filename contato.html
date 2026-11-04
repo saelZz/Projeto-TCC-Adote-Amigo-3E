@@ -135,7 +135,28 @@
             </div></div>
           </article>
 
-          <!-- 3) AMIGO NÃO SE COMPRA -->
+          <!-- 3) ADOTAR -->
+          <article class="ong-card reveal">
+            <h3>
+              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-adotar">
+                <span class="ong-logo" data-inicial="A"><img src="https://adotar.com.br/imagens/logo.png" alt=""></span>
+                <span class="ong-title"><strong>Adotar</strong><small>Portal de adoção e doação de cães e gatos</small></span>
+                <span class="ong-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="ong-panel" id="ong-adotar"><div class="ong-panel-inner">
+              <p>Portal que reúne anúncios de cães e gatos para adoção e doação de várias cidades do Brasil. Além da busca por animais, oferece lista de ONGs, vagas de voluntariado, feiras de adoção presenciais e virtuais, e áreas para animais perdidos e encontrados. Segundo o rodapé do próprio site, ele pertence ao Instituto Amigos dos Animais (IAA).</p>
+              <p><strong>Como adotar:</strong> escolha entre cães e gatos na busca de adoção, abra o anúncio do animal pelo botão “Quero adotar” e siga as orientações de contato de quem o anunciou.</p>
+              <div class="ong-contato">
+                <span class="ong-contato-titulo">Contato</span>
+                <a class="ong-link" href="https://adotar.com.br/" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
+                <a class="ong-link" href="https://adotar.com.br/fale-conosco" target="_blank" rel="noopener noreferrer">Fale conosco <span aria-hidden="true">→</span></a>
+                <a class="ong-link" href="https://www.instagram.com/adotar.com.br" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
+              </div>
+            </div></div>
+          </article>
+
+          <!-- 4) AMIGO NÃO SE COMPRA -->
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-amigonaosecompra">
@@ -154,7 +175,7 @@
             </div></div>
           </article>
 
-          <!-- 4) INSTITUTO CARAMELO -->
+          <!-- 5) INSTITUTO CARAMELO -->
           <article class="ong-card reveal">
             <h3>
               <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-institutocaramelo">
@@ -176,27 +197,6 @@
             </div></div>
           </article>
 
-          <!-- 5) MODELO PARA A QUINTA INSTITUIÇÃO ("Adotar")
-               Copie este bloco inteiro, tire os sinais de comentário e preencha com dados confirmados no site oficial.
-          <article class="ong-card reveal">
-            <h3>
-              <button class="ong-trigger" type="button" aria-expanded="false" aria-controls="ong-adotar">
-                <span class="ong-logo" data-inicial="A"><img src="imagens/ong-adotar.png" alt=""></span>
-                <span class="ong-title"><strong>NOME DA INSTITUIÇÃO</strong><small>TIPO (ex.: Plataforma de adoção, ONG)</small></span>
-                <span class="ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="ong-panel" id="ong-adotar"><div class="ong-panel-inner">
-              <p>DESCRIÇÃO CURTA, baseada no site oficial.</p>
-              <p><strong>Como adotar:</strong> PASSO A PASSO CURTO.</p>
-              <div class="ong-contato">
-                <span class="ong-contato-titulo">Contato</span>
-                <a class="ong-link" href="ENDERECO-DO-SITE" target="_blank" rel="noopener noreferrer">Visitar o site <span aria-hidden="true">→</span></a>
-              </div>
-            </div></div>
-          </article>
-          -->
-
         </div>
 
         <p class="ong-nota">As informações acima foram reunidas a partir dos sites e canais divulgados por cada instituição e de reportagens da imprensa. Os critérios de adoção podem mudar, por isso confirme sempre diretamente com a instituição. Logotipos e marcas pertencem aos respectivos titulares e são usados apenas para identificação.</p>
@@ -210,7 +210,7 @@
           <aside class="contact-info reveal">
             <h3>Prefere escrever direto?</h3>
             <p>Você também pode enviar a sua mensagem diretamente para o nosso e-mail:</p>
-            <a class="contact-email" href="mailto:contato.adoteamigo@gmail.com">contato.adoteamigo@gmail.com</a>
+            <a class="contact-email" href="mailto:adoteamigo.tcc2026@gmail.com">adoteamigo.tcc2026@gmail.com</a>
             <button class="btn-copy" id="copiar-email" type="button">Copiar e-mail</button>
             <p class="copy-msg" id="copiar-msg" role="status" aria-live="polite"></p>
             <h4>Atendemos mensagens sobre</h4>
@@ -251,7 +251,8 @@
                 <textarea id="mensagem" name="mensagem" rows="6" required aria-describedby="erro-mensagem"></textarea>
                 <small class="field-error" id="erro-mensagem"></small>
               </div>
-              <input type="text" name="_gotcha" class="campo-isca" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <!-- Campo isca contra robôs: fica invisível para as pessoas (o estilo está aqui mesmo para não depender do CSS) -->
+              <input type="text" name="_gotcha" class="campo-isca" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
               <button class="button button-highlight" type="submit">Enviar mensagem <span aria-hidden="true">→</span></button>
               <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
               <p class="form-note">Ao enviar, o seu aplicativo de e-mail será aberto com a mensagem já preenchida, e você só precisa confirmar o envio. Este formulário não guarda nenhum dado no site.</p>
@@ -274,7 +275,7 @@
 
       <div class="footer-support">
         <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank" rel="noopener noreferrer">
           📧 Fale com o Suporte
         </a>
       </div>
