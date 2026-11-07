@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Reunimos os canais de doação e de apoio de instituições de proteção animal e plataformas de adoção. Escolha uma e vá direto à página oficial.">
+  <meta name="description" content="Escolha como ajudar a causa animal: doar, ser voluntário, apadrinhar ou apoiar como empresa. Links oficiais de instituições de proteção animal e plataformas de adoção.">
   <meta property="og:title" content="Apoiar instituições — Adote Amigo">
-  <meta property="og:description" content="Botões e links para as páginas de doação e de apoio de cada instituição de referência.">
+  <meta property="og:description" content="Escolha o tipo de apoio e vá direto à página oficial de cada instituição.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <title>Apoiar instituições — Adote Amigo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Mesma base visual das páginas Contato e Quem Somos. doe.css = só o que é da página Apoiar instituições. -->
+  <!-- Mesma base visual das outras páginas. doe.css = só o que é da página Apoiar instituições. -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="historia.css">
   <link rel="stylesheet" href="doe.css">
@@ -69,215 +69,214 @@
       <div class="doe-hero-content">
         <span class="doe-badge">• APOIAR INSTITUIÇÕES</span>
         <h1 class="doe-hero-title">Fortaleça quem <span class="doe-destaque">cuida de quem mais precisa</span></h1>
-        <p class="doe-hero-subtitle">Reunimos, em um só lugar, os canais de doação e de apoio de cada instituição de referência. Escolha uma delas e vá direto à página oficial.</p>
+        <p class="doe-hero-subtitle">Escolha como você quer ajudar e vá direto à página oficial de cada instituição, de forma simples e segura.</p>
+        <a class="doe-btn doe-hero-btn" href="#como-ajudar">Escolher como ajudar <span aria-hidden="true">↓</span></a>
+        <ul class="doe-pills">
+          <li>Links oficiais</li>
+          <li>Quatro formas de ajudar</li>
+          <li>Dicas de segurança</li>
+        </ul>
       </div>
     </section>
 
-    <section class="doe-section" id="instituicoes">
-      <div class="doe-container doe-narrow">
+    <section class="doe-section" id="como-ajudar">
+      <div class="doe-container">
         <header class="doe-heading reveal">
-          <span class="doe-eyebrow">Onde apoiar</span>
-          <h2>Escolha uma instituição e vá direto à página de doação</h2>
-          <p>Cada caixa reúne os botões oficiais, organizados por tipo de apoio: doar, outras formas de ajudar e conhecer a instituição.</p>
+          <span class="doe-eyebrow">Escolha como ajudar</span>
+          <h2>Qual tipo de apoio combina com você?</h2>
+          <p>Selecione uma opção e veja onde apoiar. Os botões levam ao site oficial de cada instituição.</p>
         </header>
 
-        <div class="doe-ong-list">
-          <article class="doe-ong reveal" id="caramelo">
-            <h3>
-              <button class="doe-ong-trigger" type="button" aria-expanded="false" aria-controls="doe-caramelo-painel">
-                <span class="doe-ong-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
-                <span class="doe-ong-title"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
-                <span class="doe-ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="doe-ong-panel" id="doe-caramelo-painel"><div class="doe-ong-inner">
-              <p>ONG fundada em 2015 que resgata, reabilita e encaminha animais para a adoção responsável, mantendo hospital veterinário. Segundo o site da instituição, o trabalho é sustentado por doações, parcerias e vendas na loja.</p>
-              <div class="doe-grupos">
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Doar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link" href="https://institutocaramelo.org/doe" target="_blank" rel="noopener noreferrer">Doar pelo site oficial <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">A página de doação oferece contribuição mensal ou avulsa.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Outras formas de ajudar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-sec" href="https://institutocaramelo.org/" target="_blank" rel="noopener noreferrer">Apadrinhar um animal <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">O apadrinhamento custeia os cuidados de um animal. Na página de doação também há o cadastro de voluntários e as opções de doação para empresas.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Conhecer a instituição</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-ter" href="https://institutocaramelo.org/" target="_blank" rel="noopener noreferrer">Site oficial <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-ter" href="https://www.instagram.com/instituto.caramelo/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              </div>
-            </div></div>
+        <div class="apoio-abas reveal" role="tablist" aria-label="Tipo de apoio">
+          <button class="apoio-aba is-ativa" type="button" role="tab" id="aba-doar" data-hash="doar" aria-selected="true" aria-controls="painel-doar" tabindex="0"><span class="apoio-aba-icone" aria-hidden="true">♥</span>Doar<span class="apoio-aba-qtd">5</span></button>
+          <button class="apoio-aba" type="button" role="tab" id="aba-voluntariado" data-hash="voluntariado" aria-selected="false" aria-controls="painel-voluntariado" tabindex="-1"><span class="apoio-aba-icone" aria-hidden="true">✋</span>Ser voluntário<span class="apoio-aba-qtd">3</span></button>
+          <button class="apoio-aba" type="button" role="tab" id="aba-apadrinhar" data-hash="apadrinhar" aria-selected="false" aria-controls="painel-apadrinhar" tabindex="-1"><span class="apoio-aba-icone" aria-hidden="true">★</span>Apadrinhar e lar temporário<span class="apoio-aba-qtd">2</span></button>
+          <button class="apoio-aba" type="button" role="tab" id="aba-empresas" data-hash="empresas" aria-selected="false" aria-controls="painel-empresas" tabindex="-1"><span class="apoio-aba-icone" aria-hidden="true">◆</span>Para empresas<span class="apoio-aba-qtd">3</span></button>
+        </div>
+
+        <div class="apoio-painel" role="tabpanel" id="painel-doar" aria-labelledby="aba-doar">
+          <p class="apoio-intro">Doações em dinheiro ou em itens. Cada instituição define os seus canais, por isso use sempre os botões oficiais.</p>
+          <div class="apoio-grid">
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
+            </div>
+            <p>Doação mensal ou avulsa pela página oficial de doação da instituição.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://institutocaramelo.org/doe" target="_blank" rel="noopener noreferrer">Doar no site oficial <span aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="doe-ong reveal" id="adotar">
-            <h3>
-              <button class="doe-ong-trigger" type="button" aria-expanded="false" aria-controls="doe-adotar-painel">
-                <span class="doe-ong-logo" data-inicial="A"><img src="https://adotar.com.br/imagens/logo.png" alt=""></span>
-                <span class="doe-ong-title"><strong>Adotar</strong><small>Portal de adoção e doação de cães e gatos</small></span>
-                <span class="doe-ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="doe-ong-panel" id="doe-adotar-painel"><div class="doe-ong-inner">
-              <p>Portal de anúncios de cães e gatos que também reúne uma lista de ONGs, vagas de voluntariado e feiras de adoção. O Adotar funciona como ponte: para doar dinheiro ou itens, escolha uma ONG da lista e use os canais dela.</p>
-              <div class="doe-grupos">
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Doar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link" href="https://adotar.com.br/instituicoes" target="_blank" rel="noopener noreferrer">Ver ONGs cadastradas <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">Cada ONG informa os seus próprios canais de contato e de doação.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Outras formas de ajudar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-sec" href="https://adotar.com.br/vagas" target="_blank" rel="noopener noreferrer">Vagas de voluntariado <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://adotar.com.br/feiras-adocao" target="_blank" rel="noopener noreferrer">Feiras de adoção presenciais <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://adotar.com.br/feiras-adocao-virtuais" target="_blank" rel="noopener noreferrer">Feiras de adoção online <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Conhecer a plataforma</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-ter" href="https://adotar.com.br/" target="_blank" rel="noopener noreferrer">Site do Adotar <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-ter" href="https://www.instagram.com/adotar.com.br" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              </div>
-            </div></div>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="P"><img src="https://www.adotepetz.com.br/images/logo.svg" alt=""></span>
+              <span class="apoio-card-nome"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
+            </div>
+            <p>Segundo o site, é possível arredondar o valor das compras nas lojas Petz e doar itens, como alimentos e acessórios, nas próprias lojas.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.adotepetz.com.br/institucional/como-posso-ajudar" target="_blank" rel="noopener noreferrer">Ver como ajudar <span aria-hidden="true">→</span></a>
+            <a class="apoio-btn apoio-btn-sec" href="https://www.adotepetz.com.br/institucional/transparencia-com-voce" target="_blank" rel="noopener noreferrer">Transparência e prestação de contas <span aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="doe-ong reveal" id="adotepetz">
-            <h3>
-              <button class="doe-ong-trigger" type="button" aria-expanded="false" aria-controls="doe-adotepetz-painel">
-                <span class="doe-ong-logo" data-inicial="P"><img src="https://www.adotepetz.com.br/images/logo.svg" alt=""></span>
-                <span class="doe-ong-title"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
-                <span class="doe-ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="doe-ong-panel" id="doe-adotepetz-painel"><div class="doe-ong-inner">
-              <p>Programa da Petz que conecta quem deseja adotar a ONGs e protetores parceiros, com espaços de adoção dentro das lojas.</p>
-              <div class="doe-grupos">
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Doar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link" href="https://www.adotepetz.com.br/institucional/como-posso-ajudar" target="_blank" rel="noopener noreferrer">Como posso ajudar? <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">Segundo o site, é possível arredondar o valor das compras nas lojas Petz e doar itens, como alimentos e acessórios, nas próprias lojas. Os produtos da Editora Mol também têm o lucro revertido às ONGs parceiras.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Outras formas de ajudar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-sec" href="https://www.adotepetz.com.br/ongs-parceiras" target="_blank" rel="noopener noreferrer">ONGs e protetores parceiros <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://www.adotepetz.com.br/unidades" target="_blank" rel="noopener noreferrer">Lojas com espaço de adoção <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://www.adotepetz.com.br/institucional/transparencia-com-voce" target="_blank" rel="noopener noreferrer">Transparência e prestação de contas <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">O site também menciona apadrinhamento, lar temporário e voluntariado nos eventos e nos abrigos das ONGs parceiras.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Conhecer o programa</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-ter" href="https://www.adotepetz.com.br/" target="_blank" rel="noopener noreferrer">Site do Adote Petz <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              </div>
-            </div></div>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="A"><img src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" alt=""></span>
+              <span class="apoio-card-nome"><strong>Amigo Não Se Compra</strong><small>Plataforma online de adoção</small></span>
+            </div>
+            <p>Doação de qualquer valor pela página de doação do próprio site.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.amigonaosecompra.com.br/paginas/quero-ajudar" target="_blank" rel="noopener noreferrer">Doe qualquer valor <span aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="doe-ong reveal" id="viumeupet">
-            <h3>
-              <button class="doe-ong-trigger" type="button" aria-expanded="false" aria-controls="doe-viumeupet-painel">
-                <span class="doe-ong-logo" data-inicial="V"><img src="https://www.viumeupet.com.br/images/logos/words-logo.svg" alt=""></span>
-                <span class="doe-ong-title"><strong>Viu Meu Pet</strong><small>Plataforma de adoção e de busca de pets perdidos</small></span>
-                <span class="doe-ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="doe-ong-panel" id="doe-viumeupet-painel"><div class="doe-ong-inner">
-              <p>Plataforma que une a adoção responsável à busca de animais perdidos. O site também divulga projetos sociais de proteção animal que podem receber ajuda.</p>
-              <div class="doe-grupos">
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Doar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link" href="https://www.viumeupet.com.br/ajude" target="_blank" rel="noopener noreferrer">Página Ajude <span aria-hidden="true">→</span></a>
-                  <a class="doe-link" href="https://www.viumeupet.com.br/projetos-sociais" target="_blank" rel="noopener noreferrer">Projetos sociais <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">Os projetos sociais reúnem iniciativas que lutam pela causa animal e aceitam apoio.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Outras formas de ajudar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-sec" href="https://www.viumeupet.com.br/contato?subject=partnership" target="_blank" rel="noopener noreferrer">Propor uma parceria <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://www.viumeupet.com.br/contato" target="_blank" rel="noopener noreferrer">Falar com a equipe <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Conhecer a plataforma</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-ter" href="https://www.viumeupet.com.br/" target="_blank" rel="noopener noreferrer">Site do Viu Meu Pet <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-ter" href="https://www.instagram.com/viumeupetoficial/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              </div>
-            </div></div>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="V"><img src="https://www.viumeupet.com.br/images/logos/words-logo.svg" alt=""></span>
+              <span class="apoio-card-nome"><strong>Viu Meu Pet</strong><small>Plataforma de adoção e pets perdidos</small></span>
+            </div>
+            <p>O site divulga projetos sociais de proteção animal que aceitam apoio e tem uma página dedicada a formas de ajudar.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.viumeupet.com.br/projetos-sociais" target="_blank" rel="noopener noreferrer">Projetos sociais <span aria-hidden="true">→</span></a>
+            <a class="apoio-btn apoio-btn-sec" href="https://www.viumeupet.com.br/ajude" target="_blank" rel="noopener noreferrer">Página Ajude <span aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="doe-ong reveal" id="amigonaosecompra">
-            <h3>
-              <button class="doe-ong-trigger" type="button" aria-expanded="false" aria-controls="doe-amigonaosecompra-painel">
-                <span class="doe-ong-logo" data-inicial="A"><img src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" alt=""></span>
-                <span class="doe-ong-title"><strong>Amigo Não Se Compra</strong><small>Plataforma online de adoção</small></span>
-                <span class="doe-ong-icon" aria-hidden="true"></span>
-              </button>
-            </h3>
-            <div class="doe-ong-panel" id="doe-amigonaosecompra-painel"><div class="doe-ong-inner">
-              <p>Plataforma online de adoção de cães e gatos que não possui abrigos próprios: os animais são divulgados por ONGs, protetores independentes e pessoas.</p>
-              <div class="doe-grupos">
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Doar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link" href="https://www.amigonaosecompra.com.br/paginas/quero-ajudar" target="_blank" rel="noopener noreferrer">Doe qualquer valor <span aria-hidden="true">→</span></a>
-                </div>
-                <p class="doe-grupo-nota">Página de doação do próprio site do Amigo Não Se Compra.</p>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Outras formas de ajudar</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-sec" href="https://www.amigonaosecompra.com.br/paginas/parcerias" target="_blank" rel="noopener noreferrer">Seja uma empresa parceira <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-sec" href="https://www.amigonaosecompra.com.br/pets/novo" target="_blank" rel="noopener noreferrer">Divulgar um animal <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              <div class="doe-grupo">
-                <span class="doe-grupo-titulo">Conhecer a plataforma</span>
-                <div class="doe-botoes">
-                  <a class="doe-link doe-link-ter" href="https://amigonaosecompra.com.br/" target="_blank" rel="noopener noreferrer">Site oficial <span aria-hidden="true">→</span></a>
-                  <a class="doe-link doe-link-ter" href="https://www.instagram.com/amigonaosecompra" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">→</span></a>
-                </div>
-              </div>
-              </div>
-            </div></div>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="A"><img src="https://adotar.com.br/imagens/logo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Adotar</strong><small>Portal de adoção e doação</small></span>
+            </div>
+            <p>O portal reúne ONGs de várias cidades. Escolha uma da lista e use os canais de doação dela.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://adotar.com.br/instituicoes" target="_blank" rel="noopener noreferrer">Ver ONGs cadastradas <span aria-hidden="true">→</span></a>
+            </div>
           </article>
+          </div>
+        </div>
+        <div class="apoio-painel" role="tabpanel" id="painel-voluntariado" aria-labelledby="aba-voluntariado">
+          <p class="apoio-intro">Dedicar tempo também é uma forma de ajudar. As tarefas e os horários são definidos por cada instituição.</p>
+          <div class="apoio-grid">
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="A"><img src="https://adotar.com.br/imagens/logo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Adotar</strong><small>Portal de adoção e doação</small></span>
+            </div>
+            <p>Vagas de voluntariado publicadas por instituições de várias cidades.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://adotar.com.br/vagas" target="_blank" rel="noopener noreferrer">Ver vagas de voluntariado <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
+            </div>
+            <p>A página oficial tem um cadastro para quem deseja ser voluntário da instituição.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://institutocaramelo.org/doe" target="_blank" rel="noopener noreferrer">Cadastrar-se como voluntário <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="P"><img src="https://www.adotepetz.com.br/images/logo.svg" alt=""></span>
+              <span class="apoio-card-nome"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
+            </div>
+            <p>O site cita o voluntariado em eventos e nos abrigos das ONGs parceiras, além de feiras de adoção nas lojas.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.adotepetz.com.br/institucional/como-posso-ajudar" target="_blank" rel="noopener noreferrer">Ver como ajudar <span aria-hidden="true">→</span></a>
+            <a class="apoio-btn apoio-btn-sec" href="https://www.adotepetz.com.br/unidades" target="_blank" rel="noopener noreferrer">Lojas com espaço de adoção <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          </div>
+        </div>
+        <div class="apoio-painel" role="tabpanel" id="painel-apadrinhar" aria-labelledby="aba-apadrinhar">
+          <p class="apoio-intro">Apadrinhar é custear os cuidados de um animal. No lar temporário, o animal fica em uma casa até encontrar uma família.</p>
+          <div class="apoio-grid">
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
+            </div>
+            <p>A instituição oferece a opção de ser madrinha ou padrinho, custeando os cuidados de um animal.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://institutocaramelo.org/" target="_blank" rel="noopener noreferrer">Conhecer o apadrinhamento <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="P"><img src="https://www.adotepetz.com.br/images/logo.svg" alt=""></span>
+              <span class="apoio-card-nome"><strong>Adote Petz</strong><small>Programa de adoção da Petz</small></span>
+            </div>
+            <p>O site menciona o apadrinhamento de um pet e a possibilidade de oferecer um lar temporário.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.adotepetz.com.br/institucional/como-posso-ajudar" target="_blank" rel="noopener noreferrer">Ver como ajudar <span aria-hidden="true">→</span></a>
+            <a class="apoio-btn apoio-btn-sec" href="https://www.adotepetz.com.br/ongs-parceiras" target="_blank" rel="noopener noreferrer">ONGs e protetores parceiros <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          </div>
+        </div>
+        <div class="apoio-painel" role="tabpanel" id="painel-empresas" aria-labelledby="aba-empresas">
+          <p class="apoio-intro">Empresas podem apoiar por meio de parcerias e de doações corporativas, pelos canais indicados por cada instituição.</p>
+          <div class="apoio-grid">
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="C"><img src="https://static.tildacdn.net/tild3861-3662-4738-b138-653462623732/logo-caramelo.png" alt=""></span>
+              <span class="apoio-card-nome"><strong>Instituto Caramelo</strong><small>ONG de resgate e adoção</small></span>
+            </div>
+            <p>A página oficial de doação apresenta a opção de doações corporativas.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://institutocaramelo.org/doe" target="_blank" rel="noopener noreferrer">Ver doações corporativas <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="A"><img src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" alt=""></span>
+              <span class="apoio-card-nome"><strong>Amigo Não Se Compra</strong><small>Plataforma online de adoção</small></span>
+            </div>
+            <p>A plataforma tem uma página própria para quem deseja ser uma empresa parceira.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.amigonaosecompra.com.br/paginas/parcerias" target="_blank" rel="noopener noreferrer">Seja uma empresa parceira <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="apoio-card">
+            <div class="apoio-card-topo">
+              <span class="apoio-logo" data-inicial="V"><img src="https://www.viumeupet.com.br/images/logos/words-logo.svg" alt=""></span>
+              <span class="apoio-card-nome"><strong>Viu Meu Pet</strong><small>Plataforma de adoção e pets perdidos</small></span>
+            </div>
+            <p>O site recebe propostas de parceria pelo formulário de contato.</p>
+            <div class="apoio-acoes">
+            <a class="apoio-btn" href="https://www.viumeupet.com.br/contato?subject=partnership" target="_blank" rel="noopener noreferrer">Propor uma parceria <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          </div>
         </div>
 
         <p class="doe-nota">As informações foram reunidas a partir dos sites e canais divulgados por cada instituição. Formas de doação e de voluntariado podem mudar, por isso confirme sempre diretamente com a instituição. Logotipos e marcas pertencem aos respectivos titulares e são usados apenas para identificação.</p>
+        <p class="doe-ponte">Quer conversar com alguma delas antes de ajudar? <a href="contato.html">Veja os contatos de cada instituição</a>.</p>
       </div>
     </section>
 
     <section class="doe-section doe-soft" id="seguranca">
-      <div class="doe-container doe-narrow">
-        <div class="doe-seguranca reveal">
+      <div class="doe-container">
+        <header class="doe-heading reveal">
           <span class="doe-eyebrow">Apoie com segurança</span>
-          <h2>Antes de doar</h2>
-          <ul class="doe-checklist">
-            <li>Entre sempre pelos botões desta página ou pelo endereço oficial da instituição, e evite links recebidos de desconhecidos.</li>
-            <li>Confira se a instituição informa nome, CNPJ (quando houver), localização e canais de contato.</li>
-            <li>Pergunte como a doação será usada e se há prestação de contas. O Adote Petz, por exemplo, mantém uma página de transparência.</li>
-            <li>Desconfie de pedidos que pressionam por uma transferência imediata, sem dar informações.</li>
-          </ul>
-        </div>
+          <h2>Como ajudar em 3 passos</h2>
+        </header>
+        <ol class="doe-passos">
+          <li class="doe-passo reveal">
+            <span class="doe-passo-num" aria-hidden="true">1</span>
+            <h3>Escolha o tipo de apoio</h3>
+            <p>Doar, ser voluntário, apadrinhar ou apoiar como empresa. Você escolhe o que cabe na sua rotina e nas suas possibilidades.</p>
+          </li>
+          <li class="doe-passo reveal">
+            <span class="doe-passo-num" aria-hidden="true">2</span>
+            <h3>Use o botão oficial</h3>
+            <p>Entre pelos botões desta página ou pelo endereço oficial da instituição, e evite links recebidos de desconhecidos.</p>
+          </li>
+          <li class="doe-passo reveal">
+            <span class="doe-passo-num" aria-hidden="true">3</span>
+            <h3>Confirme antes de doar</h3>
+            <p>Veja se a instituição informa nome, CNPJ (quando houver) e contatos, e pergunte como a doação será usada. Desconfie de pedidos com pressa e sem informações.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
