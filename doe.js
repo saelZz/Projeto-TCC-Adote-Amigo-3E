@@ -18,37 +18,55 @@
     reveals.forEach((el) => observer.observe(el));
   }
 
-  /* 2) Menu das instituições: cada nome abre e fecha a sua caixa de botões */
-  function definirAberto(card, aberto) {
-    const botao = card.querySelector('.doe-ong-trigger');
-    card.classList.toggle('is-open', aberto);
-    botao?.setAttribute('aria-expanded', String(aberto));
-  }
+  /* 2) Abas: o tipo de apoio escolhido mostra só os cartões daquele tipo.
+        Sem JavaScript, todos os cartões ficam visíveis, um tipo abaixo do outro. */
+  const abas = Array.from(document.querySelectorAll('.apoio-aba'));
+  const paineis = Array.from(document.querySelectorAll('.apoio-painel'));
 
-  document.querySelectorAll('.doe-ong-trigger').forEach((botao) => {
-    botao.addEventListener('click', () => {
-      const card = botao.closest('.doe-ong');
-      if (!card) return;
-      const vaiAbrir = !card.classList.contains('is-open');
-      document.querySelectorAll('.doe-ong.is-open').forEach((aberto) => definirAberto(aberto, false));
-      definirAberto(card, vaiAbrir);
+  function selecionar(aba, { foco = false, atualizarEndereco = true } = {}) {
+    abas.forEach((item) => {
+      const ativa = item === aba;
+      item.setAttribute('aria-selected', String(ativa));
+      item.tabIndex = ativa ? 0 : -1;
+      item.classList.toggle('is-ativa', ativa);
     });
-  });
-
-  /* 3) Endereço direto para uma instituição, por exemplo doe.html#caramelo, já deixa a caixa aberta */
-  function abrirPeloEndereco() {
-    const id = decodeURIComponent(window.location.hash.replace('#', ''));
-    if (!id) return;
-    const card = document.getElementById(id);
-    if (!card || !card.classList.contains('doe-ong')) return;
-    document.querySelectorAll('.doe-ong.is-open').forEach((aberto) => definirAberto(aberto, false));
-    definirAberto(card, true);
+    paineis.forEach((painel) => {
+      painel.hidden = painel.id !== aba.getAttribute('aria-controls');
+    });
+    if (foco) aba.focus();
+    if (atualizarEndereco && window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', '#' + aba.dataset.hash);
+    }
   }
-  abrirPeloEndereco();
-  window.addEventListener('hashchange', abrirPeloEndereco);
 
-  /* 4) Se um logotipo não carregar, esconde a imagem e mostra a letra inicial */
-  document.querySelectorAll('.doe-ong-logo img').forEach((img) => {
+  if (abas.length) {
+    abas.forEach((aba, indice) => {
+      aba.addEventListener('click', () => selecionar(aba));
+      aba.addEventListener('keydown', (evento) => {
+        let destino = null;
+        if (evento.key === 'ArrowRight') destino = abas[(indice + 1) % abas.length];
+        if (evento.key === 'ArrowLeft') destino = abas[(indice - 1 + abas.length) % abas.length];
+        if (evento.key === 'Home') destino = abas[0];
+        if (evento.key === 'End') destino = abas[abas.length - 1];
+        if (destino) {
+          evento.preventDefault();
+          selecionar(destino, { foco: true });
+        }
+      });
+    });
+
+    // Endereço direto: doe.html#voluntariado, #apadrinhar, #empresas ou #doar já abre a aba certa
+    const escolherPeloEndereco = () => {
+      const chave = decodeURIComponent(window.location.hash.replace('#', ''));
+      const alvo = abas.find((aba) => aba.dataset.hash === chave);
+      selecionar(alvo || abas[0], { atualizarEndereco: false });
+    };
+    escolherPeloEndereco();
+    window.addEventListener('hashchange', escolherPeloEndereco);
+  }
+
+  /* 3) Se um logotipo não carregar, esconde a imagem e mostra a letra inicial */
+  document.querySelectorAll('.apoio-logo img').forEach((img) => {
     const esconder = () => { img.hidden = true; };
     img.addEventListener('error', esconder);
     if (img.complete && img.naturalWidth === 0) esconder();
