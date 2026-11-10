@@ -3,113 +3,588 @@
    Usa as mesmas cores e fontes do restante do site. As classes começam com "doe-"
    para não misturar com as outras páginas.
    ========================================================================== */
-.doe-page{
-  --d-primary:#0c3c75;--d-deep:#072b54;--d-orange:#ff8a00;--d-orange-h:#e07a00;
-  --d-soft:#d8eaff;--d-ice:#f2f7fc;--d-border:#dae2eb;--d-muted:#5f6a77;--d-text:#152131;
-  --d-shadow:0 18px 50px rgba(7,43,84,.1);--d-radius:16px;
+.doe-page {
+  --d-primary: #0c3c75;
+  --d-deep: #072b54;
+  --d-orange: #ff8a00;
+  --d-orange-h: #e07a00;
+  --d-soft: #d8eaff;
+  --d-ice: #f2f7fc;
+  --d-border: #dae2eb;
+  --d-muted: #5f6a77;
+  --d-text: #152131;
+  --d-shadow: 0 18px 50px rgba(7, 43, 84, 0.1);
+  --d-radius: 16px;
 }
 
 /* ---------- Estrutura geral ---------- */
-.doe-container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-.doe-narrow{max-width:860px}
-.doe-section{padding:88px 0}
-.doe-soft{background:var(--d-ice)}
-.doe-heading{max-width:760px;margin:0 auto;text-align:center}
-.doe-heading h2,.doe-seguranca h2{margin:14px 0 0;color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.2}
-.doe-heading p{max-width:640px;margin:16px auto 0;color:var(--d-muted);font-size:16px;line-height:1.75}
-.doe-eyebrow{display:inline-flex;color:var(--d-orange-h);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
-.doe-eyebrow-claro{color:var(--d-orange)}
+.doe-container {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+.doe-narrow {
+  max-width: 860px;
+}
+.doe-section {
+  padding: 88px 0;
+}
+.doe-soft {
+  background: var(--d-ice);
+}
+.doe-heading {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.doe-heading h2,
+.doe-seguranca h2 {
+  margin: 14px 0 0;
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.doe-heading p {
+  max-width: 640px;
+  margin: 16px auto 0;
+  color: var(--d-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.doe-eyebrow {
+  display: inline-flex;
+  color: var(--d-orange-h);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.doe-eyebrow-claro {
+  color: var(--d-orange);
+}
 
-/* ---------- Topo ---------- */
-.doe-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 125px;color:#fff;background-color:#0b1f3a;background-image:linear-gradient(180deg,rgba(11,31,58,.86) 0%,rgba(11,31,58,.95) 100%),url('imagens/banner4.jpg');background-size:cover;background-position:center;background-repeat:no-repeat}
-.doe-hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;max-width:860px;margin:0 auto}
-.doe-badge{display:inline-block;margin-bottom:20px;padding:6px 20px;border:1px solid rgba(255,138,0,.4);border-radius:30px;background:rgba(255,138,0,.15);color:#ff9800;font-size:13px;font-weight:700;letter-spacing:1px;backdrop-filter:blur(4px);animation:doeBaixo .8s ease-out both}
-.doe-hero-title{margin:0 0 18px;color:#fff;font-family:Manrope,'Plus Jakarta Sans',sans-serif;font-size:clamp(33px,5vw,52px);font-weight:800;line-height:1.15;letter-spacing:-.8px;animation:doeCima .9s cubic-bezier(.22,1,.36,1) .15s both}
-.doe-destaque{display:inline-block;background:linear-gradient(120deg,#ff9800 0%,#ffc107 35%,#ff9800 70%,#e65100 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:doeBrilho 5s linear infinite}
-.doe-hero-subtitle{max-width:720px;margin:0 auto;color:#cbd5e1;font-size:18px;line-height:1.6;animation:doeCima .9s cubic-bezier(.22,1,.36,1) .3s both}
-.doe-paw{position:absolute;z-index:1;font-size:24px;opacity:.15;filter:drop-shadow(0 0 8px rgba(255,255,255,.3));pointer-events:none;animation:doePata 6s ease-in-out infinite alternate}
-.doe-paw-1{top:15%;left:8%}.doe-paw-2{top:70%;left:12%;animation-delay:1.5s}.doe-paw-3{top:20%;right:10%;animation-delay:3s}.doe-paw-4{top:65%;right:14%;animation-delay:4.5s}
+/* ==========================================
+   HERO DOAÇÕES — ESTRUTURA IGUAL CONTATO (VERDE NEON)
+   ========================================== */
+.doe-hero-section {
+  position: relative;
+  width: 100%;
+  padding: 110px 20px 125px;
+  background-color: #06241a; /* Fundo base escuro esverdeado */
+  background-image: linear-gradient(
+      180deg,
+      rgba(6, 36, 26, 0.90) 0%,
+      rgba(4, 24, 18, 0.96) 100%
+    ),
+    url('imagens/caozinhodoar.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
 
-/* ---------- Menu das instituições (cada nome abre uma caixa com os botões) ---------- */
-.doe-ong-list{display:grid;gap:14px;margin-top:44px}
-.doe-ong{overflow:hidden;scroll-margin-top:110px;border:1px solid var(--d-border);border-radius:var(--d-radius);background:#fff;box-shadow:0 4px 20px rgba(7,43,84,.07);transition:border-color .28s,box-shadow .28s,transform .28s}
-.doe-ong:hover{transform:translateY(-2px);box-shadow:var(--d-shadow)}
-.doe-ong.is-open{border-color:var(--d-orange);box-shadow:var(--d-shadow)}
-.doe-ong h3{margin:0}
-.doe-ong-trigger{display:flex;align-items:center;gap:16px;width:100%;padding:16px 20px;border:0;background:transparent;color:var(--d-primary);text-align:left;cursor:pointer}
-.doe-ong-trigger:focus-visible{outline:3px solid var(--d-orange);outline-offset:-3px}
-.doe-ong-logo{position:relative;display:grid;flex:0 0 60px;width:60px;height:60px;place-items:center;overflow:hidden;border-radius:14px;background:var(--d-soft);color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:24px;font-weight:800}
-.doe-ong-logo::before{content:attr(data-inicial);position:absolute}
-.doe-ong-logo img{position:relative;width:100%;height:100%;padding:6px;background:#fff;object-fit:contain}
-.doe-ong-title{display:grid;flex:1;gap:2px;min-width:0}
-.doe-ong-title strong{font-family:Manrope,Arial,sans-serif;font-size:18px;line-height:1.25}
-.doe-ong-title small{color:var(--d-muted);font-size:13px;font-weight:600;line-height:1.4}
-.doe-ong-icon{position:relative;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--d-soft);color:var(--d-primary);transition:transform .35s,background .3s}
-.doe-ong-icon::before,.doe-ong-icon::after{content:"";position:absolute;top:50%;left:50%;width:15px;height:2.5px;margin:-1.25px 0 0 -7.5px;border-radius:999px;background:currentColor}
-.doe-ong-icon::after{transform:rotate(90deg)}
-.doe-ong.is-open .doe-ong-icon{transform:rotate(135deg);background:var(--d-orange);color:#0d1b2d}
-.doe-ong-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1),opacity .25s}
-.doe-ong-inner{min-height:0;overflow:hidden}
-.doe-ong.is-open .doe-ong-panel{grid-template-rows:1fr;opacity:1}
-.doe-ong-inner>p{margin:0;padding:0 24px 16px;color:var(--d-muted);font-size:15px;line-height:1.75}
+.contact-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Botões organizados por tipo de apoio */
-.doe-grupos{display:grid;gap:12px;margin:0 24px 24px}
-.doe-grupo{padding:16px;border:1px solid var(--d-border);border-radius:12px;background:var(--d-ice)}
-.doe-grupo-titulo{display:block;margin-bottom:10px;color:var(--d-primary);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}
-.doe-botoes{display:flex;flex-wrap:wrap;gap:10px}
-.doe-grupo-nota{margin:12px 0 0;color:var(--d-muted);font-size:13.5px;line-height:1.65}
-.doe-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:2px solid var(--d-orange);border-radius:50px;background:var(--d-orange);color:#fff;font-size:14px;font-weight:700;transition:background .25s,color .25s,border-color .25s,transform .25s}
-.doe-link:hover{border-color:var(--d-orange-h);background:var(--d-orange-h);transform:translateY(-1px)}
-.doe-link-sec{border-color:var(--d-primary);background:#fff;color:var(--d-primary)}
-.doe-link-sec:hover{border-color:var(--d-primary);background:var(--d-primary);color:#fff}
-.doe-link-ter{border-color:var(--d-border);background:#fff;color:var(--d-text)}
-.doe-link-ter:hover{border-color:var(--d-orange);background:#fff;color:var(--d-orange-h)}
-.doe-link:focus-visible{outline:3px solid var(--d-primary);outline-offset:2px}
-.doe-nota{margin:28px 0 0;color:var(--d-muted);font-size:13px;line-height:1.7;text-align:center}
+/* Badge estilizada em tons de verde neon */
+.doe-hero-section .contact-badge {
+  display: inline-block;
+  background: rgba(0, 230, 118, 0.12);
+  color: #00e676;
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.15);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(4px);
+  animation: badgeBounce 3s ease-in-out infinite, fadeInDown 0.8s ease-out both;
+}
+
+/* Título Principal */
+.contact-hero-title {
+  font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.18;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* Destaque animado com gradiente verde neon e esmeralda */
+.doe-hero-section .highlight-animated {
+  background: linear-gradient(
+    120deg,
+    #00e676 0%,
+    #69f07b 25%,
+    #02cf47 60%,
+    #019220 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shineGradient 5s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(0, 230, 118, 0.3));
+}
+
+/* Subtítulo */
+.contact-hero-subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* Elementos flutuantes decorativos (patinhas, dinheiro, corações) */
+.doe-hero-section .paw {
+  position: absolute;
+  font-size: 26px;
+  opacity: 0.2;
+  filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.4));
+  pointer-events: none;
+  animation: floatPaw 6s ease-in-out infinite alternate;
+}
+
+.doe-hero-section .paw-1 { top: 15%; left: 8%; animation-delay: 0s; }
+.doe-hero-section .paw-2 { top: 70%; left: 12%; animation-delay: 1.5s; font-size: 28px; }
+.doe-hero-section .paw-3 { top: 20%; right: 10%; animation-delay: 3s; font-size: 28px; }
+.doe-hero-section .paw-4 { top: 65%; right: 14%; animation-delay: 4.5s; }
+
+/* ---------- Menu das instituições ---------- */
+.doe-ong-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 44px;
+}
+.doe-ong {
+  overflow: hidden;
+  scroll-margin-top: 110px;
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(7, 43, 84, 0.07);
+  transition: border-color 0.28s, box-shadow 0.28s, transform 0.28s;
+}
+.doe-ong:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--d-shadow);
+}
+.doe-ong.is-open {
+  border-color: var(--d-orange);
+  box-shadow: var(--d-shadow);
+}
+.doe-ong h3 {
+  margin: 0;
+}
+.doe-ong-trigger {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  background: transparent;
+  color: var(--d-primary);
+  text-align: left;
+  cursor: pointer;
+}
+.doe-ong-trigger:focus-visible {
+  outline: 3px solid var(--d-orange);
+  outline-offset: -3px;
+}
+.doe-ong-logo {
+  position: relative;
+  display: grid;
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--d-soft);
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+.doe-ong-logo::before {
+  content: attr(data-inicial);
+  position: absolute;
+}
+.doe-ong-logo img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  background: #fff;
+  object-fit: contain;
+}
+.doe-ong-title {
+  display: grid;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+}
+.doe-ong-title strong {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.doe-ong-title small {
+  color: var(--d-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.doe-ong-icon {
+  position: relative;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--d-soft);
+  color: var(--d-primary);
+  transition: transform 0.35s, background 0.3s;
+}
+.doe-ong-icon::before,
+.doe-ong-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2.5px;
+  margin: -1.25px 0 0 -7.5px;
+  border-radius: 999px;
+  background: currentColor;
+}
+.doe-ong-icon::after {
+  transform: rotate(90deg);
+}
+.doe-ong.is-open .doe-ong-icon {
+  transform: rotate(135deg);
+  background: var(--d-orange);
+  color: #0d1b2d;
+}
+.doe-ong-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s;
+}
+.doe-ong-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.doe-ong.is-open .doe-ong-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.doe-ong-inner > p {
+  margin: 0;
+  padding: 0 24px 16px;
+  color: var(--d-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* Botões de apoio */
+.doe-grupos {
+  display: grid;
+  gap: 12px;
+  margin: 0 24px 24px;
+}
+.doe-grupo {
+  padding: 16px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-ice);
+}
+.doe-grupo-titulo {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--d-primary);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.doe-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.doe-grupo-nota {
+  margin: 12px 0 0;
+  color: var(--d-muted);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+.doe-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 2px solid var(--d-orange);
+  border-radius: 50px;
+  background: var(--d-orange);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+.doe-link:hover {
+  border-color: var(--d-orange-h);
+  background: var(--d-orange-h);
+  transform: translateY(-1px);
+}
+.doe-link-sec {
+  border-color: var(--d-primary);
+  background: #fff;
+  color: var(--d-primary);
+}
+.doe-link-sec:hover {
+  border-color: var(--d-primary);
+  background: var(--d-primary);
+  color: #fff;
+}
+.doe-link-ter {
+  border-color: var(--d-border);
+  background: #fff;
+  color: var(--d-text);
+}
+.doe-link-ter:hover {
+  border-color: var(--d-orange);
+  background: #fff;
+  color: var(--d-orange-h);
+}
+.doe-link:focus-visible {
+  outline: 3px solid var(--d-primary);
+  outline-offset: 2px;
+}
+.doe-nota {
+  margin: 28px 0 0;
+  color: var(--d-muted);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
 
 /* ---------- Antes de doar ---------- */
-.doe-seguranca{padding:36px 40px;border:1px solid var(--d-border);border-left:5px solid var(--d-orange);border-radius:var(--d-radius);background:#fff;box-shadow:var(--d-shadow)}
-.doe-seguranca h2{margin-bottom:18px;font-size:clamp(22px,3vw,30px)}
-.doe-checklist{display:grid;gap:12px;margin:0;padding:0;list-style:none}
-.doe-checklist li{position:relative;padding-left:30px;color:var(--d-muted);font-size:15.5px;line-height:1.7}
-.doe-checklist li::before{content:'✓';position:absolute;left:0;color:var(--d-orange-h);font-weight:800}
+.doe-seguranca {
+  padding: 36px 40px;
+  border: 1px solid var(--d-border);
+  border-left: 5px solid var(--d-orange);
+  border-radius: var(--d-radius);
+  background: #fff;
+  box-shadow: var(--d-shadow);
+}
+.doe-seguranca h2 {
+  margin-bottom: 18px;
+  font-size: clamp(22px, 3vw, 30px);
+}
+.doe-checklist {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.doe-checklist li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--d-muted);
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.doe-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--d-orange-h);
+  font-weight: 800;
+}
 
 /* ---------- Apoie o Adote Amigo ---------- */
-.doe-projeto{display:grid;grid-template-columns:1.4fr .6fr;gap:34px;align-items:center;padding:44px;border-radius:20px;background:var(--d-primary);color:#fff}
-.doe-projeto h2{margin:12px 0 14px;font-family:Manrope,Arial,sans-serif;font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.2}
-.doe-projeto p{margin:0 0 14px;color:rgba(255,255,255,.84);font-size:16px;line-height:1.75}
-.doe-aviso{padding:14px 16px;border-left:4px solid var(--d-orange);border-radius:0 10px 10px 0;background:rgba(255,255,255,.08);font-size:14.5px!important}
-.doe-projeto-acao{display:flex;justify-content:center}
-.doe-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:50px;background:var(--d-orange);color:#fff;font-weight:800;box-shadow:0 12px 30px rgba(255,138,0,.22);transition:transform .25s,background .25s}
-.doe-btn:hover{background:var(--d-orange-h);transform:translateY(-2px)}
-.doe-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.doe-projeto {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 34px;
+  align-items: center;
+  padding: 44px;
+  border-radius: 20px;
+  background: var(--d-primary);
+  color: #fff;
+}
+.doe-projeto h2 {
+  margin: 12px 0 14px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(26px, 3.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.doe-projeto p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.doe-aviso {
+  padding: 14px 16px;
+  border-left: 4px solid var(--d-orange);
+  border-radius: 0 10px 10px 0;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 14.5px !important;
+}
+.doe-projeto-acao {
+  display: flex;
+  justify-content: center;
+}
+.doe-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: 50px;
+  background: var(--d-orange);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(255, 138, 0, 0.22);
+  transition: transform 0.25s, background 0.25s;
+}
+.doe-btn:hover {
+  background: var(--d-orange-h);
+  transform: translateY(-2px);
+}
+.doe-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
 
 /* ---------- Animações ---------- */
-@keyframes doeBrilho{0%{background-position:0% center}100%{background-position:200% center}}
-@keyframes doePata{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-15px) rotate(10deg)}}
-@keyframes doeCima{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes doeBaixo{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ---------- Telas menores ---------- */
-@media (max-width:900px){
-  .doe-projeto{grid-template-columns:1fr}
-  .doe-projeto-acao{justify-content:flex-start}
+@keyframes shineGradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
-@media (max-width:768px){
-  .doe-section{padding:64px 0}
-  .doe-hero{padding:75px 16px 85px;background-image:linear-gradient(180deg,rgba(11,31,58,.88) 0%,rgba(11,31,58,.96) 100%),url('imagens/banner4-mobile.jpg');background-position:center top}
-  .doe-hero-subtitle{font-size:15px}
-  .doe-ong-trigger{padding:14px;gap:12px}
-  .doe-ong-logo{flex-basis:52px;width:52px;height:52px}
-  .doe-ong-title strong{font-size:16px}
-  .doe-ong-inner>p{padding-inline:18px}
-  .doe-grupos{margin-inline:14px}
-  .doe-grupo{padding:14px}
-  .doe-seguranca{padding:26px 22px}
-  .doe-projeto{padding:30px 22px}
+
+@keyframes shineGradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
-@media (prefers-reduced-motion:reduce){
-  .doe-paw,.doe-destaque,.doe-badge,.doe-hero-title,.doe-hero-subtitle{animation:none}
-  .doe-ong,.doe-ong-icon,.doe-ong-panel,.doe-link,.doe-btn{transition:none}
+@keyframes badgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes floatPaw {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-15px) rotate(10deg); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Telas menores e Celular ---------- */
+@media (max-width: 900px) {
+  .doe-projeto {
+    grid-template-columns: 1fr;
+  }
+  .doe-projeto-acao {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .doe-section {
+    padding: 64px 0;
+  }
+  .doe-hero-section {
+    padding: 75px 16px 85px;
+    background-image: linear-gradient(
+        180deg,
+        rgba(6, 36, 26, 0.90) 0%,
+        rgba(4, 24, 18, 0.96) 100%
+      ),
+      url('imagens/caozinhodoar-mobile.png');
+    background-size: cover;
+    background-position: center top;
+  }
+  .contact-hero-title {
+    font-size: 32px;
+  }
+  .contact-hero-subtitle {
+    font-size: 15px;
+  }
+  .doe-ong-trigger {
+    padding: 14px;
+    gap: 12px;
+  }
+  .doe-ong-logo {
+    flex-basis: 52px;
+    width: 52px;
+    height: 52px;
+  }
+  .doe-ong-title strong {
+    font-size: 16px;
+  }
+  .doe-ong-inner > p {
+    padding-inline: 18px;
+  }
+  .doe-grupos {
+    margin-inline: 14px;
+  }
+  .doe-grupo {
+    padding: 14px;
+  }
+  .doe-seguranca {
+    padding: 26px 22px;
+  }
+  .doe-projeto {
+    padding: 30px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doe-hero-section .paw,
+  .doe-hero-section .highlight-animated,
+  .doe-hero-section .contact-badge,
+  .contact-hero-title,
+  .contact-hero-subtitle {
+    animation: none;
+  }
+  .doe-ong,
+  .doe-ong-icon,
+  .doe-ong-panel,
+  .doe-link,
+  .doe-btn {
+    transition: none;
+  }
 }

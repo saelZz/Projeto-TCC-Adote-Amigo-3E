@@ -5,8 +5,14 @@ import { getPetById } from "./pets-service.js";
 const $ = (selector) => document.querySelector(selector);
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
-// Inicializa as animações de revelação imediatamente para evitar que os elementos sumam
-initReveal();
+function formatWeight(rawWeight) {
+  if (!rawWeight) return '';
+  let weightStr = String(rawWeight).trim();
+  if (/kg$/i.test(weightStr)) {
+    return weightStr.toLowerCase();
+  }
+  return `${weightStr} kg`;
+}
 
 async function loadPetDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -30,14 +36,15 @@ async function loadPetDetails() {
     
     document.title = `Conheça ${pet.name} — Adote Amigo`;
 
-    // 1. Cabeçalho e Localização
+    // 1. Cabeçalho e Localização centralizados
     $('#pet-name-title').innerHTML = `${pet.name}<span class="name-dot">.</span>`;
     $('#pet-location').textContent = `${pet.city || ''}, ${pet.state || ''}`;
 
-    // 2. Resumo Rápido (Fatos)
+    // 2. Resumo Rápido
     const factsContainer = document.querySelector('.pet-summary .facts');
     if (factsContainer) {
-      const weightBadge = (pet.weight || pet.peso) ? `<span>${pet.weight || pet.peso}</span>` : '';
+      const rawWeight = pet.weight || pet.peso;
+      const weightBadge = rawWeight ? `<span>${formatWeight(rawWeight)}</span>` : '';
 
       factsContainer.innerHTML = `
         ${pet.age ? `<span>${pet.age}</span>` : ''}
@@ -48,17 +55,14 @@ async function loadPetDetails() {
       `;
     }
 
-    // 3. Títulos e Descrições Curtas
     $('#pet-summary-title').textContent = `Um pequeno amor, um novo começo.`;
     $('#pet-summary-text').textContent = pet.shortDescription || pet.description || "Curioso, carinhoso e pronto para um novo começo.";
 
-    // Segunda Mensagem (História Completa vinda do campo history do Firebase)
     const detailedDescEl = document.getElementById('pet-detailed-description');
     if (detailedDescEl) {
       detailedDescEl.textContent = pet.history || pet.description || "Este amiguinho é cheio de amor para dar e procura uma família responsável para chamar de sua.";
     }
 
-    // 4. Dados da ONG e Logo no lugar da casinha
     const ongName = pet.ongName || "Abrigo responsável";
     const ongLogo = pet.ongLogo || "imagens/logo.png";
     
@@ -73,7 +77,7 @@ async function loadPetDetails() {
 
     initOfficialLinks(ongName, pet.ongUrl || null);
 
-    // 5. Fotos e Galeria Dinâmica (Puxa o array gallery do Firebase)
+    // 3. Fotos e Galeria Dinâmica
     const mainPhotoUrl = pet.photoUrl || "imagens/logo.png";
     const galleryEl = $('.photo-gallery');
     const thumbnailsEl = $('.photo-thumbnails');
@@ -93,7 +97,7 @@ async function loadPetDetails() {
     initGallery();
     initDialogs();
     
-    // Força o re-observar dos elementos caso algum conteúdo dinâmico precise
+    // CORREÇÃO DAS ANIMAÇÕES: Ativa o reveal AGORA que os elementos do Firebase renderizaram na página
     initReveal();
 
     if (preloader) preloader.classList.add("hidden");
@@ -162,7 +166,7 @@ function initGallery() {
 
   function schedule() {
     clearInterval(timer);
-    if (playing && !hovering && !document.hidden && !reducedMotion.matches && !$('.pet-stage').contains(document.activeElement) && !document.querySelector('dialog[open]')) {
+    if (playing && !hovering && !document.hidden && !reducedMotion.matches && !$('.pet-stage-carousel').contains(document.activeElement) && !document.querySelector('dialog[open]')) {
       timer = setInterval(() => go(index + 1), 7000);
     }
   }
@@ -194,17 +198,28 @@ function initGallery() {
     }
   });
 
-  let start;
-  gallery.addEventListener('touchstart', (event) => { const touch = event.touches[0]; start = touch ? { x: touch.clientX, y: touch.clientY } : undefined; }, { passive: true });
-  gallery.addEventListener('touchend', (event) => {
-    const touch = event.changedTouches[0];
-    if (!start || !touch) return;
-    const dx = touch.clientX - start.x, dy = touch.clientY - start.y;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) { go(index + (dx < 0 ? 1 : -1)); schedule(); }
-    start = undefined;
+  // Touch Swipe no Mobile
+  let startX = 0;
+  gallery.addEventListener('touchstart', (event) => {
+    const touch = event.touches[0];
+    if (touch) startX = touch.clientX;
   }, { passive: true });
 
-  const stage = $('.pet-stage');
+  gallery.addEventListener('touchend', (event) => {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    const diffX = touch.clientX - startX;
+    if (Math.abs(diffX) > 40) {
+      if (diffX < 0) {
+        go(index + 1);
+      } else {
+        go(index - 1);
+      }
+      schedule();
+    }
+  }, { passive: true });
+
+  const stage = $('.pet-stage-carousel');
   if (stage) {
     stage.addEventListener('pointerenter', () => { hovering = true; schedule(); });
     stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
@@ -255,21 +270,28 @@ function initDialogs() {
 
 function initReveal() {
   if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-    // Fallback se o usuário preferir menos movimento
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
     return;
   }
-  document.documentElement.classList.add('motion-ready');
-  const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-    if (entry.isIntersecting) { 
-      entry.target.classList.add('is-visible'); 
-      observer.unobserve(entry.target); 
-    }
-  }), { threshold: .05 }); // Threshold menor para disparar mais fácil ao rolar
   
-  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  document.documentElement.classList.add('motion-ready');
+
+  // Adiciona um pequeno atraso para garantir que o DOM do Firebase já foi renderizado
+  setTimeout(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { 
+          entry.target.classList.add('is-visible'); 
+          observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.10 });
+    
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  }, 100);
 }
 
-loadPetDetails();
+// Inicializações básicas do menu e modais (O reveal principal roda após o loadPetDetails)
 initMenu();
 initDialogs();
+loadPetDetails();

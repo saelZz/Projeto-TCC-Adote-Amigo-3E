@@ -5,7 +5,7 @@
  * ============================================================
  */
 import {
-  collection, query, where, limit, startAfter,
+  collection, query, where, limit, startAfter, orderBy,
   getDocs, getDoc, doc,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { db, isDemoMode } from "./firebase-config.js";
@@ -59,7 +59,7 @@ export function formatAge(months) {
 export async function fetchPets(filters = {}, cursor = null) {
   if (isDemoMode) return fetchDemoPets(filters, cursor);
 
-  // Busca pets com status Disponivel no Firestore
+  // Deixa apenas o filtro básico para evitar erros de índice no Firebase
   const constraints = [where("status", "==", "Disponivel")];
   
   if (cursor) constraints.push(startAfter(cursor));
@@ -68,7 +68,14 @@ export async function fetchPets(filters = {}, cursor = null) {
     const snap = await getDocs(query(collection(db, "pets"), ...constraints));
     let pets = snap.docs.map(toObject);
 
-    // Filtragem local resiliente para evitar erros de índice composto no Firestore
+    // Ordena por data de criação no próprio JavaScript (se o createdAt existir)
+    pets.sort((a, b) => {
+      const dateA = a.createdAt?.seconds || a.createdAt || 0;
+      const dateB = b.createdAt?.seconds || b.createdAt || 0;
+      return dateB - dateA; // Do mais recente para o mais antigo
+    });
+
+    // Restante dos filtros locais...
     if (filters.specie) pets = pets.filter(p => p.specie === filters.specie);
     if (filters.species) pets = pets.filter(p => p.specie === filters.species);
     if (filters.size) pets = pets.filter(p => p.size === filters.size);
@@ -78,8 +85,7 @@ export async function fetchPets(filters = {}, cursor = null) {
     if (filters.state) pets = pets.filter(p => p.state === filters.state);
     if (filters.city) pets = pets.filter(p => p.city === filters.city);
 
-    // Paginação simples dos resultados filtrados
-    const paginatedPets = pets.slice(0, PAGE_SIZE);
+    const paginatedPets = pets;
 
     // Enriquece cada pet com os dados reais da ONG parceira
     for (let pet of paginatedPets) {

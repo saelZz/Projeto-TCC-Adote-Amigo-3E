@@ -123,6 +123,7 @@ a {
 
 .logo img {
   height: 65px;
+  left: 20px;
   display: block;
   position: relative;
   z-index: 2;
@@ -1565,6 +1566,7 @@ a:focus {
 
   .logo img {
     height: 45px;
+    left: 10px;
   }
 
   .actions {
