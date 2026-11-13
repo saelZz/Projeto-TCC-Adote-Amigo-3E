@@ -702,7 +702,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   }
 
   .shelter-logo-container {
-    height: 42px !important;
+    height: 37px !important;
     width: 100% !important;
     display: flex !important;
     align-items: center !important;
