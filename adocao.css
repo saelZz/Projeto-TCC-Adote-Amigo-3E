@@ -702,64 +702,27 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   }
 
   .shelter-logo-container {
-    height: 26px !important;
+    height: 32px !important;
     width: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
+    padding: 0 4px !important;
   }
 
   /* REGRAS EXCLUSIVAS PARA CADA LOGO NO MOBILE (AJUSTE FINO INDIVIDUAL) */
   
-  /* 1. Adote Petz */
-  .shelter-logo-centered.ong-2IU5QhuEZfipHqWLjBpI {
-  height: 30px;
-  width: 200px;
-  margin-left: -6px;
-  background: transparent;
-  transform: scale(0.6);
-  transform-origin: center;
-  }
-
-  /* 2. Adotar */
-  .shelter-logo-centered.ong-UxU8Bv2TGW5YpCh7axZG {
-  height: 35px;
-  width: 260px;
-  margin-left: -6px;
-  background: transparent;
-  transform: scale(0.6);
-  transform-origin: center;
-  }
-
-  /* 3. Viu Meu Pet */
-  .shelter-logo-centered.ong-PiBzD3hoONYPvuyLaCrB {
-  height: 30px;
-  width: 360px;
-  margin-left: -6px;
-  background: transparent;
-  transform: scale(0.6);
-  transform-origin: center;
-  }
-
-  /* 4. Amigo Não Se Compra */
-  .shelter-logo-centered.ong-DIVS0g0qh2bmsVnfXwYw {
-  height: 50px;
-  width: 330px;
-  margin-left: -6px;
-  background: transparent;
-  transform: scale(0.47);
-  transform-origin: center;
-  }
-
-  /* 5. Instituto Caramelo */
-  .shelter-logo-centered.ong-rh8Nzbhe7Md1uBuQPgiE {
-  height: 50px;
-  width: 330px;
-  margin-left: -6px;
-  background: transparent;
-  transform: scale(0.6);
-  transform-origin: center;
+  .shelter-logo-centered,
+  .shelter-logo-centered[class*="ong-"] {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important; /* Zera qualquer escala manual antiga */
+    margin: 0 auto !important;
+    display: block !important;
   }
 
   .pet-btn {
