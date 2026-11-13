@@ -702,7 +702,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   }
 
   .shelter-logo-container {
-    height: 32px !important;
+    height: 42px !important;
     width: 100% !important;
     display: flex !important;
     align-items: center !important;
@@ -716,7 +716,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   .shelter-logo-centered,
   .shelter-logo-centered[class*="ong-"] {
     width: auto !important;
-    height: auto !important;
+    height: 100% !important;
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
