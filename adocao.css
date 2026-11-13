@@ -715,16 +715,18 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   
   .shelter-logo-centered,
   .shelter-logo-centered[class*="ong-"] {
-    width: auto !important;
-    height: 100% !important;
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
-    transform: none !important; /* Zera qualquer escala manual antiga */
+    
+    /* Mude o número abaixo para deixar maior ou menor (Ex: 0.85 ou 0.95) */
+    transform: scale(0.85) !important; 
+    
+    transform-origin: center !important;
     margin: 0 auto !important;
     display: block !important;
   }
-
+  
   .pet-btn {
     font-size: 1.2rem !important;
     padding: 8px 2px !important;
