@@ -43,7 +43,7 @@
     </nav>
 
      <div class="actions">
-      <button class="btn-mascote-tutorial" id="btn-tutorial" aria-label="Descubra como funciona o Adote Amigo">
+      <a href="como-funciona.html" class="btn-mascote-tutorial" id="btn-tutorial" aria-label="Descubra como funciona o Adote Amigo">
   <div class="mascote-avatar">
   <video autoplay loop muted playsinline class="mascote-img">
     <source src="assets/logo-animada-como-funciona1.mp4" type="video/mp4">
@@ -61,16 +61,33 @@
   </header>
 
   <main>
-    <section class="doe-hero" id="inicio">
+    <!-- HERO SECTION DA PÁGINA DOE (Espelhado na estrutura da História, com tema verde) -->
+    <section class="hero doe-hero-section" id="inicio">
+      <!-- Imagem translúcida com overlay escuro esmeralda -->
+      <div class="doe-hero-overlay"></div>
+
+      <!-- Patinhas flutuantes decorativas -->
       <span class="doe-paw doe-paw-1" aria-hidden="true">🐾</span>
       <span class="doe-paw doe-paw-2" aria-hidden="true">🐾</span>
       <span class="doe-paw doe-paw-3" aria-hidden="true">🐾</span>
       <span class="doe-paw doe-paw-4" aria-hidden="true">🐾</span>
-      <div class="doe-hero-content">
-        <span class="doe-badge">• APOIAR INSTITUIÇÕES</span>
-        <h1 class="doe-hero-title">Fortaleça quem <span class="doe-destaque">cuida de quem mais precisa</span></h1>
-        <p class="doe-hero-subtitle">Escolha como você quer ajudar e vá direto à página oficial de cada instituição, de forma simples e segura.</p>
-        <a class="doe-btn doe-hero-btn" href="#como-ajudar">Escolher como ajudar <span aria-hidden="true">↓</span></a>
+
+      <div class="container hero-copy doe-hero-content">
+        <span class="eyebrow eyebrow-light doe-badge">• APOIAR INSTITUIÇÕES</span>
+        
+        <h1 class="doe-hero-title">
+          Fortaleça quem cuida de quem mais precisa e<br>
+          <span class="highlight-animated">fazer a diferença na causa animal</span>
+        </h1>
+
+        <p class="doe-hero-subtitle">
+          Escolha como você quer ajudar e vá direto à página oficial de cada instituição, de forma simples, transparente e segura.
+        </p>
+
+        <div style="margin-top: 24px;">
+          <a class="doe-btn doe-hero-btn" href="#como-ajudar">Escolher como ajudar <span aria-hidden="true">↓</span></a>
+        </div>
+
         <ul class="doe-pills">
           <li>Links oficiais</li>
           <li>Quatro formas de ajudar</li>

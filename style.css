@@ -349,7 +349,7 @@ a {
   border: none;
   cursor: pointer;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   transition: transform 200ms ease, background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
 }
@@ -401,13 +401,14 @@ a {
 
 .btn-acao-unificado {
     padding: 16px 32px;
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: bold;
     border-radius: 50px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 /* ==========================================================================
@@ -442,6 +443,14 @@ a {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .carousel {
+    width: 92% !important;
+    height: 380px !important; /* Altura ideal para telas menores não cortarem o topo/baixo */
+    margin: 15px auto;
+  }
+}
+
 .slides {
   display: flex;
   width: 100%;
@@ -460,7 +469,9 @@ a {
 .slide img, 
 .slide picture img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o espaço proporcionalmente */
+    object-position: center center; /* Mantém o foco no centro da foto (onde estão os pets) */
     display: block;
     user-select: none;
     outline: none;
@@ -476,6 +487,7 @@ a:focus {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   position: absolute;
   top: 0;
   left: 0;
@@ -493,10 +505,12 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%;
+  width: 90%; /* Ajusta o degradê para cobrir exatamente até onde o texto vai */
+  max-width: 950px;
   height: 100%;
-  background: linear-gradient(90deg, #072B54 15%, rgba(7, 43, 84, 0.75) 55%, transparent 100%);
+  background: linear-gradient(90deg, #072B54 20%, rgba(7, 43, 84, 0.9) 75%, transparent 100%);
   z-index: 2;
+  pointer-events: none;
 }
 
 /* ==========================================================================
@@ -513,7 +527,7 @@ a:focus {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 100px; 
+  padding-left: 6%; /* Usa porcentagem em vez de pixels fixos para redimensionar livremente */
   padding-right: 40px;
   pointer-events: none;
 }
@@ -522,11 +536,11 @@ a:focus {
   position: relative;
   z-index: 10;
   color: #ffffff;
-  max-width: 650px;
+  max-width: 515px; /* Trava o texto para não avançar para a direita da imagem */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; 
+  gap: 12px;
   pointer-events: auto;
 }
 
@@ -549,11 +563,11 @@ a:focus {
 }
 
 .hero-title {
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 0;
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem) !important; /* Começa maiorzinho na tela menor e expande até 3.2rem com a aba aberta */
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 0;
 }
 
 @media (min-width: 1024px) { 
@@ -561,10 +575,10 @@ a:focus {
 }
 
 .hero-subtitle {
-    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-    color: #e2e8f0;
-    line-height: 1.5;
-    margin-bottom: 8px;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem) !important; /* Acompanha o respiro do título de forma proporcional */
+  color: #e2e8f0;
+  line-height: 1.4;
+  margin-bottom: 6px;
 }
 
 .btn-hero {
@@ -1483,6 +1497,13 @@ a:focus {
   }
 }
 
+@media (max-width: 1280px) {
+  .navbar .btn-mascote-tutorial,
+  .topbar .btn-mascote-tutorial {
+    display: none !important;
+  }
+}
+
 @keyframes floatLogo {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -1533,14 +1554,13 @@ a:focus {
   }
 }
 
-/* Até 900px o menu normal some e entra o botão hambúrguer */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .menu { display: none !important; }
   .menu-toggle { display: flex !important; }
   .actions { margin-left: auto; }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
   .menu-mobile { display: none !important; }
 }
 

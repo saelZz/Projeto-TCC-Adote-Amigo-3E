@@ -397,7 +397,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   width: 205px;
   margin-left: -6px;
   background: transparent;
-  transform: scale(0.7);
+  transform: scale(0.72);
   transform-origin: center;
 }
 
@@ -498,7 +498,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
 .modal-left-media {
   width: 100%;
   height: 100%;
-  min-height: 380px;
+  min-height: 400px;
   background: #f3f4f6;
 }
 
@@ -586,12 +586,21 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
     overflow-y: auto;
   }
   .modal-left-media {
-    height: 220px;
-    min-height: 220px;
+    height: 380px;
+    min-height: 380px;
   }
   .hover-hint-badge {
     display: none;
   }
+  .mobile-more-btn {
+    font-size: 0.70rem !important;
+    font-weight: 550 !important; /* Deixa a fonte mais leve */
+    letter-spacing: 0.2px !important;
+    padding: 7px 4px !important;
+    border-radius: 8px !important;
+    margin-top: auto;
+}
+
 }
 
 /* Utilitários */
@@ -623,5 +632,148 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
   }
   .mobile-more-btn {
     display: block !important;
+  }
+}
+
+/* --- GRADE DE 2 COLUNAS E REGRAS EXCLUSIVAS DE LOGOS PARA MOBILE --- */
+@media (max-width: 768px) {
+  .pet-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    padding: 0 4px !important;
+  }
+
+  .pet-card {
+    border-radius: 12px !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pet-card-image-wrapper {
+    height: 180px !important;
+  }
+
+  .pet-card-img {
+    object-fit: cover !important;
+  }
+
+  .pet-body {
+    padding: 8px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .pet-body h2 {
+    font-size: 0.88rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pet-meta {
+    font-size: 0.65rem !important;
+    margin: 2px 0 4px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pet-tags-container {
+    gap: 2px !important;
+    margin: 4px 0 6px !important;
+  }
+
+  .pet-tag {
+    font-size: 0.55rem !important;
+    padding: 2px 4px !important;
+  }
+
+  .pet-shelter-block {
+    margin-top: auto !important;
+    margin-top: 2px !important;
+    margin-bottom: 6px !important;
+    padding-top: 4px !important;
+  }
+
+  .shelter-label {
+    font-size: 0.58rem !important;
+  }
+
+  .shelter-logo-container {
+    height: 26px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  /* REGRAS EXCLUSIVAS PARA CADA LOGO NO MOBILE (AJUSTE FINO INDIVIDUAL) */
+  
+  /* 1. Adote Petz */
+  .shelter-logo-centered.ong-2IU5QhuEZfipHqWLjBpI {
+  height: 30px;
+  width: 200px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.6);
+  transform-origin: center;
+  }
+
+  /* 2. Adotar */
+  .shelter-logo-centered.ong-UxU8Bv2TGW5YpCh7axZG {
+  height: 35px;
+  width: 260px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.6);
+  transform-origin: center;
+  }
+
+  /* 3. Viu Meu Pet */
+  .shelter-logo-centered.ong-PiBzD3hoONYPvuyLaCrB {
+  height: 30px;
+  width: 360px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.6);
+  transform-origin: center;
+  }
+
+  /* 4. Amigo Não Se Compra */
+  .shelter-logo-centered.ong-DIVS0g0qh2bmsVnfXwYw {
+  height: 50px;
+  width: 330px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.47);
+  transform-origin: center;
+  }
+
+  /* 5. Instituto Caramelo */
+  .shelter-logo-centered.ong-rh8Nzbhe7Md1uBuQPgiE {
+  height: 50px;
+  width: 330px;
+  margin-left: -6px;
+  background: transparent;
+  transform: scale(0.6);
+  transform-origin: center;
+  }
+
+  .pet-btn {
+    font-size: 1.2rem !important;
+    padding: 8px 2px !important;
+    border-radius: 8px !important;
+    margin-top: auto;
+  }
+
+  .mobile-more-btn {
+    font-size: 0.8rem !important;
+    font-weight: 300px !important; /* Deixa a fonte mais leve */
+    padding: 10px 2px !important;
+    border-radius: 6px !important;
+    margin-top: auto;
   }
 }

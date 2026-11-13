@@ -14,7 +14,9 @@
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
 
+  <!-- Estilos Globais + Estilos dos Diferenciais -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="diferenciais.css" />
 </head>
 <body>
 
@@ -43,18 +45,18 @@
     </nav>
 
     <div class="actions">
-      <button class="btn-mascote-tutorial" id="btn-tutorial" aria-label="Descubra como funciona o Adote Amigo">
-  <div class="mascote-avatar">
-  <video autoplay loop muted playsinline class="mascote-img">
-    <source src="assets/logo-animada-como-funciona1.mp4" type="video/mp4">
-  </video>
-  <span class="pulse-ring"></span>
-</div>
-  <div class="btn-texto-wrapper">
-    <span class="btn-titulo">Como funciona o Adote Amigo?</span>
-    <span class="btn-sub">Passo a passo da adoção</span>
-  </div>
-</button>
+      <a href="como-funciona.html" class="btn-mascote-tutorial" id="btn-tutorial" aria-label="Descubra como funciona o Adote Amigo">
+        <div class="mascote-avatar">
+          <video autoplay loop muted playsinline class="mascote-img">
+            <source src="assets/logo-animada-como-funciona1.mp4" type="video/mp4">
+          </video>
+          <span class="pulse-ring"></span>
+        </div>
+        <div class="btn-texto-wrapper">
+          <span class="btn-titulo">Como funciona o Adote Amigo?</span>
+          <span class="btn-sub">Passo a passo da adoção</span>
+        </div>
+      </a>
       <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
     </div>
@@ -63,137 +65,117 @@
   <main>
 
     <section id="inicio" class="carousel">
-  <div class="slides"> 
+      <div class="slides"> 
 
-    <!-- ==========================================
-         SLIDE 1 
-         ========================================== -->
-    <div class="slide">
-      <picture>
-        <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.jpg">
-        <img class="hero-img" src="imagens/banner1.jpg" alt="Adotante abraçando um cachorro resgatado" draggable="false" />
-      </picture>
-      
-      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
-
-      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
-        <div class="hero-text" style="pointer-events: auto;">
-          <div class="hero-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            ONGs de todo o Brasil, em um só lugar
+        <!-- SLIDE 1 -->
+        <div class="slide">
+          <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.jpg">
+            <img class="hero-img" src="imagens/banner1.jpg" alt="Adotante abraçando um cachorro resgatado" draggable="false" />
+          </picture>
+          <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
+          <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+            <div class="hero-text" style="pointer-events: auto;">
+              <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                ONGs de todo o Brasil, em um só lugar
+              </div>
+              <h1 class="hero-title">O maior portal de adoção do Brasil</h1>
+              <p class="hero-subtitle">Encontre seu melhor amigo através de diversas ONGs e comece uma nova história.</p>
+              <a href="adotar.html" class="btn btn-primary btn-hero">
+                Encontrar meu novo amigo
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
-          <h1 class="hero-title">O maior portal de adoção do Brasil</h1>
-          <p class="hero-subtitle">Encontre seu melhor amigo através de diversas ONGs e comece uma nova história.</p>
-          <a href="adotar.html" class="btn btn-primary btn-hero">
-            Encontrar meu novo amigo
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
         </div>
-      </div>
-    </div>
 
-    <!-- ==========================================
-         SLIDE 2 
-         ========================================== -->
-    <div class="slide">
-      <picture>
-        <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.jpg">
-        <img class="hero-img" src="imagens/banner2.jpg" alt="Banner 2" draggable="false">
-      </picture>
-      
-      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
-
-      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
-        <div class="hero-text" style="pointer-events: auto;">
-          <div class="hero-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Conheça nossa história
+        <!-- SLIDE 2 -->
+        <div class="slide">
+          <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.jpg">
+            <img class="hero-img" src="imagens/banner2.jpg" alt="Banner 2" draggable="false">
+          </picture>
+          <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
+          <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+            <div class="hero-text" style="pointer-events: auto;">
+              <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Conheça nossa história
+              </div>
+              <h1 class="hero-title">Mais que um portal, uma rede de proteção animal</h1>
+              <p class="hero-subtitle">Descubra como nascemos e o nosso propósito para simplificar a adoção e dar uma segunda chance a milhares de pets.</p>
+              <a href="historia.html" class="btn btn-primary btn-hero">
+                Nossa trajetória
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
-          <h1 class="hero-title">Mais que um portal, uma rede de proteção animal</h1>
-          <p class="hero-subtitle">Descubra como nascemos e o nosso propósito para simplificar a adoção e dar uma segunda chance a milhares de pets.</p>
-          <a href="historia.html" class="btn btn-primary btn-hero">
-            Nossa trajetória
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
         </div>
-      </div>
-    </div>
 
-    <!-- ==========================================
-         SLIDE 3 
-         ========================================== -->
-    <div class="slide">
-      <picture>
-        <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.jpg">
-        <img class="hero-img" src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
-      </picture>
-      
-      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
-
-      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
-        <div class="hero-text" style="pointer-events: auto;">
-          <div class="hero-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
-            Variedade exclusiva
+        <!-- SLIDE 3 -->
+        <div class="slide">
+          <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.jpg">
+            <img class="hero-img" src="imagens/banner3.jpg" alt="Banner 3" draggable="false">
+          </picture>
+          <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
+          <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+            <div class="hero-text" style="pointer-events: auto;">
+              <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+                Variedade exclusiva
+              </div>
+              <h1 class="hero-title">Centenas de pets de todo o Brasil em um só lugar</h1>
+              <p class="hero-subtitle">Esqueça a maratona de abrigos. Navegue por dezenas de ONGs parceiras e encontre o seu match perfeito em poucos cliques.</p>
+              <a href="adotar.html" class="btn btn-primary btn-hero">
+                Ver pets disponíveis
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
-          <h1 class="hero-title">Centenas de pets de todo o Brasil em um só lugar</h1>
-          <p class="hero-subtitle">Esqueça a maratona de abrigos. Navegue por dezenas de ONGs parceiras e encontre o seu match perfeito em poucos cliques.</p>
-          <a href="adotar.html" class="btn btn-primary btn-hero">
-            Ver pets disponíveis
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
         </div>
-      </div>
-    </div>
 
-    <!-- ==========================================
-         SLIDE 4
-         ========================================== -->
-    <div class="slide">
-      <picture>
-        <source media="(max-width: 768px)" srcset="imagens/banner4-mobile.jpg">
-        <img class="hero-img" src="imagens/banner4.jpg" alt="Banner 3" draggable="false">
-      </picture>
-      
-      <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
-
-      <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
-        <div class="hero-text" style="pointer-events: auto;">
-          <div class="hero-badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="12" y1="1" x2="12" y2="23"></line>
-    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-</svg>
-    Faça a Diferença
+        <!-- SLIDE 4 -->
+        <div class="slide">
+          <picture>
+            <source media="(max-width: 768px)" srcset="imagens/banner4-mobile.jpg">
+            <img class="hero-img" src="imagens/banner4.jpg" alt="Banner 4" draggable="false">
+          </picture>
+          <div class="hero-overlay" aria-hidden="true" style="pointer-events: none;"></div>
+          <div class="container hero-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;">
+            <div class="hero-text" style="pointer-events: auto;">
+              <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                Faça a Diferença
+              </div>
+              <h1 class="hero-title">Fortaleça quem cuida de quem mais precisa</h1>
+              <p class="hero-subtitle">Conheça as instituições parceiras do nosso portal e descubra como você pode ajudar abrigos de todo o Brasil e o nosso Projeto.</p>
+              <a href="doe.html" class="btn-acao-unificado btn-verde">
+                Quero ajudar
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
-          <h1 class="hero-title">Fortaleça quem cuida de quem mais precisa</h1>
-          <p class="hero-subtitle">Conheça as instituições parceiras do nosso portal e descubra como você pode ajudar abrigos de todo o Brasil e o nosso Projeto.</p>
-          <a href="doe.html" class="btn-acao-unificado btn-verde">
-            Quero ajudar
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
         </div>
+
+      </div> 
+
+      <!-- Controles do Carrossel -->
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+
+      <div class="carousel-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
       </div>
-    </div>
-
-  </div> 
-
-  <!-- Controles do Carrossel -->
-  <button class="prev">❮</button>
-  <button class="next">❯</button>
-
-  <div class="carousel-indicators">
-    <span class="indicator active"></span>
-    <span class="indicator"></span>
-    <span class="indicator"></span>
-    <span class="indicator"></span>
-  </div>
-</section>
+    </section>
 
     <!-- QUEM SOMOS -->
     <section id="quem-somos" class="section quem-somos">
-    <div class="container">
-        
+      <div class="container">
         <div class="section-head reveal">
             <span class="eyebrow">Uma ponte para novas histórias</span>
             <h2 class="section-title">Conheça o Adote Amigo</h2>
@@ -203,44 +185,40 @@
         </div>
 
         <div class="bloco-historia-container">
-  <!-- Botão principal em cima -->
-  <a href="historia.html" class="meu-botao-historia">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    Conheça nossa história
-  </a>
-
-  <!-- Painel complementar embaixo com a imagem -->
-  <div class="painel-pets-complementar">
-    <img src="imagens/patinha.png" alt="Cachorrinho e Gatinho" />
-  </div>
-
-        </div> <!-- Fim do bloco-historia-container -->
-    </div> <!-- Fim do container (CORREÇÃO: este </div> estava faltando) -->
-</section>
+          <a href="historia.html" class="meu-botao-historia">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            Conheça nossa história
+          </a>
+          <div class="painel-pets-complementar">
+            <img src="imagens/patinha.png" alt="Cachorrinho e Gatinho" />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- NÚMEROS -->
-<section class="impact" aria-label="Nosso impacto">
-<div class="container">
-    <div class="impact-grid animar-ciclo">
-        <div class="impact-item">
-            <strong class="impact-number contador-numero" data-valor="1000">0</strong>
-            <span class="impact-label">Animais ajudados</span>
+    <section class="impact" aria-label="Nosso impacto">
+      <div class="container">
+        <div class="impact-grid animar-ciclo">
+            <div class="impact-item">
+                <strong class="impact-number contador-numero" data-valor="1000">0</strong>
+                <span class="impact-label">Animais ajudados</span>
+            </div>
+            <div class="impact-item">
+                <strong class="impact-number contador-numero" data-valor="5">0</strong>
+                <span class="impact-label">ONGs Parceiras Oficiais</span>
+            </div>
+            <div class="impact-item">
+                <strong class="impact-number contador-numero" data-valor="100" data-simbolo="%">0</strong>
+                <span class="impact-label">Gratuito</span>
+            </div>
+            <div class="impact-item">
+                <strong class="impact-number contador-numero" data-valor="50">0</strong>
+                <span class="impact-label">Cidades alcançadas</span>
+            </div>
         </div>
-        <div class="impact-item">
-            <strong class="impact-number contador-numero" data-valor="5">0</strong>
-            <span class="impact-label">ONGs Parceiras Oficiais</span>
-        </div>
-        <div class="impact-item">
-            <strong class="impact-number contador-numero" data-valor="100" data-simbolo="%">0</strong>
-            <span class="impact-label">Gratuito</span>
-        </div>
-        <div class="impact-item">
-            <strong class="impact-number contador-numero" data-valor="50">0</strong>
-            <span class="impact-label">Cidades alcançadas</span>
-        </div>
-    </div>
-</div>
-</section>
+      </div>
+    </section>
 
     <!-- COMO FUNCIONA -->
     <section id="como-funciona" class="section section-soft">
@@ -252,69 +230,119 @@
         </div>
 
         <div class="steps-grid steps-cascade animar-ciclo reveal">
-  <article class="step-card">
-    <span class="step-number">01</span>
-    <div class="step-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    </div>
-    <h3 class="step-title">Ache seu pet</h3>
-    <p class="step-text">Busque por espécie, perfil e localização.</p>
-  </article>
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <h3 class="step-title">Ache seu pet</h3>
+            <p class="step-text">Busque por espécie, perfil e localização.</p>
+          </article>
 
-  <article class="step-card">
-    <span class="step-number">02</span>
-    <div class="step-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-    </div>
-    <h3 class="step-title">Dê o Match</h3>
-    <p class="step-text">Responda ao teste e descubra sua compatibilidade.</p>
-  </article>
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
+            <h3 class="step-title">Dê o Match</h3>
+            <p class="step-text">Responda ao teste e descubra sua compatibilidade.</p>
+          </article>
 
-  <article class="step-card">
-    <span class="step-number">03</span>
-    <div class="step-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-    </div>
-    <h3 class="step-title">Fale com a ONG</h3>
-    <p class="step-text">Converse diretamente, com clareza e segurança.</p>
-  </article>
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
+            <h3 class="step-title">Fale com a ONG</h3>
+            <p class="step-text">Converse diretamente, com clareza e segurança.</p>
+          </article>
 
-  <article class="step-card">
-    <span class="step-number">04</span>
-    <div class="step-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-    </div>
-    <h3 class="step-title">Adoção completa</h3>
-    <p class="step-text">Conheça o abrigo e leve seu novo amigo para casa.</p>
-    </article>
-     </div>
-     
+          <article class="step-card">
+            <span class="step-number">04</span>
+            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <h3 class="step-title">Adoção completa</h3>
+            <p class="step-text">Conheça o abrigo e leve seu novo amigo para casa.</p>
+          </article>
+        </div>
       </div>
+    </section>
 
+    <!-- SEÇÃO: DIFERENCIAIS ("Por que escolher o Adote Amigo?") -->
+    <section class="aa-differences" aria-labelledby="aa-title">
+      <div class="aa-inner">
+        <header class="aa-heading">
+          <span class="aa-eyebrow">UM ENCONTRO COM MAIS CONFIANÇA</span>
+          <h2 id="aa-title">Por que escolher o <span>Adote Amigo?</span></h2>
+          <p>Uma ponte feita de cuidado, transparência e histórias que merecem um novo começo.</p>
+        </header>
+        <div class="aa-grid">
+          <article class="aa-card" data-aa-reveal>
+            <div class="aa-card-top">
+              <span class="aa-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7v6c0 5 9 9 9 9s9-4 9-9V7Z"/><path d="m8 12 3 3 5-6"/></svg>
+              </span>
+              <span class="aa-number" aria-hidden="true">01</span>
+            </div>
+            <h3>Rede de ONGs Verificadas</h3>
+            <p>Trabalhamos apenas com abrigos e instituições parceiras rigorosamente verificadas e confiáveis.</p>
+            <span class="aa-note">Cuidado começa com confiança</span>
+          </article>
+
+          <article class="aa-card" data-aa-reveal>
+            <div class="aa-card-top">
+              <span class="aa-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2m3 6a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>
+              </span>
+              <span class="aa-number" aria-hidden="true">02</span>
+            </div>
+            <h3>Processo Transparente</h3>
+            <p>Conexão direta e segura com o canal oficial de atendimento da ONG responsável pela adoção.</p>
+            <span class="aa-note">Sem atalhos. Sem intermediários.</span>
+          </article>
+
+          <article class="aa-card" data-aa-reveal>
+            <div class="aa-card-top">
+              <span class="aa-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8 6l8 9 8-9a5 5 0 0 0 0-7Z"/></svg>
+              </span>
+              <span class="aa-number" aria-hidden="true">03</span>
+            </div>
+            <h3>Perfis Detalhados e Humanizados</h3>
+            <p>Histórias reais, fotos em alta resolução, galeria imersiva e dados completos sobre o temperamento e cuidados de cada pet.</p>
+            <span class="aa-note">Mais que uma foto: uma história</span>
+          </article>
+
+          <article class="aa-card" data-aa-reveal>
+            <div class="aa-card-top">
+              <span class="aa-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11a9 9 0 1 0-17 4L2 22l7-3a9 9 0 0 0 12-8Z"/></svg>
+              </span>
+              <span class="aa-number" aria-hidden="true">04</span>
+            </div>
+            <h3>Apoio e Suporte</h3>
+            <p>Espaço dedicado para tirar dúvidas sobre a adoção responsável e apoiar as instituições com doações.</p>
+            <span class="aa-note">Juntos, o cuidado vai mais longe</span>
+          </article>
+        </div>
+      </div>
     </section>
 
   </main>
 
   <!-- RODAPÉ -->
   <footer class="site-footer">
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
-      <p>Conectando pessoas, ONGs e novos começos.</p>
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">Adote <span class="highlight">Amigo</span></span>
+        <p>Conectando pessoas, ONGs e novos começos.</p>
+      </div>
+      <div class="footer-support">
+        <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
+        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+          📧 Fale com o Suporte
+        </a>
+      </div>
     </div>
+  </footer>
 
-    <div class="footer-support">
-  <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-  <!-- CORREÇÃO: o e-mail estava com "://" no meio (contato.adoteamigo@://gmail.com), o que quebrava o link -->
-  <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
-   📧 Fale com o Suporte
-  </a>
-</div>
-  </div>
-</footer>
-
+  <!-- Scripts -->
   <script src="menu-mobile.js"></script>
   <script type="module" src="script.js"></script>
+  <script src="diferenciais.js"></script>
 
 </body>
 </html>

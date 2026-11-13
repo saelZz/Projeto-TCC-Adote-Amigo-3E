@@ -1,0 +1,322 @@
+/* Tokens de reserva; integração usa a identidade já existente no portal. */
+:root {
+  --aa-bg: var(--background, oklch(0.995 0.002 245));
+  --aa-primary: var(--primary, oklch(0.36 0.1 256));
+  --aa-accent: var(--highlight, oklch(0.81 0.17 77));
+  --aa-muted: var(--muted-foreground, oklch(0.49 0.025 250));
+  --aa-border: var(--border, oklch(0.91 0.016 245));
+  --aa-card: var(--card, oklch(1 0 0));
+  --aa-soft: var(--surface-soft, oklch(0.972 0.006 245));
+  --aa-shadow: 0 18px 40px -22px color-mix(in oklab, var(--aa-primary) 30%, transparent);
+  --aa-body: var(--font-body, "Manrope", sans-serif);
+  --aa-display: var(--font-display, "Sora", sans-serif);
+}
+.aa-differences {
+  background: var(--aa-bg);
+  padding: 88px 24px;
+  color: var(--aa-primary);
+  font-family: var(--aa-body);
+  letter-spacing: 0;
+}
+.aa-differences * {
+  box-sizing: border-box;
+}
+.aa-inner {
+  max-width: 1160px;
+  margin: auto;
+}
+.aa-heading {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aa-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--aa-accent, #ff8a00);
+  display: inline-block;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.aa-differences h2 {
+  font-family: var(--aa-display, "Manrope", sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: var(--aa-primary, #0C3C75);
+}
+.aa-differences h2 span {
+  text-decoration: underline;
+  text-decoration-color: var(--aa-accent, #ff8a00);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+}
+.aa-heading p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--aa-muted, #5F6A77);
+  max-width: 600px;
+  margin: 0;
+}
+.aa-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.aa-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--aa-card);
+  border: 1px solid var(--aa-border);
+  border-radius: 14px;
+  padding: 27px 23px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+.aa-card:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--aa-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.aa-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--aa-shadow);
+  border-color: var(--aa-accent);
+}
+.aa-card:hover:after {
+  transform: scaleX(1);
+}
+.aa-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.aa-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: var(--aa-soft);
+  display: grid;
+  place-items: center;
+  color: var(--aa-primary);
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+.aa-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.aa-card:hover .aa-icon {
+  background: var(--aa-accent);
+  transform: rotate(-4deg);
+}
+.aa-number {
+  font: 500 12px var(--aa-display);
+  color: var(--aa-muted);
+}
+.aa-differences h3 {
+  font: 600 17px/1.5 var(--aa-display);
+  letter-spacing: 0;
+  margin: 0 0 15px;
+}
+.aa-card p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--aa-muted);
+  margin: 0 0 25px;
+}
+.aa-note {
+  display: block;
+  margin-top: auto;
+  padding-top: 17px;
+  border-top: 1px solid var(--aa-border);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+.aa-enabled [data-aa-reveal] {
+  opacity: 0;
+  translate: 0 16px;
+  transition:
+    opacity 0.6s,
+    translate 0.6s,
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+.aa-enabled [data-aa-reveal].aa-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Estilização da área expansível interna dos cards */
+.aa-card {
+  cursor: pointer;
+  user-select: none;
+}
+
+.aa-card-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.aa-card-details > div, 
+.aa-card-details p {
+  overflow: hidden;
+}
+
+.aa-card-details p {
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--aa-primary);
+  background: var(--aa-soft);
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin: 12px 0 6px 0;
+  border-left: 3px solid var(--aa-accent);
+}
+
+.aa-close-hint {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--aa-muted);
+  display: block;
+  text-align: right;
+}
+
+/* Estado Expandido do Card */
+.aa-card.aa-expanded {
+  border-color: var(--aa-accent);
+  box-shadow: var(--aa-shadow);
+  transform: translateY(-4px);
+}
+
+.aa-card.aa-expanded .aa-card-details {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE ENTRADA (SCROLL REVEAL) MAIS ENVOLVENTE
+   ========================================================================== */
+
+/* Estado inicial: escondido e levemente deslocado para baixo */
+.aa-differences .aa-heading,
+.aa-differences .aa-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Quando o JS ativar a classe .aa-visible na seção */
+.aa-enabled.aa-section-visible .aa-differences .aa-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito em cascata (delay progressivo para cada card) */
+.aa-enabled.aa-section-visible .aa-differences .aa-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.aa-enabled.aa-section-visible .aa-differences .aa-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.aa-enabled.aa-section-visible .aa-differences .aa-card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
+.aa-enabled.aa-section-visible .aa-differences .aa-card:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+@media (max-width: 1050px) {
+  .aa-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .aa-differences {
+    padding: 55px 20px;
+  }
+  .aa-heading {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .aa-eyebrow {
+    margin-bottom: 0;
+  }
+  .aa-differences h2 {
+    font-size: 29px;
+  }
+  .aa-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .aa-card {
+    padding: 26px;
+  }
+  .aa-card-top {
+    margin-bottom: 23px;
+  }
+  .aa-card p {
+    font-size: 13px;
+  }
+  .aa-note {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aa-card,
+  .aa-card:after,
+  .aa-icon,
+  .aa-enabled [data-aa-reveal] {
+    transition: none;
+  }
+  .aa-enabled [data-aa-reveal] {
+    opacity: 1;
+    translate: none;
+  }
+  .aa-card:hover,
+  .aa-card:hover .aa-icon {
+    transform: none;
+  }
+}

@@ -97,7 +97,7 @@ async function loadPetDetails() {
     initGallery();
     initDialogs();
     
-    // CORREÇÃO DAS ANIMAÇÕES: Ativa o reveal AGORA que os elementos do Firebase renderizaram na página
+    // CORREÇÃO DAS ANIMAÇÕES: Força a exibição imediata dos blocos sem depender de Scroll/IntersectionObserver
     initReveal();
 
     if (preloader) preloader.classList.add("hidden");
@@ -136,8 +136,18 @@ function initGallery() {
   const photos = [...gallery.querySelectorAll('.pet-photo')];
   if (photos.length === 0) return;
 
-  const play = $('#play');
-  let index = 0, timer, playing = false, hovering = false;
+  const playBtn = $('#play');
+  if (playBtn) playBtn.style.display = 'none';
+
+  let index = 0;
+  let timer = null;
+
+  // Atualiza os números do contador preservando os spans do HTML
+  const numberEl = $('#photo-number');
+  const totalEl = $('#photo-total');
+  if (totalEl) {
+    totalEl.textContent = String(photos.length).padStart(2, '0');
+  }
 
   function go(nextIndex) {
     index = (nextIndex + photos.length) % photos.length;
@@ -151,11 +161,8 @@ function initGallery() {
       button.setAttribute('aria-pressed', String(selected));
     });
 
-    const counterEl = $('.photo-counter');
-    if (counterEl) {
-      const currentStr = String(index + 1).padStart(2, '0');
-      const totalStr = String(photos.length).padStart(2, '0');
-      counterEl.innerHTML = `<b id="photo-number">${currentStr}</b><span aria-hidden="true"> / </span>${totalStr}`;
+    if (numberEl) {
+      numberEl.textContent = String(index + 1).padStart(2, '0');
     }
 
     if ($('#photo-dialog img')) {
@@ -164,37 +171,31 @@ function initGallery() {
     }
   }
 
-  function schedule() {
+  function startAutoPlay() {
     clearInterval(timer);
-    if (playing && !hovering && !document.hidden && !reducedMotion.matches && !$('.pet-stage-carousel').contains(document.activeElement) && !document.querySelector('dialog[open]')) {
-      timer = setInterval(() => go(index + 1), 7000);
+    if (photos.length > 1 && !document.hidden) {
+      timer = setInterval(() => {
+        go(index + 1);
+      }, 4500);
     }
   }
 
-  function setPlaying(value) {
-    playing = value;
-    if (play) {
-      play.setAttribute('aria-pressed', String(value));
-      play.setAttribute('aria-label', value ? 'Pausar troca automática' : 'Iniciar troca automática');
-      play.innerHTML = value ? '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>' : '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 10 7-10 7Z"/></svg>';
-    }
-    schedule();
+  function handleManualAction(targetIndex) {
+    go(targetIndex);
+    startAutoPlay();
   }
 
-  if ($('#previous')) $('#previous').addEventListener('click', () => { go(index - 1); schedule(); });
-  if ($('#next')) $('#next').addEventListener('click', () => { go(index + 1); schedule(); });
+  if ($('#previous')) $('#previous').addEventListener('click', () => handleManualAction(index - 1));
+  if ($('#next')) $('#next').addEventListener('click', () => handleManualAction(index + 1));
   
   document.querySelectorAll('.photo-thumbnail').forEach((button) => {
-    button.addEventListener('click', () => { go(Number(button.dataset.photo)); schedule(); });
+    button.addEventListener('click', () => handleManualAction(Number(button.dataset.photo)));
   });
-
-  if (play) play.addEventListener('click', () => setPlaying(!playing));
   
   gallery.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { 
       event.preventDefault(); 
-      go(index + (event.key === 'ArrowRight' ? 1 : -1)); 
-      schedule(); 
+      handleManualAction(index + (event.key === 'ArrowRight' ? 1 : -1)); 
     }
   });
 
@@ -211,25 +212,18 @@ function initGallery() {
     const diffX = touch.clientX - startX;
     if (Math.abs(diffX) > 40) {
       if (diffX < 0) {
-        go(index + 1);
+        handleManualAction(index + 1);
       } else {
-        go(index - 1);
+        handleManualAction(index - 1);
       }
-      schedule();
     }
   }, { passive: true });
 
-  const stage = $('.pet-stage-carousel');
-  if (stage) {
-    stage.addEventListener('pointerenter', () => { hovering = true; schedule(); });
-    stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
-    stage.addEventListener('focusin', schedule);
-    stage.addEventListener('focusout', () => setTimeout(schedule, 0));
-  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearInterval(timer);
+    else startAutoPlay();
+  });
 
-  document.addEventListener('visibilitychange', schedule);
-  reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) setPlaying(false); });
-  
   if ($('#expand-photo')) {
     $('#expand-photo').addEventListener('click', () => { 
       clearInterval(timer); 
@@ -238,11 +232,12 @@ function initGallery() {
   }
 
   document.querySelectorAll('dialog').forEach((dialog) => {
-    dialog.addEventListener('close', schedule);
-    dialog.addEventListener('cancel', schedule);
+    dialog.addEventListener('close', () => startAutoPlay());
+    dialog.addEventListener('cancel', () => startAutoPlay());
   });
 
   go(0);
+  startAutoPlay();
 }
 
 function initMenu() {
@@ -269,29 +264,14 @@ function initDialogs() {
 }
 
 function initReveal() {
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
-    return;
-  }
-  
-  document.documentElement.classList.add('motion-ready');
-
-  // Adiciona um pequeno atraso para garantir que o DOM do Firebase já foi renderizado
-  setTimeout(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) { 
-          entry.target.classList.add('is-visible'); 
-          observer.unobserve(entry.target); 
-        }
-      });
-    }, { threshold: 0.10 });
-    
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-  }, 100);
+  // Força todas as seções animadas a aparecerem visíveis e limpas imediatamente após o carregamento dos dados do pet
+  document.querySelectorAll('.reveal').forEach((el) => {
+    el.classList.add('is-visible');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
 }
 
-// Inicializações básicas do menu e modais (O reveal principal roda após o loadPetDetails)
 initMenu();
 initDialogs();
 loadPetDetails();

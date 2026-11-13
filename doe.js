@@ -1,10 +1,16 @@
 (() => {
   'use strict';
 
-  /* 1) Animação de entrada ao rolar a página (igual às outras páginas) */
+  /* 1) Animação de entrada (Hero automático + Scroll Reveal para o resto) */
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const reveals = document.querySelectorAll('.reveal');
+  
+  // Força o Hero a aparecer imediatamente de forma suave
+  const heroContent = document.querySelector('.doe-hero-content');
+  if (heroContent) {
+    heroContent.classList.add('is-visible');
+  }
 
+  const reveals = document.querySelectorAll('.reveal');
   if (reducedMotion || !('IntersectionObserver' in window)) {
     reveals.forEach((el) => el.classList.add('is-visible'));
   } else {
@@ -14,12 +20,11 @@
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0.10 });
     reveals.forEach((el) => observer.observe(el));
   }
 
-  /* 2) Abas: o tipo de apoio escolhido mostra só os cartões daquele tipo.
-        Sem JavaScript, todos os cartões ficam visíveis, um tipo abaixo do outro. */
+  /* 2) Abas: o tipo de apoio escolhido mostra só os cartões daquele tipo */
   const abas = Array.from(document.querySelectorAll('.apoio-aba'));
   const paineis = Array.from(document.querySelectorAll('.apoio-painel'));
 
@@ -55,7 +60,6 @@
       });
     });
 
-    // Endereço direto: doe.html#voluntariado, #apadrinhar, #empresas ou #doar já abre a aba certa
     const escolherPeloEndereco = () => {
       const chave = decodeURIComponent(window.location.hash.replace('#', ''));
       const alvo = abas.find((aba) => aba.dataset.hash === chave);

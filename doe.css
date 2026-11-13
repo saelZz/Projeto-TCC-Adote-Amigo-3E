@@ -1,144 +1,650 @@
 /* ==========================================================================
-   APOIAR INSTITUIÇÕES (doe.html) — estilos exclusivos desta página.
-   Usa as mesmas cores e fontes do restante do site. As classes começam com
-   "doe-" ou "apoio-" para não misturar com as outras páginas.
+   APOIAR INSTITUIÇÕES (doe.html) — Estilos exclusivos e organizados
    ========================================================================== */
-.doe-page{
-  --d-primary:#0c3c75;--d-deep:#072b54;--d-orange:#ff8a00;--d-orange-h:#e07a00;
-  --d-soft:#d8eaff;--d-ice:#f2f7fc;--d-border:#dae2eb;--d-muted:#5f6a77;--d-text:#152131;
-  --d-shadow:0 18px 50px rgba(7,43,84,.1);--d-shadow-forte:0 24px 60px rgba(7,43,84,.17);--d-radius:16px;
+
+.doe-page {
+  --d-primary: #0c3c75;
+  --d-deep: #072b54;
+  --d-orange: #ff8a00;
+  --d-orange-h: #e07a00;
+  --d-green: #10b981;
+  --d-green-h: #059669;
+  --d-green-light: #34d399;
+  --d-soft: #d8eaff;
+  --d-ice: #f2f7fc;
+  --d-border: #dae2eb;
+  --d-muted: #5f6a77;
+  --d-text: #152131;
+  --d-shadow: 0 18px 50px rgba(7, 43, 84, 0.1);
+  --d-shadow-forte: 0 24px 60px rgba(7, 43, 84, 0.17);
+  --d-radius: 16px;
 }
 
-/* ---------- Estrutura geral ---------- */
-.doe-container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-.doe-section{padding:88px 0}
-.doe-soft{background:var(--d-ice)}
-.doe-heading{max-width:760px;margin:0 auto;text-align:center}
-.doe-heading h2{margin:14px 0 0;color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:clamp(26px,3.6vw,40px);font-weight:800;line-height:1.2}
-.doe-heading p{max-width:640px;margin:16px auto 0;color:var(--d-muted);font-size:16px;line-height:1.75}
-.doe-eyebrow{display:inline-flex;color:var(--d-orange-h);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
-.doe-eyebrow-claro{color:var(--d-orange)}
+/* ---------- Estrutura Geral ---------- */
+.doe-container {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
 
-/* ---------- Topo ---------- */
-.doe-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 20px 125px;color:#fff;background-color:#0b1f3a;background-image:linear-gradient(180deg,rgba(11,31,58,.86) 0%,rgba(11,31,58,.95) 100%),url('imagens/banner4.jpg');background-size:cover;background-position:center;background-repeat:no-repeat}
-.doe-hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;max-width:860px;margin:0 auto}
-.doe-badge{display:inline-block;margin-bottom:20px;padding:6px 20px;border:1px solid rgba(255,138,0,.4);border-radius:30px;background:rgba(255,138,0,.15);color:#ff9800;font-size:13px;font-weight:700;letter-spacing:1px;backdrop-filter:blur(4px);animation:doeBaixo .8s ease-out both}
-.doe-hero-title{margin:0 0 18px;color:#fff;font-family:Manrope,'Plus Jakarta Sans',sans-serif;font-size:clamp(33px,5vw,52px);font-weight:800;line-height:1.15;letter-spacing:-.8px;animation:doeCima .9s cubic-bezier(.22,1,.36,1) .15s both}
-.doe-destaque{display:inline-block;background:linear-gradient(120deg,#ff9800 0%,#ffc107 35%,#ff9800 70%,#e65100 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:doeBrilho 5s linear infinite}
-.doe-hero-subtitle{max-width:700px;margin:0 auto 28px;color:#cbd5e1;font-size:18px;line-height:1.6;animation:doeCima .9s cubic-bezier(.22,1,.36,1) .3s both}
-.doe-hero-btn{animation:doeCima .9s cubic-bezier(.22,1,.36,1) .45s both}
-.doe-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:26px 0 0;padding:0;list-style:none;animation:doeCima .9s cubic-bezier(.22,1,.36,1) .6s both}
-.doe-pills li{padding:7px 16px;border:1px solid rgba(255,255,255,.22);border-radius:30px;background:rgba(255,255,255,.08);color:#e2e8f0;font-size:13px;font-weight:600;backdrop-filter:blur(4px)}
-.doe-paw{position:absolute;z-index:1;font-size:24px;opacity:.15;filter:drop-shadow(0 0 8px rgba(255,255,255,.3));pointer-events:none;animation:doePata 6s ease-in-out infinite alternate}
-.doe-paw-1{top:15%;left:8%}.doe-paw-2{top:70%;left:12%;animation-delay:1.5s}.doe-paw-3{top:20%;right:10%;animation-delay:3s}.doe-paw-4{top:65%;right:14%;animation-delay:4.5s}
+.doe-section {
+  padding: 88px 0;
+}
 
-/* ---------- Botão principal ---------- */
-.doe-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:50px;background:var(--d-orange);color:#fff;font-weight:800;box-shadow:0 12px 30px rgba(255,138,0,.28);transition:transform .25s,background .25s,box-shadow .25s}
-.doe-btn:hover{background:var(--d-orange-h);transform:translateY(-3px);box-shadow:0 16px 36px rgba(255,138,0,.36)}
-.doe-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.doe-soft {
+  background: var(--d-ice);
+}
 
-/* ---------- Abas: escolha do tipo de apoio ---------- */
-.apoio-abas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:40px 0 34px}
-.apoio-aba{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:2px solid var(--d-border);border-radius:50px;background:#fff;color:var(--d-primary);font:inherit;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(7,43,84,.06);transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
-.apoio-aba:hover{border-color:var(--d-orange);transform:translateY(-2px)}
-.apoio-aba:focus-visible{outline:3px solid var(--d-orange);outline-offset:3px}
-.apoio-aba-icone{font-size:17px;line-height:1}
-.apoio-aba-qtd{display:inline-grid;min-width:24px;height:24px;padding:0 7px;place-items:center;border-radius:50px;background:var(--d-soft);color:var(--d-primary);font-size:12px;font-weight:800;transition:background .25s,color .25s}
-.apoio-aba.is-ativa{border-color:var(--d-primary);background:var(--d-primary);color:#fff;box-shadow:0 14px 30px rgba(12,60,117,.28)}
-.apoio-aba.is-ativa .apoio-aba-qtd{background:var(--d-orange);color:#0d1b2d}
+.doe-heading {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-.apoio-painel{animation:doeTroca .45s cubic-bezier(.22,1,.36,1) both}
-.apoio-painel[hidden]{display:none}
-.apoio-intro{max-width:680px;margin:0 auto 30px;color:var(--d-muted);font-size:16px;line-height:1.75;text-align:center}
+.doe-heading h2 {
+  margin: 14px 0 0;
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 800;
+  line-height: 1.2;
+}
 
-/* ---------- Cartões das instituições ---------- */
-.apoio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,360px));justify-content:center;gap:22px}
-.apoio-card{position:relative;display:flex;flex-direction:column;overflow:hidden;padding:26px;border:1px solid var(--d-border);border-radius:var(--d-radius);background:#fff;box-shadow:var(--d-shadow);transition:transform .3s,box-shadow .3s,border-color .3s}
-.apoio-card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--d-orange),#ffc107);transform:scaleX(0);transform-origin:left;transition:transform .35s}
-.apoio-card:hover{transform:translateY(-6px);border-color:var(--d-orange);box-shadow:var(--d-shadow-forte)}
-.apoio-card:hover::before{transform:scaleX(1)}
-.apoio-card-topo{display:flex;align-items:center;gap:14px}
-.apoio-logo{position:relative;display:grid;flex:0 0 58px;width:58px;height:58px;place-items:center;overflow:hidden;border-radius:14px;background:var(--d-soft);color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:23px;font-weight:800}
-.apoio-logo::before{content:attr(data-inicial);position:absolute}
-.apoio-logo img{position:relative;width:100%;height:100%;padding:6px;background:#fff;object-fit:contain}
-.apoio-card-nome{display:grid;gap:2px;min-width:0}
-.apoio-card-nome strong{color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:18px;line-height:1.25}
-.apoio-card-nome small{color:var(--d-muted);font-size:13px;font-weight:600;line-height:1.4}
-.apoio-card p{margin:18px 0 22px;color:var(--d-muted);font-size:15px;line-height:1.7}
-.apoio-acoes{display:grid;gap:10px;margin-top:auto}
-.apoio-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border:2px solid var(--d-orange);border-radius:50px;background:var(--d-orange);color:#fff;font-size:14.5px;font-weight:800;text-align:center;transition:background .25s,color .25s,border-color .25s,transform .25s}
-.apoio-btn:hover{border-color:var(--d-orange-h);background:var(--d-orange-h);transform:translateY(-1px)}
-.apoio-btn-sec{border-color:var(--d-border);background:#fff;color:var(--d-primary);font-weight:700}
-.apoio-btn-sec:hover{border-color:var(--d-primary);background:var(--d-primary);color:#fff}
-.apoio-btn:focus-visible{outline:3px solid var(--d-primary);outline-offset:2px}
-.doe-nota{margin:34px auto 0;max-width:820px;color:var(--d-muted);font-size:13px;line-height:1.7;text-align:center}
-.doe-ponte{margin:14px 0 0;color:var(--d-text);font-size:15px;text-align:center}
-.doe-ponte a{color:var(--d-primary);font-weight:800;text-decoration:underline;text-underline-offset:3px}
-.doe-ponte a:hover{color:var(--d-orange-h)}
+.doe-heading p {
+  max-width: 640px;
+  margin: 16px auto 0;
+  color: var(--d-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
 
-/* ---------- Como ajudar em 3 passos ---------- */
-.doe-passos{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:52px 0 0;padding:0;list-style:none;counter-reset:passo}
-.doe-passos::before{content:"";position:absolute;top:32px;left:16%;right:16%;border-top:3px dashed rgba(255,138,0,.45)}
-.doe-passo{position:relative;padding:0 14px;text-align:center}
-.doe-passo-num{position:relative;z-index:1;display:grid;width:64px;height:64px;margin:0 auto 18px;place-items:center;border:4px solid var(--d-ice);border-radius:50%;background:var(--d-orange);color:#fff;font-family:Manrope,Arial,sans-serif;font-size:26px;font-weight:800;box-shadow:0 10px 24px rgba(255,138,0,.3)}
-.doe-passo h3{margin:0 0 10px;color:var(--d-primary);font-family:Manrope,Arial,sans-serif;font-size:19px;line-height:1.25}
-.doe-passo p{margin:0;color:var(--d-muted);font-size:15px;line-height:1.7}
+.doe-eyebrow {
+  display: inline-flex;
+  color: var(--d-orange-h);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.doe-eyebrow-claro {
+  color: var(--d-orange);
+}
+
+/* ---------- Hero Section (Enquadramento História + Tema Verde) ---------- */
+.doe-hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 480px;
+  padding: 110px 20px 125px;
+  color: #ffffff;
+  background-color: #0b1f3a;
+  background-image: url('imagens/banner4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.doe-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(11, 31, 58, 0.84) 0%, rgba(11, 31, 58, 0.94) 100%);
+}
+
+.doe-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.doe-hero-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.doe-badge {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 20px;
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  border-radius: 30px;
+  background: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+  animation: doeBaixo 0.8s ease-out both;
+}
+
+.doe-hero-title {
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-family: Manrope, 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(33px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  animation: doeCima 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* Destaque Verde Animado no Título */
+.doe-page .doe-hero-section .highlight-animated {
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #10b981 0%,
+    #34d399 25%,
+    #a7f3d0 50%,
+    #34d399 75%,
+    #059669 100%
+  ) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: doeBrilho 3.5s linear infinite !important;
+}
+
+.doe-hero-subtitle {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  color: #d1fae5;
+  font-size: 18px;
+  line-height: 1.6;
+  animation: doeCima 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.doe-hero-btn {
+  background: var(--d-green) !important;
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.35) !important;
+  animation: doeCima 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+.doe-hero-btn:hover {
+  background: var(--d-green-h) !important;
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45) !important;
+}
+
+.doe-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  animation: doeCima 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+
+.doe-pills li {
+  padding: 7px 16px;
+  border: 1px solid rgba(110, 231, 183, 0.25);
+  border-radius: 30px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #ecfdf5;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+.doe-paw {
+  position: absolute;
+  z-index: 1;
+  font-size: 24px;
+  opacity: 0.16;
+  filter: drop-shadow(0 0 8px rgba(110, 231, 183, 0.35));
+  pointer-events: none;
+  animation: doePata 6s ease-in-out infinite alternate;
+}
+
+.doe-paw-1 { top: 15%; left: 8%; }
+.doe-paw-2 { top: 70%; left: 12%; animation-delay: 1.5s; }
+.doe-paw-3 { top: 20%; right: 10%; animation-delay: 3s; }
+.doe-paw-4 { top: 65%; right: 14%; animation-delay: 4.5s; }
+
+/* ---------- Botão Geral da Página ---------- */
+.doe-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  background: var(--d-orange);
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(255, 138, 0, 0.28);
+  transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.doe-btn:hover {
+  background: var(--d-orange-h);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(255, 138, 0, 0.36);
+}
+
+.doe-btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ---------- Abas: Escolha do Tipo de Apoio ---------- */
+.apoio-abas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px 0 34px;
+}
+
+.apoio-aba {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: 2px solid var(--d-border);
+  border-radius: 50px;
+  background: #ffffff;
+  color: var(--d-primary);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(7, 43, 84, 0.06);
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.apoio-aba:hover {
+  border-color: var(--d-orange);
+  transform: translateY(-2px);
+}
+
+.apoio-aba:focus-visible {
+  outline: 3px solid var(--d-orange);
+  outline-offset: 3px;
+}
+
+.apoio-aba-icone {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.apoio-aba-qtd {
+  display: inline-grid;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  place-items: center;
+  border-radius: 50px;
+  background: var(--d-soft);
+  color: var(--d-primary);
+  font-size: 12px;
+  font-weight: 800;
+  transition: background 0.25s, color 0.25s;
+}
+
+.apoio-aba.is-ativa {
+  border-color: var(--d-primary);
+  background: var(--d-primary);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(12, 60, 117, 0.28);
+}
+
+.apoio-aba.is-ativa .apoio-aba-qtd {
+  background: var(--d-orange);
+  color: #0d1b2d;
+}
+
+.apoio-painel {
+  animation: doeTroca 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.apoio-painel[hidden] {
+  display: none;
+}
+
+.apoio-intro {
+  max-width: 680px;
+  margin: 0 auto 30px;
+  color: var(--d-muted);
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* ---------- Cartões das Instituições ---------- */
+.apoio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 360px));
+  justify-content: center;
+  gap: 22px;
+}
+
+.apoio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 26px;
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  background: #ffffff;
+  box-shadow: var(--d-shadow);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.apoio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--d-orange), #ffc107);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s;
+}
+
+.apoio-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--d-orange);
+  box-shadow: var(--d-shadow-forte);
+}
+
+.apoio-card:hover::before {
+  transform: scaleX(1);
+}
+
+.apoio-card-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.apoio-logo {
+  position: relative;
+  display: grid;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--d-soft);
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.apoio-logo::before {
+  content: attr(data-inicial);
+  position: absolute;
+}
+
+.apoio-logo img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.apoio-card-nome {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.apoio-card-nome strong {
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.apoio-card-nome small {
+  color: var(--d-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.apoio-card p {
+  margin: 18px 0 22px;
+  color: var(--d-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.apoio-acoes {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.apoio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border: 2px solid var(--d-orange);
+  border-radius: 50px;
+  background: var(--d-orange);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.apoio-btn:hover {
+  border-color: var(--d-orange-h);
+  background: var(--d-orange-h);
+  transform: translateY(-1px);
+}
+
+.apoio-btn-sec {
+  border-color: var(--d-border);
+  background: #ffffff;
+  color: var(--d-primary);
+  font-weight: 700;
+}
+
+.apoio-btn-sec:hover {
+  border-color: var(--d-primary);
+  background: var(--d-primary);
+  color: #ffffff;
+}
+
+.apoio-btn:focus-visible {
+  outline: 3px solid var(--d-primary);
+  outline-offset: 2px;
+}
+
+.doe-nota {
+  margin: 34px auto 0;
+  max-width: 820px;
+  color: var(--d-muted);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.doe-ponte {
+  margin: 14px 0 0;
+  color: var(--d-text);
+  font-size: 15px;
+  text-align: center;
+}
+
+.doe-ponte a {
+  color: var(--d-primary);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.doe-ponte a:hover {
+  color: var(--d-orange-h);
+}
+
+/* ---------- Como Ajudar em 3 Passos ---------- */
+.doe-passos {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin: 52px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: passo;
+}
+
+.doe-passos::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 16%;
+  right: 16%;
+  border-top: 3px dashed rgba(255, 138, 0, 0.45);
+}
+
+.doe-passo {
+  position: relative;
+  padding: 0 14px;
+  text-align: center;
+}
+
+.doe-passo-num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  place-items: center;
+  border: 4px solid var(--d-ice);
+  border-radius: 50%;
+  background: var(--d-orange);
+  color: #ffffff;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(255, 138, 0, 0.3);
+}
+
+.doe-passo h3 {
+  margin: 0 0 10px;
+  color: var(--d-primary);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.doe-passo p {
+  margin: 0;
+  color: var(--d-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
 
 /* ---------- Apoie o Adote Amigo ---------- */
-.doe-projeto{display:grid;grid-template-columns:1.4fr .6fr;gap:34px;align-items:center;padding:44px;border-radius:20px;background:var(--d-primary);color:#fff}
-.doe-projeto h2{margin:12px 0 14px;font-family:Manrope,Arial,sans-serif;font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.2}
-.doe-projeto p{margin:0 0 14px;color:rgba(255,255,255,.84);font-size:16px;line-height:1.75}
-.doe-aviso{padding:14px 16px;border-left:4px solid var(--d-orange);border-radius:0 10px 10px 0;background:rgba(255,255,255,.08);font-size:14.5px!important}
-.doe-projeto-acao{display:flex;justify-content:center}
+.doe-projeto {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 34px;
+  align-items: center;
+  padding: 44px;
+  border-radius: 20px;
+  background: var(--d-primary);
+  color: #ffffff;
+}
+
+.doe-projeto h2 {
+  margin: 12px 0 14px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(26px, 3.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.doe-projeto p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.doe-aviso {
+  padding: 14px 16px;
+  border-left: 4px solid var(--d-orange);
+  border-radius: 0 10px 10px 0;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 14.5px !important;
+}
+
+.doe-projeto-acao {
+  display: flex;
+  justify-content: center;
+}
 
 /* ---------- Animações ---------- */
-@keyframes doeBrilho{0%{background-position:0% center}100%{background-position:200% center}}
-@keyframes doePata{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-15px) rotate(10deg)}}
-@keyframes doeCima{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes doeBaixo{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes doeTroca{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes doeBrilho {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
 
-/* ---------- Telas menores ---------- */
-@media (max-width:900px){
-  .doe-projeto{grid-template-columns:1fr}
-  .doe-projeto-acao{justify-content:flex-start}
-  .doe-passos{grid-template-columns:1fr;gap:34px}
-  .doe-passos::before{display:none}
-}
-@media (max-width:768px){
-  .doe-section{padding:64px 0}
-  .doe-hero{padding:75px 16px 85px;background-image:linear-gradient(180deg,rgba(11,31,58,.88) 0%,rgba(11,31,58,.96) 100%),url('imagens/banner4-mobile.jpg');background-position:center top}
-  .doe-hero-subtitle{font-size:15px}
-  .apoio-abas{gap:10px;margin:30px 0 26px}
-  .apoio-aba{padding:11px 16px;font-size:14px}
-  .apoio-grid{grid-template-columns:1fr}
-  .apoio-card{padding:22px}
-  .doe-projeto{padding:30px 22px}
-}
-@media (prefers-reduced-motion:reduce){
-  .doe-paw,.doe-destaque,.doe-badge,.doe-hero-title,.doe-hero-subtitle,.doe-hero-btn,.doe-pills,.apoio-painel{animation:none}
-  .apoio-aba,.apoio-aba-qtd,.apoio-card,.apoio-card::before,.apoio-btn,.doe-btn{transition:none}
-}
-@keyframes floatPaw {
+@keyframes doePata {
   from { transform: translateY(0) rotate(0deg); }
   to { transform: translateY(-15px) rotate(10deg); }
 }
-@keyframes fadeInUp {
+
+@keyframes doeCima {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeInDown {
+
+@keyframes doeBaixo {
   from { opacity: 0; transform: translateY(-16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Telas menores e Celular ---------- */
+@keyframes doeTroca {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Responsividade ---------- */
 @media (max-width: 900px) {
   .doe-projeto {
     grid-template-columns: 1fr;
   }
   .doe-projeto-acao {
     justify-content: flex-start;
+  }
+  .doe-passos {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .doe-passos::before {
+    display: none;
   }
 }
 
@@ -147,45 +653,27 @@
     padding: 64px 0;
   }
   .doe-hero-section {
+    min-height: auto;
     padding: 75px 16px 85px;
-    background-image: linear-gradient(
-        180deg,
-        rgba(6, 36, 26, 0.90) 0%,
-        rgba(4, 24, 18, 0.96) 100%
-      ),
-      url('imagens/caozinhodoar-mobile.png');
-    background-size: cover;
+    background-image: url('imagens/banner4-mobile.jpg');
     background-position: center top;
   }
-  .contact-hero-title {
-    font-size: 32px;
-  }
-  .contact-hero-subtitle {
+  .doe-hero-subtitle {
     font-size: 15px;
   }
-  .doe-ong-trigger {
-    padding: 14px;
-    gap: 12px;
+  .apoio-abas {
+    gap: 10px;
+    margin: 30px 0 26px;
   }
-  .doe-ong-logo {
-    flex-basis: 52px;
-    width: 52px;
-    height: 52px;
+  .apoio-aba {
+    padding: 11px 16px;
+    font-size: 14px;
   }
-  .doe-ong-title strong {
-    font-size: 16px;
+  .apoio-grid {
+    grid-template-columns: 1fr;
   }
-  .doe-ong-inner > p {
-    padding-inline: 18px;
-  }
-  .doe-grupos {
-    margin-inline: 14px;
-  }
-  .doe-grupo {
-    padding: 14px;
-  }
-  .doe-seguranca {
-    padding: 26px 22px;
+  .apoio-card {
+    padding: 22px;
   }
   .doe-projeto {
     padding: 30px 22px;
@@ -193,17 +681,21 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .doe-hero-section .paw,
+  .doe-paw,
   .doe-hero-section .highlight-animated,
-  .doe-hero-section .contact-badge,
-  .contact-hero-title,
-  .contact-hero-subtitle {
+  .doe-badge,
+  .doe-hero-title,
+  .doe-hero-subtitle,
+  .doe-hero-btn,
+  .doe-pills,
+  .apoio-painel {
     animation: none;
   }
-  .doe-ong,
-  .doe-ong-icon,
-  .doe-ong-panel,
-  .doe-link,
+  .apoio-aba,
+  .apoio-aba-qtd,
+  .apoio-card,
+  .apoio-card::before,
+  .apoio-btn,
   .doe-btn {
     transition: none;
   }

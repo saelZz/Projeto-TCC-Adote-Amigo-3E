@@ -932,7 +932,7 @@ img {
   width: 100%;
   padding: 110px 20px 125px;
   background-color: #0b1f3a;
-  background-image: linear-gradient(180deg, rgba(11, 31, 58, .88) 0%, rgba(11, 31, 58, .96) 100%), url('imagens/petspordosol.png');
+  background-image: linear-gradient(180deg, rgba(11, 31, 58, .88) 0%, rgba(11, 31, 58, .96) 100%), url('imagens/petscarinhosos.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -941,6 +941,14 @@ img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+}
+
+/* Versão específica para celulares e telas menores */
+@media (max-width: 768px) {
+  .history-hero-section {
+    background-image: linear-gradient(180deg, rgba(11, 31, 58, 0.88) 0%, rgba(11, 31, 58, 0.96) 100%), url('imagens/petscarinhosos-mobile.png');
+    background-position: center top;
+  }
 }
 
 .history-hero-content {
@@ -1069,8 +1077,6 @@ img {
 }
 
 @media (max-width: 768px) {
-  .navbar { padding: 10px 15px; flex-wrap: nowrap; justify-content: space-between; }
-  .logo img { height: 45px; }
   .actions { gap: 8px; }
   .btn { padding: 8px 14px; font-size: 12px; }
   .container { width: min(var(--max), calc(100% - 32px)); }
