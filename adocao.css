@@ -720,7 +720,7 @@ h1 { font-family: Sora, sans-serif; color: var(--primary); }
     object-fit: contain !important;
     
     /* Mude o número abaixo para deixar maior ou menor (Ex: 0.85 ou 0.95) */
-    transform: scale(0.95) !important; 
+    transform: scale(0.90) !important; 
     
     transform-origin: center !important;
     margin: 0 auto !important;
