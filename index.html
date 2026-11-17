@@ -11,16 +11,12 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-  <!-- Estilos Globais + Estilos dos Diferenciais -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="diferenciais.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
       <a href="index.html">
@@ -67,7 +63,6 @@
     <section id="inicio" class="carousel">
       <div class="slides"> 
 
-        <!-- SLIDE 1 -->
         <div class="slide">
           <picture>
             <source media="(max-width: 768px)" srcset="imagens/banner1-mobile.jpg">
@@ -90,7 +85,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 2 -->
         <div class="slide">
           <picture>
             <source media="(max-width: 768px)" srcset="imagens/banner2-mobile.jpg">
@@ -113,7 +107,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 3 -->
         <div class="slide">
           <picture>
             <source media="(max-width: 768px)" srcset="imagens/banner3-mobile.jpg">
@@ -136,7 +129,6 @@
           </div>
         </div>
 
-        <!-- SLIDE 4 -->
         <div class="slide">
           <picture>
             <source media="(max-width: 768px)" srcset="imagens/banner4-mobile.jpg">
@@ -161,7 +153,6 @@
 
       </div> 
 
-      <!-- Controles do Carrossel -->
       <button class="prev">❮</button>
       <button class="next">❯</button>
 
@@ -173,7 +164,6 @@
       </div>
     </section>
 
-    <!-- QUEM SOMOS -->
     <section id="quem-somos" class="section quem-somos">
       <div class="container">
         <div class="section-head reveal">
@@ -196,13 +186,12 @@
       </div>
     </section>
 
-    <!-- NÚMEROS -->
     <section class="impact" aria-label="Nosso impacto">
       <div class="container">
         <div class="impact-grid animar-ciclo">
             <div class="impact-item">
-                <strong class="impact-number contador-numero" data-valor="1000">0</strong>
-                <span class="impact-label">Animais ajudados</span>
+                <strong class="impact-number contador-numero" data-valor="20">0</strong>
+                <span class="impact-label">Pets variados de cada ONG</span>
             </div>
             <div class="impact-item">
                 <strong class="impact-number contador-numero" data-valor="5">0</strong>
@@ -213,55 +202,13 @@
                 <span class="impact-label">Gratuito</span>
             </div>
             <div class="impact-item">
-                <strong class="impact-number contador-numero" data-valor="50">0</strong>
-                <span class="impact-label">Cidades alcançadas</span>
+                <strong class="impact-number contador-numero" data-valor="24" data-simbolo="h">0</strong>
+                <span class="impact-label">Acesso digital sem burocracia</span>
             </div>
         </div>
       </div>
     </section>
 
-    <!-- COMO FUNCIONA -->
-    <section id="como-funciona" class="section section-soft">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Simples, seguro e humano</span>
-          <h2 class="section-title">O caminho até seu novo amigo</h2>
-          <p class="section-text">Da primeira busca ao primeiro abraço, conectamos você à ONG certa.</p>
-        </div>
-
-        <div class="steps-grid steps-cascade animar-ciclo reveal">
-          <article class="step-card">
-            <span class="step-number">01</span>
-            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-            <h3 class="step-title">Ache seu pet</h3>
-            <p class="step-text">Busque por espécie, perfil e localização.</p>
-          </article>
-
-          <article class="step-card">
-            <span class="step-number">02</span>
-            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
-            <h3 class="step-title">Dê o Match</h3>
-            <p class="step-text">Responda ao teste e descubra sua compatibilidade.</p>
-          </article>
-
-          <article class="step-card">
-            <span class="step-number">03</span>
-            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
-            <h3 class="step-title">Fale com a ONG</h3>
-            <p class="step-text">Converse diretamente, com clareza e segurança.</p>
-          </article>
-
-          <article class="step-card">
-            <span class="step-number">04</span>
-            <div class="step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-            <h3 class="step-title">Adoção completa</h3>
-            <p class="step-text">Conheça o abrigo e leve seu novo amigo para casa.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO: DIFERENCIAIS ("Por que escolher o Adote Amigo?") -->
     <section class="aa-differences" aria-labelledby="aa-title">
       <div class="aa-inner">
         <header class="aa-heading">
@@ -279,7 +226,6 @@
             </div>
             <h3>Rede de ONGs Verificadas</h3>
             <p>Trabalhamos apenas com abrigos e instituições parceiras rigorosamente verificadas e confiáveis.</p>
-            <span class="aa-note">Cuidado começa com confiança</span>
           </article>
 
           <article class="aa-card" data-aa-reveal>
@@ -291,7 +237,6 @@
             </div>
             <h3>Processo Transparente</h3>
             <p>Conexão direta e segura com o canal oficial de atendimento da ONG responsável pela adoção.</p>
-            <span class="aa-note">Sem atalhos. Sem intermediários.</span>
           </article>
 
           <article class="aa-card" data-aa-reveal>
@@ -303,7 +248,6 @@
             </div>
             <h3>Perfis Detalhados e Humanizados</h3>
             <p>Histórias reais, fotos em alta resolução, galeria imersiva e dados completos sobre o temperamento e cuidados de cada pet.</p>
-            <span class="aa-note">Mais que uma foto: uma história</span>
           </article>
 
           <article class="aa-card" data-aa-reveal>
@@ -315,7 +259,6 @@
             </div>
             <h3>Apoio e Suporte</h3>
             <p>Espaço dedicado para tirar dúvidas sobre a adoção responsável e apoiar as instituições com doações.</p>
-            <span class="aa-note">Juntos, o cuidado vai mais longe</span>
           </article>
         </div>
       </div>
@@ -323,7 +266,6 @@
 
   </main>
 
-  <!-- RODAPÉ -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-brand">
@@ -332,14 +274,13 @@
       </div>
       <div class="footer-support">
         <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+        <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank">
           📧 Fale com o Suporte
         </a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="menu-mobile.js"></script>
   <script type="module" src="script.js"></script>
   <script src="diferenciais.js"></script>

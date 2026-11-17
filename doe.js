@@ -1,10 +1,8 @@
 (() => {
   'use strict';
 
-  /* 1) Animação de entrada (Hero automático + Scroll Reveal para o resto) */
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
-  // Força o Hero a aparecer imediatamente de forma suave
+
   const heroContent = document.querySelector('.doe-hero-content');
   if (heroContent) {
     heroContent.classList.add('is-visible');
@@ -24,7 +22,6 @@
     reveals.forEach((el) => observer.observe(el));
   }
 
-  /* 2) Abas: o tipo de apoio escolhido mostra só os cartões daquele tipo */
   const abas = Array.from(document.querySelectorAll('.apoio-aba'));
   const paineis = Array.from(document.querySelectorAll('.apoio-painel'));
 
@@ -69,7 +66,6 @@
     window.addEventListener('hashchange', escolherPeloEndereco);
   }
 
-  /* 3) Se um logotipo não carregar, esconde a imagem e mostra a letra inicial */
   document.querySelectorAll('.apoio-logo img').forEach((img) => {
     const esconder = () => { img.hidden = true; };
     img.addEventListener('error', esconder);

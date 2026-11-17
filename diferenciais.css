@@ -1,4 +1,3 @@
-/* Tokens de reserva; integração usa a identidade já existente no portal. */
 :root {
   --aa-bg: var(--background, oklch(0.995 0.002 245));
   --aa-primary: var(--primary, oklch(0.36 0.1 256));
@@ -173,7 +172,6 @@
   translate: 0 0;
 }
 
-/* Estilização da área expansível interna dos cards */
 .aa-card {
   cursor: pointer;
   user-select: none;
@@ -212,7 +210,6 @@
   text-align: right;
 }
 
-/* Estado Expandido do Card */
 .aa-card.aa-expanded {
   border-color: var(--aa-accent);
   box-shadow: var(--aa-shadow);
@@ -225,11 +222,6 @@
   margin-top: 10px;
 }
 
-/* ==========================================================================
-   ANIMAÇÃO DE ENTRADA (SCROLL REVEAL) MAIS ENVOLVENTE
-   ========================================================================== */
-
-/* Estado inicial: escondido e levemente deslocado para baixo */
 .aa-differences .aa-heading,
 .aa-differences .aa-card {
   opacity: 0;
@@ -237,13 +229,11 @@
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Quando o JS ativar a classe .aa-visible na seção */
 .aa-enabled.aa-section-visible .aa-differences .aa-heading {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Efeito em cascata (delay progressivo para cada card) */
 .aa-enabled.aa-section-visible .aa-differences .aa-card:nth-child(1) {
   opacity: 1;
   transform: translateY(0);

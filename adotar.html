@@ -15,7 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Estilização da Modal de Boas-Vindas (Primeira Visita) */
     .welcome-overlay {
       position: fixed;
       inset: 0;
@@ -140,7 +139,6 @@
   </style>
 </head>
 <body>
-  <!-- Tela de Carregamento (Preloader) -->
   <div id="preloader" class="preloader-overlay">
     <div class="preloader-content">
       <video autoplay loop muted playsinline class="preloader-video">
@@ -151,7 +149,6 @@
     </div>
   </div>
 
- <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
       <a href="index.html">
@@ -177,17 +174,17 @@
 
     <div class="actions">
       <a href="como-funciona.html" class="btn-mascote-tutorial" id="btn-tutorial" aria-label="Descubra como funciona o Adote Amigo">
-  <div class="mascote-avatar">
-  <video autoplay loop muted playsinline class="mascote-img">
-    <source src="assets/logo-animada-como-funciona1.mp4" type="video/mp4">
-  </video>
-  <span class="pulse-ring"></span>
-</div>
-  <div class="btn-texto-wrapper">
-    <span class="btn-titulo">Como funciona o Adote Amigo?</span>
-    <span class="btn-sub">Passo a passo da adoção</span>
-  </div>
-</button>
+        <div class="mascote-avatar">
+          <video autoplay loop muted playsinline class="mascote-img">
+            <source src="assets/logo-animada-como-funciona1.mp4" type="video/mp4">
+          </video>
+          <span class="pulse-ring"></span>
+        </div>
+        <div class="btn-texto-wrapper">
+          <span class="btn-titulo">Como funciona o Adote Amigo?</span>
+          <span class="btn-sub">Passo a passo da adoção</span>
+        </div>
+      </a>
       <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
     </div>
@@ -199,9 +196,7 @@
       <p>Pets de ONGs parceiras de todo o Brasil, em um só lugar.</p>
     </section>
 
-    <!-- Filtros (AdoptionFilters) -->
     <form id="filters" class="filters" aria-label="Filtros de adoção">
-      <!-- Espécie -->
       <label>Espécie
         <select name="specie" id="filter-specie">
           <option value="">Todas</option>
@@ -210,14 +205,12 @@
         </select>
       </label>
 
-      <!-- Raça -->
       <label>Raça
         <select name="breed" id="filter-breed">
-        <option value="">Todas</option>
+          <option value="">Todas</option>
         </select>
       </label>
 
-      <!-- Porte -->
       <label>Porte
         <select name="size" id="filter-size">
           <option value="">Todos</option>
@@ -227,7 +220,6 @@
         </select>
       </label>
 
-      <!-- Idade -->
       <label>Idade
         <select name="age" id="filter-age">
           <option value="">Todas</option>
@@ -238,7 +230,6 @@
         </select>
       </label>
 
-      <!-- ONG / Abrigo -->
       <label>Instituição Parceira
         <select name="ongId" id="filter-shelter">
           <option value="">Todas</option>
@@ -250,26 +241,24 @@
         </select>
       </label>
 
-      <!-- Pelagem / Cor -->
       <label>Pelagem / Cor
         <select name="coatColor" id="filter-coat">
           <option value="">Todas</option>
-          <option value="Preto">Preto</option>
-          <option value="Branco / Preto">Branco / Preto</option>
-          <option value="Branco">Branco</option>
+          <option value="Preta">Preta</option>
+          <option value="Branca / Preta">Branca / Preta</option>
+          <option value="Branca">Branca</option>
+          <option value="Branca / Caramelo">Branca / Caramelo</option>
           <option value="Caramelo">Caramelo</option>
-          <option value="Caramelo / Pardo">Caramelo / Pardo</option>
-          <option value="Caramelo / Marrom">Caramelo / Marrom</option>
           <option value="Mesclado / Tricolor">Mesclado / Tricolor</option>
-          <option value="Branco / Marrom">Branco / Marrom</option>
-          <option value="Branco / Cinza">Branco / Cinza</option>
+          <option value="Branca / Marrom">Branca / Marrom</option>
+          <option value="Branca / Cinza">Branca / Cinza</option>
           <option value="Cinza">Cinza</option>
           <option value="Marrom">Marrom</option>
           <option value="Creme">Creme</option>
+          <option value="Creme / Marrom">Creme / Marrom</option>
         </select>
       </label>
 
-      <!-- Estado -->
       <label>Estado
         <select name="state" id="filter-state">
           <option value="">Todos</option>
@@ -277,7 +266,6 @@
         </select>
       </label>
 
-      <!-- Cidade -->
       <label>Cidade
         <select name="city" id="filter-city" disabled>
           <option value="">Escolha o estado</option>
@@ -287,13 +275,11 @@
       <button type="reset" id="btn-reset-filters" class="btn-ghost">Limpar</button>
     </form>
 
-    <!-- Listagem (PetList) -->
     <p id="status" class="status" role="status" aria-live="polite"></p>
     <ul id="pet-list" class="pet-grid"></ul>
     <div id="sentinel" aria-hidden="true"></div>
   </main>
 
-  <!-- Modal / Banner de Boas-Vindas para Primeira Vez -->
   <div id="welcome-modal" class="welcome-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
     <div class="welcome-card">
       <div class="welcome-icon">🐾</div>
@@ -322,7 +308,7 @@
 
       <div class="footer-support">
         <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+        <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank">
          📧 Fale com o Suporte
         </a>
       </div>
@@ -339,7 +325,6 @@
 
       const STORAGE_KEY = "adoteAmigo_firstVisit_dismissed";
 
-      // Exibe apenas se o usuário nunca marcou para esconder
       if (!localStorage.getItem(STORAGE_KEY)) {
         modal.style.display = "grid";
       }

@@ -3,16 +3,8 @@
 
   const EMAIL_DESTINO = 'adoteamigo.tcc2026@gmail.com';
 
-  /* ENVIO DIRETO DA MENSAGEM
-     Cole aqui o endereço do formulário criado no Formspree (formspree.io), no formato
-     'https://formspree.io/f/xxxxxxxx'. Com ele preenchido, a mensagem chega no e-mail da conta
-     do Formspree sem abrir nenhum aplicativo. Se ficar vazio, o formulário abre o aplicativo
-     de e-mail da pessoa com a mensagem pronta (modo antigo). */
   const FORM_ENDPOINT = 'https://formspree.io/f/xoejrgyw';
 
-  /* ------------------------------------------------------------------
-     1) Animação de entrada ao rolar a página (igual à página Quem Somos)
-     ------------------------------------------------------------------ */
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = document.querySelectorAll('.reveal');
 
@@ -29,9 +21,6 @@
     reveals.forEach((el) => observer.observe(el));
   }
 
-  /* ------------------------------------------------------------------
-     2) Botão "Copiar e-mail"
-     ------------------------------------------------------------------ */
   const botaoCopiar = document.querySelector('#copiar-email');
   const msgCopiar = document.querySelector('#copiar-msg');
 
@@ -44,9 +33,6 @@
     }
   });
 
-  /* ------------------------------------------------------------------
-     2.1) Menu das instituições: cada nome abre e fecha a sua caixa de contato
-     ------------------------------------------------------------------ */
   document.querySelectorAll('.ong-trigger').forEach((botao) => {
     botao.addEventListener('click', () => {
       const card = botao.closest('.ong-card');
@@ -61,18 +47,12 @@
     });
   });
 
-  // Se o logotipo não carregar (arquivo ausente), esconde a imagem e mostra a letra inicial
   document.querySelectorAll('.ong-logo img').forEach((img) => {
     const esconder = () => { img.hidden = true; };
     img.addEventListener('error', esconder);
     if (img.complete && img.naturalWidth === 0) esconder();
   });
 
-  /* ------------------------------------------------------------------
-     3) Formulário
-     O site é estático (GitHub Pages), então não há servidor para enviar a mensagem.
-     Ao enviar, abrimos o aplicativo de e-mail do usuário com tudo preenchido.
-     ------------------------------------------------------------------ */
   const form = document.querySelector('#form-contato');
   const status = document.querySelector('#form-status');
   const campoAssunto = document.querySelector('#assunto');
@@ -116,13 +96,13 @@
   }
 
   if (form) {
-    // O aviso abaixo do botão precisa descrever o que realmente acontece
+
     const avisoForm = form.querySelector('.form-note');
     if (FORM_ENDPOINT && avisoForm) {
       avisoForm.textContent = 'Ao enviar, a sua mensagem é entregue diretamente à equipe do Adote Amigo por meio de um serviço de formulários.';
     }
 
-    // Depois que o campo foi marcado com erro, corrige a mensagem enquanto a pessoa digita
+
     Object.values(campos).forEach((campo) => {
       campo.el.addEventListener('input', () => {
         if (campo.el.closest('.field').dataset.invalid === 'true') validarCampo(campo);
@@ -151,7 +131,6 @@
       const titulo = 'Adote Amigo — ' + assuntoTexto;
       const corpo = 'Nome: ' + nome + '\nE-mail para resposta: ' + email + '\n\nMensagem:\n' + mensagem;
 
-      // Modo 1: envio direto pelo Formspree (quando FORM_ENDPOINT está preenchido)
       if (FORM_ENDPOINT) {
         const botaoEnviar = form.querySelector('button[type="submit"]');
         botaoEnviar.disabled = true;
@@ -188,7 +167,6 @@
         return;
       }
 
-      // Modo 2: sem endpoint, abre o aplicativo de e-mail com a mensagem pronta
       mostrarStatus(
         'Abrimos o seu aplicativo de e-mail com a mensagem pronta. Confirme o envio por lá. ' +
         'Se nada abrir, escreva para ' + EMAIL_DESTINO + '.',

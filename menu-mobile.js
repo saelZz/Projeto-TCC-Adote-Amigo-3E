@@ -1,6 +1,3 @@
-/* ==========================================================================
-   MENU MOBILE (hambúrguer) — Injeção garantida do menu e do mascote em todas as páginas
-   ========================================================================== */
 (function () {
   var header = document.querySelector('.navbar-amarela-oficial, .navbar, .topbar');
   var menu = document.querySelector('.menu');
@@ -8,7 +5,6 @@
 
   if (!header || !menu) return;
 
-  // Botão hambúrguer
   var botao = document.createElement('button');
   botao.className = 'menu-toggle';
   botao.type = 'button';
@@ -16,14 +12,12 @@
   botao.setAttribute('aria-expanded', 'false');
   botao.innerHTML = '<span></span><span></span><span></span>';
 
-  // Painel do menu mobile
   var painel = document.createElement('nav');
   painel.className = 'menu-mobile';
   painel.setAttribute('aria-label', 'Menu principal');
   
   var conteudoHtml = menu.innerHTML;
 
-  // Bloco de ações do mobile com o botão do mascote e links principais garantidos
   var acoesMobileHtml = `
     <div class="menu-mobile-actions" style="margin-top: 15px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border, #dae2eb); padding-top: 15px;">
       <a href="como-funciona.html" class="btn-mascote-tutorial" style="display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 14px; background: var(--surface-soft, #f2f7fc); border: 1px solid var(--border, #dae2eb); border-radius: 14px; text-decoration: none; text-align: left; box-sizing: border-box;">
@@ -47,7 +41,7 @@
     if (btnDoar) acoesMobileHtml += btnDoar.outerHTML;
     if (btnAdotar) acoesMobileHtml += btnAdotar.outerHTML;
   } else {
-    // Fallback caso a barra de ações não exista na página
+
     acoesMobileHtml += `
       <a href="doe.html" class="btn-doar-nav" style="text-align: center; padding: 12px; border-radius: 50px; background: #10b981; color: #fff; font-weight: 700; text-decoration: none;">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary" style="text-align: center; padding: 12px; border-radius: 50px; background: #0c3c75; color: #fff; font-weight: 700; text-decoration: none;">Quero adotar</a>

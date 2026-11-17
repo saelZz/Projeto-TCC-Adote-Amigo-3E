@@ -1,9 +1,3 @@
-/**
- * ============================================================
- *  Adote Amigo — Serviço de Pets e ONGs
- *  Com busca integrada à coleção de ONGs do Firestore.
- * ============================================================
- */
 import {
   collection, query, where, limit, startAfter, orderBy,
   getDocs, getDoc, doc,
@@ -13,7 +7,6 @@ import { DEMO_PETS, DEMO_ONGS } from "./demo-data.js";
 
 export const PAGE_SIZE = 12;
 
-/** Converte e normaliza um documento do Firestore de acordo com o schema */
 const toObject = (snap) => {
   const data = snap.data();
   return {
@@ -29,13 +22,10 @@ const toObject = (snap) => {
     state: data.state || data.estado || "",
     photoUrl: data.photoURL || data.photoUrl || data.imagem || "imagens/logo.png",
     
-    // Pega o array de galeria do Firestore (ou deixa vazio se não tiver)
     gallery: data.gallery || [],
     
-    // Pega a história detalhada (fallback para a descrição curta se não houver history)
     history: data.history || data.description || "Este amiguinho está pronto para encontrar uma nova família.",
     
-    // Descrição curta (para usar nos cards)
     description: data.description || "Curioso, carinhoso e pronto para um novo começo.",
     
     status: data.status || "Disponivel",
@@ -44,7 +34,6 @@ const toObject = (snap) => {
   };
 };
 
-/** Formata idade em meses para texto amigável (Fallback) */
 export function formatAge(months) {
   if (!months) return "Idade não inf.";
   if (months < 12) return `${months} ${months === 1 ? "mês" : "meses"}`;
@@ -52,14 +41,9 @@ export function formatAge(months) {
   return `${years} ${years === 1 ? "ano" : "anos"}`;
 }
 
-/**
- * Busca pets disponíveis e aplica os filtros selecionados,
- * injetando também os dados da ONG parceira correspondente.
- */
 export async function fetchPets(filters = {}, cursor = null) {
   if (isDemoMode) return fetchDemoPets(filters, cursor);
 
-  // Deixa apenas o filtro básico para evitar erros de índice no Firebase
   const constraints = [where("status", "==", "Disponivel")];
   
   if (cursor) constraints.push(startAfter(cursor));
@@ -68,14 +52,12 @@ export async function fetchPets(filters = {}, cursor = null) {
     const snap = await getDocs(query(collection(db, "pets"), ...constraints));
     let pets = snap.docs.map(toObject);
 
-    // Ordena por data de criação no próprio JavaScript (se o createdAt existir)
     pets.sort((a, b) => {
       const dateA = a.createdAt?.seconds || a.createdAt || 0;
       const dateB = b.createdAt?.seconds || b.createdAt || 0;
-      return dateB - dateA; // Do mais recente para o mais antigo
+      return dateB - dateA;
     });
 
-    // Restante dos filtros locais...
     if (filters.specie) pets = pets.filter(p => p.specie === filters.specie);
     if (filters.species) pets = pets.filter(p => p.specie === filters.species);
     if (filters.size) pets = pets.filter(p => p.size === filters.size);
@@ -87,7 +69,6 @@ export async function fetchPets(filters = {}, cursor = null) {
 
     const paginatedPets = pets;
 
-    // Enriquece cada pet com os dados reais da ONG parceira
     for (let pet of paginatedPets) {
       if (pet.ongId) {
         try {
@@ -121,7 +102,6 @@ export async function fetchPets(filters = {}, cursor = null) {
   }
 }
 
-/** Busca um pet específico pelo ID com os dados da ONG */
 export async function getPetById(id) {
   if (isDemoMode) return DEMO_PETS.find((p) => p.id === id) ?? null;
   const snap = await getDoc(doc(db, "pets", id));
@@ -144,7 +124,6 @@ export async function getPetById(id) {
   return pet;
 }
 
-/** Lista ONGs cadastradas */
 export async function fetchOngs(state = "") {
   if (isDemoMode) return DEMO_ONGS.filter((o) => !state || o.state === state);
   const constraints = [where("verified", "==", true)];
@@ -153,14 +132,12 @@ export async function fetchOngs(state = "") {
   return snap.docs.map(toObject);
 }
 
-/** Busca uma ONG pelo ID */
 export async function getOngById(id) {
   if (isDemoMode) return DEMO_ONGS.find((o) => o.id === id) ?? null;
   const snap = await getDoc(doc(db, "ongs", id));
   return snap.exists() ? toObject(snap) : null;
 }
 
-/** Cidades disponíveis de um estado */
 export async function fetchCitiesByState(state) {
   if (!state) return [];
   if (isDemoMode) {

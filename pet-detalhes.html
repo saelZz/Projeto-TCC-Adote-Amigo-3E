@@ -64,7 +64,7 @@
           <span class="btn-titulo">Como funciona o Adote Amigo?</span>
           <span class="btn-sub">Passo a passo da adoção</span>
         </div>
-      </button>
+      </a>
       <a href="doe.html" class="btn-doar-nav">Apoiar instituições</a>
       <a href="adotar.html" class="btn btn-primary">Quero adotar</a>
     </div>
@@ -76,7 +76,6 @@
       <span class="demo-label">Perfil oficial do Pet</span>
     </div>
 
-    <!-- SEÇÃO HEADER DO PET (Aparece limpa no Mobile acima/abaixo da foto e se organiza no PC) -->
     <div class="pet-header-container">
       <div class="pet-heading-standalone">
         <span class="hello">Um pequeno amor, um novo começo.</span>
@@ -88,12 +87,9 @@
       </div>
     </div>
 
-    <!-- STAGE/CARROSSEL DEDICADO DE FOTOS (Sem textos por cima tapando o pet) -->
     <section class="pet-stage-carousel" aria-label="Fotos do pet">
       <div class="carousel-wrapper">
-        <div class="photo-gallery" aria-roledescription="carrossel" aria-label="Fotos do pet" tabindex="0">
-          <!-- Injetado dinamicamente via JS -->
-        </div>
+        <div class="photo-gallery" aria-roledescription="carrossel" aria-label="Fotos do pet" tabindex="0"></div>
 
         <div class="gallery-top">
           <button class="glass-button" id="expand-photo" aria-label="Ampliar foto">
@@ -117,20 +113,19 @@
         </div>
       </div>
 
-      <!-- Thumbnails organizadas logo abaixo do carrossel -->
       <div class="photo-thumbnails-bar">
         <div class="photo-thumbnails" role="group" aria-label="Escolher foto"></div>
       </div>
     </section>
 
-    <!-- Resumo e Ação de Adoção -->
     <section class="meet-strip" aria-label="Resumo e adoção">
       <div class="pet-summary reveal">
         <div class="facts"><span>Carregando...</span></div>
         <h2 id="pet-summary-title">Carregando perfil...</h2>
         <p id="pet-summary-text">Aguarde enquanto buscamos as informações.</p>
-        <div class="traits">
-          <span><i aria-hidden="true">✦</i> Carinhoso</span>
+
+        <div class="traits" id="pet-traits-container">
+          <span><i aria-hidden="true">✦</i> Carinhoso(a)</span>
           <span><i aria-hidden="true">✦</i> Sociável</span>
         </div>
       </div>
@@ -152,12 +147,11 @@
         </a>
 
         <p class="cta-note" style="margin-top: 12px; font-size: 0.88rem; line-height: 1.5; color: var(--foreground-muted);">
-          ℹ️ <strong>Processo de adoção:</strong> Entrevistas, questionários, taxas e critérios de segurança (como telas de proteção) são tratados diretamente com a ONG responsável através do seu canal oficial.
+          ℹ️ <strong>Processo de adoção:</strong> Entrevistas, questionários, vacinações, taxas e critérios de segurança (como telas de proteção) são tratados diretamente com a ONG responsável através do seu canal oficial.
         </p>
       </div>
     </section>
 
-    <!-- Descrição Completa -->
     <section class="pet-full-description-section reveal" style="max-width: 1240px; margin: 0 auto 50px; padding: 0 max(32px, calc((100% - 1240px)/2));">
       <div style="background: var(--surface-soft); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
         <h3 style="font-family: var(--heading-font); font-size: 1.35rem; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
@@ -173,7 +167,6 @@
     </div>
   </main>
   
-  <!-- MODAL DE FOTO AMPLIADA -->
   <dialog id="photo-dialog" class="photo-dialog" aria-label="Foto ampliada">
     <div class="dialog-content-wrapper">
       <button class="glass-button dialog-close" aria-label="Fechar foto ampliada">×</button>
@@ -188,7 +181,6 @@
     <button class="text-button dialog-close">Voltar <span aria-hidden="true">↩</span></button>
   </dialog>
 
-  <!-- RODAPÉ -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-brand">
@@ -198,7 +190,7 @@
 
       <div class="footer-support">
         <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-        <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+        <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank">
           📧 Fale com o Suporte
         </a>
       </div>

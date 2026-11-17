@@ -1,14 +1,8 @@
-// ==========================================================================
-// 1. CONFIGURAÇÃO E CONEXÃO COM O FIREBASE (Importado do arquivo central)
-// ==========================================================================
 import { db, isDemoMode } from "./firebase-config.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 let bancoDeDadosPets = {};
 
-// ==========================================================================
-// 2. UTILITÁRIOS
-// ==========================================================================
 function normalizarTexto(texto) {
     if (!texto) return "";
     return texto
@@ -25,9 +19,6 @@ function fecharModal(modal) {
     }
 }
 
-// ==========================================================================
-// 3. BUSCA E RENDERIZAÇÃO DINÂMICA DE PETS (FIRESTORE)
-// ==========================================================================
 async function carregarPetsDoFirestore() {
     const petsGrid = document.getElementById("pets-grid");
     if (!petsGrid) return;
@@ -94,9 +85,6 @@ async function carregarPetsDoFirestore() {
     }
 }
 
-// ==========================================================================
-// 4. CARROSSEL DE IMAGENS
-// ==========================================================================
 let carouselIndex = 0;
 let isDragging = false;
 let startX = 0;
@@ -198,14 +186,8 @@ function inicializarCarrossel() {
     iniciarAutoSlide();
 }
 
-// ==========================================================================
-// 5. INICIALIZAÇÃO E EVENTOS DOM
-// ==========================================================================
 document.addEventListener("DOMContentLoaded", async function () {
 
-    // ----------------------------------------------------------------------
-    // A. ANIMAÇÃO DE REVELAÇÃO (.reveal) - IntersectionObserver Otimizado
-    // ----------------------------------------------------------------------
     const elements = document.querySelectorAll(".reveal");
 
     if (!("IntersectionObserver" in window)) {
@@ -230,28 +212,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         elements.forEach((el) => el.classList.add("is-visible", "active"));
     }, 600);
 
-    // ----------------------------------------------------------------------
-    // B. CARREGAMENTO DOS PETS DO FIRESTORE
-    // ----------------------------------------------------------------------
     await carregarPetsDoFirestore();
 
-    // ----------------------------------------------------------------------
-    // C. FAQ ACCORDION
-    // ----------------------------------------------------------------------
-    const perguntas = document.querySelectorAll(".faq-question");
-    perguntas.forEach((pergunta) => {
-        pergunta.addEventListener("click", function () {
-            const itemAtual = this.parentElement;
-            document.querySelectorAll(".faq-item").forEach((faq) => {
-                if (faq !== itemAtual) faq.classList.remove("active");
-            });
-            itemAtual.classList.toggle("active");
-        });
-    });
-
-    // ----------------------------------------------------------------------
-    // D. ROLAGEM POR HASH VIA URL
-    // ----------------------------------------------------------------------
     const { hash } = window.location;
     if (hash) {
         const alvo = document.querySelector(hash);
@@ -263,9 +225,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // ----------------------------------------------------------------------
-    // E. LÓGICA DE FILTROS ENCADEADOS
-    // ----------------------------------------------------------------------
     const selectEstado = document.getElementById("filtro-estado");
     const selectCidade = document.getElementById("filtro-cidade");
     const selectBairro = document.getElementById("filtro-bairro");
@@ -354,9 +313,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // ----------------------------------------------------------------------
-    // F. MODAL E EVENTOS GLOBAIS
-    // ----------------------------------------------------------------------
     const modal = document.getElementById("modal-adocao");
     const btnFechar = document.querySelector(".close-modal");
     const formAdocao = document.getElementById("form-adocao");
@@ -373,14 +329,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         fecharModal(modal);
     });
 
-    // ----------------------------------------------------------------------
-    // G. INICIALIZAÇÃO DO CARROSSEL
-    // ----------------------------------------------------------------------
     inicializarCarrossel();
 
-    // ----------------------------------------------------------------------
-    // H. FORMULÁRIO MULTI-PASSOS
-    // ----------------------------------------------------------------------
     const modalEstado = document.getElementById("modal-estado");
     const modalCidade = document.getElementById("modal-cidade");
     const btnPasso1 = document.getElementById("btn-passo-1");
@@ -438,9 +388,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         irParaPasso(5);
     });
 
-    // ----------------------------------------------------------------------
-    // ANIMAÇÃO EM CICLO AO ROLAR A TELA
-    // ----------------------------------------------------------------------
     const elementosCiclo = document.querySelectorAll(".animar-ciclo");
 
     const observerCiclo = new IntersectionObserver((entries) => {
@@ -465,13 +412,9 @@ function animarContadores() {
     const numeros = document.querySelectorAll(".contador-numero");
     
     numeros.forEach((num) => {
-        // Evita que a animação rode de novo se já tiver sido concluída
         if (num.dataset.animado === "true") return;
         
         const valorFinal = parseInt(num.getAttribute("data-valor"), 10);
-        
-        // PEGA O SÍMBOLO DO ATRIBUTO DATA OU DETECTA O QUE ESTÁ ESCRITO NO HTML (Ex: %, +, etc.)
-        // Se não encontrar nada, define "+" como o padrão anterior
         const simbolo = num.getAttribute("data-simbolo") || "+";
         
         let valorAtual = 0;
@@ -484,16 +427,13 @@ function animarContadores() {
                 requestAnimationFrame(atualizar);
             } else {
                 num.textContent = valorFinal + simbolo;
-                num.dataset.animado = "true"; // Marca como finalizado
+                num.dataset.animado = "true";
             }
         };
         atualizar();
     });
 }
 
-/* =========================================================
-   FAQ — Adote Amigo
-   ========================================================= */
 (() => {
   "use strict";
 

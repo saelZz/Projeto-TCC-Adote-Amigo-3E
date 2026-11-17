@@ -36,11 +36,9 @@ async function loadPetDetails() {
     
     document.title = `Conheça ${pet.name} — Adote Amigo`;
 
-    // 1. Cabeçalho e Localização centralizados
     $('#pet-name-title').innerHTML = `${pet.name}<span class="name-dot">.</span>`;
     $('#pet-location').textContent = `${pet.city || ''}, ${pet.state || ''}`;
 
-    // 2. Resumo Rápido
     const factsContainer = document.querySelector('.pet-summary .facts');
     if (factsContainer) {
       const rawWeight = pet.weight || pet.peso;
@@ -57,6 +55,28 @@ async function loadPetDetails() {
 
     $('#pet-summary-title').textContent = `Um pequeno amor, um novo começo.`;
     $('#pet-summary-text').textContent = pet.shortDescription || pet.description || "Curioso, carinhoso e pronto para um novo começo.";
+
+    const traitsContainer = document.getElementById('pet-traits-container');
+    if (traitsContainer) {
+      const rawTraits = pet.temperament || pet.temperamento || pet.traits;
+      if (rawTraits) {
+        let traitsArray = [];
+        if (Array.isArray(rawTraits)) {
+          traitsArray = rawTraits;
+        } else if (typeof rawTraits === 'string') {
+          traitsArray = rawTraits.split(',').map(t => t.trim()).filter(Boolean);
+        }
+        
+        if (traitsArray.length > 0) {
+          traitsArray.push(pet.vaccinated || pet.vacinado ? "Já Vermifugado(a)" : "");
+          traitsArray = traitsArray.filter(Boolean);
+
+          traitsContainer.innerHTML = traitsArray.map(trait => `
+            <span><i aria-hidden="true">✦</i> ${trait}</span>
+          `).join('');
+        }
+      }
+    }
 
     const detailedDescEl = document.getElementById('pet-detailed-description');
     if (detailedDescEl) {
@@ -77,7 +97,6 @@ async function loadPetDetails() {
 
     initOfficialLinks(ongName, pet.ongUrl || null);
 
-    // 3. Fotos e Galeria Dinâmica
     const mainPhotoUrl = pet.photoUrl || "imagens/logo.png";
     const galleryEl = $('.photo-gallery');
     const thumbnailsEl = $('.photo-thumbnails');
@@ -96,8 +115,6 @@ async function loadPetDetails() {
 
     initGallery();
     initDialogs();
-    
-    // CORREÇÃO DAS ANIMAÇÕES: Força a exibição imediata dos blocos sem depender de Scroll/IntersectionObserver
     initReveal();
 
     if (preloader) preloader.classList.add("hidden");
@@ -114,7 +131,7 @@ function initOfficialLinks(shelterName, officialUrl) {
   try { 
     const candidate = new URL(officialUrl); 
     if (candidate.protocol === 'https:') url = candidate.href; 
-  } catch { /* Link não fornecido */ }
+  } catch { }
 
   document.querySelectorAll('.official-link').forEach((link) => {
     if (url) {
@@ -142,7 +159,6 @@ function initGallery() {
   let index = 0;
   let timer = null;
 
-  // Atualiza os números do contador preservando os spans do HTML
   const numberEl = $('#photo-number');
   const totalEl = $('#photo-total');
   if (totalEl) {
@@ -199,7 +215,6 @@ function initGallery() {
     }
   });
 
-  // Touch Swipe no Mobile
   let startX = 0;
   gallery.addEventListener('touchstart', (event) => {
     const touch = event.touches[0];
@@ -264,7 +279,6 @@ function initDialogs() {
 }
 
 function initReveal() {
-  // Força todas as seções animadas a aparecerem visíveis e limpas imediatamente após o carregamento dos dados do pet
   document.querySelectorAll('.reveal').forEach((el) => {
     el.classList.add('is-visible');
     el.style.opacity = '1';

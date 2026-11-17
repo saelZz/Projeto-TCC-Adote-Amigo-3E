@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. TOKENS DE DESIGN, RESET & BASE
-   ========================================================================== */
 :root {
   --background: #FCFEFF;
   --foreground: #152131;
@@ -60,7 +57,7 @@ body {
   width: 100%;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
-  padding-top: 18px 20px
+  padding-top: 18px 20px;
 }
 
 h1, h2, h3 {
@@ -98,9 +95,6 @@ a {
   .container { padding-inline: 2.5rem; }
 }
 
-/* ==========================================================================
-   2. NAVBAR & NAVEGAÇÃO
-   ========================================================================== */
 .navbar,
 .navbar-amarela-oficial,
 .topbar {
@@ -117,7 +111,6 @@ a {
   background: var(--background, #ffffff);
   border-bottom: 1px solid var(--border, #e5e7eb);
   width: 100%;
-  /* Previne sobreposição e comportamentos estranhos de viewport em celulares */
   will-change: transform;
 }
 
@@ -142,11 +135,11 @@ a {
 }
 
 .logo, .navbar img, .nav-brand img {
-    transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover, .navbar img:hover, .nav-brand img:hover {
-    transform: scale(1.08);
+  transform: scale(1.08);
 }
 
 .menu {
@@ -220,7 +213,6 @@ a {
   flex-shrink: 0;
 }
 
-/* MENU HAMBÚRGUER */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -264,7 +256,7 @@ a {
   top: 100%;
   left: 0;
   right: 0;
-  max-height: 0; /* Começa fechado (escondido) */
+  max-height: 0;
   opacity: 0;
   overflow-y: auto;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -338,7 +330,6 @@ a {
   padding: 10px 4px;
 }
 
-/* Botões Genéricos */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -381,39 +372,36 @@ a {
 }
 
 .btn-doar-nav {
-    background-color: #28a745;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
 }
 
 .btn-doar-nav:hover {
-    background-color: #218838;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+  background-color: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
 }
 
 .btn-acao-unificado {
-    padding: 16px 32px;
+  padding: 16px 32px;
   font-size: 1.1rem;
   font-weight: bold;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
-    margin-top: 10px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
-/* ==========================================================================
-   3. CARROSSEL DE BANNERS & HERO GERAL
-   ========================================================================== */
 .carrossel-container {
   width: 100%;
   display: flex;
@@ -446,7 +434,7 @@ a {
 @media (max-width: 768px) {
   .carousel {
     width: 92% !important;
-    height: 380px !important; /* Altura ideal para telas menores não cortarem o topo/baixo */
+    height: 380px !important;
     margin: 15px auto;
   }
 }
@@ -468,19 +456,19 @@ a {
 
 .slide img, 
 .slide picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha o espaço proporcionalmente */
-    object-position: center center; /* Mantém o foco no centro da foto (onde estão os pets) */
-    display: block;
-    user-select: none;
-    outline: none;
-    border: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  user-select: none;
+  outline: none;
+  border: none;
 }
 
 button:focus, 
 a:focus {
-    outline: none;
+  outline: none;
 }
 
 .hero-img {
@@ -505,7 +493,7 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%; /* Ajusta o degradê para cobrir exatamente até onde o texto vai */
+  width: 90%;
   max-width: 950px;
   height: 100%;
   background: linear-gradient(90deg, #072B54 20%, rgba(7, 43, 84, 0.9) 75%, transparent 100%);
@@ -513,9 +501,6 @@ a:focus {
   pointer-events: none;
 }
 
-/* ==========================================================================
-   4. CONTEÚDO E TEXTOS DO HERO
-   ========================================================================== */
 .hero-content {
   position: absolute;
   top: 0;
@@ -527,7 +512,7 @@ a:focus {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 6%; /* Usa porcentagem em vez de pixels fixos para redimensionar livremente */
+  padding-left: 6%;
   padding-right: 40px;
   pointer-events: none;
 }
@@ -536,7 +521,7 @@ a:focus {
   position: relative;
   z-index: 10;
   color: #ffffff;
-  max-width: 515px; /* Trava o texto para não avançar para a direita da imagem */
+  max-width: 515px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -563,7 +548,7 @@ a:focus {
 }
 
 .hero-title {
-  font-size: clamp(1.8rem, 3.2vw, 3.2rem) !important; /* Começa maiorzinho na tela menor e expande até 3.2rem com a aba aberta */
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem) !important;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.5px;
@@ -575,7 +560,7 @@ a:focus {
 }
 
 .hero-subtitle {
-  font-size: clamp(0.95rem, 1.3vw, 1.15rem) !important; /* Acompanha o respiro do título de forma proporcional */
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem) !important;
   color: #e2e8f0;
   line-height: 1.4;
   margin-bottom: 6px;
@@ -599,18 +584,18 @@ a:focus {
 }
 
 .btn-verde {
-    background-color: #10B981 !important;
-    color: #ffffff !important;
-    border-color: #10B981 !important;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  background-color: #10B981 !important;
+  color: #ffffff !important;
+  border-color: #10B981 !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
 }
 
 .btn-verde:hover {
-    background-color: #059669 !important;
-    color: #ffffff !important;
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4) !important;
-    border-color: #059669 !important;
+  background-color: #059669 !important;
+  color: #ffffff !important;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4) !important;
+  border-color: #059669 !important;
 }
 
 .btn-hero:hover {
@@ -682,9 +667,6 @@ a:focus {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* ==========================================================================
-   5. SEÇÕES GERAIS DA PÁGINA
-   ========================================================================== */
 .section {
   padding-block: 5rem;
 }
@@ -712,26 +694,26 @@ a:focus {
 }
 
 .animar-ciclo {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .animar-ciclo.visivel {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .steps-grid, .caminho-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .steps-grid .step-card {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
 .animar-ciclo.visivel .step-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
@@ -740,8 +722,8 @@ a:focus {
 .animar-ciclo.visivel .step-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
 
 .step-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 35px rgba(47, 79, 159, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 35px rgba(47, 79, 159, 0.12);
 }
 
 .section-title {
@@ -771,9 +753,6 @@ a:focus {
   text-align: center;
 }
 
-/* ==========================================================================
-   6. IMPACTO
-   ========================================================================== */
 .impact {
   background: var(--brand-deep);
   color: var(--primary-foreground);
@@ -893,45 +872,45 @@ a:focus {
 }
 
 .secao-cta-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
 }
 
 .btn-secundario-animado {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #2f4f9f 0%, #3b63c9 100%);
-    color: #ffffff;
-    border: #ec8004;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 15px rgba(216, 130, 2, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2f4f9f 0%, #3b63c9 100%);
+  color: #ffffff;
+  border: #ec8004;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(216, 130, 2, 0.2);
 }
 
 .btn-secundario-animado svg {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .btn-secundario-animado:hover {
-    background: linear-gradient(135deg, #243e80 0%, #2f4f9f 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(47, 79, 159, 0.35);
-    color: #ffffff;
+  background: linear-gradient(135deg, #243e80 0%, #2f4f9f 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(47, 79, 159, 0.35);
+  color: #ffffff;
 }
 
 .btn-secundario-animado:hover svg {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }
 
 .btn-secundario-animado:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 10px rgba(47, 79, 159, 0.2);
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(47, 79, 159, 0.2);
 }
 
 .site-footer {
@@ -942,56 +921,56 @@ a:focus {
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer-brand .footer-logo {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #115cd4;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #115cd4;
 }
 
 .footer-brand .highlight {
-    color: #ff8a00;
+  color: #ff8a00;
 }
 
 .footer-brand p, .support-text {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-top: 4px;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 4px;
 }
 
 .footer-support {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .btn-footer-support {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #f1f5f9;
-    color: #334155;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .btn-footer-support:hover {
-    background-color: #ff8a00;
-    color: #ffffff;
-    border-color: #ff8a00;
-    transform: translateY(-2px);
+  background-color: #ff8a00;
+  color: #ffffff;
+  border-color: #ff8a00;
+  transform: translateY(-2px);
 }
 
 .footer-inner {
@@ -1029,13 +1008,13 @@ a:focus {
 }
 
 @media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-support {
-        align-items: center;
-    }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-support {
+    align-items: center;
+  }
 }
 
 .reveal {
@@ -1060,6 +1039,7 @@ a:focus {
 .faq-section {
   padding: 80px 20px;
   background: var(--faq-surface);
+  position: relative;
 }
 
 .faq-container {
@@ -1115,17 +1095,34 @@ a:focus {
   border-radius: var(--faq-radius);
   background: var(--faq-card);
   box-shadow: var(--faq-shadow);
-  transition: border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.faq-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--faq-highlight);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .faq-card:hover {
   box-shadow: var(--faq-shadow-active);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .faq-card[data-open="true"] {
   border-color: var(--faq-highlight);
   box-shadow: var(--faq-shadow-active);
+}
+
+.faq-card[data-open="true"]::before {
+  opacity: 1;
 }
 
 .faq-card h2 {
@@ -1156,6 +1153,11 @@ a:focus {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.faq-trigger:hover > span:first-child {
+  color: var(--faq-highlight-hover);
 }
 
 .faq-trigger:focus-visible {
@@ -1213,6 +1215,12 @@ a:focus {
   color: var(--faq-muted);
   font-size: 15px;
   line-height: 1.8;
+  animation: fadeInText 0.4s ease forwards;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .faq-card[data-open="true"] .faq-panel {
@@ -1271,9 +1279,6 @@ a:focus {
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .pet-card { animation: none; transition: none; } }
 
-/* =========================================================
-   12. BLOCO HISTÓRIA & PAINEL COMPLEMENTAR
-   ========================================================= */
 .bloco-historia-container {
   display: inline-flex;
   flex-direction: column;
@@ -1350,21 +1355,72 @@ a:focus {
 }
 
 @media (max-width: 768px) {
+  .bloco-historia-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    max-width: 340px;
+    margin: 28px auto 0;
+    padding: 0;
+    background: #ffffff;
+    border-radius: 22px;
+    border: 2px solid #0C3C75;
+    box-shadow: 0 16px 36px rgba(7, 43, 84, 0.14);
+    overflow: hidden;
+    position: relative;
+  }
+
   .painel-pets-complementar {
-    height: 110px;
-    opacity: 1;
-    margin-top: -5px;
-    padding: 10px;
+    width: 100% !important;
+    height: 190px !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden;
+  }
+
+  .painel-pets-complementar img {
+    width: 100%;
+    height: 100%;
+    opacity: 1 !important;
+    object-fit: cover;
+    display: block;
+    animation: mobilePetZoom 8s ease-in-out infinite alternate;
   }
 
   .meu-botao-historia {
-    box-shadow: 0 4px 12px rgba(12, 60, 117, 0.25), 0 0 0 4px #ff8a00, 0 0 15px rgba(255, 138, 0, 0.5);
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-top: 3px solid #ff8a00 !important;
+    padding: 16px 20px !important;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .meu-botao-historia svg {
+    animation: mobileArrowNudge 1.6s ease-in-out infinite;
   }
 }
 
-/* =========================================================
-   12. ANIMAÇÕES GERAIS (PRELOADER)
-   ========================================================= */
+@keyframes mobilePetZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes mobileArrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
 .preloader-overlay {
   position: fixed;
   top: 0;
@@ -1408,7 +1464,7 @@ a:focus {
   gap: 12px;
   background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
   font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
-  border: 2px solid var(--primary, #0c3c75); /* Borda sólida no Azul Principal */
+  border: 2px solid var(--primary, #0c3c75);
   padding: 6px 18px 6px 6px;
   border-radius: 50px;
   cursor: pointer;
@@ -1420,16 +1476,15 @@ a:focus {
 .btn-mascote-tutorial:hover {
   transform: translateY(-3px) scale(1.02);
   background: linear-gradient(135deg, #e2edff 0%, #ffffff 100%);
-  border-color: var(--highlight, #ff8a00); /* No hover, a borda acende no Laranja da marca */
+  border-color: var(--highlight, #ff8a00);
   box-shadow: 0 8px 25px rgba(255, 138, 0, 0.22);
 }
 
-/* Avatar do Mascote com destaque em Azul e Anel Laranja */
 .mascote-avatar {
   width: 40px;
   height: 40px;
   background: var(--primary, #0c3c75);
-  border: 2px solid #ff8a00; /* Borda laranja viva */
+  border: 2px solid #ff8a00;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1448,7 +1503,6 @@ a:focus {
   display: block;
 }
 
-/* Anel de pulso em Laranja vibrante */
 .pulse-ring {
   position: absolute;
   top: -3px;
@@ -1475,7 +1529,7 @@ a:focus {
 
 .btn-titulo {
   font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
-  font-weight: 700 !important; /* Mantém encorpado mas limpo, evitando o 800 pesado da FAQ */
+  font-weight: 700 !important;
   font-size: 0.88rem !important;
   color: var(--primary, #0c3c75) !important;
   line-height: 1.2 !important;
@@ -1486,7 +1540,7 @@ a:focus {
   font-family: var(--font-body, "Plus Jakarta Sans", Arial, sans-serif) !important;
   font-size: 0.72rem !important;
   color: var(--highlight, #ff8a00) !important;
-  font-weight: 600 !important; /* Peso moderado para o subtítulo não concorrer com o título */
+  font-weight: 600 !important;
   letter-spacing: 0.2px !important;
   line-height: 1.2 !important;
 }
@@ -1519,9 +1573,6 @@ a:focus {
   visibility: hidden;
 }
 
-/* ==========================================================================
-   13. RESPONSIVIDADE / MEDIA QUERIES (Mobile Geral)
-   ========================================================================== */
 @media (min-width: 769px) and (max-width: 1200px) {
   .menu {
     gap: 20px;
@@ -1566,23 +1617,23 @@ a:focus {
 
 @media (max-width: 768px) {
   .navbar,
-.navbar-amarela-oficial,
-.topbar {
-  display: flex;
-  align-items: center; /* Alinha perfeitamente todos os itens na vertical (centro exato) */
-  justify-content: space-between;
-  padding: 12px 24px; /* Altura equilibrada e elegante */
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--header-shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--background, #ffffff);
-  border-bottom: 1px solid var(--border, #e5e7eb);
-  width: 100%;
-  will-change: transform;
-}
+  .navbar-amarela-oficial,
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--header-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background, #ffffff);
+    border-bottom: 1px solid var(--border, #e5e7eb);
+    width: 100%;
+    will-change: transform;
+  }
 
   .logo img {
     height: 45px;
@@ -1598,27 +1649,25 @@ a:focus {
   .hero-text .btn-hero,
   .hero-content .btn-hero,
   .btn-verde {
-    padding: 10px 20px !important;    /* Reduz o padding interno (altura/largura) */
-    font-size: 14px !important;      /* Diminui a fonte para ficar proporcional */
-    min-height: 40px !important;     /* Define uma altura mínima mais delicada */
-    gap: 8px !important;             /* Espaço menor entre o texto e a seta */
-    border-radius: 30px !important;  /* Arredondamento suave */
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    min-height: 40px !important;
+    gap: 8px !important;
+    border-radius: 30px !important;
     margin-top: 5px !important;
   }
 
   .hero-text .btn-hero svg,
   .hero-content .btn-hero svg {
-    width: 16px !important;          /* Deixa a setinha proporcional ao texto */
+    width: 16px !important;
     height: 16px !important;
   }
 
-  /* Esconde os botões secundários no topo, deixando só o botão de Ação principal */
   .actions .btn-doar-nav,
   .actions .btn-outline {
     display: none !important;
   }
 
-  /* Mantém apenas o botão principal visível e compacto ao lado do hambúrguer */
   .actions .btn-primary, 
   .actions .btn-entrar {
     display: inline-flex !important;
@@ -1628,7 +1677,6 @@ a:focus {
     min-height: 32px !important;
   }
 
-  /* ESTILIZAÇÃO DOS BOTÕES DENTRO DO MENU MOBILE (Hambúrguer Aberto) */
   .menu-mobile .menu-mobile-actions {
     display: flex !important;
     flex-direction: column !important;
@@ -1742,7 +1790,6 @@ a:focus {
   line-height: 1.2 !important;
 }
 
-/* 2. Estilização moderna e interativa para os Filtros de Pets no Mobile */
 @media (max-width: 768px) {
   .filters {
     background: #ffffff !important;
@@ -1762,7 +1809,6 @@ a:focus {
     margin-bottom: 6px !important;
   }
 
-  /* Substitui a caixa padrão "crua" do navegador por selects customizados */
   .filters select {
     width: 100% !important;
     height: 46px !important;

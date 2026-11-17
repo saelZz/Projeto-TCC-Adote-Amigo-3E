@@ -20,14 +20,11 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Estilos Globais do Portal + Estilos Específicos da Página -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="como-funciona.css" />
   </head>
   <body class="como-funciona-page">
 
-    <!-- NAVBAR PADRÃO DO PORTAL -->
     <header class="navbar">
       <div class="logo">
         <a href="index.html">
@@ -70,7 +67,6 @@
     </header>
 
     <main>
-      <!-- HERO DA PÁGINA -->
       <section class="cf-hero">
         <div class="cf-wrap cf-hero-inner">
           <div class="cf-hero-copy">
@@ -94,7 +90,6 @@
         </div>
       </section>
 
-      <!-- JORNADA / ABAS INTERATIVAS -->
       <section class="cf-wrap" id="jornada">
         <header class="cf-heading">
           <span class="cf-kicker">DO PRIMEIRO OLHAR AO NOVO LAR</span>
@@ -108,13 +103,13 @@
               <b>01</b>Explore a Vitrine Unificada
             </button>
             <button role="tab" id="etapa-2" aria-controls="painel-2" aria-selected="false" tabindex="-1">
-              <b>02</b>Conheça a História do Pet
+              <b>02</b>Conheça o Card na Vitrine
             </button>
             <button role="tab" id="etapa-3" aria-controls="painel-3" aria-selected="false" tabindex="-1">
-              <b>03</b>Direcionamento Direto para a ONG
+              <b>03</b>Acesse a Página de Detalhes do Pet
             </button>
             <button role="tab" id="etapa-4" aria-controls="painel-4" aria-selected="false" tabindex="-1">
-              <b>04</b>Adoção Responsável
+              <b>04</b>Contato Direto com a ONG
             </button>
           </div>
 
@@ -131,32 +126,32 @@
 
             <div role="tabpanel" id="painel-2" aria-labelledby="etapa-2" tabindex="0" hidden>
               <span class="cf-step-icon">
-                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2m3 6a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m4 12 6-4 6 4 4-3"/></svg>
               </span>
               <span class="cf-kicker">PASSO 02 / 04</span>
-              <h3>Conheça a História do Pet</h3>
-              <p>Cada pet possui uma página individual com fotos, traços de personalidade, peso, histórico e selo da instituição responsável.</p>
-              <span class="cf-step-tags">Fotos · Personalidade · Peso · Histórico</span>
+              <h3>Visão Geral no Card</h3>
+              <p>Cada pet é exibido na vitrine em um card intuitivo com foto principal, nome, tags rápidas de vacinação e indicação da ONG parceira.</p>
+              <span class="cf-step-tags">Foto principal · Tags rápidas · Nome · ONG</span>
             </div>
 
             <div role="tabpanel" id="painel-3" aria-labelledby="etapa-3" tabindex="0" hidden>
               <span class="cf-step-icon">
-                <svg viewBox="0 0 24 24"><path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8 6l8 9 8-9a5 5 0 0 0 0-7Z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2m3 6a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></svg>
               </span>
               <span class="cf-kicker">PASSO 03 / 04</span>
-              <h3>Direcionamento Direto para a ONG</h3>
-              <p>Não vendemos animais nem cobramos taxas. Ao clicar em “Quero Conhecer”, você é direcionado para o contato oficial do abrigo responsável.</p>
-              <span class="cf-step-tags">Gratuito · Direto · Canal oficial</span>
+              <h3>Página de Detalhes Completa</h3>
+              <p>Ao clicar no card, você acessa uma página dedicada ao pet com galeria de fotos estendida, histórico detalhado e informações de temperamento.</p>
+              <span class="cf-step-tags">Galeria completa · Histórico · Personalidade</span>
             </div>
 
             <div role="tabpanel" id="painel-4" aria-labelledby="etapa-4" tabindex="0" hidden>
               <span class="cf-step-icon">
-                <svg viewBox="0 0 24 24"><path d="M21 11a9 9 0 1 0-17 4L2 22l7-3a9 9 0 0 0 12-8Z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8 6l8 9 8-9a5 5 0 0 0 0-7Z"/></svg>
               </span>
               <span class="cf-kicker">PASSO 04 / 04</span>
-              <h3>Adoção Responsável</h3>
-              <p>A ONG realiza o processo de entrevista e visita para garantir um lar seguro e cheio de amor.</p>
-              <span class="cf-step-tags">Entrevista · Visita · Cuidado</span>
+              <h3>Contato Direto com a ONG</h3>
+              <p>Com um clique na página de detalhes, você é direcionado para conversar diretamente com o abrigo ou protetor responsável.</p>
+              <span class="cf-step-tags">WhatsApp · Canal oficial · Gratuito</span>
             </div>
 
             <div class="cf-step-controls">
@@ -170,7 +165,6 @@
         </div>
       </section>
 
-      <!-- ONGS PARCEIRAS -->
       <section class="cf-partners-section" id="parceiros">
         <div class="cf-wrap">
           <header class="cf-heading">
@@ -180,7 +174,6 @@
           </header>
 
           <div class="cf-partner-grid">
-            <!-- ONG 1: Adote Petz -->
             <article class="cf-partner">
               <div class="cf-partner-wordmark">
                 <img src="https://www.adotepetz.com.br/images/logo.svg" alt="Logo Adote Petz" style="max-height: 30px; width: auto;" />
@@ -192,7 +185,6 @@
               <a href="https://www.adotepetz.com.br/" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>
             </article>
 
-            <!-- ONG 2: Viu Meu Pet -->
             <article class="cf-partner">
               <div class="cf-partner-wordmark">
                 <img src="https://www.viumeupet.com.br/images/logos/words-logo.svg" alt="Logo Viu Meu Pet" style="max-height: 80px; width: 160px;" />
@@ -204,7 +196,6 @@
               <a href="https://viumeupet.com.br/" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>
             </article>
 
-            <!-- ONG 3: Adotar -->
             <article class="cf-partner">
               <div class="cf-partner-wordmark">
                 <img src="https://adotar.com.br/imagens/logoN.png" alt="Logo Adotar" style="max-height: 30px; width: auto;" />
@@ -216,7 +207,6 @@
               <a href="https://adotar.com.br/" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>
             </article>
 
-            <!-- ONG 4: Amigo Não Se Compra -->
             <article class="cf-partner">
               <div class="cf-partner-wordmark">
                 <img src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" alt="Logo Amigo Não Se Compra" style="max-height: 40px; width: auto;" />
@@ -228,7 +218,6 @@
               <a href="https://www.amigonaosecompra.com.br/" target="_blank" rel="noopener noreferrer">Site oficial ↗</a>
             </article>
 
-            <!-- ONG 5: Instituto Caramelo -->
             <article class="cf-partner">
               <div class="cf-partner-wordmark">
                 <img src="https://static.tildacdn.net/tild3632-3237-4937-a437-653461326534/logo-caramelo.png" alt="Logo Instituto Caramelo" style="max-height: 50px; width: auto;" />
@@ -251,18 +240,17 @@
         </div>
       </section>
 
-      <!-- CARD DE EXEMPLO DO PET -->
       <section class="cf-wrap cf-pet-preview">
         <div class="cf-preview-copy">
-          <span class="cf-kicker">MUITO MAIS QUE UMA FOTINHA</span>
-          <h2>Conheça a história por trás do olhar.</h2>
-          <p>Fotos, personalidade e cuidados: cada perfil aproxima você de quem pode fazer parte da sua família.</p>
+          <span class="cf-kicker">COMO O PET APARECE NA VITRINE</span>
+          <h2>A vitrine que facilita a sua busca.</h2>
+          <p>Cada animal cadastrado pelas ONGs parceiras é exibido em um card dinâmico e direto na listagem:</p>
           <ul>
-            <li>Galeria imersiva e histórias humanizadas</li>
-            <li>Saúde, temperamento e porte em destaque</li>
-            <li>Instituição responsável e contato oficial</li>
+            <li><strong>Visualização rápida:</strong> Foto principal de destaque e nome do pet.</li>
+            <li><strong>Indicadores essenciais:</strong> Tags informando se é vacinado, porte e temperamento principal.</li>
+            <li><strong>Acesso ao perfil:</strong> Um clique rápido para abrir a ficha completa do animal.</li>
           </ul>
-          <a href="adotar.html" class="cf-text-link">Explorar a vitrine de pets →</a>
+          <a href="adotar.html" class="cf-text-link">Explorar a vitrine completa →</a>
         </div>
 
         <article class="cf-demo-profile">
@@ -273,87 +261,46 @@
               alt="Abelard, cão caramelo"
               loading="lazy"
             />
-            <span class="cf-demo-badge">Perfil demonstrativo</span>
+            <span class="cf-demo-badge">Exemplo de Card na Vitrine</span>
           </div>
           <div class="cf-demo-info">
-            <span class="cf-kicker">UM AMOR ESPERANDO POR VOCÊ</span>
             <h3>Abelard</h3>
-            <p>Cãozinho dengoso em busca de um lar.</p>
+            <p class="cf-small" style="margin-bottom: 12px; color: var(--muted-foreground);">SRD Pelo Curto · São Paulo/SP</p>
+            
             <div class="cf-tags">
-              <span>✓ Vacinado</span><span>Porte médio</span><span>♡ Dócil</span>
+              <span>Cachorro</span>
+              <span>Jovem</span>
+              <span>Caramelo</span>
+              <span style=" color: #1ba2e6;">Macho</span>
             </div>
-            <p class="cf-small">Instituição responsável · Exemplo Fictício</p>
-            <button class="cf-btn-primary" id="contact-demo">Quero Conhecer ↗</button>
-            <span class="cf-small cf-contact-note">WhatsApp ou e-mail oficial da ONG</span>
+
+            <div style="border-top: 1px dashed var(--border); margin-top: 16px; padding-top: 14px; text-align: center;">
+              <span class="cf-small" style="display: block; margin-bottom: 8px;">Este pet pertence à Instituição:</span>
+ 
+              <span style="font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--primary);">adote<span style="color: var(--highlight);">petz</span></span>
+            </div>
+
+            <button class="cf-btn-primary" id="contact-demo" style="margin-top: 16px;">Quero conhecer</button>
           </div>
         </article>
       </section>
 
-      <!-- FAQ DA PÁGINA -->
-      <section class="cf-faq-section" id="duvidas">
-        <div class="cf-wrap cf-faq-layout">
-          <header class="cf-heading">
-            <span class="cf-kicker">PODE PERGUNTAR</span>
-            <h2>Antes do primeiro “oi”, tire suas dúvidas.</h2>
-            <p>Transparência em cada etapa. Carinho em cada escolha.</p>
-          </header>
-          <div>
-            <article class="cf-faq-item" id="duvida-1">
-              <h3>
-                <button aria-expanded="false" id="pergunta-1" aria-controls="resposta-1">
-                  O Adote Amigo cobra alguma taxa para intermediar a adoção?<span aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="cf-answer" id="resposta-1" role="region" aria-labelledby="pergunta-1" aria-hidden="true">
-                <div>
-                  <p>Não! O Adote Amigo é uma plataforma 100% gratuita desenvolvida para dar visibilidade aos animais resgatados por ONGs parceiras.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="cf-faq-item" id="duvida-2">
-              <h3>
-                <button aria-expanded="false" id="pergunta-2" aria-controls="resposta-2">
-                  Como sei se a ONG selecionada é confiável?<span aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="cf-answer" id="resposta-2" role="region" aria-labelledby="pergunta-2" aria-hidden="true">
-                <div>
-                  <p>Todas as instituições exibidas na plataforma passam por um processo rigoroso de verificação e possuem histórico comprovado.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="cf-faq-item" id="duvida-3">
-              <h3>
-                <button aria-expanded="false" id="pergunta-3" aria-controls="resposta-3">
-                  O processo de adoção é feito diretamente pelo site?<span aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="cf-answer" id="resposta-3" role="region" aria-labelledby="pergunta-3" aria-hidden="true">
-                <div>
-                  <p>Nós fazemos a ponte! Quando você escolhe um pet, direcionamos você diretamente para a ONG responsável.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="cf-faq-item" id="duvida-4">
-              <h3>
-                <button aria-expanded="false" id="pergunta-4" aria-controls="resposta-4">
-                  Posso cadastrar um animal que encontrei na rua?<span aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="cf-answer" id="resposta-4" role="region" aria-labelledby="pergunta-4" aria-hidden="true">
-                <div>
-                  <p>Nossa plataforma é focada em abrigos e ONGs cadastradas. Recomendamos entrar em contato com uma das nossas parceiras para auxílio.</p>
-                </div>
-              </div>
-            </article>
+      <section class="cf-wrap cf-pet-details-section" style="background: var(--surface-soft, #F2F7FC); border-radius: 24px; padding: 60px; margin-bottom: 60px;">
+        <div class="cf-preview-copy" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <span class="cf-kicker">DENTRO DO PERFIL DO ANIMAL</span>
+          <h2>Aprofunde-se na Página de Detalhes do Pet</h2>
+          <p style="margin-top: 16px; line-height: 1.8;">
+            Ao selecionar um pet na vitrine, você é direcionado para a sua página interna exclusiva. Nela, reunimos um panorama completo para que você conheça a história de resgate, visualize uma galeria de fotos estendida, verifique o histórico clínico detalhado e encontre o canal de comunicação direto com a instituição responsável pela adoção.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
+            <span class="cf-tags">Galeria de Fotos</span>
+            <span class="cf-tags">Histórico de Resgate</span>
+            <span class="cf-tags">Cuidados de Saúde</span>
+            <span class="cf-tags">Contato Direto ONG</span>
           </div>
         </div>
       </section>
 
-      <!-- FECHAMENTO -->
       <section class="cf-wrap cf-closing">
         <span class="cf-kicker">SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</span>
         <h2>Pronto para encontrar seu novo melhor amigo?</h2>
@@ -362,7 +309,6 @@
       </section>
     </main>
 
-    <!-- RODAPÉ PADRÃO DO PORTAL -->
     <footer class="site-footer">
       <div class="container footer-content">
         <div class="footer-brand">
@@ -371,7 +317,7 @@
         </div>
         <div class="footer-support">
           <p class="support-text">Teve alguma dúvida ou é representante de uma ONG?</p>
-          <a href="mailto:contato.adoteamigo@gmail.com" class="btn-footer-support" target="_blank">
+          <a href="mailto:adoteamigo.tcc2026@gmail.com" class="btn-footer-support" target="_blank">
             📧 Fale com o Suporte
           </a>
         </div>
@@ -380,9 +326,9 @@
 
     <dialog id="contact-dialog" aria-labelledby="contact-title">
       <button class="dialog-close" aria-label="Fechar aviso">×</button>
-      <span class="cf-kicker">O PRÓXIMO PASSO É COM A ONG</span>
-      <h2 id="contact-title">O encontro começa no contato oficial.</h2>
-      <p>Abelard é um perfil demonstrativo. Em um perfil real, este botão leva direto ao WhatsApp ou e-mail da ONG responsável.</p>
+      <span class="cf-kicker">PÁGINA DE DETALHES DO PET</span>
+      <h2 id="contact-title">Tudo o que você precisa saber em um só lugar.</h2>
+      <p>Nos perfis reais da vitrine, você encontra a galeria completa de fotos, informações detalhadas de saúde e o botão direto para conversar com a ONG.</p>
       <a class="cf-btn-primary" href="adotar.html">Explorar a vitrine de Pets</a>
     </dialog>
 
