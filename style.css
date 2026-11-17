@@ -1635,6 +1635,16 @@ a:focus {
     will-change: transform;
   }
 
+  @media (min-width: 1400px) {
+  .carousel-wrapper {
+    height: 600px;
+  }
+
+  .pet-photo {
+    object-fit: cover;
+  }
+}
+
   .logo img {
     height: 45px;
     left: 10px;
