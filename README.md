@@ -136,7 +136,7 @@ Embora todos os integrantes tenham colaborado em diferentes momentos — ajudand
 
 
 
-\- **Vitória Iara:** Responsável pela introdução e pelo objetivo geral na apresentação do TCC.
+\- **Vitória Yara:** Responsável pela introdução e pelo objetivo geral na apresentação do TCC.
 
 
 
